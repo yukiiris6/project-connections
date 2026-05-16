@@ -70,8 +70,14 @@ public class PlayerMagnetize : MonoBehaviour
     {
         PlugController plugController = selectedObject.GetComponent<PlugController>();
 
-        if (plugController != null) ApplyMagnet(plugController);
-        else CancelMagnet();
+        if (plugController != null)
+        {
+            ApplyMagnet(plugController);
+        }
+        else
+        {
+            CancelMagnet();
+        }
 
         isAiming = false;
         HideLaser();
@@ -80,17 +86,18 @@ public class PlayerMagnetize : MonoBehaviour
     void ApplyMagnet(PlugController plugController)
     {
         CancelMagnet();
+        if (plugController == magnetizedPlug) return;
+        if (magnetizedPlug != null && magnetizedPlug.IsMoving) return;
         magnetizedPlug = plugController;
         plugController.Magnetize(transform.position);
     }
 
     void CancelMagnet()
     {
-        if (magnetizedPlug)
-        {
-            magnetizedPlug.CancelMagnetism();
-            magnetizedPlug = null;
-        }
+        if (magnetizedPlug == null) return;
+        if (magnetizedPlug.IsMoving) return;
+        magnetizedPlug.CancelMagnetism();
+        magnetizedPlug = null;
     }
     #endregion
 
