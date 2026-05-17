@@ -2,22 +2,27 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
+    [SerializeField] BoxCollider2D feetCollider;
     [SerializeField] LayerMask movingPlatformsLayer;
 
-    void OnCollisionEnter2D(Collision2D collision)
+    Transform originalParent;
+
+    void Awake()
     {
-        bool isMovingPlatform = ((1 << collision.gameObject.layer) & movingPlatformsLayer.value) != 0;
-        if (isMovingPlatform)
+        originalParent = transform.parent;
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.bounds.Intersects(feetCollider.bounds))
         {
-            transform.SetParent(collision.transform);
+            bool isMovingPlatform = ((1 << other.gameObject.layer) & movingPlatformsLayer.value) != 0;
+            if (isMovingPlatform) transform.SetParent(other.transform);
         }
     }
 
-    void OnCollisionExit2D(Collision2D collision)
+    void OnTriggerExit2D(Collider2D other)
     {
-        if (transform.parent != null)
-        {
-            transform.parent = null;
-        }
+        if (transform.parent != null) transform.SetParent(originalParent);
     }
 }

@@ -116,19 +116,11 @@ public class PlayerJumping : MonoBehaviour
         if (jumpTimeCounter <= minJumpTime) return;
 
         bool isFalling = myRigidBody.linearVelocityY < 0;
-        if (isFalling)
-        {
-            isJumping = false;
-            RestoreGravity();
-            return;
-        }
-
         bool isOnJumpsApex = Mathf.Abs(myRigidBody.linearVelocityY) < jumpApexThreshold;
-        if (isOnJumpsApex)
+        if (isFalling || isOnJumpsApex)
         {
             isJumping = false;
             RestoreGravity();
-            return;
         }
     }
     #endregion
