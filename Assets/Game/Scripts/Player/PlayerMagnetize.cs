@@ -89,7 +89,7 @@ public class PlayerMagnetize : MonoBehaviour
         if (plugController == magnetizedPlug) return;
         if (magnetizedPlug != null && magnetizedPlug.IsMoving) return;
         magnetizedPlug = plugController;
-        plugController.Magnetize(transform.position);
+        plugController.Magnetize(transform.position, false);
     }
 
     void CancelMagnet()

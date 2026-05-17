@@ -15,6 +15,7 @@ public class PlugController : MonoBehaviour
     Vector2 currentVelocity;
     BoxCollider2D myCollider;
     public bool IsMoving { get; private set; } = false;
+    bool shouldApplyStopDistance = false;
 
     #region Unity Lifecycle
     void Awake()
@@ -31,11 +32,12 @@ public class PlugController : MonoBehaviour
     #endregion
 
     #region Magnetization
-    public void Magnetize(Vector2 newTargetPosition)
+    public void Magnetize(Vector2 newTargetPosition, bool isSocket)
     {
-        if (IsMoving) return;
+        if (IsMoving && !isSocket) return;
         targetPosition = newTargetPosition;
         IsMoving = true;
+        shouldApplyStopDistance = !isSocket;
     }
 
     public void CancelMagnetism()
@@ -44,6 +46,7 @@ public class PlugController : MonoBehaviour
         if (targetPosition == originalPosition) return;
         targetPosition = originalPosition;
         IsMoving = true;
+        shouldApplyStopDistance = false;
     }
     #endregion
 
@@ -52,7 +55,7 @@ public class PlugController : MonoBehaviour
     {
         if (!IsMoving) return;
 
-        float appliedStopDistance = targetPosition == originalPosition ? 0 : stopDistance;
+        float appliedStopDistance = shouldApplyStopDistance ? stopDistance : 0;
         float currentDistance = Vector2.Distance(transform.position, targetPosition);
 
         currentVelocity = GetVelocity(appliedStopDistance, currentDistance);

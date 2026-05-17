@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class DoorState : MonoBehaviour
@@ -29,7 +28,6 @@ public class DoorState : MonoBehaviour
         }
     }
 
-    //teste
     void OnTriggerExit2D(Collider2D other)
     {
         if(LayerMask.LayerToName(other.gameObject.layer) == "Player" && isDoorActive)

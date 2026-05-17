@@ -46,8 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorState
   rend: {fileID: 1549410173051921721}
-  activeDoor: {r: 0, g: 0.15811038, b: 1, a: 1}
-  inactiveDoor: {r: 0.054901965, g: 0.9960785, b: 0, a: 1}
+  activeDoorColor: {r: 0, g: 0, b: 1, a: 1}
+  inactiveDoorColor: {r: 0, g: 1, b: 0, a: 1}
+  isDoorActive: 0
+  isInsideDoor: 0
 --- !u!1 &593521412265786610
 GameObject:
   m_ObjectHideFlags: 0
