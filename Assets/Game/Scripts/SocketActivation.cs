@@ -3,8 +3,8 @@ using UnityEngine;
 public class SocketActivation : MonoBehaviour
 {
     [SerializeField] Transform connectionAnchor;
-
-    public DoorState targetDoor;
+    [SerializeField] DoorState targetDoor;
+    [SerializeField] LightbulbVisuals lightbulbVisuals;
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -13,9 +13,10 @@ public class SocketActivation : MonoBehaviour
             PlugController plugController = other.GetComponent<PlugController>();
             if (plugController != null)
             {
-                plugController.Magnetize(connectionAnchor.position, true);
+                plugController.ConnectToSocket(connectionAnchor.position);
             }
             targetDoor.SetActive(true);
+            lightbulbVisuals.SetActive(true);
         }
     }
 
@@ -24,6 +25,7 @@ public class SocketActivation : MonoBehaviour
         if (other.CompareTag("Plug"))
         {
             targetDoor.SetActive(false);
+            lightbulbVisuals.SetActive(false);
         }
     }
 }

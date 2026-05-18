@@ -40,9 +40,9 @@ public class PlugController : MonoBehaviour
     #endregion
 
     #region Magnetization
-    public void Magnetize(Vector2 mousePosition, Vector2 playerPosition, bool isSocket)
+    public void Magnetize(Vector2 mousePosition, Vector2 playerPosition)
     {
-        if (IsMoving && !isSocket) return;
+        if (IsMoving) return;
 
         float distanceToMouse = Vector2.Distance(transform.position, mousePosition);
         float distanceToPlayer = Vector2.Distance(transform.position, playerPosition);
@@ -58,7 +58,15 @@ public class PlugController : MonoBehaviour
         targetPosition = mousePosition;
         isReturning = false;
         IsMoving = true;
-        shouldApplyStopDistance = !isSocket;
+        shouldApplyStopDistance = true;
+    }
+
+    public void ConnectToSocket(Vector2 newTargetPosition)
+    {
+        targetPosition = newTargetPosition;
+        isReturning = false;
+        IsMoving = true;
+        shouldApplyStopDistance = false;
     }
 
     public void CancelMagnetism()

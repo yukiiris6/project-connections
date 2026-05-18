@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "project-connections.slnx"
+    "dotnet.defaultSolution": "Project Connections.slnx"
 }

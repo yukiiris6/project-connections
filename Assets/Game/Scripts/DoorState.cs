@@ -1,28 +1,38 @@
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class DoorState : MonoBehaviour
 {
     [SerializeField] SpriteRenderer rend;
-    [SerializeField] Color activeDoorColor;
-    [SerializeField] Color inactiveDoorColor;
+    [SerializeField] Animator doorAnimator;
+    [SerializeField] Light2D light2D;
+    [SerializeField] Color closedLightColor;
+    [SerializeField] Color openLightColor;
+    [SerializeField] string IsOpenBool = "IsOpen";
 
     public bool isDoorActive = false;
     public bool isInsideDoor = false;
 
-    void Start()
-    {
-        rend.color = inactiveDoorColor;
-    }
-
     public void SetActive(bool active)
     {
         isDoorActive = active;
-        rend.color = active ? activeDoorColor : inactiveDoorColor;
+        SetAnimatorState();
+        SetColor();
+    }
+
+    void SetAnimatorState()
+    {
+        doorAnimator.SetBool(IsOpenBool, isDoorActive);
+    }
+
+    void SetColor()
+    {
+        light2D.color = isDoorActive ? openLightColor : closedLightColor;
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(LayerMask.LayerToName(other.gameObject.layer) == "Player" && isDoorActive)
+        if (LayerMask.LayerToName(other.gameObject.layer) == "Player" && isDoorActive)
         {
             isInsideDoor = true;
         }
@@ -30,7 +40,7 @@ public class DoorState : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if(LayerMask.LayerToName(other.gameObject.layer) == "Player" && isDoorActive)
+        if (LayerMask.LayerToName(other.gameObject.layer) == "Player" && isDoorActive)
         {
             isInsideDoor = false;
         }

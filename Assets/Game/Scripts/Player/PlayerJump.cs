@@ -21,6 +21,7 @@ public class PlayerJumping : MonoBehaviour
     BoxCollider2D myCollider;
     Rigidbody2D myRigidBody;
     PlayerAnimator playerAnimator;
+    PlayerProgress playerProgress;
 
     float originalGravity;
     bool isGrounded = true;
@@ -36,6 +37,7 @@ public class PlayerJumping : MonoBehaviour
         myCollider = GetComponent<BoxCollider2D>();
         myRigidBody = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<PlayerAnimator>();
+        playerProgress = GetComponent<PlayerProgress>();
         originalGravity = myRigidBody.gravityScale;
     }
 
@@ -51,6 +53,7 @@ public class PlayerJumping : MonoBehaviour
     #region Jumping
     void OnJump(InputValue value)
     {
+        if (playerProgress.HasFinished) return;
         if (value.isPressed) PerformJump();
         isHoldingJump = value.isPressed;
     }
