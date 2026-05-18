@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(PlayerAnimator))]
+[RequireComponent(typeof(PlayerProgress))]
 public class PlayerMagnetize : MonoBehaviour
 {
     [SerializeField] Transform aimingTransform;
@@ -18,6 +19,7 @@ public class PlayerMagnetize : MonoBehaviour
     Camera mainCamera;
     PlugController magnetizedPlug;
     PlayerAnimator playerAnimator;
+    PlayerProgress playerProgress;
 
     bool isAiming = false;
 
@@ -26,6 +28,7 @@ public class PlayerMagnetize : MonoBehaviour
     {
         mainCamera = Camera.main;
         playerAnimator = GetComponent<PlayerAnimator>();
+        playerProgress = GetComponent<PlayerProgress>();
         SetUpLaser(leftLineRenderer);
         SetUpLaser(rightLineRenderer);
     }
@@ -40,17 +43,26 @@ public class PlayerMagnetize : MonoBehaviour
     #region Magnetism
     void OnMagnetize(InputValue value)
     {
+        if (playerProgress.HasFinished) return;
         if (value.isPressed) isAiming = true;
         else ProcessMagnet();
     }
 
     void OnCancelMagnetism(InputValue value)
     {
+        if (playerProgress.HasFinished) return;
         CancelMagnet();
     }
 
     void ProcessAiming()
     {
+        if (playerProgress.HasFinished)
+        {
+            HideLaser(leftLineRenderer);
+            HideLaser(rightLineRenderer);
+            return;
+        }
+
         if (!isAiming) return;
 
         FaceArmsToMouse();

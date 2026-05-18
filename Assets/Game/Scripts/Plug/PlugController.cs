@@ -22,6 +22,7 @@ public class PlugController : MonoBehaviour
 
     public bool IsMoving { get; private set; } = false;
     bool isReturning = false;
+    bool shouldApplyStopDistance = false;
 
     #region Unity Lifecycle
     void Awake()
@@ -57,6 +58,15 @@ public class PlugController : MonoBehaviour
         targetPosition = mousePosition;
         isReturning = false;
         IsMoving = true;
+        shouldApplyStopDistance = true;
+    }
+
+    public void ConnectToSocket(Vector2 newTargetPosition)
+    {
+        targetPosition = newTargetPosition;
+        isReturning = false;
+        IsMoving = true;
+        shouldApplyStopDistance = false;
     }
 
     public void CancelMagnetism()
@@ -67,6 +77,7 @@ public class PlugController : MonoBehaviour
         targetPosition = originalPosition;
         isReturning = true;
         IsMoving = true;
+        shouldApplyStopDistance = false;
     }
     #endregion
 
@@ -75,7 +86,7 @@ public class PlugController : MonoBehaviour
     {
         if (!IsMoving) return;
 
-        float appliedStopDistance = targetPosition == originalPosition ? 0 : mouseStopDistance;
+        float appliedStopDistance = shouldApplyStopDistance ? mouseStopDistance : 0;
         float currentDistance = Vector2.Distance(transform.position, targetPosition);
 
         currentVelocity = GetVelocity(appliedStopDistance, currentDistance);

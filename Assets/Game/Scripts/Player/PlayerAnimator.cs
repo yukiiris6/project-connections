@@ -10,10 +10,11 @@ public class PlayerAnimator : MonoBehaviour
     [Header("Strings")]
     [SerializeField] string yVelocityString = "yVelocity";
     [SerializeField] string movementSpeedString = "movementSpeed";
-    [SerializeField] string IsFacingLeftString = "IsFacingLeft";
+    [SerializeField] string isFacingLeftString = "IsFacingLeft";
     [SerializeField] string isRunningString = "IsRunning";
     [SerializeField] string isGroundedString = "IsGrounded";
     [SerializeField] string isAimingString = "IsAiming";
+    [SerializeField] string hasFinishedString = "HasFinished";
 
     [Header("Magnet Anchors")]
     [SerializeField] Transform leftMagnetAnchor;
@@ -58,6 +59,13 @@ public class PlayerAnimator : MonoBehaviour
         SetIsFacingLeft(isFacingLeft);
     }
 
+    public void PlayFinishAnimation()
+    {
+        bodyAnimator.SetBool(hasFinishedString, true);
+        armsAnimator.SetBool(hasFinishedString, true);
+        SetIsAiming(false);
+    }
+
     void UpdateMovementSpeed(float value, float maxVelocity)
     {
         float movementSpeed = Mathf.Clamp(Mathf.Abs(value) / maxVelocity, 0, 1);
@@ -73,9 +81,9 @@ public class PlayerAnimator : MonoBehaviour
 
     void SetIsFacingLeft(bool value)
     {
-        bodyAnimator.SetBool(IsFacingLeftString, value);
-        armsAnimator.SetBool(IsFacingLeftString, value);
-        backArmsAnimator.SetBool(IsFacingLeftString, value);
+        bodyAnimator.SetBool(isFacingLeftString, value);
+        armsAnimator.SetBool(isFacingLeftString, value);
+        backArmsAnimator.SetBool(isFacingLeftString, value);
         if (value)
         {
             leftMagnetAnchor.localPosition = new Vector3(leftMagnetAnchor.localPosition.x, -leftMagnetY, 0f);
