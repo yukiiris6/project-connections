@@ -1,18 +1,23 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(LineRenderer))]
+[RequireComponent(typeof(PlayerAnimator))]
 public class PlayerMagnetize : MonoBehaviour
 {
+    [SerializeField] Transform aimingTransform;
+    [SerializeField] float laserThickness = 1f;
+    [SerializeField] LineRenderer leftLineRenderer;
+    [SerializeField] LineRenderer rightLineRenderer;
     [SerializeField] LayerMask playerLayer;
     [SerializeField] LayerMask magneticLayer;
     [SerializeField] Color magneticLineColor;
     [SerializeField] Color nonMagneticLineColor;
 
+    Vector2 mouseWorldPosition;
     GameObject selectedObject;
     Camera mainCamera;
-    LineRenderer lineRenderer;
     PlugController magnetizedPlug;
+    PlayerAnimator playerAnimator;
 
     bool isAiming = false;
 
@@ -20,16 +25,14 @@ public class PlayerMagnetize : MonoBehaviour
     void Awake()
     {
         mainCamera = Camera.main;
-        lineRenderer = GetComponent<LineRenderer>();
-
-        lineRenderer.positionCount = 2;
-        lineRenderer.startWidth = 0.05f;
-        lineRenderer.endWidth = 0.05f;
-        lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
+        playerAnimator = GetComponent<PlayerAnimator>();
+        SetUpLaser(leftLineRenderer);
+        SetUpLaser(rightLineRenderer);
     }
 
     void Update()
     {
+        GetMousePosition();
         ProcessAiming();
     }
     #endregion
@@ -50,37 +53,30 @@ public class PlayerMagnetize : MonoBehaviour
     {
         if (!isAiming) return;
 
-        Vector2 origin = transform.position;
-        Vector2 hitPosition = RaycastLaser(origin);
-
-        ShowLaser(origin, hitPosition);
+        FaceArmsToMouse();
+        SelectFromRaycastCircle(aimingTransform.position, aimingTransform.right, laserThickness);
+        RaycastLaser(leftLineRenderer);
+        RaycastLaser(rightLineRenderer);
     }
 
-    Vector2 RaycastLaser(Vector2 origin)
+    void SelectFromRaycastCircle(Vector2 origin, Vector2 direction, float laserThickness)
     {
-        Vector2 mouseWorldPosition = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         int layermaskExceptPlayer = ~playerLayer.value;
-        Vector2 direction = (mouseWorldPosition - origin).normalized;
-        RaycastHit2D hit = Physics2D.Raycast(origin, direction, float.MaxValue, layermaskExceptPlayer);
+        RaycastHit2D hit = Physics2D.CircleCast(origin, laserThickness, direction, float.MaxValue, layermaskExceptPlayer);
         selectedObject = hit.collider.gameObject;
-        return hit.point;
     }
 
     void ProcessMagnet()
     {
         PlugController plugController = selectedObject.GetComponent<PlugController>();
 
-        if (plugController != null)
-        {
-            ApplyMagnet(plugController);
-        }
-        else
-        {
-            CancelMagnet();
-        }
+        if (plugController != null) ApplyMagnet(plugController);
 
         isAiming = false;
-        HideLaser();
+        playerAnimator.SetIsAiming(false);
+
+        HideLaser(leftLineRenderer);
+        HideLaser(rightLineRenderer);
     }
 
     void ApplyMagnet(PlugController plugController)
@@ -89,7 +85,7 @@ public class PlayerMagnetize : MonoBehaviour
         if (plugController == magnetizedPlug) return;
         if (magnetizedPlug != null && magnetizedPlug.IsMoving) return;
         magnetizedPlug = plugController;
-        plugController.Magnetize(transform.position);
+        plugController.Magnetize(mouseWorldPosition, transform.position);
     }
 
     void CancelMagnet()
@@ -101,16 +97,43 @@ public class PlayerMagnetize : MonoBehaviour
     }
     #endregion
 
-    #region Visuals
-    Color GetLaserColor()
+    #region Logic
+    void FaceArmsToMouse()
     {
-        bool isMagnetic = ((1 << selectedObject.layer) & magneticLayer.value) != 0;
-        return isMagnetic ? magneticLineColor : nonMagneticLineColor;
+        Vector2 mouseDirection = mouseWorldPosition - (Vector2)aimingTransform.position;
+        aimingTransform.right = mouseDirection;
+        playerAnimator.ControlAimingAnimation(isAiming, mouseDirection.x < 0);
     }
 
-    void ShowLaser(Vector2 origin, Vector2 hitPosition)
+    void GetMousePosition()
+    {
+        if (!isAiming) return;
+        mouseWorldPosition = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+    }
+    #endregion
+
+    #region Visuals
+    void SetUpLaser(LineRenderer lineRenderer)
+    {
+        lineRenderer.positionCount = 2;
+        lineRenderer.startWidth = 0.05f;
+        lineRenderer.endWidth = 0.05f;
+        lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
+    }
+
+    void RaycastLaser(LineRenderer lineRenderer)
+    {
+        Vector2 origin = lineRenderer.transform.position;
+        Vector2 direction = lineRenderer.transform.up;
+        int layermaskExceptPlayer = ~playerLayer.value;
+        RaycastHit2D hit = Physics2D.Raycast(origin, direction, float.MaxValue, layermaskExceptPlayer);
+        ShowLaser(lineRenderer, hit.point);
+    }
+
+    void ShowLaser(LineRenderer lineRenderer, Vector2 hitPosition)
     {
         Color color = GetLaserColor();
+        Vector2 origin = lineRenderer.transform.position;
 
         lineRenderer.SetPosition(0, origin);
         lineRenderer.SetPosition(1, hitPosition);
@@ -120,9 +143,15 @@ public class PlayerMagnetize : MonoBehaviour
         lineRenderer.enabled = true;
     }
 
-    void HideLaser()
+    void HideLaser(LineRenderer lineRenderer)
     {
         lineRenderer.enabled = false;
+    }
+
+    Color GetLaserColor()
+    {
+        bool isMagnetic = ((1 << selectedObject.layer) & magneticLayer.value) != 0;
+        return isMagnetic ? magneticLineColor : nonMagneticLineColor;
     }
     #endregion
 }
