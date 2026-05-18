@@ -1,7 +1,9 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+[RequireComponent(typeof(Rigidbody2D))]
 
+[RequireComponent(typeof(PlayerAnimator))]
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
@@ -12,11 +14,13 @@ public class PlayerMovement : MonoBehaviour
 
     Vector2 moveInput;
     Rigidbody2D myRigidBody;
+    PlayerAnimator playerAnimator;
 
     #region Unity Lifecycle
     void Awake()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
+        playerAnimator = GetComponent<PlayerAnimator>();
     }
 
     void FixedUpdate()
@@ -41,6 +45,8 @@ public class PlayerMovement : MonoBehaviour
         else newXVelocity = GetAccelerateVelocity();
 
         myRigidBody.linearVelocityX = Mathf.Clamp(newXVelocity, -maxVelocity, maxVelocity);
+
+        playerAnimator.ControlRunningAnimation(moveInput.x, newXVelocity, maxVelocity);
     }
 
     float GetAccelerateVelocity()
