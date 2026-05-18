@@ -1,8 +1,9 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-
 [RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
+
+[RequireComponent(typeof(PlayerAnimator))]
 public class PlayerJumping : MonoBehaviour
 {
     [Header("Jumping")]
@@ -19,9 +20,11 @@ public class PlayerJumping : MonoBehaviour
 
     BoxCollider2D myCollider;
     Rigidbody2D myRigidBody;
+    PlayerAnimator playerAnimator;
 
     float originalGravity;
-    bool isGrounded = false;
+    bool isGrounded = true;
+    bool canJump = false;
     bool isJumping = false;
     bool isHoldingJump = false;
     float coyoteTimeCounter = 0f;
@@ -32,6 +35,7 @@ public class PlayerJumping : MonoBehaviour
     {
         myCollider = GetComponent<BoxCollider2D>();
         myRigidBody = GetComponent<Rigidbody2D>();
+        playerAnimator = GetComponent<PlayerAnimator>();
         originalGravity = myRigidBody.gravityScale;
     }
 
@@ -40,6 +44,7 @@ public class PlayerJumping : MonoBehaviour
         GroundedHandler();
         MidJumpHandler();
         PostJumpHandler();
+        JumpAnimationHandler();
     }
     #endregion
 
@@ -52,7 +57,7 @@ public class PlayerJumping : MonoBehaviour
 
     void PerformJump()
     {
-        if (!isGrounded) return;
+        if (!canJump) return;
         jumpTimeCounter = 0;
         myRigidBody.linearVelocityY = jumpStrength;
         isJumping = true;
@@ -89,9 +94,10 @@ public class PlayerJumping : MonoBehaviour
 
         if (hit.collider == null)
         {
+            isGrounded = false;
             if (coyoteTimeCounter > coyoteTimeDuration)
             {
-                isGrounded = false;
+                canJump = false;
                 return;
             }
             coyoteTimeCounter += Time.fixedDeltaTime;
@@ -99,6 +105,7 @@ public class PlayerJumping : MonoBehaviour
         else
         {
             isGrounded = true;
+            canJump = true;
             coyoteTimeCounter = 0;
         }
     }
@@ -122,6 +129,11 @@ public class PlayerJumping : MonoBehaviour
             isJumping = false;
             RestoreGravity();
         }
+    }
+
+    void JumpAnimationHandler()
+    {
+        playerAnimator.ControlJumpingAnimation(myRigidBody.linearVelocityY, isGrounded);
     }
     #endregion
 }
