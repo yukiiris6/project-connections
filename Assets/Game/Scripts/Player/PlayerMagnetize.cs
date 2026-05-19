@@ -5,14 +5,15 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerProgress))]
 public class PlayerMagnetize : MonoBehaviour
 {
+    [SerializeField] Transform magnetAnchor;
     [SerializeField] Transform aimingTransform;
-    [SerializeField] float laserThickness = 1f;
     [SerializeField] LineRenderer leftLineRenderer;
     [SerializeField] LineRenderer rightLineRenderer;
     [SerializeField] LayerMask playerLayer;
     [SerializeField] LayerMask magneticLayer;
     [SerializeField] Color magneticLineColor;
     [SerializeField] Color nonMagneticLineColor;
+    [SerializeField] float laserThickness = 1f;
 
     Vector2 mouseWorldPosition;
     GameObject selectedObject;
@@ -21,7 +22,7 @@ public class PlayerMagnetize : MonoBehaviour
     PlayerAnimator playerAnimator;
     PlayerProgress playerProgress;
 
-    bool isAiming = false;
+    public bool IsAiming { get; private set; } = false;
 
     #region Unity Lifecycle
     void Awake()
@@ -44,7 +45,7 @@ public class PlayerMagnetize : MonoBehaviour
     void OnMagnetize(InputValue value)
     {
         if (playerProgress.HasFinished) return;
-        if (value.isPressed) isAiming = true;
+        if (value.isPressed) IsAiming = true;
         else ProcessMagnet();
     }
 
@@ -63,7 +64,7 @@ public class PlayerMagnetize : MonoBehaviour
             return;
         }
 
-        if (!isAiming) return;
+        if (!IsAiming) return;
 
         FaceArmsToMouse();
         SelectFromRaycastCircle(aimingTransform.position, aimingTransform.right, laserThickness);
@@ -75,30 +76,49 @@ public class PlayerMagnetize : MonoBehaviour
     {
         int layermaskExceptPlayer = ~playerLayer.value;
         RaycastHit2D hit = Physics2D.CircleCast(origin, laserThickness, direction, float.MaxValue, layermaskExceptPlayer);
+
+        SocketActivation newSocketActivation = hit.collider.gameObject.GetComponent<SocketActivation>();
+        if (newSocketActivation != null) newSocketActivation.SetShowCircle(true, this);
+
+        if (selectedObject != null)
+        {
+            SocketActivation socketActivation = selectedObject.GetComponent<SocketActivation>();
+            if (socketActivation != null && newSocketActivation == null) socketActivation.SetShowCircle(false, this);
+        }
+
         selectedObject = hit.collider.gameObject;
     }
 
     void ProcessMagnet()
     {
         PlugController plugController = selectedObject.GetComponent<PlugController>();
+        if (plugController != null) ApplyPlugMagnet(plugController);
 
-        if (plugController != null) ApplyMagnet(plugController);
+        SocketActivation socketActivation = selectedObject.GetComponent<SocketActivation>();
+        if (socketActivation != null) ApplySocketMagnet(socketActivation);
 
-        isAiming = false;
+        IsAiming = false;
         playerAnimator.SetIsAiming(false);
 
         HideLaser(leftLineRenderer);
         HideLaser(rightLineRenderer);
     }
 
-    void ApplyMagnet(PlugController plugController)
+    void ApplyPlugMagnet(PlugController plugController)
     {
         CancelMagnet();
         if (plugController == magnetizedPlug) return;
         if (magnetizedPlug != null && magnetizedPlug.IsMoving) return;
         magnetizedPlug = plugController;
-        plugController.Magnetize(mouseWorldPosition, transform.position);
+        plugController.Magnetize(magnetAnchor.position);
     }
+
+    void ApplySocketMagnet(SocketActivation socketActivation)
+    {
+        socketActivation.Magnetize();
+        magnetizedPlug = null;
+    }
+
 
     void CancelMagnet()
     {
@@ -114,12 +134,12 @@ public class PlayerMagnetize : MonoBehaviour
     {
         Vector2 mouseDirection = mouseWorldPosition - (Vector2)aimingTransform.position;
         aimingTransform.right = mouseDirection;
-        playerAnimator.ControlAimingAnimation(isAiming, mouseDirection.x < 0);
+        playerAnimator.ControlAimingAnimation(IsAiming, mouseDirection.x < 0);
     }
 
     void GetMousePosition()
     {
-        if (!isAiming) return;
+        if (!IsAiming) return;
         mouseWorldPosition = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
     }
     #endregion

@@ -21,12 +21,12 @@ public class PlayerProgress : MonoBehaviour
 
     void OnActivateDoor(InputValue value)
     {
-        levelManager.RestartLevel();
         if (HasFinished) return;
         if (value.isPressed && doorState.isDoorActive && doorState.isInsideDoor)
         {
             transform.position = doorState.transform.position;
             playerAnimator.PlayFinishAnimation();
+            levelManager.RestartLevel();
             HasFinished = true;
         }
     }

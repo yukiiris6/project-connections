@@ -151,7 +151,7 @@ Transform:
   m_GameObject: {fileID: 512276893300202406}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -356,7 +356,7 @@ Transform:
   m_GameObject: {fileID: 1567887233107381489}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -443,6 +443,37 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &1963790607802127447
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2534056035201261543}
+  m_Layer: 3
+  m_Name: CenterAnchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2534056035201261543
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963790607802127447}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1289627169313183913}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2566190174406938891
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,7 +500,7 @@ Transform:
   m_GameObject: {fileID: 2566190174406938891}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.45, z: 0}
+  m_LocalPosition: {x: 0, y: 0.95, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -527,7 +558,7 @@ Transform:
   m_GameObject: {fileID: 4153929135654771794}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -766,6 +797,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2534056035201261543}
   - {fileID: 5199265083739785324}
   - {fileID: 5590510331185446299}
   - {fileID: 1056165453849888257}
@@ -805,7 +837,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.0014312267, y: 0.25343847}
+  m_Offset: {x: 0.0014312267, y: 0.74517924}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -815,7 +847,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.88413095, y: 1.5}
+  m_Size: {x: 0.88413095, y: 1.492396}
   m_EdgeRadius: 0
 --- !u!61 &7888431783593684954
 BoxCollider2D:
@@ -851,7 +883,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.057798386, y: -0.4}
+  m_Offset: {x: -0.0027680397, y: 0.11784172}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -861,7 +893,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.7679949, y: 0.19999999}
+  m_Size: {x: 0.64686203, y: 0.37564468}
   m_EdgeRadius: 0
 --- !u!50 &7128101964075948444
 Rigidbody2D:
@@ -970,8 +1002,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eaf36f56204617469f94136f9e9afc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMagnetize
+  magnetAnchor: {fileID: 2534056035201261543}
   aimingTransform: {fileID: 5590510331185446299}
-  laserThickness: 0.15
   leftLineRenderer: {fileID: 5250609515867898602}
   rightLineRenderer: {fileID: 67320397400080281}
   playerLayer:
@@ -982,6 +1014,7 @@ MonoBehaviour:
     m_Bits: 128
   magneticLineColor: {r: 0, g: 0.53271246, b: 1, a: 1}
   nonMagneticLineColor: {r: 0.75, g: 0.9116658, b: 1, a: 1}
+  laserThickness: 0.15
 --- !u!114 &2649081965946370878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1015,10 +1048,11 @@ MonoBehaviour:
   backArmsAnimator: {fileID: 8584864249374098582}
   yVelocityString: yVelocity
   movementSpeedString: movementSpeed
-  IsFacingLeftString: IsFacingLeft
+  isFacingLeftString: IsFacingLeft
   isRunningString: IsRunning
   isGroundedString: IsGrounded
   isAimingString: IsAiming
+  hasFinishedString: HasFinished
   leftMagnetAnchor: {fileID: 7386851754515226655}
   rightMagnetAnchor: {fileID: 2857698620746224396}
 --- !u!114 &1289604036768944619
@@ -1033,6 +1067,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bbb5c0cad3d13843ab728dc80ccc713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerProgress
+  levelManager: {fileID: 0}
 --- !u!1 &7874038027798491055
 GameObject:
   m_ObjectHideFlags: 0
