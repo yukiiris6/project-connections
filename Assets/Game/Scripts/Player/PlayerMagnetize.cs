@@ -16,11 +16,13 @@ public class PlayerMagnetize : MonoBehaviour
     [SerializeField] float laserThickness = 1f;
 
     Vector2 mouseWorldPosition;
+
     GameObject selectedObject;
     Camera mainCamera;
     PlugController magnetizedPlug;
     PlayerAnimator playerAnimator;
-    PlayerProgress playerProgress;
+    CursorController cursorController;
+    LevelManager levelManager;
 
     public bool IsAiming { get; private set; } = false;
 
@@ -29,9 +31,14 @@ public class PlayerMagnetize : MonoBehaviour
     {
         mainCamera = Camera.main;
         playerAnimator = GetComponent<PlayerAnimator>();
-        playerProgress = GetComponent<PlayerProgress>();
         SetUpLaser(leftLineRenderer);
         SetUpLaser(rightLineRenderer);
+    }
+
+    void Start()
+    {
+        cursorController = OverlayCanvas.Instance.CursorController;
+        levelManager = GlobalSystems.Instance.LevelManager;
     }
 
     void Update()
@@ -44,20 +51,26 @@ public class PlayerMagnetize : MonoBehaviour
     #region Magnetism
     void OnMagnetize(InputValue value)
     {
-        if (playerProgress.HasFinished) return;
-        if (value.isPressed) IsAiming = true;
-        else ProcessMagnet();
+        if (levelManager.IsLoading) return;
+        if (value.isPressed)
+        {
+            IsAiming = true;
+        }
+        else
+        {
+            ProcessMagnet();
+        }
     }
 
     void OnCancelMagnetism(InputValue value)
     {
-        if (playerProgress.HasFinished) return;
+        if (levelManager.IsLoading) return;
         CancelMagnet();
     }
 
     void ProcessAiming()
     {
-        if (playerProgress.HasFinished)
+        if (levelManager.IsLoading)
         {
             HideLaser(leftLineRenderer);
             HideLaser(rightLineRenderer);
@@ -70,6 +83,7 @@ public class PlayerMagnetize : MonoBehaviour
         SelectFromRaycastCircle(aimingTransform.position, aimingTransform.right, laserThickness);
         RaycastLaser(leftLineRenderer);
         RaycastLaser(rightLineRenderer);
+        ChangeCursor();
     }
 
     void SelectFromRaycastCircle(Vector2 origin, Vector2 direction, float laserThickness)
@@ -77,12 +91,12 @@ public class PlayerMagnetize : MonoBehaviour
         int layermaskExceptPlayer = ~playerLayer.value;
         RaycastHit2D hit = Physics2D.CircleCast(origin, laserThickness, direction, float.MaxValue, layermaskExceptPlayer);
 
-        SocketActivation newSocketActivation = hit.collider.gameObject.GetComponent<SocketActivation>();
+        SocketController newSocketActivation = hit.collider.gameObject.GetComponent<SocketController>();
         if (newSocketActivation != null) newSocketActivation.SetShowCircle(true, this);
 
         if (selectedObject != null)
         {
-            SocketActivation socketActivation = selectedObject.GetComponent<SocketActivation>();
+            SocketController socketActivation = selectedObject.GetComponent<SocketController>();
             if (socketActivation != null && newSocketActivation == null) socketActivation.SetShowCircle(false, this);
         }
 
@@ -94,7 +108,7 @@ public class PlayerMagnetize : MonoBehaviour
         PlugController plugController = selectedObject.GetComponent<PlugController>();
         if (plugController != null) ApplyPlugMagnet(plugController);
 
-        SocketActivation socketActivation = selectedObject.GetComponent<SocketActivation>();
+        SocketController socketActivation = selectedObject.GetComponent<SocketController>();
         if (socketActivation != null) ApplySocketMagnet(socketActivation);
 
         IsAiming = false;
@@ -102,23 +116,20 @@ public class PlayerMagnetize : MonoBehaviour
 
         HideLaser(leftLineRenderer);
         HideLaser(rightLineRenderer);
+        cursorController.ChangeToNormalCursor();
     }
 
     void ApplyPlugMagnet(PlugController plugController)
     {
-        CancelMagnet();
-        if (plugController == magnetizedPlug) return;
-        if (magnetizedPlug != null && magnetizedPlug.IsMoving) return;
         magnetizedPlug = plugController;
         plugController.Magnetize(magnetAnchor.position);
     }
 
-    void ApplySocketMagnet(SocketActivation socketActivation)
+    void ApplySocketMagnet(SocketController socketActivation)
     {
-        socketActivation.Magnetize();
-        magnetizedPlug = null;
+        var plugInSocket = socketActivation.Magnetize();
+        if (magnetizedPlug == plugInSocket) magnetizedPlug = null;
     }
-
 
     void CancelMagnet()
     {
@@ -184,6 +195,16 @@ public class PlayerMagnetize : MonoBehaviour
     {
         bool isMagnetic = ((1 << selectedObject.layer) & magneticLayer.value) != 0;
         return isMagnetic ? magneticLineColor : nonMagneticLineColor;
+    }
+
+    void ChangeCursor()
+    {
+        if (IsAiming)
+        {
+            bool isMagnetic = ((1 << selectedObject.layer) & magneticLayer.value) != 0;
+            if (isMagnetic) cursorController.ChangeToMagnetizeCursor(aimingTransform.right);
+            else cursorController.ChangeToAimingCursor();
+        }
     }
     #endregion
 }

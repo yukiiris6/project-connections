@@ -131,7 +131,7 @@ Material:
     - _Metallic3: 0
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Radius: 1
+    - _Radius: 0.75
     - _Smoothness0: 1
     - _Smoothness1: 1
     - _Smoothness2: 1

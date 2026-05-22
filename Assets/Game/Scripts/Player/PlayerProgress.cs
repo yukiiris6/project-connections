@@ -1,33 +1,53 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(PlayerAnimator))]
 public class PlayerProgress : MonoBehaviour
 {
-    [SerializeField] LevelManager levelManager;
+    [SerializeField] PauseMenuFlow pauseMenuFlow;
 
-    PlayerAnimator playerAnimator;
-    DoorState doorState;
-    public bool HasFinished { get; private set; }
-
-    void Awake()
-    {
-        playerAnimator = GetComponent<PlayerAnimator>();
-    }
+    GameManager gameManager;
+    LevelManager levelManager;
+    IInteractable currentInteractable;
 
     void Start()
     {
-        doorState = FindFirstObjectByType<DoorState>();
+        gameManager = GlobalSystems.Instance.GameManager;
+        levelManager = GlobalSystems.Instance.LevelManager;
     }
 
-    void OnActivateDoor(InputValue value)
+    public void SetInteractable(IInteractable interactable)
     {
-        if (HasFinished) return;
-        if (value.isPressed && doorState.isDoorActive && doorState.isInsideDoor)
+        currentInteractable = interactable;
+    }
+
+    void OnInteract(InputValue value)
+    {
+        if (levelManager.IsLoading) return;
+        if (value.isPressed)
         {
-            transform.position = doorState.transform.position;
-            playerAnimator.PlayFinishAnimation();
-            levelManager.RestartLevel();
-            HasFinished = true;
+            if (currentInteractable != null)
+            {
+                currentInteractable.Interact(gameObject);
+            }
+        }
+    }
+
+    void OnPause(InputValue value)
+    {
+        if (levelManager.IsLoading) return;
+        if (value.isPressed)
+        {
+            if (gameManager.IsPaused)
+            {
+                gameManager.ResumeGame();
+                pauseMenuFlow.OnClickResume();
+            }
+            else
+            {
+                gameManager.PauseGame();
+                pauseMenuFlow.OpenMenu();
+            }
         }
     }
 }

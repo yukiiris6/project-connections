@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 [RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
-
 [RequireComponent(typeof(PlayerAnimator))]
+[RequireComponent(typeof(AudioSource))]
 public class PlayerJumping : MonoBehaviour
 {
     [Header("Jumping")]
@@ -18,10 +19,14 @@ public class PlayerJumping : MonoBehaviour
     [SerializeField] float widthReduction = .1f;
     [SerializeField] float groundCheckDistance = .05f;
 
+    [Header("Other")]
+    [SerializeField] AudioClip jumpSFX;
+
+    AudioSource audioSource;
     BoxCollider2D myCollider;
     Rigidbody2D myRigidBody;
     PlayerAnimator playerAnimator;
-    PlayerProgress playerProgress;
+    LevelManager levelManager;
 
     float originalGravity;
     bool isGrounded = true;
@@ -34,11 +39,16 @@ public class PlayerJumping : MonoBehaviour
     #region Unity Lifecycle
     void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         myCollider = GetComponent<BoxCollider2D>();
         myRigidBody = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<PlayerAnimator>();
-        playerProgress = GetComponent<PlayerProgress>();
         originalGravity = myRigidBody.gravityScale;
+    }
+
+    void Start()
+    {
+        levelManager = GlobalSystems.Instance.LevelManager;
     }
 
     void FixedUpdate()
@@ -53,7 +63,7 @@ public class PlayerJumping : MonoBehaviour
     #region Jumping
     void OnJump(InputValue value)
     {
-        if (playerProgress.HasFinished) return;
+        if (levelManager.IsLoading) return;
         if (value.isPressed) PerformJump();
         isHoldingJump = value.isPressed;
     }
@@ -61,6 +71,7 @@ public class PlayerJumping : MonoBehaviour
     void PerformJump()
     {
         if (!canJump) return;
+        audioSource.PlayOneShot(jumpSFX);
         jumpTimeCounter = 0;
         myRigidBody.linearVelocityY = jumpStrength;
         isJumping = true;

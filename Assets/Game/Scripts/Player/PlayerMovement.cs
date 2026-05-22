@@ -16,14 +16,18 @@ public class PlayerMovement : MonoBehaviour
     Vector2 moveInput;
     Rigidbody2D myRigidBody;
     PlayerAnimator playerAnimator;
-    PlayerProgress playerProgress;
+    LevelManager levelManager;
 
     #region Unity Lifecycle
     void Awake()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<PlayerAnimator>();
-        playerProgress = GetComponent<PlayerProgress>();
+    }
+
+    void Start()
+    {
+        levelManager = GlobalSystems.Instance.LevelManager;
     }
 
     void FixedUpdate()
@@ -42,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
     #region Movement
     void Move()
     {
-        if (playerProgress.HasFinished) return;
+        if (levelManager.IsLoading) return;
 
         float newXVelocity;
         if (moveInput.x == 0) newXVelocity = GetDecelerationVelocity();

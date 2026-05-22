@@ -2,6 +2,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(PlugVisuals))]
+[RequireComponent(typeof(PlugSoundPlayer))]
 public class PlugController : MonoBehaviour
 {
     [Header("Magnetism Settings")]
@@ -16,25 +17,34 @@ public class PlugController : MonoBehaviour
     [SerializeField] LayerMask wallLayer;
     [SerializeField] BoxCollider2D mainCollider;
     [SerializeField] LayerMask ignoreWhileMagnetizing;
+    [SerializeField] Transform spriteTransform;
 
     PlugVisuals plugVisuals;
+    PlugSoundPlayer plugSoundPlayer;
     Vector2 originalPosition;
     Vector2 targetPosition;
     Vector2 currentVelocity;
     BoxCollider2D[] allColliders;
-    SocketActivation targetSocket;
+    SocketController targetSocket;
 
     public bool IsMoving { get; private set; } = false;
     bool isReturning = false;
     bool shouldApplyStopDistance = false;
+    bool isInContainer = true;
 
     #region Unity Lifecycle
     void Awake()
     {
         plugVisuals = GetComponent<PlugVisuals>();
+        plugSoundPlayer = GetComponent<PlugSoundPlayer>();
         allColliders = GetComponents<BoxCollider2D>();
         originalPosition = transform.position;
         targetPosition = originalPosition;
+    }
+
+    void Start()
+    {
+        ValidatePosition();
     }
 
     void FixedUpdate()
@@ -47,7 +57,7 @@ public class PlugController : MonoBehaviour
     public void Magnetize(Vector2 playerPosition)
     {
         if (IsMoving) return;
-        if (targetSocket)
+        if (targetSocket || !isInContainer)
         {
             CancelMagnetism();
             return;
@@ -67,7 +77,7 @@ public class PlugController : MonoBehaviour
         }
     }
 
-    public void ConnectToSocket(Vector2 newTargetPosition, SocketActivation socket)
+    public void ConnectToSocket(Vector2 newTargetPosition, SocketController socket)
     {
         targetPosition = newTargetPosition;
         isReturning = false;
@@ -92,9 +102,16 @@ public class PlugController : MonoBehaviour
 
         if (targetSocket)
         {
-            targetSocket.SetConnected(false);
+            targetSocket.ChangeActivationState(false);
             targetSocket = null;
         }
+    }
+
+    public void SetStartState(SocketController socket, Vector2 newTargetPosition)
+    {
+        targetPosition = newTargetPosition;
+        transform.position = newTargetPosition;
+        targetSocket = socket;
     }
     #endregion
 
@@ -125,7 +142,6 @@ public class PlugController : MonoBehaviour
             return;
         }
 
-
         float appliedDistanceToSnap = (targetPosition == originalPosition ? returnSnapDistance : playerStopDistance) + 0.001f;
         bool isNotSocketAndShouldSnap = targetSocket == null && (nextDistance <= appliedDistanceToSnap || currentDistance <= appliedDistanceToSnap);
         if (isNotSocketAndShouldSnap)
@@ -149,6 +165,7 @@ public class PlugController : MonoBehaviour
         if (hit.collider == null || isReturning)
         {
             transform.Translate(translation);
+            ValidatePosition();
         }
         else
         {
@@ -171,7 +188,19 @@ public class PlugController : MonoBehaviour
     void SnapToTarget(float appliedStopDistance)
     {
         Vector2 directionFromPlayerToPlug = ((Vector2)transform.position - targetPosition).normalized;
-        transform.position = targetPosition + (directionFromPlayerToPlug * appliedStopDistance);
+        if (isReturning)
+        {
+            transform.position = originalPosition;
+            spriteTransform.rotation = Quaternion.identity;
+        }
+        else
+        {
+            transform.position = targetPosition + (directionFromPlayerToPlug * appliedStopDistance);
+            if (targetSocket)
+            {
+                spriteTransform.rotation = Quaternion.Euler(targetSocket.connectionRotation);
+            }
+        }
         StopMovement();
     }
 
@@ -191,7 +220,15 @@ public class PlugController : MonoBehaviour
         {
             collider.excludeLayers = 0;
         }
-        if (targetSocket) targetSocket.SetConnected(true);
+        if (targetSocket) targetSocket.ChangeActivationState(true);
+        plugSoundPlayer.PlayImpactSFX();
+        ValidatePosition();
+    }
+
+    void ValidatePosition()
+    {
+        if ((Vector2)transform.position == originalPosition) isInContainer = true;
+        else isInContainer = false;
     }
     #endregion
 }
