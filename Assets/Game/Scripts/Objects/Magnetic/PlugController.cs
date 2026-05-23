@@ -17,7 +17,7 @@ public class PlugController : MonoBehaviour
     [SerializeField] LayerMask wallLayer;
     [SerializeField] BoxCollider2D mainCollider;
     [SerializeField] LayerMask ignoreWhileMagnetizing;
-    [SerializeField] Transform spriteTransform;
+    [SerializeField] Transform modelTransform;
 
     PlugVisuals plugVisuals;
     PlugSoundPlayer plugSoundPlayer;
@@ -79,11 +79,13 @@ public class PlugController : MonoBehaviour
 
     public void ConnectToSocket(Vector2 newTargetPosition, SocketController socket)
     {
+        if (IsMoving) return;
         targetPosition = newTargetPosition;
         isReturning = false;
         IsMoving = true;
         shouldApplyStopDistance = false;
         targetSocket = socket;
+        modelTransform.rotation = Quaternion.Euler(targetSocket.connectionRotation);
         foreach (var collider in allColliders)
         {
             collider.excludeLayers = ignoreWhileMagnetizing;
@@ -99,6 +101,7 @@ public class PlugController : MonoBehaviour
         isReturning = true;
         IsMoving = true;
         shouldApplyStopDistance = false;
+        modelTransform.rotation = Quaternion.identity;
 
         if (targetSocket)
         {
@@ -162,7 +165,7 @@ public class PlugController : MonoBehaviour
             wallLayer
         );
 
-        if (hit.collider == null || isReturning)
+        if (hit.collider == null || isReturning || targetSocket != null)
         {
             transform.Translate(translation);
             ValidatePosition();
@@ -191,15 +194,10 @@ public class PlugController : MonoBehaviour
         if (isReturning)
         {
             transform.position = originalPosition;
-            spriteTransform.rotation = Quaternion.identity;
         }
         else
         {
             transform.position = targetPosition + (directionFromPlayerToPlug * appliedStopDistance);
-            if (targetSocket)
-            {
-                spriteTransform.rotation = Quaternion.Euler(targetSocket.connectionRotation);
-            }
         }
         StopMovement();
     }

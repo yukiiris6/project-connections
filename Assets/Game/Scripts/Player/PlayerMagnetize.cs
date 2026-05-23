@@ -1,3 +1,5 @@
+using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,7 +18,6 @@ public class PlayerMagnetize : MonoBehaviour
     [SerializeField] float laserThickness = 1f;
 
     Vector2 mouseWorldPosition;
-
     GameObject selectedObject;
     Camera mainCamera;
     PlugController magnetizedPlug;
@@ -105,6 +106,7 @@ public class PlayerMagnetize : MonoBehaviour
 
     void ProcessMagnet()
     {
+        if (selectedObject == null) return;
         PlugController plugController = selectedObject.GetComponent<PlugController>();
         if (plugController != null) ApplyPlugMagnet(plugController);
 
@@ -193,7 +195,7 @@ public class PlayerMagnetize : MonoBehaviour
 
     Color GetLaserColor()
     {
-        bool isMagnetic = ((1 << selectedObject.layer) & magneticLayer.value) != 0;
+        bool isMagnetic = LayerMaskExtensions.Contains(magneticLayer, selectedObject.layer);
         return isMagnetic ? magneticLineColor : nonMagneticLineColor;
     }
 
@@ -201,7 +203,7 @@ public class PlayerMagnetize : MonoBehaviour
     {
         if (IsAiming)
         {
-            bool isMagnetic = ((1 << selectedObject.layer) & magneticLayer.value) != 0;
+            bool isMagnetic = LayerMaskExtensions.Contains(magneticLayer, selectedObject.layer);
             if (isMagnetic) cursorController.ChangeToMagnetizeCursor(aimingTransform.right);
             else cursorController.ChangeToAimingCursor();
         }

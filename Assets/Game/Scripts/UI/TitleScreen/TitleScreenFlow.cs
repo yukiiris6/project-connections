@@ -34,13 +34,13 @@ public class TitleScreenFlow : MonoBehaviour
         if (Application.isEditor) print("Exiting game...");
     }
 
-    public void OnClickLevel(string name)
+    public void OnClickLevel(string name, string displayName)
     {
         audioSource.PlayOneShot(levelSelectSFX);
         cursorController.ChangeToNormalCursor();
         cursorController.HideCursor();
         levelSelectMenu.SetActive(false);
-        GlobalSystems.Instance.LevelManager.LoadLevel(name);
+        GlobalSystems.Instance.LevelManager.LoadLevel(name, displayName);
     }
 
     public void OnClickBack()

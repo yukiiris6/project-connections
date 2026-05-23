@@ -16,6 +16,10 @@ public class PauseMenuFlow : MonoBehaviour
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+    }
+
+    void Start()
+    {
         cursorController = OverlayCanvas.Instance.CursorController;
         gameManager = GlobalSystems.Instance.GameManager;
         levelManager = GlobalSystems.Instance.LevelManager;
@@ -36,6 +40,7 @@ public class PauseMenuFlow : MonoBehaviour
         backgroundObject.SetActive(false);
         pauseMenuContainer.SetActive(false);
         gameManager.ResumeGame();
+        print(cursorController);
         cursorController.ChangeToNormalCursor();
     }
 

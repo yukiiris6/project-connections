@@ -152,9 +152,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 5258954181714738702}
   - {fileID: 7368341273168496261}
   - {fileID: 8723851598982071025}
-  - {fileID: 5258954181714738702}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2607270068347614256
@@ -261,12 +261,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3119121115168568660}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.75, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7368341273168496261}
+  m_Father: {fileID: 2229605515157051035}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3235821721238966827
 GameObject:
@@ -338,7 +338,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2229605515157051035}
-  - {fileID: 6175230453944822655}
   m_Father: {fileID: 8013865688173058999}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &5239698657905293906
@@ -692,6 +691,7 @@ MonoBehaviour:
   ignoreWhileMagnetizing:
     serializedVersion: 2
     m_Bits: 8
+  modelTransform: {fileID: 2229605515157051035}
 --- !u!114 &6792029901732900815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -802,6 +802,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6175230453944822655}
   - {fileID: 6659529220854589266}
   m_Father: {fileID: 7368341273168496261}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -916,13 +917,49 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.35686275
       objectReference: {fileID: 0}
+    - target: {fileID: 5434042864148013579, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434042864148013579, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
+      propertyPath: m_LightType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434042864148013579, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434042864148013579, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
+      propertyPath: m_LocalBounds.m_Center.y
+      value: -0.00000011920929
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434042864148013579, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
+      propertyPath: m_LocalBounds.m_Extent.x
+      value: 0.9985302
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434042864148013579, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
+      propertyPath: m_LocalBounds.m_Extent.y
+      value: 0.99853027
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434042864148013579, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434042864148013579, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
+      propertyPath: 'm_ApplyToSortingLayers.Array.data[1]'
+      value: -2105839911
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434042864148013579, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
+      propertyPath: 'm_ApplyToSortingLayers.Array.data[2]'
+      value: -546751001
+      objectReference: {fileID: 0}
     - target: {fileID: 8720673727308616429, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
       propertyPath: m_Name
       value: Sprite_Light
       objectReference: {fileID: 0}
     - target: {fileID: 8969690899509583248, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8969690899509583248, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
       propertyPath: m_LocalPosition.y

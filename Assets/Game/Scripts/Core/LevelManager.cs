@@ -12,6 +12,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] AudioClip deathSFX;
     [SerializeField] float doorAnimationDuration = 1f;
 
+    LevelTransition levelTransition;
     AudioSource audioSource;
     LevelData[] levels;
     SquareIrisWipeController squareIrisWipeController;
@@ -23,8 +24,9 @@ public class LevelManager : MonoBehaviour
 
     void GetDependencies()
     {
-        squareIrisWipeController = FindFirstObjectByType<SquareIrisWipeController>();
         cursorController = OverlayCanvas.Instance.CursorController;
+        squareIrisWipeController = OverlayCanvas.Instance.SquareIrisWipeController;
+        levelTransition = OverlayCanvas.Instance.LevelTransition;
     }
 
     void Awake()
@@ -51,13 +53,13 @@ public class LevelManager : MonoBehaviour
         GetDependencies();
     }
 
-    public void LoadLevel(string name)
+    public void LoadLevel(string name, string displayName)
     {
         var found = Array.Find(levels, level => level.fileName == name);
         if (found != null) isInTitleScreen = false;
         else isInTitleScreen = true;
         currentLevel = Array.IndexOf(levels, found);
-        StartCoroutine(LoadLevelRoutine(name, 0, false));
+        StartCoroutine(LoadLevelRoutine(name, displayName, 0, true, true));
     }
 
     public void FinishLevel()
@@ -68,7 +70,7 @@ public class LevelManager : MonoBehaviour
             var nextLevel = levels[currentLevel + 1];
             levels[currentLevel + 1].SetIsLocked(false);
             currentLevel = Array.IndexOf(levels, nextLevel);
-            StartCoroutine(LoadLevelRoutine(nextLevel.fileName, doorAnimationDuration, true));
+            StartCoroutine(LoadLevelRoutine(nextLevel.fileName, nextLevel.levelDisplayName, doorAnimationDuration, true, false));
             GlobalSystems.Instance.MusicManager.PlayMusic();
         }
         else
@@ -85,21 +87,17 @@ public class LevelManager : MonoBehaviour
 
     public void RestartLevel()
     {
-        StartCoroutine(RestartRoutine());
+        StartCoroutine(RestartRoutine(false));
     }
 
     public void GoToTitleScreen()
     {
         isInTitleScreen = true;
-        StartCoroutine(LoadLevelRoutine("TitleScreen", 0, false));
+        StartCoroutine(LoadLevelRoutine("TitleScreen", "TitleScreen", 0, false, false));
     }
 
-    IEnumerator LoadLevelRoutine(string name, float startTime, bool shouldWait)
+    IEnumerator LoadLevelRoutine(string name, string displayName, float startTime, bool shouldTransition, bool shouldPlayFirstTransition)
     {
-        if (shouldWait)
-        {
-            yield return new WaitForSecondsRealtime(1f);
-        }
         IsLoading = true;
         yield return new WaitForSecondsRealtime(startTime);
         squareIrisWipeController.StartIrisWipe();
@@ -108,6 +106,25 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(name);
         yield return null;
         GetDependencies();
+        if (shouldTransition)
+        {
+            levelTransition.SetText(currentLevel + 1, displayName);
+            if (!shouldPlayFirstTransition) levelTransition.HideAnimationComponents();
+            else levelTransition.PrepareAnimationComponents();
+            levelTransition.FadeIn();
+            yield return new WaitForSecondsRealtime(.5f);
+            if (shouldPlayFirstTransition)
+            {
+                levelTransition.PlayAnimation();
+                yield return new WaitForSecondsRealtime(2f);
+            }
+            else
+            {
+                yield return new WaitForSecondsRealtime(1f);
+            }
+            levelTransition.FadeOut();
+            yield return new WaitForSecondsRealtime(.5f);
+        }
         squareIrisWipeController.StartIrisOpen();
         cursorController.ShowCursor();
         IsLoading = false;
@@ -120,11 +137,12 @@ public class LevelManager : MonoBehaviour
         audioSource.PlayOneShot(deathSFX);
         GlobalSystems.Instance.MusicManager.StopMusic();
         yield return new WaitForSecondsRealtime(1.5f);
-        StartCoroutine(RestartRoutine());
+        StartCoroutine(RestartRoutine(true));
     }
 
-    IEnumerator RestartRoutine()
+    IEnumerator RestartRoutine(bool shouldWait)
     {
+        if (shouldWait) yield return new WaitForSecondsRealtime(1f);
         squareIrisWipeController.StartIrisWipe();
         yield return new WaitForSecondsRealtime(squareIrisWipeController.Duration);
         IsLoading = true;

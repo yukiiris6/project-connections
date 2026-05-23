@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class LightbulbController : MonoBehaviour
@@ -8,17 +9,27 @@ public class LightbulbController : MonoBehaviour
     void Start()
     {
         spriteLight.SetActive(false);
-        SetActive(connectedSocket.HasEnergy);
+        if (connectedSocket != null) SetActive(connectedSocket.HasEnergy);
+        else SetActive(true);
+        Vector3 maxAngle = new(0, 0, 5f);
+        transform.rotation = Quaternion.Euler(-maxAngle);
+        transform.DOLocalRotate(maxAngle, 4f).SetEase(Ease.InOutQuad).SetLoops(-1, LoopType.Yoyo);
     }
 
     void OnEnable()
     {
-        connectedSocket.OnChangeActivation += SetActive;
+        if (connectedSocket != null)
+        {
+            connectedSocket.OnChangeActivation += SetActive;
+        }
     }
 
     void OnDisable()
     {
-        connectedSocket.OnChangeActivation -= SetActive;
+        if (connectedSocket != null)
+        {
+            connectedSocket.OnChangeActivation -= SetActive;
+        }
     }
 
     public void SetActive(bool active)

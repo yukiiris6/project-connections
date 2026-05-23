@@ -32,8 +32,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4438420250351414786}
   - {fileID: 7331529766401542114}
+  - {fileID: 4438420250351414786}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1348717721218810203
@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 578eb60a37740ce43b99e7900616a9f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorState
-  doorEnterSFX: {fileID: 8300000, guid: f9748bdaf7c4c9a4284a247935501882, type: 3}
   connectedSocket: {fileID: 0}
+  doorEnterSFX: {fileID: 8300000, guid: f9748bdaf7c4c9a4284a247935501882, type: 3}
   rend: {fileID: 1549410173051921721}
   doorAnimator: {fileID: 8531742338221624987}
   light2D: {fileID: 5957686241486600313}
@@ -353,6 +353,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2024923133114433236}
     m_Modifications:
+    - target: {fileID: 5434042864148013579, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434042864148013579, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
+      propertyPath: m_LightType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434042864148013579, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434042864148013579, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
+      propertyPath: m_LocalBounds.m_Center.y
+      value: -0.00000011920929
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434042864148013579, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
+      propertyPath: m_LocalBounds.m_Extent.x
+      value: 0.9985302
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434042864148013579, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
+      propertyPath: m_LocalBounds.m_Extent.y
+      value: 0.99853027
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434042864148013579, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434042864148013579, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
+      propertyPath: 'm_ApplyToSortingLayers.Array.data[1]'
+      value: -2105839911
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434042864148013579, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
+      propertyPath: 'm_ApplyToSortingLayers.Array.data[2]'
+      value: -546751001
+      objectReference: {fileID: 0}
     - target: {fileID: 8720673727308616429, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
       propertyPath: m_Name
       value: Sprite_Light

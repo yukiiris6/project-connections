@@ -12,6 +12,7 @@ public class LevelSelectView : MonoBehaviour
     [SerializeField] Sprite lockedLevelButton;
     [SerializeField] Transform buttonParent;
     [SerializeField] TMP_Text levelNameText;
+    [SerializeField] GameObject selectionImage;
 
     void Start()
     {
@@ -27,7 +28,7 @@ public class LevelSelectView : MonoBehaviour
         var buttonObject = Instantiate(buttonPrefab, Vector2.zero, Quaternion.identity, buttonParent);
         var button = buttonObject.GetComponent<Button>();
         var levelText = buttonObject.GetComponentInChildren<TMP_Text>();
-        button.onClick.AddListener(() => titleScreenFlow.OnClickLevel(levelData.fileName));
+        button.onClick.AddListener(() => titleScreenFlow.OnClickLevel(levelData.fileName, levelData.levelDisplayName));
         levelText.text = index.ToString();
         button.image.sprite = levelButton;
         if (levelData.isLocked)
@@ -39,6 +40,7 @@ public class LevelSelectView : MonoBehaviour
         {
             button.image.sprite = finishedLevelButton;
         }
-        buttonObject.GetComponent<LevelButtonController>().Init(levelNameText, levelData.levelDisplayName);
+        buttonObject.GetComponent<LevelButtonController>().Init(levelNameText, levelData.levelDisplayName, levelData.isLocked);
+        buttonObject.GetComponent<ButtonHover>().InsertDependencies(selectionImage);
     }
 }

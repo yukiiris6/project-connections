@@ -17,6 +17,7 @@ MonoBehaviour:
     - 8c9cfa26abfee488c85f1582747f6a02
     - f6ebd88802de5134abb3339f89eca536
     - deb49331879676043b01cb5529d52b69
+    - f5bbaeaf596a1bd4aa1725a263f001ef
     values:
     - goDatas_byGlobalId:
         keys:
@@ -33,6 +34,9 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-8c9cfa26abfee488c85f1582747f6a02-1208767365-0
         - globalObjectIdString: GlobalObjectId_V1-2-8c9cfa26abfee488c85f1582747f6a02-4525909209745512047-1654593149
         - globalObjectIdString: GlobalObjectId_V1-2-8c9cfa26abfee488c85f1582747f6a02-2260755275231890400-811155255
+        - globalObjectIdString: GlobalObjectId_V1-2-8c9cfa26abfee488c85f1582747f6a02-2924438878017161750-7633744190699254367
+        - globalObjectIdString: GlobalObjectId_V1-2-8c9cfa26abfee488c85f1582747f6a02-8672554256288081938-2037448570
+        - globalObjectIdString: GlobalObjectId_V1-2-8c9cfa26abfee488c85f1582747f6a02-5643815236304289229-2037448570
         values:
         - colorIndex: 1
           iconNameOrGuid: AvatarMask On Icon
@@ -84,6 +88,18 @@ MonoBehaviour:
           isColorRecursive: 0
         - colorIndex: 1
           iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 1
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 1
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: cs Script Icon
           isIconRecursive: 0
           isColorRecursive: 0
     - goDatas_byGlobalId:
@@ -169,6 +185,74 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-deb49331879676043b01cb5529d52b69-1208767365-0
         - globalObjectIdString: GlobalObjectId_V1-2-deb49331879676043b01cb5529d52b69-4525909209745512047-1654593149
         - globalObjectIdString: GlobalObjectId_V1-2-deb49331879676043b01cb5529d52b69-2260755275231890400-811155255
+        values:
+        - colorIndex: 1
+          iconNameOrGuid: AvatarMask On Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 1
+          iconNameOrGuid: GridView On
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 1
+          iconNameOrGuid: Settings Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: AvatarMask On Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: GridView On
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: Light Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: Camera Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 3
+          iconNameOrGuid: PreMatCylinder
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: Camera Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 1
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: cs Script Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 1
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 1
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+    - goDatas_byGlobalId:
+        keys:
+        - globalObjectIdString: GlobalObjectId_V1-2-f5bbaeaf596a1bd4aa1725a263f001ef-329400899-0
+        - globalObjectIdString: GlobalObjectId_V1-2-f5bbaeaf596a1bd4aa1725a263f001ef-1723221867-0
+        - globalObjectIdString: GlobalObjectId_V1-2-f5bbaeaf596a1bd4aa1725a263f001ef-162264676-0
+        - globalObjectIdString: GlobalObjectId_V1-2-f5bbaeaf596a1bd4aa1725a263f001ef-7524165055212518858-493855081636966120
+        - globalObjectIdString: GlobalObjectId_V1-2-f5bbaeaf596a1bd4aa1725a263f001ef-705815567912513489-6115062109464358400
+        - globalObjectIdString: GlobalObjectId_V1-2-f5bbaeaf596a1bd4aa1725a263f001ef-1688527824989903344-8799398241722043154
+        - globalObjectIdString: GlobalObjectId_V1-2-f5bbaeaf596a1bd4aa1725a263f001ef-2092200235738080387-9090084325061013232
+        - globalObjectIdString: GlobalObjectId_V1-2-f5bbaeaf596a1bd4aa1725a263f001ef-710032628-0
+        - globalObjectIdString: GlobalObjectId_V1-2-f5bbaeaf596a1bd4aa1725a263f001ef-2025846760-0
+        - globalObjectIdString: GlobalObjectId_V1-2-f5bbaeaf596a1bd4aa1725a263f001ef-1454569850-0
+        - globalObjectIdString: GlobalObjectId_V1-2-f5bbaeaf596a1bd4aa1725a263f001ef-1208767365-0
+        - globalObjectIdString: GlobalObjectId_V1-2-f5bbaeaf596a1bd4aa1725a263f001ef-4525909209745512047-1654593149
+        - globalObjectIdString: GlobalObjectId_V1-2-f5bbaeaf596a1bd4aa1725a263f001ef-2260755275231890400-811155255
         values:
         - colorIndex: 1
           iconNameOrGuid: AvatarMask On Icon

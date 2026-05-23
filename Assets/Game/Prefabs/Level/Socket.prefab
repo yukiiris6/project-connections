@@ -77,8 +77,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2105839911
+  m_SortingLayer: -1
   m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: bdd4982e57f4ac54ab7e6a759f05a881, type: 3}
@@ -146,7 +146,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -226,7 +226,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SocketActivation
   connectedPlug: {fileID: 0}
   connectionAnchor: {fileID: 4838018811594787005}
-  lightbulbVisuals: {fileID: 0}
   activationSound: {fileID: 8300000, guid: 1e7eaa40aadb2064889d0ecf40f3fbfe, type: 3}
   segments: 64
 --- !u!120 &9180445244558665168
@@ -507,6 +506,54 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 455860627375417227}
     m_Modifications:
+    - target: {fileID: 5434042864148013579, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
+      propertyPath: m_Color.b
+      value: 0.18752226
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434042864148013579, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
+      propertyPath: m_Color.g
+      value: 0.18752226
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434042864148013579, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
+      propertyPath: m_Color.r
+      value: 0.8113208
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434042864148013579, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434042864148013579, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
+      propertyPath: m_LightType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434042864148013579, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434042864148013579, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
+      propertyPath: m_LocalBounds.m_Center.y
+      value: -0.00000011920929
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434042864148013579, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
+      propertyPath: m_LocalBounds.m_Extent.x
+      value: 0.9985302
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434042864148013579, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
+      propertyPath: m_LocalBounds.m_Extent.y
+      value: 0.99853027
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434042864148013579, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434042864148013579, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
+      propertyPath: 'm_ApplyToSortingLayers.Array.data[1]'
+      value: -2105839911
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434042864148013579, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
+      propertyPath: 'm_ApplyToSortingLayers.Array.data[2]'
+      value: -546751001
+      objectReference: {fileID: 0}
     - target: {fileID: 8720673727308616429, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
       propertyPath: m_Name
       value: Sprite_Light
