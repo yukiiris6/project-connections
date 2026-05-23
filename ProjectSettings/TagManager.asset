@@ -45,11 +45,11 @@ TagManager:
   - name: Background
     uniqueID: 797249155
     locked: 0
-  - name: Walls
-    uniqueID: 3748216295
-    locked: 0
   - name: Obstacles
     uniqueID: 4021466837
+    locked: 0
+  - name: Walls
+    uniqueID: 3748216295
     locked: 0
   - name: Objects
     uniqueID: 2189127385
