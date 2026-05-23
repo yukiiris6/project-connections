@@ -5735,61 +5735,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1569979823677849048, guid: 319bd7895975813479d876ace56f5ebd, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
-    - target: {fileID: 3625527943271205427, guid: 319bd7895975813479d876ace56f5ebd, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 7524165055212518858, guid: 319bd7895975813479d876ace56f5ebd, type: 3}
       propertyPath: m_Name
       value: Mag
-      objectReference: {fileID: 0}
-    - target: {fileID: 8633634050565361398, guid: 319bd7895975813479d876ace56f5ebd, type: 3}
-      propertyPath: m_Volume
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 8633634050565361398, guid: 319bd7895975813479d876ace56f5ebd, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 5ad456a6f6b161a409ccea9a60c5e3f9, type: 2}
-    - target: {fileID: 8698283748755323443, guid: 319bd7895975813479d876ace56f5ebd, type: 3}
-      propertyPath: m_Intensity
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8698283748755323443, guid: 319bd7895975813479d876ace56f5ebd, type: 3}
-      propertyPath: m_BlendStyleIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8698283748755323443, guid: 319bd7895975813479d876ace56f5ebd, type: 3}
-      propertyPath: m_NormalMapQuality
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8698283748755323443, guid: 319bd7895975813479d876ace56f5ebd, type: 3}
-      propertyPath: m_OverlapOperation
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8698283748755323443, guid: 319bd7895975813479d876ace56f5ebd, type: 3}
-      propertyPath: m_LightVolumeEnabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8698283748755323443, guid: 319bd7895975813479d876ace56f5ebd, type: 3}
-      propertyPath: m_LightVolumeIntensity
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8698283748755323443, guid: 319bd7895975813479d876ace56f5ebd, type: 3}
-      propertyPath: m_ApplyToSortingLayers.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8698283748755323443, guid: 319bd7895975813479d876ace56f5ebd, type: 3}
-      propertyPath: 'm_ApplyToSortingLayers.Array.data[1]'
-      value: -546751001
-      objectReference: {fileID: 0}
-    - target: {fileID: 8698283748755323443, guid: 319bd7895975813479d876ace56f5ebd, type: 3}
-      propertyPath: 'm_ApplyToSortingLayers.Array.data[2]'
-      value: -2105839911
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
