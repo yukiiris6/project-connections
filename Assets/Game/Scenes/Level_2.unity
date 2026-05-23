@@ -780,22 +780,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MovingPlatform
       objectReference: {fileID: 0}
-    - target: {fileID: 2168212753507418824, guid: 818ba725a585d144f8bc7a3fbe64c8bf, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4592196746464368724, guid: 818ba725a585d144f8bc7a3fbe64c8bf, type: 3}
-      propertyPath: m_SortingLayer
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4592196746464368724, guid: 818ba725a585d144f8bc7a3fbe64c8bf, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -2105839911
-      objectReference: {fileID: 0}
-    - target: {fileID: 4592196746464368724, guid: 818ba725a585d144f8bc7a3fbe64c8bf, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 8948277997307100982, guid: 818ba725a585d144f8bc7a3fbe64c8bf, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.5
@@ -853,18 +837,6 @@ PrefabInstance:
       propertyPath: connectedSocket
       value: 
       objectReference: {fileID: 2107612494}
-    - target: {fileID: 3793503097709806231, guid: 9e7aab00df826114280ff3f76f109c16, type: 3}
-      propertyPath: m_SortingLayer
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3793503097709806231, guid: 9e7aab00df826114280ff3f76f109c16, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -2105839911
-      objectReference: {fileID: 0}
-    - target: {fileID: 3793503097709806231, guid: 9e7aab00df826114280ff3f76f109c16, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 5150951205526045678, guid: 9e7aab00df826114280ff3f76f109c16, type: 3}
       propertyPath: m_Name
       value: Gate
