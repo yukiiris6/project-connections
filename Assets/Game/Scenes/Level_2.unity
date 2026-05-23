@@ -1316,11 +1316,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 374199454338014322, guid: 1f957dd7ff972f642b84259aa71283a8, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
-      value: 0.99985707
+      value: 0.99999994
       objectReference: {fileID: 0}
     - target: {fileID: 374199454338014322, guid: 1f957dd7ff972f642b84259aa71283a8, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.99999994
+      value: 0.9989627
       objectReference: {fileID: 0}
     - target: {fileID: 2092200235738080387, guid: 1f957dd7ff972f642b84259aa71283a8, type: 3}
       propertyPath: m_Name

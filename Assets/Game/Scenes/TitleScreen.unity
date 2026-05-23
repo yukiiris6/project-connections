@@ -527,17 +527,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &135293586 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4799146699044777647, guid: 7fc714c745306c34099cec4ad20ee33e, type: 3}
-  m_PrefabInstance: {fileID: 5843909191616035610}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75bef8f74240f144e883b68f9fda3174, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SquareIrisWipeController
 --- !u!1 &177311615
 GameObject:
   m_ObjectHideFlags: 0
@@ -1808,17 +1797,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1296644434 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8402225370220508442, guid: 7fc714c745306c34099cec4ad20ee33e, type: 3}
-  m_PrefabInstance: {fileID: 5843909191616035610}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c53f6d9c8d403d142881887803af544b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LevelTransition
 --- !u!1001 &1328462348
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4882,28 +4860,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1989691338}
   m_CullTransparentMesh: 1
---- !u!114 &2005037667 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6256123664690432541, guid: 7fc714c745306c34099cec4ad20ee33e, type: 3}
-  m_PrefabInstance: {fileID: 5843909191616035610}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
---- !u!114 &2093820775 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7635587505362296561, guid: 7fc714c745306c34099cec4ad20ee33e, type: 3}
-  m_PrefabInstance: {fileID: 5843909191616035610}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &395514947441748903
 GameObject:
   m_ObjectHideFlags: 0
@@ -5248,29 +5204,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 562373759732350370, guid: 7fc714c745306c34099cec4ad20ee33e, type: 3}
-      propertyPath: magnetCursor
-      value: 
-      objectReference: {fileID: 21300000, guid: 18b3a29b6cc7d5042a7bf85779cf3dc4, type: 3}
     - target: {fileID: 4525909209745512047, guid: 7fc714c745306c34099cec4ad20ee33e, type: 3}
       propertyPath: m_Name
       value: OverlayCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 4638148542576261783, guid: 7fc714c745306c34099cec4ad20ee33e, type: 3}
-      propertyPath: levelTransition
-      value: 
-      objectReference: {fileID: 1296644434}
-    - target: {fileID: 4638148542576261783, guid: 7fc714c745306c34099cec4ad20ee33e, type: 3}
-      propertyPath: squareIrisWipeController
-      value: 
-      objectReference: {fileID: 135293586}
-    - target: {fileID: 6369738888705200790, guid: 7fc714c745306c34099cec4ad20ee33e, type: 3}
-      propertyPath: m_Alpha
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6369738888705200790, guid: 7fc714c745306c34099cec4ad20ee33e, type: 3}
-      propertyPath: m_BlocksRaycasts
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8136330658552023436, guid: 7fc714c745306c34099cec4ad20ee33e, type: 3}
       propertyPath: m_Pivot.x
@@ -5356,17 +5292,8 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 593757925}
-    - target: {fileID: 8402225370220508442, guid: 7fc714c745306c34099cec4ad20ee33e, type: 3}
-      propertyPath: levelNameText
-      value: 
-      objectReference: {fileID: 2093820775}
-    - target: {fileID: 8402225370220508442, guid: 7fc714c745306c34099cec4ad20ee33e, type: 3}
-      propertyPath: levelNumberText
-      value: 
-      objectReference: {fileID: 2005037667}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 6339989661353967304, guid: 7fc714c745306c34099cec4ad20ee33e, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fc714c745306c34099cec4ad20ee33e, type: 3}
