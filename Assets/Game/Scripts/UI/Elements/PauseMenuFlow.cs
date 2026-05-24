@@ -58,7 +58,7 @@ public class PauseMenuFlow : MonoBehaviour
         PlayClickSound();
         backgroundObject.SetActive(false);
         pauseMenuContainer.SetActive(false);
-        levelManager.GoToTitleScreen();
+        levelManager.GoToTitleScreen(true);
         cursorController.ChangeToNormalCursor();
     }
 

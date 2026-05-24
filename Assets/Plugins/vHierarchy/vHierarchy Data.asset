@@ -18,6 +18,7 @@ MonoBehaviour:
     - f6ebd88802de5134abb3339f89eca536
     - deb49331879676043b01cb5529d52b69
     - f5bbaeaf596a1bd4aa1725a263f001ef
+    - c3d05610bf93a7f4d863cff3b13400b9
     values:
     - goDatas_byGlobalId:
         keys:
@@ -306,6 +307,74 @@ MonoBehaviour:
           isColorRecursive: 0
         - colorIndex: 0
           iconNameOrGuid: cs Script Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 1
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 1
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+    - goDatas_byGlobalId:
+        keys:
+        - globalObjectIdString: GlobalObjectId_V1-2-c3d05610bf93a7f4d863cff3b13400b9-337134508-0
+        - globalObjectIdString: GlobalObjectId_V1-2-c3d05610bf93a7f4d863cff3b13400b9-972009584-0
+        - globalObjectIdString: GlobalObjectId_V1-2-c3d05610bf93a7f4d863cff3b13400b9-1624518473-0
+        - globalObjectIdString: GlobalObjectId_V1-2-c3d05610bf93a7f4d863cff3b13400b9-1440764417-0
+        - globalObjectIdString: GlobalObjectId_V1-2-c3d05610bf93a7f4d863cff3b13400b9-2092200235738080387-593757923
+        - globalObjectIdString: GlobalObjectId_V1-2-c3d05610bf93a7f4d863cff3b13400b9-132957456337718899-1787979624
+        - globalObjectIdString: GlobalObjectId_V1-2-c3d05610bf93a7f4d863cff3b13400b9-1688527824989903344-905808151
+        - globalObjectIdString: GlobalObjectId_V1-2-c3d05610bf93a7f4d863cff3b13400b9-87156505-0
+        - globalObjectIdString: GlobalObjectId_V1-2-c3d05610bf93a7f4d863cff3b13400b9-894898821-0
+        - globalObjectIdString: GlobalObjectId_V1-2-c3d05610bf93a7f4d863cff3b13400b9-2260755275231890400-549244512296972034
+        - globalObjectIdString: GlobalObjectId_V1-2-c3d05610bf93a7f4d863cff3b13400b9-7524165055922664264-0
+        - globalObjectIdString: GlobalObjectId_V1-2-c3d05610bf93a7f4d863cff3b13400b9-1567499569-0
+        - globalObjectIdString: GlobalObjectId_V1-2-c3d05610bf93a7f4d863cff3b13400b9-4525909209745512047-5843909191616035610
+        values:
+        - colorIndex: 1
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 1
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: MeshCollider Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 1
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: Camera Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: Camera Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: Light Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: cs Script Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 1
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 1
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: AvatarMask On Icon
           isIconRecursive: 0
           isColorRecursive: 0
         - colorIndex: 1

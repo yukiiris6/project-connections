@@ -26,6 +26,14 @@ public class TitleScreenFlow : MonoBehaviour
         cursorController.ChangeToNormalCursor();
     }
 
+    public void OnClickCredits()
+    {
+        audioSource.PlayOneShot(buttonPressSFX);
+        GlobalSystems.Instance.LevelManager.GoToCredits(true);
+        cursorController.ChangeToNormalCursor();
+        cursorController.HideCursor();
+    }
+
     public void OnClickExit()
     {
         audioSource.PlayOneShot(buttonPressSFX);
