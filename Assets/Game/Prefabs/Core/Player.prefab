@@ -183,7 +183,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -206,7 +206,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -3137652041282620543, guid: cad91e1cdf638c748908e13deffc9adc, type: 3}
+  m_Sprite: {fileID: 1898720227, guid: cad91e1cdf638c748908e13deffc9adc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -388,7 +388,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -411,7 +411,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -1461299562679351989, guid: c092d8d55c1e4e14bb8256e659f1e0a9, type: 3}
+  m_Sprite: {fileID: 151774790, guid: c092d8d55c1e4e14bb8256e659f1e0a9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -597,18 +597,18 @@ MonoBehaviour:
   m_Intensity: 0.5
   m_LightVolumeIntensity: 0.1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000e73d69dfd96e7b82
+  m_ApplyToSortingLayers: 00000000d96e7b82afdcb909e73d69df
   m_LightCookieSprite: {fileID: 21300000, guid: 3ee57fcc992c6534fb6677ca23ddcb42, type: 3}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
   m_AlphaBlendOnOverlap: 0
-  m_OverlapOperation: 1
-  m_NormalMapDistance: 3
+  m_OverlapOperation: 0
+  m_NormalMapDistance: 10
   m_NormalMapQuality: 2
   m_UseNormalMap: 0
   m_ShadowsEnabled: 1
   m_ShadowIntensity: 0.75
-  m_ShadowSoftness: 0.3
+  m_ShadowSoftness: 0
   m_ShadowSoftnessFalloffIntensity: 0.5
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75

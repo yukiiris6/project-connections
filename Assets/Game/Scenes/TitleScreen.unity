@@ -5247,6 +5247,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Managers
       objectReference: {fileID: 0}
+    - target: {fileID: 2656308266597705162, guid: a05fd524087deef4cb0a5618a15f4c2a, type: 3}
+      propertyPath: creditsJingle
+      value: 
+      objectReference: {fileID: 8300000, guid: 5354c732b1ea59a43a5d8084537d9113, type: 3}
+    - target: {fileID: 4596225618875877779, guid: a05fd524087deef4cb0a5618a15f4c2a, type: 3}
+      propertyPath: levelMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 141d7896da32b734a856a523dbf86028, type: 3}
+    - target: {fileID: 4596225618875877779, guid: a05fd524087deef4cb0a5618a15f4c2a, type: 3}
+      propertyPath: titleScreenMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: ee9ded05d70808a4da1e5d7aae1ccddf, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5359,7 +5371,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1963790607306414805
 GameObject:
@@ -5462,7 +5474,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
 --- !u!1 &4153929136146813648
 GameObject:

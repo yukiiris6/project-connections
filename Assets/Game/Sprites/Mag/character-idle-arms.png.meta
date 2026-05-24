@@ -8,6 +8,24 @@ TextureImporter:
   - first:
       213: 5153003078370573599
     second: character-idle-arms_1
+  - first:
+      213: -1284131005988834694
+    second: character-idle-arms_2
+  - first:
+      213: 2947648611857595677
+    second: character-idle-arms_3
+  - first:
+      213: -1431776226648037558
+    second: character-idle-arms_4
+  - first:
+      213: -2848909286712447307
+    second: character-idle-arms_5
+  - first:
+      213: 5735403957491075366
+    second: character-idle-arms_6
+  - first:
+      213: 8031144805388244760
+    second: character-idle-arms_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +69,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 16
@@ -78,7 +96,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -129,16 +147,82 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 183f19aa712d474d0800000000000000
-      internalID: -3137652041282620543
+      spriteID: 1977a0adcd0bc9c4fbff59a596b8e156
+      internalID: 1898720227
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
       name: character-idle-arms_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 32
+        width: 16
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb2db5888a8dd5b429115fd2a72fc0ee
+      internalID: 24445940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character-idle-arms_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 16
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e36cdf54b64d10740b64442cfc721792
+      internalID: 13145162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character-idle-arms_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 32
+        width: 16
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 357ff24c989d0e64f8e62b7eb621033d
+      internalID: 413239422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character-idle-arms_4
       rect:
         serializedVersion: 2
         x: 0
@@ -151,10 +235,76 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f1db5cc7ff4238740800000000000000
-      internalID: 5153003078370573599
+      spriteID: 632148f4cd4b34747af1bda3f2cb2d21
+      internalID: 857455382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character-idle-arms_5
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23c1f91e577e5554893d1b07bc2fac16
+      internalID: 615052452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character-idle-arms_6
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e2794a8e3901064e80fe84a1d8b3461
+      internalID: 1269493217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character-idle-arms_7
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8af39d8b971f7424dabd2cf31966b1f1
+      internalID: -2026867135
       vertices: []
       indices: 
       edges: []
@@ -163,7 +313,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 797d36ec0b95efb4fbae9f2a0e6486de
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -175,8 +325,14 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":32.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      character-idle-arms_0: -3137652041282620543
-      character-idle-arms_1: 5153003078370573599
+      character-idle-arms_0: 1898720227
+      character-idle-arms_1: 24445940
+      character-idle-arms_2: 13145162
+      character-idle-arms_3: 413239422
+      character-idle-arms_4: 857455382
+      character-idle-arms_5: 615052452
+      character-idle-arms_6: 1269493217
+      character-idle-arms_7: -2026867135
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

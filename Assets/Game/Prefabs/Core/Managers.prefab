@@ -100,6 +100,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 506b14c004e88244eb3a4b9e47cf6e95, type: 2}
   - {fileID: 11400000, guid: d3c68c8d19ff5124399467bb862da39a, type: 2}
   deathSFX: {fileID: 8300000, guid: a19b5171ce0ba074cb8f1a026d6141fd, type: 3}
+  creditsJingle: {fileID: 0}
   doorAnimationDuration: 1
 --- !u!82 &255714263059279847
 AudioSource:
@@ -318,6 +319,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 591d3731f4f0a684587c5e02884a2c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MusicManager
+  titleScreenMusic: {fileID: 8300000, guid: ee9ded05d70808a4da1e5d7aae1ccddf, type: 3}
+  levelMusic: {fileID: 8300000, guid: 141d7896da32b734a856a523dbf86028, type: 3}
 --- !u!82 &2711153267012916884
 AudioSource:
   m_ObjectHideFlags: 0
@@ -329,7 +332,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 5ad456a6f6b161a409ccea9a60c5e3f9, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 7966fb2b45799df40bd98a82767b9917, type: 3}
+  m_Resource: {fileID: 8300000, guid: 141d7896da32b734a856a523dbf86028, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.3
   m_Pitch: 1

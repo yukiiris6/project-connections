@@ -11,6 +11,7 @@ public class LevelManager : MonoBehaviour
 {
     [SerializeField] LevelDataSO[] levelSOs;
     [SerializeField] AudioClip deathSFX;
+    [SerializeField] AudioClip creditsJingle;
     [SerializeField] float doorAnimationDuration = 1f;
 
     LevelTransition levelTransition;
@@ -21,8 +22,9 @@ public class LevelManager : MonoBehaviour
     CanvasGroup blackScreen;
     int currentLevel = 0;
     public LevelData[] Levels => levels;
-    public bool IsLoading { get; private set; } = false;
     bool isInTitleScreen = true;
+    public bool IsLoading { get; private set; } = false;
+    public bool IsinTitleScreen => isInTitleScreen;
 
     void GetDependencies()
     {
@@ -102,11 +104,16 @@ public class LevelManager : MonoBehaviour
     public void GoToCredits(bool isFromTitleScreen)
     {
         isInTitleScreen = false;
-        StartCoroutine(LoadLevelRoutine("Credits", "Credits", 0, false, false, isFromTitleScreen));
+        float startTime = isFromTitleScreen ? 0 : 1;
+        StartCoroutine(LoadLevelRoutine("Credits", "Credits", startTime, false, false, isFromTitleScreen));
     }
 
     IEnumerator LoadLevelRoutine(string name, string displayName, float startTime, bool shouldTransition, bool shouldPlayFirstTransition, bool isFromMenus)
     {
+        if (name == "TitleScreen" || name == "Credits" || isFromMenus) GlobalSystems.Instance.MusicManager.StopMusic();
+        yield return new WaitForSecondsRealtime(startTime);
+        IsLoading = true;
+        DOTween.KillAll();
         if (isFromMenus)
         {
             blackScreen.DOFade(1f, 1f).SetEase(Ease.InSine);
@@ -117,9 +124,6 @@ public class LevelManager : MonoBehaviour
             squareIrisWipeController.StartIrisWipe();
             yield return new WaitForSecondsRealtime(squareIrisWipeController.Duration + .2f);
         }
-        DOTween.KillAll();
-        IsLoading = true;
-        yield return new WaitForSecondsRealtime(startTime);
         GlobalSystems.Instance.GameManager.ResumeGame();
         SceneManager.LoadScene(name);
         yield return null;
@@ -148,16 +152,27 @@ public class LevelManager : MonoBehaviour
             blackScreen.alpha = 1f;
             squareIrisWipeController.ResetIris();
             blackScreen.DOFade(0f, 1f).SetEase(Ease.InSine);
+            if (name == "Credits")
+            {
+                var found = Array.Find(levels, level => !level.isFinished);
+                if (found == null) audioSource.PlayOneShot(creditsJingle);
+            }
+            GlobalSystems.Instance.MusicManager.SetTitleScreenMusic();
+            yield return new WaitForSeconds(1f);
         }
         else
         {
             blackScreen.alpha = 0f;
             squareIrisWipeController.StartIrisOpen();
+            yield return new WaitForSeconds(squareIrisWipeController.Duration);
+            GlobalSystems.Instance.MusicManager.SetLevelMusic();
         }
         cursorController.ShowCursor();
-        yield return new WaitForSeconds(squareIrisWipeController.Duration);
         IsLoading = false;
-        if (!isInTitleScreen && name != "Credits") GlobalSystems.Instance.MusicManager.PlayMusic();
+        if (name != "Credits")
+        {
+            GlobalSystems.Instance.MusicManager.PlayMusic();
+        }
     }
 
     IEnumerator DieRoutine()
