@@ -233,6 +233,17 @@ public class PlugController : MonoBehaviour
 
     void SetRotation()
     {
+        if (transform.childCount > 0)
+        {
+            foreach (Transform child in transform)
+            {
+                if (child.CompareTag("Player"))
+                {
+                    child.SetParent(null);
+                    child.rotation = Quaternion.identity;
+                }
+            }
+        }
         if (targetSocket != null)
         {
             Quaternion worldTargetRotation = Quaternion.Euler(targetSocket.ConnectionRotation);
