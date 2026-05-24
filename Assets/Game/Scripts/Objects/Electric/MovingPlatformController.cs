@@ -50,6 +50,11 @@ public class MovingPlatformController : MonoBehaviour
 
     void StartMovement()
     {
+        if (moveTween != null)
+        {
+            moveTween.Play();
+            return;
+        }
         Vector3 finalPosition = transform.position + (Vector3)(moveDirection * moveAmount);
         float duration = moveAmount / moveSpeed;
         moveTween = transform.DOMove(finalPosition, duration)
@@ -59,9 +64,11 @@ public class MovingPlatformController : MonoBehaviour
 
     void StopMovement()
     {
-        if (moveTween != null)
-        {
-            moveTween.Kill();
-        }
+        moveTween?.Pause();
+    }
+
+    void OnDestroy()
+    {
+        moveTween.Kill();
     }
 }

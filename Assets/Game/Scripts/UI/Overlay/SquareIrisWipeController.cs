@@ -62,4 +62,9 @@ public class SquareIrisWipeController : MonoBehaviour
                 }
             });
     }
+
+    public void ResetIris()
+    {
+        irisMaterial.SetFloat("_Radius", 5f);
+    }
 }

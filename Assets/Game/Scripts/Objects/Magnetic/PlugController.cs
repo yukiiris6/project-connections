@@ -85,7 +85,7 @@ public class PlugController : MonoBehaviour
         IsMoving = true;
         shouldApplyStopDistance = false;
         targetSocket = socket;
-        modelTransform.rotation = Quaternion.Euler(targetSocket.ConnectionRotation);
+        SetRotation();
         foreach (var collider in allColliders)
         {
             collider.excludeLayers = ignoreWhileMagnetizing;
@@ -101,11 +101,10 @@ public class PlugController : MonoBehaviour
         isReturning = true;
         IsMoving = true;
         shouldApplyStopDistance = false;
-        modelTransform.rotation = Quaternion.identity;
 
         if (targetSocket)
         {
-            targetSocket.ChangeActivationState(false);
+            targetSocket.ChangeActivationState(false, this);
             targetSocket = null;
         }
     }
@@ -115,6 +114,8 @@ public class PlugController : MonoBehaviour
         targetPosition = newTargetPosition;
         transform.position = newTargetPosition;
         targetSocket = socket;
+        SetRotation();
+
     }
     #endregion
 
@@ -167,7 +168,7 @@ public class PlugController : MonoBehaviour
 
         if (hit.collider == null || isReturning || targetSocket != null)
         {
-            transform.Translate(translation);
+            transform.Translate(translation, Space.World);
             ValidatePosition();
         }
         else
@@ -218,15 +219,29 @@ public class PlugController : MonoBehaviour
         {
             collider.excludeLayers = 0;
         }
-        if (targetSocket) targetSocket.ChangeActivationState(true);
+        if (targetSocket) targetSocket.ChangeActivationState(true, this);
         plugSoundPlayer.PlayImpactSFX();
         ValidatePosition();
+        SetRotation();
     }
 
     void ValidatePosition()
     {
         if ((Vector2)transform.position == originalPosition) isInContainer = true;
         else isInContainer = false;
+    }
+
+    void SetRotation()
+    {
+        if (targetSocket != null)
+        {
+            Quaternion worldTargetRotation = Quaternion.Euler(targetSocket.ConnectionRotation);
+            transform.localRotation = Quaternion.Inverse(transform.parent.rotation) * worldTargetRotation;
+        }
+        else
+        {
+            transform.localRotation = Quaternion.identity;
+        }
     }
     #endregion
 }

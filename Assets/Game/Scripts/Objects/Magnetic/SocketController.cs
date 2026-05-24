@@ -42,7 +42,7 @@ public class SocketController : MonoBehaviour
     {
         if (connectedPlug)
         {
-            ChangeActivationState(true);
+            ChangeActivationState(true, connectedPlug);
             connectedPlug.SetStartState(this, connectionAnchor.position);
         }
         hasStarted = true;
@@ -62,6 +62,11 @@ public class SocketController : MonoBehaviour
 
     public PlugController Magnetize()
     {
+        if (connectedPlug)
+        {
+            connectedPlug.CancelMagnetism();
+            return null;
+        }
         if (plugInRange)
         {
             plugInRange.ConnectToSocket(connectionAnchor.position, this);
@@ -70,16 +75,21 @@ public class SocketController : MonoBehaviour
         return null;
     }
 
-    public void ChangeActivationState(bool value)
+    public void ChangeActivationState(bool value, PlugController plug)
     {
         hasEnergy = value;
         if (hasStarted)
         {
-            OnChangeActivation?.Invoke(value);
             if (value)
             {
+                connectedPlug = plug;
                 audioSource.PlayOneShot(activationSound);
             }
+            else
+            {
+                connectedPlug = null;
+            }
+            OnChangeActivation?.Invoke(value);
         }
     }
 
