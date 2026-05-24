@@ -9588,7 +9588,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5677765130759041664, guid: 829f33f629e17764b8dceb8119d0581f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7703303099544840052, guid: 829f33f629e17764b8dceb8119d0581f, type: 3}
       propertyPath: connectedSocket
@@ -9596,11 +9596,11 @@ PrefabInstance:
       objectReference: {fileID: 2107612494}
     - target: {fileID: 8726299346224791272, guid: 829f33f629e17764b8dceb8119d0581f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 8726299346224791272, guid: 829f33f629e17764b8dceb8119d0581f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 8726299346224791272, guid: 829f33f629e17764b8dceb8119d0581f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -48227,7 +48227,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 455860627375417227, guid: 629d417e64acac84a8f0b18c8d24f326, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.94
+      value: -2.22
       objectReference: {fileID: 0}
     - target: {fileID: 455860627375417227, guid: 629d417e64acac84a8f0b18c8d24f326, type: 3}
       propertyPath: m_LocalPosition.z
@@ -48361,19 +48361,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1454207502551090216, guid: d1170635f18fbe64bbc12439eb1811b8, type: 3}
       propertyPath: m_Intensity
-      value: 1
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 1454207502551090216, guid: d1170635f18fbe64bbc12439eb1811b8, type: 3}
       propertyPath: m_ApplyToSortingLayers.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1454207502551090216, guid: d1170635f18fbe64bbc12439eb1811b8, type: 3}
       propertyPath: 'm_ApplyToSortingLayers.Array.data[0]'
-      value: -546751001
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1454207502551090216, guid: d1170635f18fbe64bbc12439eb1811b8, type: 3}
       propertyPath: 'm_ApplyToSortingLayers.Array.data[1]'
-      value: 0
+      value: -2915475
       objectReference: {fileID: 0}
     - target: {fileID: 1688527824989903344, guid: d1170635f18fbe64bbc12439eb1811b8, type: 3}
       propertyPath: m_Name
