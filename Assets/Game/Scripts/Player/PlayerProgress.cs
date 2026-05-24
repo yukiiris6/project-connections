@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(PlayerAnimator))]
+[RequireComponent(typeof(PlayerMovement))]
 public class PlayerProgress : MonoBehaviour
 {
     [SerializeField] PauseMenuFlow pauseMenuFlow;
@@ -9,6 +10,12 @@ public class PlayerProgress : MonoBehaviour
     GameManager gameManager;
     LevelManager levelManager;
     IInteractable currentInteractable;
+    PlayerMovement playerMovement;
+
+    void Awake()
+    {
+        playerMovement = GetComponent<PlayerMovement>();
+    }
 
     void Start()
     {
@@ -29,6 +36,7 @@ public class PlayerProgress : MonoBehaviour
             if (currentInteractable != null)
             {
                 currentInteractable.Interact(gameObject);
+                playerMovement.StopAllVelocity();
             }
         }
     }

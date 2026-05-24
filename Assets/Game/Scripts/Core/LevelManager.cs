@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,6 +18,7 @@ public class LevelManager : MonoBehaviour
     LevelData[] levels;
     SquareIrisWipeController squareIrisWipeController;
     CursorController cursorController;
+    CanvasGroup blackScreen;
     int currentLevel = 0;
     public LevelData[] Levels => levels;
     public bool IsLoading { get; private set; } = false;
@@ -27,6 +29,7 @@ public class LevelManager : MonoBehaviour
         cursorController = OverlayCanvas.Instance.CursorController;
         squareIrisWipeController = OverlayCanvas.Instance.SquareIrisWipeController;
         levelTransition = OverlayCanvas.Instance.LevelTransition;
+        blackScreen = OverlayCanvas.Instance.BlackScreen;
     }
 
     void Awake()
@@ -59,7 +62,7 @@ public class LevelManager : MonoBehaviour
         if (found != null) isInTitleScreen = false;
         else isInTitleScreen = true;
         currentLevel = Array.IndexOf(levels, found);
-        StartCoroutine(LoadLevelRoutine(name, displayName, 0, true, true));
+        StartCoroutine(LoadLevelRoutine(name, displayName, 0, true, true, true));
     }
 
     public void FinishLevel()
@@ -70,12 +73,12 @@ public class LevelManager : MonoBehaviour
             var nextLevel = levels[currentLevel + 1];
             levels[currentLevel + 1].SetIsLocked(false);
             currentLevel = Array.IndexOf(levels, nextLevel);
-            StartCoroutine(LoadLevelRoutine(nextLevel.fileName, nextLevel.levelDisplayName, doorAnimationDuration, true, false));
+            StartCoroutine(LoadLevelRoutine(nextLevel.fileName, nextLevel.levelDisplayName, doorAnimationDuration, true, false, false));
             GlobalSystems.Instance.MusicManager.PlayMusic();
         }
         else
         {
-            GoToTitleScreen();
+            GoToCredits(false);
             GlobalSystems.Instance.MusicManager.StopMusic();
         }
     }
@@ -90,18 +93,33 @@ public class LevelManager : MonoBehaviour
         StartCoroutine(RestartRoutine(false));
     }
 
-    public void GoToTitleScreen()
+    public void GoToTitleScreen(bool isFromLevel)
     {
         isInTitleScreen = true;
-        StartCoroutine(LoadLevelRoutine("TitleScreen", "TitleScreen", 0, false, false));
+        StartCoroutine(LoadLevelRoutine("TitleScreen", "TitleScreen", 0, false, false, !isFromLevel));
     }
 
-    IEnumerator LoadLevelRoutine(string name, string displayName, float startTime, bool shouldTransition, bool shouldPlayFirstTransition)
+    public void GoToCredits(bool isFromTitleScreen)
     {
+        isInTitleScreen = false;
+        StartCoroutine(LoadLevelRoutine("Credits", "Credits", 0, false, false, isFromTitleScreen));
+    }
+
+    IEnumerator LoadLevelRoutine(string name, string displayName, float startTime, bool shouldTransition, bool shouldPlayFirstTransition, bool isFromMenus)
+    {
+        if (isFromMenus)
+        {
+            blackScreen.DOFade(1f, 1f).SetEase(Ease.InSine);
+            yield return new WaitForSecondsRealtime(1f);
+        }
+        else
+        {
+            squareIrisWipeController.StartIrisWipe();
+            yield return new WaitForSecondsRealtime(squareIrisWipeController.Duration + .2f);
+        }
+        DOTween.KillAll();
         IsLoading = true;
         yield return new WaitForSecondsRealtime(startTime);
-        squareIrisWipeController.StartIrisWipe();
-        yield return new WaitForSecondsRealtime(squareIrisWipeController.Duration + .2f);
         GlobalSystems.Instance.GameManager.ResumeGame();
         SceneManager.LoadScene(name);
         yield return null;
@@ -125,11 +143,21 @@ public class LevelManager : MonoBehaviour
             levelTransition.FadeOut();
             yield return new WaitForSecondsRealtime(.5f);
         }
-        squareIrisWipeController.StartIrisOpen();
+        if (name == "TitleScreen" || name == "Credits")
+        {
+            blackScreen.alpha = 1f;
+            squareIrisWipeController.ResetIris();
+            blackScreen.DOFade(0f, 1f).SetEase(Ease.InSine);
+        }
+        else
+        {
+            blackScreen.alpha = 0f;
+            squareIrisWipeController.StartIrisOpen();
+        }
         cursorController.ShowCursor();
-        IsLoading = false;
         yield return new WaitForSeconds(squareIrisWipeController.Duration);
-        if (!isInTitleScreen) GlobalSystems.Instance.MusicManager.PlayMusic();
+        IsLoading = false;
+        if (!isInTitleScreen && name != "Credits") GlobalSystems.Instance.MusicManager.PlayMusic();
     }
 
     IEnumerator DieRoutine()
@@ -142,6 +170,7 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator RestartRoutine(bool shouldWait)
     {
+        DOTween.KillAll();
         if (shouldWait) yield return new WaitForSecondsRealtime(1f);
         squareIrisWipeController.StartIrisWipe();
         yield return new WaitForSecondsRealtime(squareIrisWipeController.Duration);

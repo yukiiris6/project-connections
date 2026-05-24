@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
@@ -36,17 +37,16 @@ public class PauseMenuFlow : MonoBehaviour
     public void OnClickResume()
     {
         GlobalSystems.Instance.MusicManager.PlayMusic();
-        audioSource.PlayOneShot(buttonPressSFX);
+        PlayClickSound();
         backgroundObject.SetActive(false);
         pauseMenuContainer.SetActive(false);
         gameManager.ResumeGame();
-        print(cursorController);
         cursorController.ChangeToNormalCursor();
     }
 
     public void OnClickRestart()
     {
-        audioSource.PlayOneShot(buttonPressSFX);
+        PlayClickSound();
         backgroundObject.SetActive(false);
         pauseMenuContainer.SetActive(false);
         levelManager.RestartLevel();
@@ -55,10 +55,15 @@ public class PauseMenuFlow : MonoBehaviour
 
     public void OnClickToTitle()
     {
-        audioSource.PlayOneShot(buttonPressSFX);
+        PlayClickSound();
         backgroundObject.SetActive(false);
         pauseMenuContainer.SetActive(false);
-        levelManager.GoToTitleScreen();
+        levelManager.GoToTitleScreen(true);
         cursorController.ChangeToNormalCursor();
+    }
+
+    public void PlayClickSound()
+    {
+        audioSource.PlayOneShot(buttonPressSFX);
     }
 }

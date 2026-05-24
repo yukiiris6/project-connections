@@ -40,7 +40,9 @@ public class ButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
                 selectionImage.transform.position = transform.position;
                 selectionImage.transform.DOKill();
                 selectionImage.transform.localScale = new(1f, 1f, 1f);
+                selectionImage.transform.DOFlip();
                 selectionImage.transform.DOScale(1.05f, .5f)
+                    .SetUpdate(true)
                     .SetLoops(-1, LoopType.Yoyo)
                     .SetEase(Ease.InOutSine);
             }
@@ -63,8 +65,11 @@ public class ButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void CancelAllEffects()
     {
-        selectionImage.transform.DOKill();
-        selectionImage.transform.localScale = new(1f, 1f, 1f);
-        selectionImage.SetActive(false);
+        if (selectionImage != null)
+        {
+            selectionImage.transform.DOKill();
+            selectionImage.transform.localScale = new(1f, 1f, 1f);
+            selectionImage.SetActive(false);
+        }
     }
 }
