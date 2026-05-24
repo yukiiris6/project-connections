@@ -8,18 +8,18 @@ public class LightbulbController : MonoBehaviour
 
     void Start()
     {
-        spriteLight.SetActive(false);
-        if (connectedSocket != null) SetActive(connectedSocket.HasEnergy);
-        else SetActive(true);
         Vector3 maxAngle = new(0, 0, 5f);
         transform.rotation = Quaternion.Euler(-maxAngle);
-        transform.DOLocalRotate(maxAngle, 4f).SetEase(Ease.InOutQuad).SetLoops(-1, LoopType.Yoyo);
+        transform.DOLocalRotate(maxAngle, 4f)
+            .SetEase(Ease.InOutQuad)
+            .SetLoops(-1, LoopType.Yoyo);
     }
 
     void OnEnable()
     {
         if (connectedSocket != null)
         {
+            connectedSocket.OnStartUp += StartUp;
             connectedSocket.OnChangeActivation += SetActive;
         }
     }
@@ -28,11 +28,19 @@ public class LightbulbController : MonoBehaviour
     {
         if (connectedSocket != null)
         {
+            connectedSocket.OnStartUp -= StartUp;
             connectedSocket.OnChangeActivation -= SetActive;
         }
     }
 
-    public void SetActive(bool active)
+    void StartUp()
+    {
+        spriteLight.SetActive(false);
+        if (connectedSocket != null) SetActive(connectedSocket.HasEnergy);
+        else SetActive(true);
+    }
+
+    void SetActive(bool active)
     {
         spriteLight.SetActive(active);
     }

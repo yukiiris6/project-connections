@@ -22,19 +22,21 @@ public class DoorController : MonoBehaviour, IInteractable
         audioSource = GetComponent<AudioSource>();
     }
 
-    void Start()
-    {
-        SetActive(connectedSocket.HasEnergy);
-    }
-
     void OnEnable()
     {
+        connectedSocket.OnStartUp += StartUp;
         connectedSocket.OnChangeActivation += SetActive;
     }
 
     void OnDisable()
     {
+        connectedSocket.OnStartUp -= StartUp;
         connectedSocket.OnChangeActivation -= SetActive;
+    }
+
+    void StartUp()
+    {
+        SetActive(connectedSocket.HasEnergy);
     }
 
     public void SetActive(bool isActive)
@@ -60,6 +62,14 @@ public class DoorController : MonoBehaviour, IInteractable
             IsInsideDoor = true;
             var playerProgress = other.GetComponent<PlayerProgress>();
             playerProgress.SetInteractable(this);
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (LayerMask.LayerToName(other.gameObject.layer) == "Player" && connectedSocket.HasEnergy)
+        {
+            IsInsideDoor = true;
         }
     }
 

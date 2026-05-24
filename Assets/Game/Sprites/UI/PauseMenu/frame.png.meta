@@ -1,25 +1,10 @@
 fileFormatVersion: 2
-guid: a523188752839cc49a40b0a983c71a2b
+guid: 7840143f973e83e46ab7ba6c2b0e2763
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 439492098657484457
-    second: pause-menu-title_0
-  - first:
-      213: -6977098944202888868
-    second: pause-menu-title_1
-  - first:
-      213: 5485981097284087315
-    second: pause-menu-title_2
-  - first:
-      213: 6530562878761194540
-    second: pause-menu-title_3
-  - first:
-      213: -4020546715264415714
-    second: pause-menu-title_4
-  - first:
-      213: -6224607108825232592
-    second: pause-menu-title_5
+      213: 7501387830980884940
+    second: frame_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:

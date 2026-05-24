@@ -79,7 +79,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 77c692c409d0c5d48a056c05e5de36bc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 2536217357536663020}
   - component: {fileID: 3587774894446774975}
   m_Layer: 3
-  m_Name: Spot_Light
+  m_Name: SpotLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,8 +139,8 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 0.79609716, b: 0.48584908, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 0.514151, g: 0.7876229, b: 1, a: 1}
+  m_Intensity: 2
   m_LightVolumeIntensity: 5
   m_LightVolumeEnabled: 0
   m_ApplyToSortingLayers: 00000000d96e7b82e73d69df
@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 6515770037064420773}
   - component: {fileID: 3621166384568784571}
   m_Layer: 3
-  m_Name: Sprite_Light
+  m_Name: SpriteLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -216,7 +216,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4459796246312024091}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
   m_Name: 
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 0.79609716, b: 0.48584908, a: 1}
-  m_Intensity: 0.5
+  m_Intensity: 2
   m_LightVolumeIntensity: 5
   m_LightVolumeEnabled: 0
   m_ApplyToSortingLayers: 00000000d96e7b82e73d69df
@@ -392,7 +392,7 @@ LineRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}

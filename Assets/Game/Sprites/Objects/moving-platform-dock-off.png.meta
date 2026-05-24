@@ -1,94 +1,10 @@
 fileFormatVersion: 2
-guid: dab03f0d21a017d45a7cb2c8e932986c
+guid: 113d0642d867afd4f95b51964e0da14f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3806809394045696025
-    second: canvas_0
-  - first:
-      213: 705511346986584064
-    second: canvas_1
-  - first:
-      213: 4725818972906157796
-    second: canvas_2
-  - first:
-      213: 4690243025537275424
-    second: canvas_3
-  - first:
-      213: 845205482229064237
-    second: canvas_4
-  - first:
-      213: -2943598053081306530
-    second: canvas_5
-  - first:
-      213: 3964616176836974633
-    second: canvas_6
-  - first:
-      213: 5883918230880878878
-    second: canvas_7
-  - first:
-      213: -7181377074572891855
-    second: canvas_8
-  - first:
-      213: -6340841242508608712
-    second: canvas_9
-  - first:
-      213: 2463163908476557040
-    second: canvas_10
-  - first:
-      213: 3892500643780257481
-    second: canvas_11
-  - first:
-      213: 6318453481423514622
-    second: canvas_12
-  - first:
-      213: 7090680797568780011
-    second: canvas_13
-  - first:
-      213: 5667628094890347925
-    second: canvas_14
-  - first:
-      213: 191832477191935057
-    second: canvas_15
-  - first:
-      213: 417061568104583121
-    second: canvas_16
-  - first:
-      213: -5335029098559007556
-    second: canvas_17
-  - first:
-      213: -2565045562726871235
-    second: canvas_18
-  - first:
-      213: 6142096479365590411
-    second: canvas_19
-  - first:
-      213: 4086344514267893385
-    second: canvas_20
-  - first:
-      213: -734743404808419961
-    second: canvas_21
-  - first:
-      213: 5991516472287287110
-    second: canvas_22
-  - first:
-      213: 5850592294039255692
-    second: canvas_23
-  - first:
-      213: 521853416472516235
-    second: canvas_24
-  - first:
-      213: -50964206893552180
-    second: canvas_25
-  - first:
-      213: -791108263692940181
-    second: canvas_26
-  - first:
-      213: -3165012645065172127
-    second: canvas_27
-  - first:
-      213: -7061518927666875899
-    second: canvas_28
+      213: -482975318897716137
+    second: moving-platform-dock-off_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -130,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -205,7 +121,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -223,12 +139,14 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
-    secondaryTextures: []
+    secondaryTextures:
+    - texture: {fileID: 2800000, guid: a4c40590e9b14eb4abe60408500c2b57, type: 3}
+      name: _Emission
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:

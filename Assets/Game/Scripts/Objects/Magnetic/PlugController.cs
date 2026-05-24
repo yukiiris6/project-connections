@@ -85,7 +85,7 @@ public class PlugController : MonoBehaviour
         IsMoving = true;
         shouldApplyStopDistance = false;
         targetSocket = socket;
-        modelTransform.rotation = Quaternion.Euler(targetSocket.connectionRotation);
+        modelTransform.rotation = Quaternion.Euler(targetSocket.ConnectionRotation);
         foreach (var collider in allColliders)
         {
             collider.excludeLayers = ignoreWhileMagnetizing;
