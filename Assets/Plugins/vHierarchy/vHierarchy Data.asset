@@ -186,6 +186,7 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-deb49331879676043b01cb5529d52b69-4525909209745512047-1654593149
         - globalObjectIdString: GlobalObjectId_V1-2-deb49331879676043b01cb5529d52b69-2260755275231890400-811155255
         - globalObjectIdString: GlobalObjectId_V1-2-deb49331879676043b01cb5529d52b69-8672554256288081938-5863794984414456797
+        - globalObjectIdString: GlobalObjectId_V1-2-deb49331879676043b01cb5529d52b69-1746783537-0
         values:
         - colorIndex: 1
           iconNameOrGuid: AvatarMask On Icon
@@ -241,6 +242,10 @@ MonoBehaviour:
           isColorRecursive: 0
         - colorIndex: 1
           iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: Light Icon
           isIconRecursive: 0
           isColorRecursive: 0
     - goDatas_byGlobalId:

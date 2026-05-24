@@ -22,14 +22,15 @@ public class SocketController : MonoBehaviour
     bool hasEnergy = false;
     public bool HasEnergy => hasEnergy;
     public event Action<bool> OnChangeActivation;
-    public Vector3 connectionRotation { get; private set; }
+    public event Action OnStartUp;
+    public Vector3 ConnectionRotation { get; private set; }
 
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
         circleCollider2D = GetComponent<CircleCollider2D>();
         lineRenderer = GetComponent<LineRenderer>();
-        connectionRotation = connectionAnchor.rotation.eulerAngles;
+        ConnectionRotation = connectionAnchor.rotation.eulerAngles;
         lineRenderer.positionCount = segments;
         lineRenderer.useWorldSpace = false;
         radius = circleCollider2D.radius;
@@ -45,6 +46,7 @@ public class SocketController : MonoBehaviour
             connectedPlug.SetStartState(this, connectionAnchor.position);
         }
         hasStarted = true;
+        OnStartUp?.Invoke();
     }
 
     void Update()
@@ -71,8 +73,14 @@ public class SocketController : MonoBehaviour
     public void ChangeActivationState(bool value)
     {
         hasEnergy = value;
-        OnChangeActivation?.Invoke(value);
-        if (value && hasStarted) audioSource.PlayOneShot(activationSound);
+        if (hasStarted)
+        {
+            OnChangeActivation?.Invoke(value);
+            if (value)
+            {
+                audioSource.PlayOneShot(activationSound);
+            }
+        }
     }
 
     public void DrawCircle()

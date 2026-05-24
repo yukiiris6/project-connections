@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: b8cfc572086348a4b86e70024de4d2b0
+guid: ba1756efbf6aa0c408493e93c1e35043
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5149939159833052818
-    second: restart-text_0
+      213: 3624628889964640163
+    second: selection-cursor_0
+  - first:
+      213: -3269969081200916915
+    second: selection-cursor_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:

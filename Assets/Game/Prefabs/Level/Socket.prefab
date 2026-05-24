@@ -508,15 +508,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5434042864148013579, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
       propertyPath: m_Color.b
-      value: 0.18752226
+      value: 0.15686275
       objectReference: {fileID: 0}
     - target: {fileID: 5434042864148013579, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
       propertyPath: m_Color.g
-      value: 0.18752226
+      value: 0.15686275
       objectReference: {fileID: 0}
     - target: {fileID: 5434042864148013579, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
       propertyPath: m_Color.r
-      value: 0.8113208
+      value: 0.84313726
       objectReference: {fileID: 0}
     - target: {fileID: 5434042864148013579, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
       propertyPath: m_Intensity
@@ -556,7 +556,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8720673727308616429, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
       propertyPath: m_Name
-      value: Sprite_Light
+      value: SpotLight
       objectReference: {fileID: 0}
     - target: {fileID: 8720673727308616429, guid: e8e2e724a792fb743b6c9930c3fbd436, type: 3}
       propertyPath: m_Layer

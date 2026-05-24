@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 893203bb8c49e65438f646d0ff04434e
+guid: 42e74e9774cfa89439d1868cbd0b63a9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5558812899379518282
-    second: pause-menu-button-highlighted_0
+      213: 1127322305453863430
+    second: button-restart_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:

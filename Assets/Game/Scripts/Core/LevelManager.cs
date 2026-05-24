@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -98,6 +99,7 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator LoadLevelRoutine(string name, string displayName, float startTime, bool shouldTransition, bool shouldPlayFirstTransition)
     {
+        DOTween.KillAll();
         IsLoading = true;
         yield return new WaitForSecondsRealtime(startTime);
         squareIrisWipeController.StartIrisWipe();
@@ -127,8 +129,8 @@ public class LevelManager : MonoBehaviour
         }
         squareIrisWipeController.StartIrisOpen();
         cursorController.ShowCursor();
-        IsLoading = false;
         yield return new WaitForSeconds(squareIrisWipeController.Duration);
+        IsLoading = false;
         if (!isInTitleScreen) GlobalSystems.Instance.MusicManager.PlayMusic();
     }
 
@@ -142,6 +144,7 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator RestartRoutine(bool shouldWait)
     {
+        DOTween.KillAll();
         if (shouldWait) yield return new WaitForSecondsRealtime(1f);
         squareIrisWipeController.StartIrisWipe();
         yield return new WaitForSecondsRealtime(squareIrisWipeController.Duration);

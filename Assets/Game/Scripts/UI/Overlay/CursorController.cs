@@ -47,6 +47,7 @@ public class CursorController : MonoBehaviour
     public void ChangeToNormalCursor()
     {
         RestoreCursor();
+        rectTransform.pivot = new(0, 1f);
         cursorImage.sprite = normalCursor;
         rectTransform.rotation = Quaternion.identity;
     }
@@ -54,6 +55,7 @@ public class CursorController : MonoBehaviour
     public void ChangeToInteractionCursor()
     {
         RestoreCursor();
+        rectTransform.pivot = new(.5f, .8f);
         cursorImage.sprite = magnetCursor;
         rectTransform.rotation = Quaternion.identity;
     }

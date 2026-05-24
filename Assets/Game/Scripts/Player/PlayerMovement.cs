@@ -56,6 +56,11 @@ public class PlayerMovement : MonoBehaviour
         playerAnimator.ControlRunningAnimation(moveInput.x, newXVelocity, maxVelocity);
     }
 
+    public void StopAllVelocity()
+    {
+        myRigidBody.linearVelocityX = 0;
+    }
+
     float GetAccelerateVelocity()
     {
         float velocityToAdd = moveInput.x * acceleration * Time.fixedDeltaTime;
