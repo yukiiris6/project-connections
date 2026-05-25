@@ -1,0 +1,39 @@
+using System.Collections;
+using DG.Tweening;
+using UnityEngine;
+using UnityEngine.UI;
+
+[RequireComponent(typeof(AudioSource))]
+public class SplashScreen : MonoBehaviour
+{
+    [SerializeField] AudioClip jingle;
+    [SerializeField] CanvasGroup logoCanvasGroup;
+    [SerializeField] ParticleSystem snowParticles;
+    [SerializeField] Image blackImage;
+    [SerializeField] Transform splashScreenParent;
+
+    AudioSource audioSource;
+    LevelManager levelManager;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+        levelManager = GlobalSystems.Instance.LevelManager;
+        StartCoroutine(SplashScreenRoutine());
+    }
+
+    IEnumerator SplashScreenRoutine()
+    {
+        Instantiate(snowParticles, splashScreenParent);
+        yield return new WaitForSeconds(1f);
+        logoCanvasGroup.alpha = 0;
+        logoCanvasGroup.DOFade(1f, 2f).SetEase(Ease.InSine);
+        yield return new WaitForSeconds(2f);
+        audioSource.PlayOneShot(jingle);
+        yield return new WaitForSeconds(2f);
+        logoCanvasGroup.DOFade(0f, 2f).SetEase(Ease.OutSine);
+        blackImage.DOFade(0f, 2f);
+        yield return new WaitForSeconds(2f);
+        levelManager.GoToTitleScreen(false);
+    }
+}

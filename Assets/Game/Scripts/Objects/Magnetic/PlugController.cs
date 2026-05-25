@@ -230,25 +230,32 @@ public class PlugController : MonoBehaviour
 
     void SetRotation()
     {
-        if (transform.childCount > 0)
-        {
-            foreach (Transform child in transform)
-            {
-                if (child.CompareTag("Player"))
-                {
-                    child.SetParent(null);
-                    child.rotation = Quaternion.identity;
-                }
-            }
-        }
+        Quaternion newRotation;
+
         if (targetSocket != null)
         {
             Quaternion worldTargetRotation = Quaternion.Euler(targetSocket.ConnectionRotation);
-            transform.localRotation = Quaternion.Inverse(transform.parent.rotation) * worldTargetRotation;
+            newRotation = Quaternion.Inverse(transform.parent.rotation) * worldTargetRotation;
         }
         else
         {
-            transform.localRotation = Quaternion.identity;
+            newRotation = Quaternion.identity;
+        }
+
+        if (transform.localRotation.eulerAngles != newRotation.eulerAngles)
+        {
+            if (transform.childCount > 0)
+            {
+                foreach (Transform child in transform)
+                {
+                    if (child.CompareTag("Player"))
+                    {
+                        child.SetParent(null);
+                        child.rotation = Quaternion.identity;
+                    }
+                }
+            }
+            transform.localRotation = newRotation;
         }
     }
     #endregion

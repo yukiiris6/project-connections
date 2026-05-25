@@ -23,8 +23,10 @@ public class LevelManager : MonoBehaviour
     int currentLevel = 0;
     public LevelData[] Levels => levels;
     bool isInTitleScreen = true;
+    bool isInSplashScreen = false;
     public bool IsLoading { get; private set; } = false;
-    public bool IsinTitleScreen => isInTitleScreen;
+    public bool IsInTitleScreen => isInTitleScreen;
+    public bool IsInSplashScreen => isInSplashScreen;
 
     void GetDependencies()
     {
@@ -47,8 +49,16 @@ public class LevelManager : MonoBehaviour
         var found = Array.Find(levels, level => level.fileName == SceneManager.GetActiveScene().name);
         if (found != null)
         {
-            isInTitleScreen = false;
             currentLevel = Array.IndexOf(levels, found);
+        }
+        string sceneName = SceneManager.GetActiveScene().name;
+        if (sceneName == "TitleScreen")
+        {
+            isInTitleScreen = true;
+        }
+        else if (sceneName == "SplashScreen")
+        {
+            isInSplashScreen = true;
         }
     }
 

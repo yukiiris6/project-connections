@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Level_2
   m_EditorClassIdentifier: Assembly-CSharp::LevelDataSO
   fileName: Level_2
-  levelDisplayName: Danger
+  levelDisplayName: Timed Out
   isLocked: 1

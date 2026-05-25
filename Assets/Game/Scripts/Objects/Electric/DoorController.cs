@@ -17,6 +17,7 @@ public class DoorController : MonoBehaviour, IInteractable
     [SerializeField] string IsOpenBool = "IsOpen";
 
     AudioSource audioSource;
+    bool hasStarted = false;
 
     public bool IsInsideDoor { get; private set; } = false;
 
@@ -40,14 +41,18 @@ public class DoorController : MonoBehaviour, IInteractable
     void StartUp()
     {
         SetActive(connectedSocket.HasEnergy);
+        hasStarted = true;
     }
 
     public void SetActive(bool isActive)
     {
         SetAnimatorState(isActive);
         SetColor(isActive);
-        if (isActive) StartCoroutine(PlayOpeningSound());
-        else audioSource.PlayOneShot(doorCloseSFX);
+        if (hasStarted)
+        {
+            if (isActive) StartCoroutine(PlayOpeningSound());
+            else audioSource.PlayOneShot(doorCloseSFX);
+        }
     }
 
     void SetAnimatorState(bool isActive)

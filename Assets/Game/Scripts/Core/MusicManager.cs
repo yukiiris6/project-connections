@@ -13,19 +13,6 @@ public class MusicManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    void Start()
-    {
-        if (GlobalSystems.Instance.LevelManager.IsinTitleScreen)
-        {
-            SetTitleScreenMusic();
-        }
-        else
-        {
-            SetLevelMusic();
-        }
-        PlayMusic();
-    }
-
     public void SetTitleScreenMusic()
     {
         audioSource.clip = titleScreenMusic;
