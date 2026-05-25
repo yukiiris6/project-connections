@@ -18,6 +18,7 @@ public class DoorController : MonoBehaviour, IInteractable
 
     AudioSource audioSource;
     bool hasStarted = false;
+    bool hasInteracted = false;
 
     public bool IsInsideDoor { get; private set; } = false;
 
@@ -98,11 +99,13 @@ public class DoorController : MonoBehaviour, IInteractable
     public void Interact(GameObject player)
     {
         if (!connectedSocket.HasEnergy) return;
+        if (hasInteracted) return;
         player.transform.position = transform.position;
         PlayerAnimator playerAnimator = player.GetComponent<PlayerAnimator>();
         audioSource.PlayOneShot(doorEnterSFX);
         playerAnimator.PlayFinishAnimation();
         GlobalSystems.Instance.LevelManager.FinishLevel();
+        hasInteracted = true;
     }
 
     IEnumerator PlayOpeningSound()
