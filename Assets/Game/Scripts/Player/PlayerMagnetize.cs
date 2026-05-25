@@ -1,5 +1,6 @@
 using System.Collections;
 using DG.Tweening;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,6 +17,8 @@ public class PlayerMagnetize : MonoBehaviour
     [SerializeField] Color magneticLineColor;
     [SerializeField] Color nonMagneticLineColor;
     [SerializeField] float laserThickness = 1f;
+    [SerializeField] CinemachineTargetGroup targetGroup;
+    [SerializeField] Transform mouseAnchor;
 
     Vector2 mouseWorldPosition;
     GameObject selectedObject;
@@ -26,6 +29,7 @@ public class PlayerMagnetize : MonoBehaviour
     LevelManager levelManager;
 
     public bool IsAiming { get; private set; } = false;
+    int mouseIndex = 0;
 
     #region Unity Lifecycle
     void Awake()
@@ -40,6 +44,7 @@ public class PlayerMagnetize : MonoBehaviour
     {
         cursorController = OverlayCanvas.Instance.CursorController;
         levelManager = GlobalSystems.Instance.LevelManager;
+        mouseIndex = targetGroup.FindMember(mouseAnchor);
     }
 
     void Update()
@@ -56,10 +61,12 @@ public class PlayerMagnetize : MonoBehaviour
         if (value.isPressed)
         {
             IsAiming = true;
+            targetGroup.Targets[mouseIndex].Weight = .5f;
         }
         else
         {
             ProcessMagnet();
+            targetGroup.Targets[mouseIndex].Weight = 0f;
         }
     }
 
@@ -107,11 +114,19 @@ public class PlayerMagnetize : MonoBehaviour
     void ProcessMagnet()
     {
         if (selectedObject == null) return;
-        PlugController plugController = selectedObject.GetComponent<PlugController>();
-        if (plugController != null) ApplyPlugMagnet(plugController);
 
         SocketController socketActivation = selectedObject.GetComponent<SocketController>();
         if (socketActivation != null) ApplySocketMagnet(socketActivation);
+
+
+        PlugController plugController = selectedObject.GetComponent<PlugController>();
+        if (!plugController)
+        {
+            var plugContainer = selectedObject.GetComponent<PlugContainer>();
+            if (plugContainer != null) plugController = plugContainer.PlugController;
+        }
+        if (plugController && magnetizedPlug != plugController) CancelMagnet();
+        if (plugController != null) ApplyPlugMagnet(plugController);
 
         IsAiming = false;
         playerAnimator.SetIsAiming(false);

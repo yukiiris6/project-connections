@@ -17,6 +17,7 @@ public class PlugController : MonoBehaviour
     [SerializeField] LayerMask wallLayer;
     [SerializeField] BoxCollider2D mainCollider;
     [SerializeField] LayerMask ignoreWhileMagnetizing;
+    [SerializeField] LayerMask ignoreWhilePluggingIn;
     [SerializeField] Transform modelTransform;
 
     PlugVisuals plugVisuals;
@@ -71,10 +72,6 @@ public class PlugController : MonoBehaviour
         IsMoving = true;
         shouldApplyStopDistance = true;
         targetSocket = null;
-        foreach (var collider in allColliders)
-        {
-            collider.excludeLayers = ignoreWhileMagnetizing;
-        }
     }
 
     public void ConnectToSocket(Vector2 newTargetPosition, SocketController socket)

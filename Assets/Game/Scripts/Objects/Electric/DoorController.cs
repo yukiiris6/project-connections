@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -6,6 +7,8 @@ public class DoorController : MonoBehaviour, IInteractable
 {
     [SerializeField] SocketController connectedSocket;
     [SerializeField] AudioClip doorEnterSFX;
+    [SerializeField] AudioClip doorOpenSFX;
+    [SerializeField] AudioClip doorCloseSFX;
     [SerializeField] SpriteRenderer rend;
     [SerializeField] Animator doorAnimator;
     [SerializeField] Light2D light2D;
@@ -43,6 +46,8 @@ public class DoorController : MonoBehaviour, IInteractable
     {
         SetAnimatorState(isActive);
         SetColor(isActive);
+        if (isActive) StartCoroutine(PlayOpeningSound());
+        else audioSource.PlayOneShot(doorCloseSFX);
     }
 
     void SetAnimatorState(bool isActive)
@@ -57,7 +62,7 @@ public class DoorController : MonoBehaviour, IInteractable
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (LayerMask.LayerToName(other.gameObject.layer) == "Player" && connectedSocket.HasEnergy)
+        if (LayerMask.LayerToName(other.gameObject.layer) == "Player")
         {
             IsInsideDoor = true;
             var playerProgress = other.GetComponent<PlayerProgress>();
@@ -67,26 +72,37 @@ public class DoorController : MonoBehaviour, IInteractable
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (LayerMask.LayerToName(other.gameObject.layer) == "Player" && connectedSocket.HasEnergy)
+        if (LayerMask.LayerToName(other.gameObject.layer) == "Player")
         {
             IsInsideDoor = true;
+            var playerProgress = other.GetComponent<PlayerProgress>();
+            playerProgress.SetInteractable(this);
         }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (LayerMask.LayerToName(other.gameObject.layer) == "Player" && connectedSocket.HasEnergy)
+        if (LayerMask.LayerToName(other.gameObject.layer) == "Player")
         {
             IsInsideDoor = false;
+            var playerProgress = other.GetComponent<PlayerProgress>();
+            playerProgress.SetInteractable(null);
         }
     }
 
     public void Interact(GameObject player)
     {
+        if (!connectedSocket.HasEnergy) return;
         player.transform.position = transform.position;
         PlayerAnimator playerAnimator = player.GetComponent<PlayerAnimator>();
         audioSource.PlayOneShot(doorEnterSFX);
         playerAnimator.PlayFinishAnimation();
         GlobalSystems.Instance.LevelManager.FinishLevel();
+    }
+
+    IEnumerator PlayOpeningSound()
+    {
+        yield return new WaitForSeconds(.3f);
+        audioSource.PlayOneShot(doorOpenSFX);
     }
 }

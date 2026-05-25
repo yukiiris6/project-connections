@@ -5,8 +5,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerMovement))]
 public class PlayerProgress : MonoBehaviour
 {
-    [SerializeField] PauseMenuFlow pauseMenuFlow;
-
+    PauseMenuFlow pauseMenuFlow;
     GameManager gameManager;
     LevelManager levelManager;
     IInteractable currentInteractable;
@@ -21,6 +20,7 @@ public class PlayerProgress : MonoBehaviour
     {
         gameManager = GlobalSystems.Instance.GameManager;
         levelManager = GlobalSystems.Instance.LevelManager;
+        pauseMenuFlow = OverlayCanvas.Instance.PauseMenuFlow;
     }
 
     public void SetInteractable(IInteractable interactable)

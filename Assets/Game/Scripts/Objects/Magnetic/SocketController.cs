@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
@@ -14,7 +16,7 @@ public class SocketController : MonoBehaviour
     AudioSource audioSource;
     CircleCollider2D circleCollider2D;
     LineRenderer lineRenderer;
-    PlugController plugInRange;
+    readonly List<PlugController> plugsInRange = new();
     PlayerMagnetize playerMagnetize;
 
     bool hasStarted = false;
@@ -67,10 +69,11 @@ public class SocketController : MonoBehaviour
             connectedPlug.CancelMagnetism();
             return null;
         }
-        if (plugInRange)
+        if (plugsInRange.Count > 0)
         {
-            plugInRange.ConnectToSocket(connectionAnchor.position, this);
-            return plugInRange;
+            var selectedPlug = plugsInRange.First();
+            selectedPlug.ConnectToSocket(connectionAnchor.position, this);
+            return selectedPlug;
         }
         return null;
     }
@@ -115,7 +118,7 @@ public class SocketController : MonoBehaviour
             PlugController plugController = other.GetComponent<PlugController>();
             if (plugController != null)
             {
-                plugInRange = plugController;
+                plugsInRange.Add(plugController);
             }
         }
     }
@@ -127,7 +130,7 @@ public class SocketController : MonoBehaviour
             PlugController plugController = other.GetComponent<PlugController>();
             if (plugController != null)
             {
-                if (plugInRange == plugController) plugInRange = null;
+                plugsInRange.Remove(plugController);
             }
         }
     }

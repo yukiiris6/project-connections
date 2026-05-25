@@ -739,7 +739,7 @@ GameObject:
   - component: {fileID: 951706540}
   - component: {fileID: 951706539}
   m_Layer: 10
-  m_Name: Killing Walls
+  m_Name: KillingWalls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -871,7 +871,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -273500459
-  m_SortingLayer: -3
+  m_SortingLayer: -4
   m_SortingOrder: -1
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
@@ -49664,7 +49664,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 374199454338014322, guid: 1f957dd7ff972f642b84259aa71283a8, type: 3}
       propertyPath: orthographic size
-      value: 4.821429
+      value: 5.625
       objectReference: {fileID: 0}
     - target: {fileID: 374199454338014322, guid: 1f957dd7ff972f642b84259aa71283a8, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
@@ -49680,7 +49680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 374199454338014322, guid: 1f957dd7ff972f642b84259aa71283a8, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 1
+      value: 0.999442
       objectReference: {fileID: 0}
     - target: {fileID: 2092200235738080387, guid: 1f957dd7ff972f642b84259aa71283a8, type: 3}
       propertyPath: m_Name

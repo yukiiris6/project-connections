@@ -1060,6 +1060,8 @@ MonoBehaviour:
   widthReduction: 0.1
   groundCheckDistance: 0.05
   jumpSFX: {fileID: 8300000, guid: 07c0117fa966ce841930909a04678bf0, type: 3}
+  jumpClouds: {fileID: 4552748934535744056, guid: 618ca9916e3047e41b6ef8d2eb4bed60, type: 3}
+  landClouds: {fileID: 4552748934535744056, guid: b8446c5f85fa1ba44926a103ef0e848d, type: 3}
 --- !u!114 &4719251868099460737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1142,7 +1144,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bbb5c0cad3d13843ab728dc80ccc713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerProgress
-  pauseMenuFlow: {fileID: 0}
 --- !u!114 &2655717555037067284
 MonoBehaviour:
   m_ObjectHideFlags: 0

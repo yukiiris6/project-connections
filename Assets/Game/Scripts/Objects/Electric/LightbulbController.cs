@@ -13,6 +13,7 @@ public class LightbulbController : MonoBehaviour
         transform.DOLocalRotate(maxAngle, 4f)
             .SetEase(Ease.InOutQuad)
             .SetLoops(-1, LoopType.Yoyo);
+        StartUp();
     }
 
     void OnEnable()

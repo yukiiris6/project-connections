@@ -7,6 +7,7 @@ public class OverlayCanvas : MonoBehaviour
     [SerializeField] SquareIrisWipeController squareIrisWipeController;
     [SerializeField] LevelTransition levelTransition;
     [SerializeField] CanvasGroup blackScreen;
+    [SerializeField] PauseMenuFlow pauseMenuFlow;
 
     static OverlayCanvas instance;
     public static OverlayCanvas Instance => instance;
@@ -14,6 +15,7 @@ public class OverlayCanvas : MonoBehaviour
     public SquareIrisWipeController SquareIrisWipeController => squareIrisWipeController;
     public LevelTransition LevelTransition => levelTransition;
     public CanvasGroup BlackScreen => blackScreen;
+    public PauseMenuFlow PauseMenuFlow => pauseMenuFlow;
 
     void Awake()
     {

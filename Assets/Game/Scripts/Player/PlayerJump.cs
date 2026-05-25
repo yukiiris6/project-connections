@@ -21,6 +21,8 @@ public class PlayerJumping : MonoBehaviour
 
     [Header("Other")]
     [SerializeField] AudioClip jumpSFX;
+    [SerializeField] GameObject jumpClouds;
+    [SerializeField] GameObject landClouds;
 
     AudioSource audioSource;
     BoxCollider2D myCollider;
@@ -71,6 +73,7 @@ public class PlayerJumping : MonoBehaviour
     void PerformJump()
     {
         if (!canJump) return;
+        Instantiate(jumpClouds, transform.position, Quaternion.identity);
         audioSource.PlayOneShot(jumpSFX);
         jumpTimeCounter = 0;
         myRigidBody.linearVelocityY = jumpStrength;
@@ -118,6 +121,7 @@ public class PlayerJumping : MonoBehaviour
         }
         else
         {
+            if (isGrounded == false) Instantiate(landClouds, transform.position, Quaternion.identity);
             isGrounded = true;
             canJump = true;
             coyoteTimeCounter = 0;
