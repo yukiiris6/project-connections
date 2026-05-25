@@ -18,6 +18,8 @@ public class GateController : MonoBehaviour
     SpriteRenderer spriteRenderer;
     AudioSource audioSource;
 
+    Tween tween;
+
     void Awake()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -60,9 +62,9 @@ public class GateController : MonoBehaviour
 
     void SetWidth(float newWidth)
     {
-        if (spriteRenderer.size.x == newWidth) return;
         float lastX = spriteRenderer.size.x;
-        DOTween.To(
+        tween?.Kill();
+        tween = DOTween.To(
             () => spriteRenderer.size.x,
             x =>
             {
@@ -77,6 +79,10 @@ public class GateController : MonoBehaviour
             newWidth,
             1f
         )
-        .SetEase(Ease.Flash);
+        .SetEase(Ease.Flash)
+        .OnComplete(() =>
+        {
+            tween = null;
+        });
     }
 }

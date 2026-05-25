@@ -36,12 +36,14 @@ public class CursorController : MonoBehaviour
     {
         RestoreCursor();
         cursorImage.enabled = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void HideCursor()
     {
         RestoreCursor();
         cursorImage.enabled = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void ChangeToNormalCursor()

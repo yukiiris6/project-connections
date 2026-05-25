@@ -11,15 +11,18 @@ public class TitleScreenFlow : MonoBehaviour
 
     AudioSource audioSource;
     CursorController cursorController;
+    LevelManager levelManager;
 
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
         cursorController = OverlayCanvas.Instance.CursorController;
+        levelManager = GlobalSystems.Instance.LevelManager;
     }
 
     public void OnClickStart()
     {
+        if (levelManager.IsLoading) return;
         audioSource.PlayOneShot(buttonPressSFX);
         titleScreenMenu.SetActive(false);
         levelSelectMenu.SetActive(true);
@@ -28,14 +31,16 @@ public class TitleScreenFlow : MonoBehaviour
 
     public void OnClickCredits()
     {
+        if (levelManager.IsLoading) return;
         audioSource.PlayOneShot(buttonPressSFX);
-        GlobalSystems.Instance.LevelManager.GoToCredits(true);
+        levelManager.GoToCredits(true);
         cursorController.ChangeToNormalCursor();
         cursorController.HideCursor();
     }
 
     public void OnClickExit()
     {
+        if (levelManager.IsLoading) return;
         audioSource.PlayOneShot(buttonPressSFX);
         cursorController.ChangeToNormalCursor();
         Application.Quit();
@@ -44,15 +49,17 @@ public class TitleScreenFlow : MonoBehaviour
 
     public void OnClickLevel(string name, string displayName)
     {
+        if (levelManager.IsLoading) return;
         audioSource.PlayOneShot(levelSelectSFX);
         cursorController.ChangeToNormalCursor();
         cursorController.HideCursor();
         levelSelectMenu.SetActive(false);
-        GlobalSystems.Instance.LevelManager.LoadLevel(name, displayName);
+        levelManager.LoadLevel(name, displayName);
     }
 
     public void OnClickBack()
     {
+        if (levelManager.IsLoading) return;
         audioSource.PlayOneShot(backButtonPressSFX);
         cursorController.ChangeToNormalCursor();
         titleScreenMenu.SetActive(true);

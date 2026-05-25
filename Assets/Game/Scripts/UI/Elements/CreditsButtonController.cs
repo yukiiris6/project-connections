@@ -18,6 +18,7 @@ public class CreditsButton : MonoBehaviour
 
     public void OnClick()
     {
+        if (levelManager.IsLoading) return;
         audioSource.PlayOneShot(buttonPressSFX);
         levelManager.GoToTitleScreen(false);
         cursorController.ChangeToNormalCursor();

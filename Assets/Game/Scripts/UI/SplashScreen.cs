@@ -24,7 +24,9 @@ public class SplashScreen : MonoBehaviour
 
     IEnumerator SplashScreenRoutine()
     {
+        yield return null;
         Instantiate(snowParticles, splashScreenParent);
+        OverlayCanvas.Instance.CursorController.HideCursor();
         yield return new WaitForSeconds(1f);
         logoCanvasGroup.alpha = 0;
         logoCanvasGroup.DOFade(1f, 2f).SetEase(Ease.InSine);
