@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Level_5
   m_EditorClassIdentifier: Assembly-CSharp::LevelDataSO
   fileName: Level_5
-  levelDisplayName: A Challenge
+  levelDisplayName: 'Extra: A Challenge'
   isLocked: 1

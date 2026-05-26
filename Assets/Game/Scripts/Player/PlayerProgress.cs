@@ -11,6 +11,9 @@ public class PlayerProgress : MonoBehaviour
     IInteractable currentInteractable;
     PlayerMovement playerMovement;
 
+    float lastPauseTime = 0;
+    float pauseCooldown = 0.05f;
+
     void Awake()
     {
         playerMovement = GetComponent<PlayerMovement>();
@@ -44,8 +47,10 @@ public class PlayerProgress : MonoBehaviour
     void OnPause(InputValue value)
     {
         if (levelManager.IsLoading) return;
-        if (value.isPressed)
+
+        if (value.isPressed && Time.unscaledTime > lastPauseTime + pauseCooldown)
         {
+            lastPauseTime = Time.unscaledTime;
             if (gameManager.IsPaused)
             {
                 gameManager.ResumeGame();

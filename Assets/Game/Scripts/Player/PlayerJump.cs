@@ -15,8 +15,8 @@ public class PlayerJumping : MonoBehaviour
     [SerializeField] float coyoteTimeDuration = .1f;
 
     [Header("Ground Detection")]
+    [SerializeField] BoxCollider2D feetCollider;
     [SerializeField] LayerMask groundLayer;
-    [SerializeField] float widthReduction = .1f;
     [SerializeField] float groundCheckDistance = .05f;
 
     [Header("Other")]
@@ -25,7 +25,6 @@ public class PlayerJumping : MonoBehaviour
     [SerializeField] GameObject landClouds;
 
     AudioSource audioSource;
-    BoxCollider2D myCollider;
     Rigidbody2D myRigidBody;
     PlayerAnimator playerAnimator;
     LevelManager levelManager;
@@ -42,7 +41,6 @@ public class PlayerJumping : MonoBehaviour
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
-        myCollider = GetComponent<BoxCollider2D>();
         myRigidBody = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<PlayerAnimator>();
         originalGravity = myRigidBody.gravityScale;
@@ -97,11 +95,11 @@ public class PlayerJumping : MonoBehaviour
     #region Validation
     void GroundedHandler()
     {
-        if (myCollider == null) return;
+        if (feetCollider == null) return;
 
-        Vector3 checkSize = new(myCollider.bounds.size.x - widthReduction, myCollider.bounds.size.y);
+        Vector3 checkSize = new(feetCollider.bounds.size.x, feetCollider.bounds.size.y);
         RaycastHit2D hit = Physics2D.BoxCast(
-            myCollider.bounds.center,
+            feetCollider.bounds.center,
             checkSize,
             0f,
             Vector2.down,

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Level_0
   m_EditorClassIdentifier: Assembly-CSharp::LevelDataSO
   fileName: Level_0
-  levelDisplayName: Hello, Mag!
+  levelDisplayName: Hello Mag!
   isLocked: 0

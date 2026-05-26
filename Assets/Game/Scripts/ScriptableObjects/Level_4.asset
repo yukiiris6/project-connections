@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Level_4
   m_EditorClassIdentifier: Assembly-CSharp::LevelDataSO
   fileName: Level_4
-  levelDisplayName: Short-circuit
+  levelDisplayName: 'Final: Short-circuit'
   isLocked: 1

@@ -72,7 +72,7 @@ public class DoorController : MonoBehaviour, IInteractable
         {
             IsInsideDoor = true;
             var playerProgress = other.GetComponent<PlayerProgress>();
-            playerProgress.SetInteractable(this);
+            if (playerProgress) playerProgress.SetInteractable(this);
         }
     }
 
@@ -82,7 +82,7 @@ public class DoorController : MonoBehaviour, IInteractable
         {
             IsInsideDoor = true;
             var playerProgress = other.GetComponent<PlayerProgress>();
-            playerProgress.SetInteractable(this);
+            if (playerProgress) playerProgress.SetInteractable(this);
         }
     }
 
@@ -92,7 +92,7 @@ public class DoorController : MonoBehaviour, IInteractable
         {
             IsInsideDoor = false;
             var playerProgress = other.GetComponent<PlayerProgress>();
-            playerProgress.SetInteractable(null);
+            if (playerProgress) playerProgress.SetInteractable(null);
         }
     }
 

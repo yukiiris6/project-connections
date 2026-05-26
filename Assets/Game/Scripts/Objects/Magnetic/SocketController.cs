@@ -71,7 +71,7 @@ public class SocketController : MonoBehaviour
         }
         if (plugsInRange.Count > 0)
         {
-            var selectedPlug = plugsInRange.First();
+            var selectedPlug = plugsInRange.Last();
             selectedPlug.ConnectToSocket(connectionAnchor.position, this);
             return selectedPlug;
         }

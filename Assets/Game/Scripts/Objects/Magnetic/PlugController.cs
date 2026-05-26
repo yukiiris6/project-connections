@@ -15,14 +15,17 @@ public class PlugController : MonoBehaviour
 
     [Header("Collision")]
     [SerializeField] LayerMask wallLayer;
+    [SerializeField] LayerMask raycastLayers;
+    [SerializeField] LayerMask ignoreWhilePlugging;
     [SerializeField] BoxCollider2D mainCollider;
     [SerializeField] LayerMask ignoreWhileMagnetizing;
-    [SerializeField] LayerMask ignoreWhilePluggingIn;
     [SerializeField] Transform modelTransform;
+    [SerializeField] GameObject killingTrigger;
 
     PlugVisuals plugVisuals;
     PlugSoundPlayer plugSoundPlayer;
     Vector2 originalPosition;
+    Quaternion originalRotation;
     Vector2 targetPosition;
     Vector2 currentVelocity;
     BoxCollider2D[] allColliders;
@@ -41,6 +44,7 @@ public class PlugController : MonoBehaviour
         allColliders = GetComponents<BoxCollider2D>();
         originalPosition = transform.position;
         targetPosition = originalPosition;
+        originalRotation = transform.localRotation;
     }
 
     void Start()
@@ -72,6 +76,8 @@ public class PlugController : MonoBehaviour
         IsMoving = true;
         shouldApplyStopDistance = true;
         targetSocket = null;
+
+        SetRotation();
     }
 
     public void ConnectToSocket(Vector2 newTargetPosition, SocketController socket)
@@ -81,11 +87,29 @@ public class PlugController : MonoBehaviour
         isReturning = false;
         IsMoving = true;
         shouldApplyStopDistance = false;
+
+        if (targetSocket) targetSocket.ChangeActivationState(false, null);
+
         targetSocket = socket;
         SetRotation();
-        foreach (var collider in allColliders)
+
+        Vector2 origin = transform.position;
+        Vector2 direction = targetPosition - origin;
+
+        RaycastHit2D hit = Physics2D.CircleCast(
+            origin + (direction.normalized * 1.5f),
+            .75f,
+            direction,
+            float.MaxValue,
+            raycastLayers
+        );
+
+        if (hit.collider && LayerMaskExtensions.Contains(ignoreWhilePlugging, hit.collider.gameObject.layer))
         {
-            collider.excludeLayers = ignoreWhileMagnetizing;
+            foreach (var collider in allColliders)
+            {
+                collider.excludeLayers = ignoreWhileMagnetizing;
+            }
         }
     }
 
@@ -120,6 +144,7 @@ public class PlugController : MonoBehaviour
     void Move()
     {
         if (!IsMoving) return;
+        killingTrigger.SetActive(false);
 
         float appliedStopDistance = shouldApplyStopDistance ? playerStopDistance : 0;
         float currentDistance = Vector2.Distance(transform.position, targetPosition);
@@ -156,7 +181,7 @@ public class PlugController : MonoBehaviour
 
         RaycastHit2D hit = Physics2D.BoxCast(
             mainCollider.bounds.center,
-            mainCollider.bounds.size,
+            mainCollider.bounds.size * .5f,
             0f,
             direction,
             moveDistance,
@@ -220,6 +245,7 @@ public class PlugController : MonoBehaviour
         plugSoundPlayer.PlayImpactSFX();
         ValidatePosition();
         SetRotation();
+        killingTrigger.SetActive(true);
     }
 
     void ValidatePosition()
@@ -234,12 +260,18 @@ public class PlugController : MonoBehaviour
 
         if (targetSocket != null)
         {
-            Quaternion worldTargetRotation = Quaternion.Euler(targetSocket.ConnectionRotation);
-            newRotation = Quaternion.Inverse(transform.parent.rotation) * worldTargetRotation;
+            newRotation = Quaternion.Euler(targetSocket.ConnectionRotation - transform.parent.eulerAngles);
+        }
+        else if (targetPosition != null && targetPosition != originalPosition)
+        {
+            Vector2 direction = targetPosition - (Vector2)transform.position;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            float snappedAngle = Mathf.Round(angle / 90f) * 90f;
+            newRotation = Quaternion.Euler(0, 0, snappedAngle - transform.parent.eulerAngles.z);
         }
         else
         {
-            newRotation = Quaternion.identity;
+            newRotation = originalRotation;
         }
 
         if (transform.localRotation.eulerAngles != newRotation.eulerAngles)

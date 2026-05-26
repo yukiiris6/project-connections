@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
@@ -14,15 +16,16 @@ public class GateController : MonoBehaviour
     [SerializeField] Color onLightColor;
     [SerializeField] float offWidth = 3f;
     [SerializeField] float onWidth = 1f;
+    [SerializeField] GameObject killingTrigger;
 
-    SpriteRenderer spriteRenderer;
+    SpriteRenderer[] spriteRenderers;
     AudioSource audioSource;
 
-    Tween tween;
+    readonly List<Tween> tweens = new();
 
     void Awake()
     {
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -42,47 +45,64 @@ public class GateController : MonoBehaviour
     {
         if (connectedSocket.HasEnergy)
         {
-            spriteRenderer.size = new Vector2(onWidth, spriteRenderer.size.y);
-            spriteRenderer.sprite = onSprite;
+            Array.ForEach(spriteRenderers, (spriteRenderer) =>
+            {
+                spriteRenderer.size = new Vector2(onWidth, spriteRenderer.size.y);
+                spriteRenderer.sprite = onSprite;
+            });
         }
         else
         {
-            spriteRenderer.size = new Vector2(offWidth, spriteRenderer.size.y);
-            spriteRenderer.sprite = offSprite;
+            Array.ForEach(spriteRenderers, (spriteRenderer) =>
+            {
+                spriteRenderer.size = new Vector2(offWidth, spriteRenderer.size.y);
+                spriteRenderer.sprite = offSprite;
+            });
         }
     }
 
     void SetActive(bool isActive)
     {
         float newWidth = isActive ? onWidth : offWidth;
-        spriteRenderer.sprite = isActive ? onSprite : offSprite;
+        Array.ForEach(spriteRenderers, (spriteRenderer) =>
+        {
+            spriteRenderer.sprite = isActive ? onSprite : offSprite;
+        });
         light2D.color = isActive ? onLightColor : offLightColor;
         SetWidth(newWidth);
     }
 
     void SetWidth(float newWidth)
     {
-        float lastX = spriteRenderer.size.x;
-        tween?.Kill();
-        tween = DOTween.To(
-            () => spriteRenderer.size.x,
-            x =>
-            {
-                float snappedX = Mathf.Round(x * 2) / 2f;
-                spriteRenderer.size = new Vector2(snappedX, spriteRenderer.size.y);
-                if (lastX != spriteRenderer.size.x)
-                {
-                    lastX = spriteRenderer.size.x;
-                    audioSource.PlayOneShot(openSFX);
-                }
-            },
-            newWidth,
-            1f
-        )
-        .SetEase(Ease.Flash)
-        .OnComplete(() =>
+        if (tweens != null && tweens.Count > 0) tweens.ForEach((tween) => tween.Kill());
+
+        Array.ForEach(spriteRenderers, (spriteRenderer) =>
         {
-            tween = null;
+            Tween myTween;
+            float lastX = spriteRenderer.size.x;
+            myTween = DOTween.To(
+                () => spriteRenderer.size.x,
+                x =>
+                {
+                    killingTrigger.SetActive(false);
+                    float snappedX = Mathf.Round(x * 2) / 2f;
+                    spriteRenderer.size = new Vector2(snappedX, spriteRenderer.size.y);
+                    if (lastX != spriteRenderer.size.x)
+                    {
+                        lastX = spriteRenderer.size.x;
+                        audioSource.PlayOneShot(openSFX);
+                    }
+                },
+                newWidth,
+                1f
+            )
+            .SetEase(Ease.Flash);
+            tweens.Add(myTween);
+            myTween.OnComplete(() =>
+            {
+                tweens.Remove(myTween);
+                killingTrigger.SetActive(true);
+            });
         });
     }
 }

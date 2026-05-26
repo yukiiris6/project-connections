@@ -16,6 +16,10 @@ public class TitleScreenFlow : MonoBehaviour
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+    }
+
+    void Start()
+    {
         cursorController = OverlayCanvas.Instance.CursorController;
         levelManager = GlobalSystems.Instance.LevelManager;
     }

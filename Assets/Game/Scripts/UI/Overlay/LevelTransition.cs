@@ -30,8 +30,8 @@ public class LevelTransition : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         canvasGroup = GetComponent<CanvasGroup>();
-        magnetRectOriginalPos = magnetRect.position;
-        plugRectOriginalPos = plugRect.position;
+        magnetRectOriginalPos = magnetRect.anchoredPosition;
+        plugRectOriginalPos = plugRect.anchoredPosition;
     }
 
     public void PlayAnimation()
@@ -60,8 +60,8 @@ public class LevelTransition : MonoBehaviour
     {
         magnetRect.gameObject.SetActive(true);
         plugRect.gameObject.SetActive(true);
-        magnetRect.position = magnetRectOriginalPos;
-        plugRect.position = plugRectOriginalPos;
+        magnetRect.anchoredPosition = magnetRectOriginalPos;
+        plugRect.anchoredPosition = plugRectOriginalPos;
         ShowLaser();
     }
 

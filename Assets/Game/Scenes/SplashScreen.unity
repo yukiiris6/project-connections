@@ -275,14 +275,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2079411570734029368, guid: 7fc714c745306c34099cec4ad20ee33e, type: 3}
-      propertyPath: m_Volume
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2945170248761191927, guid: 7fc714c745306c34099cec4ad20ee33e, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4525909209745512047, guid: 7fc714c745306c34099cec4ad20ee33e, type: 3}
       propertyPath: m_Name
       value: OverlayCanvas
