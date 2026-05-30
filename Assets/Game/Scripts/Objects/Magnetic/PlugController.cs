@@ -35,6 +35,7 @@ public class PlugController : MonoBehaviour
     bool isReturning = false;
     bool shouldApplyStopDistance = false;
     bool isInContainer = true;
+    public bool IsInSocket => targetSocket != null;
 
     #region Unity Lifecycle
     void Awake()
@@ -93,24 +94,7 @@ public class PlugController : MonoBehaviour
         targetSocket = socket;
         SetRotation();
 
-        Vector2 origin = transform.position;
-        Vector2 direction = targetPosition - origin;
-
-        RaycastHit2D hit = Physics2D.CircleCast(
-            origin + (direction.normalized * 1.5f),
-            .75f,
-            direction,
-            float.MaxValue,
-            raycastLayers
-        );
-
-        if (hit.collider && LayerMaskExtensions.Contains(ignoreWhilePlugging, hit.collider.gameObject.layer))
-        {
-            foreach (var collider in allColliders)
-            {
-                collider.excludeLayers = ignoreWhileMagnetizing;
-            }
-        }
+        ValidateObjectInFront();
     }
 
     public void CancelMagnetism()
@@ -128,6 +112,8 @@ public class PlugController : MonoBehaviour
             targetSocket.ChangeActivationState(false, this);
             targetSocket = null;
         }
+
+        ValidateObjectInFront();
     }
 
     public void SetStartState(SocketController socket, Vector2 newTargetPosition)
@@ -288,6 +274,30 @@ public class PlugController : MonoBehaviour
                 }
             }
             transform.localRotation = newRotation;
+        }
+    }
+
+    void ValidateObjectInFront()
+    {
+        Vector2 origin = transform.position;
+        Vector2 direction = targetPosition - origin;
+
+        RaycastHit2D hit = Physics2D.CircleCast(
+            origin,
+            .75f,
+            direction,
+            float.MaxValue,
+            raycastLayers
+        );
+
+        if (hit.collider && LayerMaskExtensions.Contains(ignoreWhilePlugging, hit.collider.gameObject.layer))
+        {
+            PlayerCollision playerCollision = hit.collider.GetComponentInChildren<PlayerCollision>();
+            if (playerCollision && playerCollision.IsAtopPlug) return;
+            foreach (var collider in allColliders)
+            {
+                collider.excludeLayers = ignoreWhileMagnetizing;
+            }
         }
     }
     #endregion

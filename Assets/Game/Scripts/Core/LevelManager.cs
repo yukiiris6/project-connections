@@ -102,7 +102,7 @@ public class LevelManager : MonoBehaviour
 
     public void RestartLevel()
     {
-        StartCoroutine(RestartRoutine(false));
+        StartCoroutine(RestartRoutine());
     }
 
     public void GoToTitleScreen(bool isFromLevel)
@@ -120,9 +120,9 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator LoadLevelRoutine(string name, string displayName, float startTime, bool shouldTransition, bool shouldPlayFirstTransition, bool isFromMenus)
     {
+        IsLoading = true;
         if (name == "TitleScreen" || name == "Credits" || isFromMenus) GlobalSystems.Instance.MusicManager.StopMusic();
         yield return new WaitForSecondsRealtime(startTime);
-        IsLoading = true;
         DOTween.KillAll();
         if (isFromMenus)
         {
@@ -189,17 +189,16 @@ public class LevelManager : MonoBehaviour
     {
         audioSource.PlayOneShot(deathSFX);
         GlobalSystems.Instance.MusicManager.StopMusic();
-        yield return new WaitForSecondsRealtime(1.5f);
-        StartCoroutine(RestartRoutine(true));
+        yield return new WaitForSecondsRealtime(1f);
+        StartCoroutine(RestartRoutine());
     }
 
-    IEnumerator RestartRoutine(bool shouldWait)
+    IEnumerator RestartRoutine()
     {
+        IsLoading = true;
         DOTween.KillAll();
-        if (shouldWait) yield return new WaitForSecondsRealtime(1f);
         squareIrisWipeController.StartIrisWipe();
         yield return new WaitForSecondsRealtime(squareIrisWipeController.Duration);
-        IsLoading = true;
         AsyncOperation loadLevel = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
         loadLevel.allowSceneActivation = false;
         while (loadLevel.progress < 0.9f) yield return null;

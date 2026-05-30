@@ -1,3 +1,4 @@
+using System.Linq;
 using Unity.Cinemachine;
 using UnityEngine;
 
@@ -5,15 +6,18 @@ using UnityEngine;
 [RequireComponent(typeof(CinemachineImpulseSource))]
 public class PlayerCollision : MonoBehaviour
 {
-    [SerializeField] BoxCollider2D feetCollider;
     [SerializeField] LayerMask movingPlatformsLayer;
     [SerializeField] LayerMask obstacleLayer;
 
+    BoxCollider2D boxCollider;
     Transform originalParent;
+    bool isAtopPlug = false;
+    public bool IsAtopPlug => isAtopPlug;
 
     void Awake()
     {
-        originalParent = transform.parent;
+        boxCollider = GetComponent<BoxCollider2D>();
+        originalParent = transform.parent.parent.parent;
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -21,10 +25,10 @@ public class PlayerCollision : MonoBehaviour
         bool isMovingPlatform = ((1 << other.gameObject.layer) & movingPlatformsLayer.value) != 0; ;
         if (isMovingPlatform)
         {
-            if (other.IsTouching(feetCollider))
-            {
-                transform.SetParent(other.transform);
-            }
+            transform.parent.parent.SetParent(other.transform);
+            PlugController plugController = other.GetComponent<PlugController>();
+            if (plugController) isAtopPlug = true;
+            else isAtopPlug = false;
         }
     }
 
@@ -33,19 +37,35 @@ public class PlayerCollision : MonoBehaviour
         bool isMovingPlatform = LayerMaskExtensions.Contains(movingPlatformsLayer, gameObject.layer);
         if (isMovingPlatform)
         {
-            if (transform.parent != other.transform && other.IsTouching(feetCollider))
+            if (transform.parent.parent.parent != other.transform)
             {
-                transform.SetParent(other.transform);
+                transform.parent.parent.SetParent(other.transform);
+                PlugController plugController = other.GetComponent<PlugController>();
+                if (plugController) isAtopPlug = true;
+                else isAtopPlug = false;
             }
         }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (transform.parent == other.transform)
+        if (transform.parent.parent.parent == other.transform)
         {
             if (!other.gameObject.activeInHierarchy || !other.enabled) return;
-            transform.SetParent(originalParent);
+            if (transform.parent.parent == null || !transform.parent.parent.gameObject.activeInHierarchy) return;
+            ContactFilter2D filter = new();
+            filter.SetLayerMask(movingPlatformsLayer);
+            filter.useTriggers = true;
+            Collider2D[] foundColliders = new Collider2D[5];
+            boxCollider.Overlap(filter, foundColliders);
+            foreach (var collider in foundColliders)
+            {
+                if (collider == null) break;
+                if (collider.transform == other.transform) return;
+            }
+            transform.parent.parent.SetParent(originalParent);
+            PlugController plugController = other.GetComponent<PlugController>();
+            if (plugController) isAtopPlug = false;
         }
     }
 }

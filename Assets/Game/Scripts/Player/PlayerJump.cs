@@ -29,6 +29,7 @@ public class PlayerJumping : MonoBehaviour
     PlayerAnimator playerAnimator;
     LevelManager levelManager;
 
+    Transform originalParent;
     float originalGravity;
     bool isGrounded = true;
     bool canJump = false;
@@ -37,9 +38,12 @@ public class PlayerJumping : MonoBehaviour
     float coyoteTimeCounter = 0f;
     float jumpTimeCounter = 0f;
 
+    public bool IsGrounded => isGrounded;
+
     #region Unity Lifecycle
     void Awake()
     {
+        originalParent = transform.parent;
         audioSource = GetComponent<AudioSource>();
         myRigidBody = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<PlayerAnimator>();
@@ -76,6 +80,7 @@ public class PlayerJumping : MonoBehaviour
         jumpTimeCounter = 0;
         myRigidBody.linearVelocityY = jumpStrength;
         isJumping = true;
+        transform.parent = originalParent;
     }
 
     void StopJump()
@@ -96,6 +101,12 @@ public class PlayerJumping : MonoBehaviour
     void GroundedHandler()
     {
         if (feetCollider == null) return;
+        if (isJumping)
+        {
+            isGrounded = false;
+            canJump = false;
+            return;
+        }
 
         Vector3 checkSize = new(feetCollider.bounds.size.x, feetCollider.bounds.size.y);
         RaycastHit2D hit = Physics2D.BoxCast(

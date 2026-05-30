@@ -118,26 +118,29 @@ public class PlayerMagnetize : MonoBehaviour
         SocketController socketActivation = selectedObject.GetComponent<SocketController>();
         if (socketActivation != null) ApplySocketMagnet(socketActivation);
 
-
         PlugController plugController = selectedObject.GetComponent<PlugController>();
         if (!plugController)
         {
             var plugContainer = selectedObject.GetComponent<PlugContainer>();
             if (plugContainer != null) plugController = plugContainer.PlugController;
         }
-        if (plugController && magnetizedPlug != plugController) CancelMagnet();
-        if (plugController != null) ApplyPlugMagnet(plugController);
 
         IsAiming = false;
         playerAnimator.SetIsAiming(false);
-
         HideLaser(leftLineRenderer);
         HideLaser(rightLineRenderer);
         cursorController.ChangeToNormalCursor();
+
+        bool isAimingAtPlug = plugController != null;
+        bool hasMagnetizedPlug = magnetizedPlug != null;
+        bool aimedPlugIsNotInSocket = isAimingAtPlug && !plugController.IsInSocket;
+        if (hasMagnetizedPlug && aimedPlugIsNotInSocket) CancelMagnet();
+        if (isAimingAtPlug) ApplyPlugMagnet(plugController);
     }
 
     void ApplyPlugMagnet(PlugController plugController)
     {
+        if (magnetizedPlug && magnetizedPlug.IsMoving) return;
         magnetizedPlug = plugController;
         plugController.Magnetize(magnetAnchor.position);
     }

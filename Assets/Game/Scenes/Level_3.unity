@@ -1190,6 +1190,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Characters
       objectReference: {fileID: 0}
+    - target: {fileID: 5461266843135111801, guid: 24c832ffbb92d3748ade8bff6aaeada9, type: 3}
+      propertyPath: m_Size.y
+      value: 0.22192836
+      objectReference: {fileID: 0}
+    - target: {fileID: 5461266843135111801, guid: 24c832ffbb92d3748ade8bff6aaeada9, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.010924935
+      objectReference: {fileID: 0}
     - target: {fileID: 6210504869241660142, guid: 24c832ffbb92d3748ade8bff6aaeada9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.5

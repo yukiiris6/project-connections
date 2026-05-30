@@ -16558,6 +16558,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1723221868}
     m_Modifications:
+    - target: {fileID: 3610948000037031114, guid: 80d1e0ad58ce09044ab2c092ff80a0c1, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 4154648212385442828, guid: 80d1e0ad58ce09044ab2c092ff80a0c1, type: 3}
       propertyPath: m_Name
       value: Background
@@ -41085,7 +41089,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 374199454338014322, guid: 1f957dd7ff972f642b84259aa71283a8, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
-      value: 1
+      value: 0.99986535
       objectReference: {fileID: 0}
     - target: {fileID: 374199454338014322, guid: 1f957dd7ff972f642b84259aa71283a8, type: 3}
       propertyPath: m_NormalizedViewPortRect.height

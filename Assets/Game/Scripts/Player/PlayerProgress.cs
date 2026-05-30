@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(PlayerAnimator))]
 [RequireComponent(typeof(PlayerMovement))]
+[RequireComponent(typeof(PlayerJumping))]
 public class PlayerProgress : MonoBehaviour
 {
     PauseMenuFlow pauseMenuFlow;
@@ -10,6 +11,7 @@ public class PlayerProgress : MonoBehaviour
     LevelManager levelManager;
     IInteractable currentInteractable;
     PlayerMovement playerMovement;
+    PlayerJumping playerJumping;
 
     float lastPauseTime = 0;
     float pauseCooldown = 0.05f;
@@ -17,6 +19,7 @@ public class PlayerProgress : MonoBehaviour
     void Awake()
     {
         playerMovement = GetComponent<PlayerMovement>();
+        playerJumping = GetComponent<PlayerJumping>();
     }
 
     void Start()
@@ -34,6 +37,7 @@ public class PlayerProgress : MonoBehaviour
     void OnInteract(InputValue value)
     {
         if (levelManager.IsLoading) return;
+        if (!playerJumping.IsGrounded) return;
         if (value.isPressed)
         {
             if (currentInteractable != null)

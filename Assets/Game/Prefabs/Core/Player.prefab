@@ -600,7 +600,7 @@ MonoBehaviour:
   m_ApplyToSortingLayers: 00000000d96e7b82afdcb909e73d69df
   m_LightCookieSprite: {fileID: 21300000, guid: 3ee57fcc992c6534fb6677ca23ddcb42, type: 3}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
-  m_LightOrder: 0
+  m_LightOrder: 1
   m_AlphaBlendOnOverlap: 0
   m_OverlapOperation: 0
   m_NormalMapDistance: 10
@@ -1054,10 +1054,10 @@ MonoBehaviour:
   jumpCutGravity: 2.5
   jumpApexThreshold: 0.1
   coyoteTimeDuration: 0.05
+  feetCollider: {fileID: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 960
-  widthReduction: 0.1
   groundCheckDistance: 0.05
   jumpSFX: {fileID: 8300000, guid: 07c0117fa966ce841930909a04678bf0, type: 3}
   jumpClouds: {fileID: 4552748934535744056, guid: 618ca9916e3047e41b6ef8d2eb4bed60, type: 3}
@@ -1087,6 +1087,8 @@ MonoBehaviour:
   magneticLineColor: {r: 0, g: 0.53271246, b: 1, a: 1}
   nonMagneticLineColor: {r: 0.75, g: 0.9116658, b: 1, a: 1}
   laserThickness: 0.15
+  targetGroup: {fileID: 0}
+  mouseAnchor: {fileID: 0}
 --- !u!114 &2649081965946370878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1099,15 +1101,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 232b324240bdafb469e397da9ceee427, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCollision
-  centerAchor: {fileID: 2534056035201261543}
-  feetCollider: {fileID: 7888431783593684954}
   movingPlatformsLayer:
     serializedVersion: 2
     m_Bits: 384
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 1024
-  deathParticles: {fileID: 8044436941123056371, guid: 876997989fd93c9408fceddbc349cc98, type: 3}
 --- !u!114 &673992099620874530
 MonoBehaviour:
   m_ObjectHideFlags: 0
