@@ -5377,6 +5377,10 @@ PrefabInstance:
       propertyPath: m_Direction
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2682336327669883867, guid: 24c832ffbb92d3748ade8bff6aaeada9, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3440393964714723213, guid: 24c832ffbb92d3748ade8bff6aaeada9, type: 3}
       propertyPath: m_IsActive
       value: 1
