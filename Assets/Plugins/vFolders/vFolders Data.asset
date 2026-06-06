@@ -23,6 +23,7 @@ MonoBehaviour:
     - 27dcf03bf23c0674794de9f1cabf94a5
     - 8cd5ae6066d923042b52ce8628edd3d0
     - cbc0de7293535ea4b876cface84bbcf5
+    - df643792470e2ae4b80d175ca17ae947
     values:
     - iconNameOrGuid: 
       colorIndex: 4
@@ -57,6 +58,10 @@ MonoBehaviour:
       isIconRecursive: 0
       isColorRecursive: 0
     - iconNameOrGuid: OverlayMenu On
+      colorIndex: 0
+      isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: SceneAsset Icon
       colorIndex: 0
       isIconRecursive: 0
       isColorRecursive: 0

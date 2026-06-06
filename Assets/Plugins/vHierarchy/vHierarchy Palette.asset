@@ -82,6 +82,13 @@ MonoBehaviour:
   - builtinIcons: []
     customIcons:
     - GridView On
+    - tree_icon_frond
+    - MouseRight
+    - PreTextureArrayFirstSlice
+    - OverlayMenu On
+    - AvatarSelector
+    - TargetJoint2D Icon
+    - Profiler.UI
     enabled: 1
   - builtinIcons: []
     customIcons: []
