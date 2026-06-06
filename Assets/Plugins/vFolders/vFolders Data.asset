@@ -16,6 +16,13 @@ MonoBehaviour:
     keys:
     - f4add2cfd6bfa554cb34fb8e4cb8ce11
     - 495d8fa37cdffab408dc7a11066b4647
+    - 629f71431a6265d43b81a860b4f33cfe
+    - 0220aab0833d04faeb927d84ca6cc40c
+    - 911e6b98cde3ca440a5c7ec90ccf8995
+    - 9fd4071c72fc97c48a04efcdbb0a7967
+    - 27dcf03bf23c0674794de9f1cabf94a5
+    - 8cd5ae6066d923042b52ce8628edd3d0
+    - cbc0de7293535ea4b876cface84bbcf5
     values:
     - iconNameOrGuid: 
       colorIndex: 4
@@ -23,6 +30,34 @@ MonoBehaviour:
       isColorRecursive: 0
     - iconNameOrGuid: 
       colorIndex: 10
+      isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: Terrain Icon
+      colorIndex: 0
+      isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: Settings Icon
+      colorIndex: 0
+      isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: Avatar Icon
+      colorIndex: 0
+      isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: Animation.Play
+      colorIndex: 0
+      isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: BoxCollider Icon
+      colorIndex: 0
+      isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: Mesh Icon
+      colorIndex: 0
+      isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: OverlayMenu On
+      colorIndex: 0
       isIconRecursive: 0
       isColorRecursive: 0
   bookmarks: []

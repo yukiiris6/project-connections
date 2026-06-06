@@ -78,3 +78,17 @@ MonoBehaviour:
     - Settings Icon
     customIcons: []
     enabled: 1
+  - builtinIcons: []
+    customIcons:
+    - Avatar Icon
+    - tree_icon_frond
+    - Animation.Play
+    - Play
+    enabled: 1
+  - builtinIcons: []
+    customIcons:
+    - OverlayMenu On
+    enabled: 1
+  - builtinIcons: []
+    customIcons: []
+    enabled: 1
