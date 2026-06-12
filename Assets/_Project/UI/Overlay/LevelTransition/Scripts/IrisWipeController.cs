@@ -16,7 +16,7 @@ public class IrisWipeController : MonoBehaviour
     void GetDependencies()
     {
         if (irisWipeTarget != null && mainCamera != null && rectTransform != null) return;
-        irisWipeTarget = FindFirstObjectByType<CenterAnchor>().transform;
+        // irisWipeTarget = FindFirstObjectByType<CenterAnchor>().transform;
         mainCamera = Camera.main;
         rectTransform = GetComponent<RectTransform>();
     }

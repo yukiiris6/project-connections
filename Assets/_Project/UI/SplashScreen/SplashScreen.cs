@@ -13,12 +13,12 @@ public class SplashScreen : MonoBehaviour
     [SerializeField] Transform splashScreenParent;
 
     AudioSource audioSource;
-    LevelManager levelManager;
+    SceneLoaderBrain sceneLoader;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        levelManager = GlobalSystems.Instance.LevelManager;
+        sceneLoader = CoreSystems.Instance.SceneLoader;
         StartCoroutine(SplashScreenRoutine());
     }
 
@@ -26,7 +26,7 @@ public class SplashScreen : MonoBehaviour
     {
         yield return null;
         Instantiate(snowParticles, splashScreenParent);
-        OverlayCanvas.Instance.CursorController.HideCursor();
+        UISystems.Instance.OverlayCanvas.CursorController.HideCursor();
         yield return new WaitForSeconds(1f);
         logoCanvasGroup.alpha = 0;
         logoCanvasGroup.DOFade(1f, 2f).SetEase(Ease.InSine);
@@ -36,6 +36,6 @@ public class SplashScreen : MonoBehaviour
         logoCanvasGroup.DOFade(0f, 2f).SetEase(Ease.OutSine);
         blackImage.DOFade(0f, 2f);
         yield return new WaitForSeconds(2f);
-        levelManager.GoToTitleScreen(false);
+        sceneLoader.GoToTitleScreen();
     }
 }

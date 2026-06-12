@@ -4,7 +4,8 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Plug
+  - Magnetic
+  - Interactable
   layers:
   - Default
   - TransparentFX
@@ -12,12 +13,12 @@ TagManager:
   - Player
   - Water
   - UI
-  - Ground
-  - Plug
-  - MovingPlatform
+  - Floor
+  - Hazard
+  - DynamicSolid
+  - Interactable
   - Socket
-  - Obstacle
-  - Particle
+  - Hurtbox
   - 
   - 
   - 

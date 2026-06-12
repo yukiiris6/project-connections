@@ -5,22 +5,21 @@ public class CreditsButton : MonoBehaviour
 {
     [SerializeField] AudioClip buttonPressSFX;
 
-    LevelManager levelManager;
+    SceneLoaderBrain sceneLoader;
     AudioSource audioSource;
     CursorController cursorController;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        levelManager = GlobalSystems.Instance.LevelManager;
-        cursorController = OverlayCanvas.Instance.CursorController;
+        sceneLoader = CoreSystems.Instance.SceneLoader;
+        cursorController = UISystems.Instance.OverlayCanvas.CursorController;
     }
 
     public void OnClick()
     {
-        if (levelManager.IsLoading) return;
         audioSource.PlayOneShot(buttonPressSFX);
-        levelManager.GoToTitleScreen(false);
+        sceneLoader.GoToTitleScreen();
         cursorController.ChangeToNormalCursor();
         cursorController.HideCursor();
     }

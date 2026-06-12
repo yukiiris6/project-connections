@@ -1,0 +1,17 @@
+{
+    "name": "Magnetism",
+    "rootNamespace": "ProjectConnections.Magnetism",
+    "references": [
+        "GUID:6d7236aafc1baed4986886f395aa8a7b",
+        "GUID:4307f53044263cf4b835bd812fc161a4"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,17 @@
+{
+    "name": "Electric",
+    "rootNamespace": "ProjectConnections.Electric",
+    "references": [
+        "GUID:516a5277b8c3b4f4c8cc86b77b1591ff",
+        "GUID:830bb3e1a3e7aff4689f802308667fe2"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

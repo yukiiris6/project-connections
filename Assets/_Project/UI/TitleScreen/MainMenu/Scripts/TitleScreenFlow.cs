@@ -11,7 +11,7 @@ public class TitleScreenFlow : MonoBehaviour
 
     AudioSource audioSource;
     CursorController cursorController;
-    LevelManager levelManager;
+    SceneLoaderBrain sceneLoader;
 
     void Awake()
     {
@@ -20,13 +20,12 @@ public class TitleScreenFlow : MonoBehaviour
 
     void Start()
     {
-        cursorController = OverlayCanvas.Instance.CursorController;
-        levelManager = GlobalSystems.Instance.LevelManager;
+        cursorController = UISystems.Instance.OverlayCanvas.CursorController;
+        sceneLoader = CoreSystems.Instance.SceneLoader;
     }
 
     public void OnClickStart()
     {
-        if (levelManager.IsLoading) return;
         audioSource.PlayOneShot(buttonPressSFX);
         titleScreenMenu.SetActive(false);
         levelSelectMenu.SetActive(true);
@@ -35,35 +34,31 @@ public class TitleScreenFlow : MonoBehaviour
 
     public void OnClickCredits()
     {
-        if (levelManager.IsLoading) return;
         audioSource.PlayOneShot(buttonPressSFX);
-        levelManager.GoToCredits(true);
+        sceneLoader.GoToCredits();
         cursorController.ChangeToNormalCursor();
         cursorController.HideCursor();
     }
 
     public void OnClickExit()
     {
-        if (levelManager.IsLoading) return;
         audioSource.PlayOneShot(buttonPressSFX);
         cursorController.ChangeToNormalCursor();
         Application.Quit();
         if (Application.isEditor) print("Exiting game...");
     }
 
-    public void OnClickLevel(string name, string displayName)
+    public void OnClickLevel(string name)
     {
-        if (levelManager.IsLoading) return;
         audioSource.PlayOneShot(levelSelectSFX);
         cursorController.ChangeToNormalCursor();
         cursorController.HideCursor();
         levelSelectMenu.SetActive(false);
-        levelManager.LoadLevel(name, displayName);
+        sceneLoader.GoToLevel(name);
     }
 
     public void OnClickBack()
     {
-        if (levelManager.IsLoading) return;
         audioSource.PlayOneShot(backButtonPressSFX);
         cursorController.ChangeToNormalCursor();
         titleScreenMenu.SetActive(true);

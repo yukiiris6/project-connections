@@ -16,7 +16,7 @@ public class LevelSelectView : MonoBehaviour
 
     void Start()
     {
-        LevelData[] levels = GlobalSystems.Instance.LevelManager.Levels;
+        LevelData[] levels = CoreSystems.Instance.SceneLoader.LevelDataStorage.Levels;
         for (int i = 0; i < levels.Count(); i++)
         {
             CreateButton(levels[i], i + 1);
@@ -28,7 +28,7 @@ public class LevelSelectView : MonoBehaviour
         var buttonObject = Instantiate(buttonPrefab, Vector2.zero, Quaternion.identity, buttonParent);
         var button = buttonObject.GetComponent<Button>();
         var levelText = buttonObject.GetComponentInChildren<TMP_Text>();
-        button.onClick.AddListener(() => titleScreenFlow.OnClickLevel(levelData.fileName, levelData.levelDisplayName));
+        button.onClick.AddListener(() => titleScreenFlow.OnClickLevel(levelData.fileName));
         levelText.text = index.ToString();
         button.image.sprite = levelButton;
         if (levelData.isLocked)

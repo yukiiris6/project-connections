@@ -2,8 +2,8 @@ using UnityEngine;
 
 public static class LayerMaskExtensions
 {
-    public static bool Contains(this LayerMask mask, int layer)
+    public static bool Contains(LayerMask layerGroup, int layer)
     {
-        return (mask.value & (1 << layer)) > 0;
+        return (layerGroup.value & (1 << layer)) > 0;
     }
 }

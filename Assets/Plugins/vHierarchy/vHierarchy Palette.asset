@@ -89,6 +89,8 @@ MonoBehaviour:
     - AvatarSelector
     - TargetJoint2D Icon
     - Profiler.UI
+    - StateMachineEditor.StateSub
+    - CreateAddNew
     enabled: 1
   - builtinIcons: []
     customIcons: []

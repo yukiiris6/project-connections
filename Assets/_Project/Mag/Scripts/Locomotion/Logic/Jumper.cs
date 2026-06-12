@@ -1,0 +1,85 @@
+using System;
+using UnityEngine;
+
+public class Jumper : MonoBehaviour
+{
+    [Header("References")]
+    [SerializeField] Rigidbody2D myRigidBody;
+
+    [Header("Config")]
+    [SerializeField] float jumpStrength = 1f;
+    [SerializeField] float minJumpTime = 1f;
+    [SerializeField] float cutGravityStrength = 5f;
+    [SerializeField] float jumpApexThreshold = .1f;
+
+    public event Action OnFall;
+    public event Action<float> OnYVelocityUpdated;
+
+    float lastYVelocity = 0f;
+    float airTimeCounter = 0f;
+    float originalGravity;
+
+    void Awake()
+    {
+        originalGravity = myRigidBody.gravityScale;
+    }
+
+    void FixedUpdate()
+    {
+        MidJumpHandler();
+        PostJumpHandler();
+        VerifyVelocity();
+    }
+
+    public void Jump()
+    {
+        myRigidBody.linearVelocityY = jumpStrength;
+        airTimeCounter = 0;
+    }
+
+    public void StopJump()
+    {
+        if (myRigidBody.linearVelocityY > 0)
+        {
+            CutGravity();
+        }
+    }
+
+    void VerifyVelocity()
+    {
+        if (lastYVelocity != myRigidBody.linearVelocityY)
+        {
+            OnYVelocityUpdated?.Invoke(myRigidBody.linearVelocityY);
+        }
+        lastYVelocity = myRigidBody.linearVelocityY;
+    }
+
+    void MidJumpHandler()
+    {
+        if (airTimeCounter > minJumpTime) StopJump();
+        else airTimeCounter += Time.fixedDeltaTime;
+    }
+
+    void PostJumpHandler()
+    {
+        if (airTimeCounter <= minJumpTime) return;
+        bool isFalling = myRigidBody.linearVelocityY < 0;
+        bool isOnJumpsApex = Mathf.Abs(myRigidBody.linearVelocityY) < jumpApexThreshold;
+        if (isFalling || isOnJumpsApex)
+        {
+            RestoreGravity();
+            OnFall?.Invoke();
+        }
+    }
+
+    void CutGravity()
+    {
+        airTimeCounter = minJumpTime;
+        myRigidBody.gravityScale = originalGravity + cutGravityStrength;
+    }
+
+    void RestoreGravity()
+    {
+        myRigidBody.gravityScale = originalGravity;
+    }
+}

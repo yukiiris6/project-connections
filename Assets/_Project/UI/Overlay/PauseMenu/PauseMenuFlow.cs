@@ -11,8 +11,8 @@ public class PauseMenuFlow : MonoBehaviour
 
     AudioSource audioSource;
     CursorController cursorController;
-    GameManager gameManager;
-    LevelManager levelManager;
+    GameBrain gameManager;
+    SceneLoaderBrain sceneLoader;
 
     void Awake()
     {
@@ -21,14 +21,14 @@ public class PauseMenuFlow : MonoBehaviour
 
     void Start()
     {
-        cursorController = OverlayCanvas.Instance.CursorController;
-        gameManager = GlobalSystems.Instance.GameManager;
-        levelManager = GlobalSystems.Instance.LevelManager;
+        cursorController = UISystems.Instance.OverlayCanvas.CursorController;
+        gameManager = CoreSystems.Instance.GameBrain;
+        sceneLoader = CoreSystems.Instance.SceneLoader;
     }
 
     public void OpenMenu()
     {
-        GlobalSystems.Instance.MusicManager.PauseMusic();
+        CoreSystems.Instance.MusicPlayer.PauseMusic();
         audioSource.PlayOneShot(pauseSFX);
         pauseMenuContainer.SetActive(true);
         backgroundObject.SetActive(true);
@@ -36,7 +36,7 @@ public class PauseMenuFlow : MonoBehaviour
 
     public void OnClickResume()
     {
-        GlobalSystems.Instance.MusicManager.PlayMusic();
+        CoreSystems.Instance.MusicPlayer.PlayMusic();
         PlayClickSound();
         backgroundObject.SetActive(false);
         pauseMenuContainer.SetActive(false);
@@ -49,7 +49,7 @@ public class PauseMenuFlow : MonoBehaviour
         PlayClickSound();
         backgroundObject.SetActive(false);
         pauseMenuContainer.SetActive(false);
-        levelManager.RestartLevel();
+        sceneLoader.RestartLevel();
         cursorController.ChangeToNormalCursor();
     }
 
@@ -58,7 +58,7 @@ public class PauseMenuFlow : MonoBehaviour
         PlayClickSound();
         backgroundObject.SetActive(false);
         pauseMenuContainer.SetActive(false);
-        levelManager.GoToTitleScreen(true);
+        sceneLoader.GoToTitleScreen();
         cursorController.ChangeToNormalCursor();
     }
 
