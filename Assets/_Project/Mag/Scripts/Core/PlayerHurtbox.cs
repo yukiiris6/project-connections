@@ -12,7 +12,7 @@ public class PlayerHurtbox : MonoBehaviour
     SceneLoaderBrain sceneLoader;
     bool hasDied = false;
 
-    void Awake()
+    void Start()
     {
         gameManager = CoreSystems.Instance.GameBrain;
         sceneLoader = CoreSystems.Instance.SceneLoader;

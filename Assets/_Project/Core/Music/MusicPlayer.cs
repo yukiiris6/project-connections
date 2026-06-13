@@ -3,17 +3,10 @@ using UnityEngine;
 public class MusicPlayer : MonoBehaviour
 {
     [SerializeField] AudioSource audioSource;
-    [SerializeField] AudioClip titleScreenMusic;
-    [SerializeField] AudioClip levelMusic;
 
-    public void SetTitleScreenMusic()
+    public void SetAudioClip(AudioClip audioClip)
     {
-        audioSource.clip = titleScreenMusic;
-    }
-
-    public void SetLevelMusic()
-    {
-        audioSource.clip = levelMusic;
+        audioSource.clip = audioClip;
     }
 
     public void PlayMusic()

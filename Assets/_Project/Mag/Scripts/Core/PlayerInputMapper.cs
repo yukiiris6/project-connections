@@ -3,12 +3,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputMapper : MonoBehaviour
 {
-    PlayerInput playerInput;
+    [SerializeField] PlayerInput playerInput;
 
-    void GetDependencies()
+    public void ToggleActionMap()
     {
-        if (playerInput != null) return;
-        playerInput = FindFirstObjectByType<PlayerInput>();
+        if (playerInput.currentActionMap.name.Equals("Gameplay")) SetUIActionMap();
+        else SetGameplayActionMap();
     }
 
     public void SetGameplayActionMap()

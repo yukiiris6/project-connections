@@ -3,7 +3,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "LevelDataSO", menuName = "Scriptable Objects/LevelDataSO")]
 public class LevelDataSO : ScriptableObject
 {
-    public string fileName;
+    public string sceneName;
     public string levelDisplayName;
-    public bool isLocked = true;
+    public bool isMenu;
+    public AudioClip levelMusic;
 }

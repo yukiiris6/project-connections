@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8086752814234137859}
   - component: {fileID: 6135856418612162121}
+  - component: {fileID: 4660322493824966564}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: GameStateBrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,6 +45,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f21ddf48d0fcdf48bde6af4336cfcdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  <TimeController>k__BackingField: {fileID: 4660322493824966564}
+--- !u!114 &4660322493824966564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550435102758849216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3549e0a2d9807c54f85b89fecfe23adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TimeController
+  slowdownAmount: 0.25
 --- !u!1 &3119119763804018676
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,9 +106,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 744101a59b45d5747943a4fa1465a60a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GlobalSystems
-  levelManager: {fileID: 5019382020671489159}
-  gameManager: {fileID: 6135856418612162121}
-  musicManager: {fileID: 239769527630184325}
+  sceneLoader: {fileID: 5019382020671489159}
+  gameBrain: {fileID: 6135856418612162121}
+  musicPlayer: {fileID: 239769527630184325}
 --- !u!1 &6385632219563639073
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,9 +119,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5034980011808485658}
   - component: {fileID: 5019382020671489159}
-  - component: {fileID: 2684921731929863684}
+  - component: {fileID: 7742194849389113773}
+  - component: {fileID: 4551997742392231265}
+  - component: {fileID: 2366088256172927509}
   m_Layer: 0
-  m_Name: LevelManager
+  m_Name: LevelLoader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,113 +156,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 803245bbdebbca54abae20d6ec4722b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelManager
-  levelSOs:
-  - {fileID: 11400000, guid: 6b07368221426cb45a7b2ef858af8a38, type: 2}
-  - {fileID: 11400000, guid: c93f9aadba6213a4f9f2aafff4cd0858, type: 2}
-  - {fileID: 11400000, guid: e812f3fcafa217a49a7a69363da6e780, type: 2}
-  - {fileID: 11400000, guid: 26df65294a2790d4bb7cc5b644cf1923, type: 2}
-  - {fileID: 11400000, guid: bc728a338984a774083e507d3d4ab643, type: 2}
-  - {fileID: 11400000, guid: 8f0d37748c2366c4782f64fe7bdaf4a1, type: 2}
-  deathSFX: {fileID: 8300000, guid: a19b5171ce0ba074cb8f1a026d6141fd, type: 3}
-  creditsJingle: {fileID: 8300000, guid: 5354c732b1ea59a43a5d8084537d9113, type: 3}
-  doorAnimationDuration: 1
---- !u!82 &2684921731929863684
-AudioSource:
+  <LevelDataStorage>k__BackingField: {fileID: 7742194849389113773}
+  <SceneLoader>k__BackingField: {fileID: 4551997742392231265}
+  <SceneMusicPlayer>k__BackingField: {fileID: 2366088256172927509}
+  <GameBrain>k__BackingField: {fileID: 6135856418612162121}
+--- !u!114 &7742194849389113773
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6385632219563639073}
   m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 5ad456a6f6b161a409ccea9a60c5e3f9, type: 2}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 0.1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dd758a1027be2d47b29647ef13f2cb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelDataStorage
+  levelSOs:
+  - {fileID: 11400000, guid: 30d5d9cc2a20b5641981a762794b45a2, type: 2}
+  - {fileID: 11400000, guid: ed9bb3f8cd4da134a8c5d26da251d566, type: 2}
+  - {fileID: 11400000, guid: 3d91b872f337e88488c0ee229e2b0131, type: 2}
+  - {fileID: 11400000, guid: 6b07368221426cb45a7b2ef858af8a38, type: 2}
+  - {fileID: 11400000, guid: c93f9aadba6213a4f9f2aafff4cd0858, type: 2}
+  - {fileID: 11400000, guid: e812f3fcafa217a49a7a69363da6e780, type: 2}
+  - {fileID: 11400000, guid: 26df65294a2790d4bb7cc5b644cf1923, type: 2}
+  - {fileID: 11400000, guid: bc728a338984a774083e507d3d4ab643, type: 2}
+  - {fileID: 11400000, guid: 8f0d37748c2366c4782f64fe7bdaf4a1, type: 2}
+--- !u!114 &4551997742392231265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6385632219563639073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff6c4c5e7a3c60140bf5ecb9173e4f44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneLoader
+  levelDataStorage: {fileID: 7742194849389113773}
+--- !u!114 &2366088256172927509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6385632219563639073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2e856ca70f57a84a93636bf98fc123b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneMusicPlayer
 --- !u!1 &8799392060615013622
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,7 +219,7 @@ GameObject:
   - component: {fileID: 239769527630184325}
   - component: {fileID: 3988219191760519912}
   m_Layer: 0
-  m_Name: MusicManager
+  m_Name: MusicPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -291,8 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 591d3731f4f0a684587c5e02884a2c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MusicManager
-  titleScreenMusic: {fileID: 8300000, guid: ee9ded05d70808a4da1e5d7aae1ccddf, type: 3}
-  levelMusic: {fileID: 8300000, guid: 141d7896da32b734a856a523dbf86028, type: 3}
+  audioSource: {fileID: 3988219191760519912}
 --- !u!82 &3988219191760519912
 AudioSource:
   m_ObjectHideFlags: 0

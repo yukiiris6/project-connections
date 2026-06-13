@@ -12,14 +12,19 @@ public class LevelDataStorage : MonoBehaviour
     public LevelData currentLevel { get; private set; }
     public LevelData[] Levels => availableLevels;
     int currentLevelIndex = 0;
-    string menuFileName;
 
     void Awake()
     {
+        bool isFirstLevel = true;
         List<LevelData> newLevels = new();
         foreach (var levelSO in levelSOs)
         {
             LevelData newLevel = new LevelData(levelSO);
+            if (!newLevel.isMenu && isFirstLevel)
+            {
+                newLevel.SetIsLocked(false);
+                isFirstLevel = false;
+            }
             newLevels.Add(newLevel);
         }
         availableLevels = newLevels.ToArray();
@@ -28,18 +33,21 @@ public class LevelDataStorage : MonoBehaviour
         {
             currentLevelIndex = Array.IndexOf(availableLevels, found);
         }
+        else
+        {
+            currentLevelIndex = -1;
+        }
     }
-
 
     public string GetCurrentDisplayName()
     {
-        if (currentLevelIndex == -1) return menuFileName;
+        if (currentLevelIndex == -1) return SceneManager.GetActiveScene().name;
         return availableLevels[currentLevelIndex].levelDisplayName;
     }
 
-    public string GetCurrentFileName()
+    public string GetCurrentSceneName()
     {
-        if (currentLevelIndex == -1) return menuFileName;
+        if (currentLevelIndex == -1) return SceneManager.GetActiveScene().name;
         return availableLevels[currentLevelIndex].fileName;
     }
 
@@ -50,7 +58,14 @@ public class LevelDataStorage : MonoBehaviour
 
     public bool CurrentLevelIsMenu()
     {
-        return currentLevelIndex == -1;
+        if (currentLevelIndex == -1) return false;
+        return availableLevels[currentLevelIndex].isMenu;
+    }
+
+    public AudioClip GetCurrentLevelMusic()
+    {
+        if (currentLevelIndex == -1) return null;
+        return availableLevels[currentLevelIndex].levelMusic;
     }
 
     public void ChangeCurrentLevel(string fileName)
@@ -63,7 +78,6 @@ public class LevelDataStorage : MonoBehaviour
         else
         {
             currentLevelIndex = -1;
-            menuFileName = fileName;
         }
     }
 

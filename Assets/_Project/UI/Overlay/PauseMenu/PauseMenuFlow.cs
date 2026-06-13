@@ -13,10 +13,21 @@ public class PauseMenuFlow : MonoBehaviour
     CursorController cursorController;
     GameBrain gameManager;
     SceneLoaderBrain sceneLoader;
+    MusicPlayer musicPlayer;
+    PlayerInputMapper playerInputMapper;
+
+    bool IsOpen;
+
+    void GetDependencies()
+    {
+        if (playerInputMapper != null && audioSource != null) return;
+        playerInputMapper = FindFirstObjectByType<PlayerInputMapper>();
+        audioSource = GetComponent<AudioSource>();
+    }
 
     void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
+        GetDependencies();
     }
 
     void Start()
@@ -24,24 +35,37 @@ public class PauseMenuFlow : MonoBehaviour
         cursorController = UISystems.Instance.OverlayCanvas.CursorController;
         gameManager = CoreSystems.Instance.GameBrain;
         sceneLoader = CoreSystems.Instance.SceneLoader;
+        musicPlayer = CoreSystems.Instance.MusicPlayer;
+    }
+
+    public void ToggleMenu()
+    {
+        GetDependencies();
+        if (IsOpen) OpenMenu();
+        else CloseMenu();
     }
 
     public void OpenMenu()
     {
-        CoreSystems.Instance.MusicPlayer.PauseMusic();
+        GetDependencies();
+        musicPlayer.PauseMusic();
         audioSource.PlayOneShot(pauseSFX);
         pauseMenuContainer.SetActive(true);
         backgroundObject.SetActive(true);
+        gameManager.PauseGame();
+        playerInputMapper.SetUIActionMap();
     }
 
-    public void OnClickResume()
+    public void CloseMenu()
     {
-        CoreSystems.Instance.MusicPlayer.PlayMusic();
+        GetDependencies();
+        musicPlayer.PlayMusic();
         PlayClickSound();
         backgroundObject.SetActive(false);
         pauseMenuContainer.SetActive(false);
         gameManager.ResumeGame();
         cursorController.ChangeToNormalCursor();
+        playerInputMapper.SetGameplayActionMap();
     }
 
     public void OnClickRestart()

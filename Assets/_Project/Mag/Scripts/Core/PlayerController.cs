@@ -12,8 +12,14 @@ public class PlayerController : MonoBehaviour
     public event Action<bool> OnAimInput;
     public event Action<bool> OnPauseInput;
 
+    PauseMenuFlow pauseMenu;
     float pauseCooldown = 0.05f;
     float lastPauseTime = 0;
+
+    void Start()
+    {
+        pauseMenu = UISystems.Instance.OverlayCanvas.PauseMenuFlow;
+    }
 
     void Update()
     {
@@ -45,6 +51,7 @@ public class PlayerController : MonoBehaviour
         if (value.isPressed && lastPauseTime > pauseCooldown)
         {
             lastPauseTime = 0;
+            pauseMenu.OpenMenu();
             OnPauseInput?.Invoke(value.isPressed);
         }
     }

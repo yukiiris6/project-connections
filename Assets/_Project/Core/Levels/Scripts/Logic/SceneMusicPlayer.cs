@@ -16,15 +16,10 @@ public class SceneMusicPlayer : MonoBehaviour
         musicPlayer.StopMusic();
     }
 
-    public void PlayMenuMusic()
+    public void SetMusicAndPlay(AudioClip audioClip)
     {
-        musicPlayer.SetTitleScreenMusic();
-        musicPlayer.PlayMusic();
-    }
-
-    public void PlayLevelMusic()
-    {
-        musicPlayer.SetLevelMusic();
+        GetDependencies();
+        musicPlayer.SetAudioClip(audioClip);
         musicPlayer.PlayMusic();
     }
 }

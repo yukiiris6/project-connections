@@ -4,7 +4,9 @@ public class InMenuState : LevelState
 {
     public void Enter(LevelContext context)
     {
-        context.SceneMusicPlayer.PlayLevelMusic();
+        AudioClip currentLevelMusic = context.LevelDataStorage.GetCurrentLevelMusic();
+        context.SceneMusicPlayer.SetMusicAndPlay(currentLevelMusic);
+        context.GameBrain.ResumeGame();
     }
 
     public void Exit(LevelContext context) { }

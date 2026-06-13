@@ -23,50 +23,17 @@ public class SceneLoader : MonoBehaviour
         blackScreen = UISystems.Instance.OverlayCanvas.BlackScreen;
     }
 
-    // IEnumerator LoadLevelRoutine(int levelNumber, string fileName, string displayName)
-    // {
-    //     yield return new WaitForSecondsRealtime(startTime);
-    //     DOTween.KillAll();
-    //     if (isFromMenus) yield return PreLoadFade();
-    //     else yield return PreLoadIrisWipe();
-
-    //     yield return LoadSceneSequence(fileName);
-    //     PlayLevelTransition(true, levelNumber, displayName);
-    //     if (isToMenus)
-    //     {
-    //         blackScreen.alpha = 1f;
-    //         irisWipeController.ResetIris();
-    //         blackScreen.DOFade(0f, 1f).SetEase(Ease.InSine);
-    //         if (fileName == "Credits")
-    //         {
-    //             var found = Array.Find(levels, level => !level.isFinished);
-    //             if (found == null) audioSource.PlayOneShot(creditsJingle);
-    //         }
-    //         CoreSystems.Instance.MusicManager.SetTitleScreenMusic();
-    //         yield return new WaitForSeconds(1f);
-    //     }
-    //     else
-    //     {
-    //         blackScreen.alpha = 0f;
-    //         irisWipeController.StartIrisOpen();
-    //         yield return new WaitForSeconds(irisWipeController.Duration);
-    //         CoreSystems.Instance.MusicManager.SetLevelMusic();
-    //     }
-    //     cursorController.ShowCursor();
-    //     if (fileName != "Credits")
-    //     {
-    //         CoreSystems.Instance.MusicManager.PlayMusic();
-    //     }
-    // }
-
     public void LoadCurrentScene(bool isFromMenu, bool isToMenu)
     {
+        GetDependencies();
         StartCoroutine(SceneTransitionSequence(isFromMenu, isToMenu));
     }
 
     IEnumerator SceneTransitionSequence(bool isFromMenu, bool isToMenu)
     {
-        string fileName = levelDataStorage.GetCurrentFileName();
+        string fileName = levelDataStorage.GetCurrentSceneName();
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        bool isRestarting = currentSceneName == fileName;
 
         if (isFromMenu) yield return PlayFadeOut();
         else yield return PlayIrisWipe();
@@ -76,7 +43,7 @@ public class SceneLoader : MonoBehaviour
         if (isToMenu) yield return PlayFadeIn();
         else yield return PlayIrisOpen();
 
-        if (!isToMenu)
+        if (!isToMenu && !isRestarting)
         {
             int currentLevelNumber = levelDataStorage.GetCurrentLevelNumber();
             string currentLevelName = levelDataStorage.GetCurrentDisplayName();
