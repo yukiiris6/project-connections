@@ -6,31 +6,31 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Project/Core/Levels/GameJam/Scenes/SplashScreen.unity
+    path: Assets/_Project/Core/Scene/Levels/GameJam/Scenes/SplashScreen.unity
     guid: 5b1a02c0a0592714d84147a507e8a307
   - enabled: 1
-    path: Assets/_Project/Core/Levels/GameJam/Scenes/TitleScreen.unity
+    path: Assets/_Project/Core/Scene/Levels/GameJam/Scenes/TitleScreen.unity
     guid: f6ebd88802de5134abb3339f89eca536
   - enabled: 1
-    path: Assets/_Project/Core/Levels/GameJam/Scenes/CreditsScreen.unity
+    path: Assets/_Project/Core/Scene/Levels/GameJam/Scenes/CreditsScreen.unity
     guid: c3d05610bf93a7f4d863cff3b13400b9
   - enabled: 1
-    path: Assets/_Project/Core/Levels/GameJam/Scenes/Level_0.unity
+    path: Assets/_Project/Core/Scene/Levels/GameJam/Scenes/Level_0.unity
     guid: deb49331879676043b01cb5529d52b69
   - enabled: 1
-    path: Assets/_Project/Core/Levels/GameJam/Scenes/Level_1.unity
+    path: Assets/_Project/Core/Scene/Levels/GameJam/Scenes/Level_1.unity
     guid: 25dbeeb0fd4108344bf2c47e44e46926
   - enabled: 1
-    path: Assets/_Project/Core/Levels/GameJam/Scenes/Level_2.unity
+    path: Assets/_Project/Core/Scene/Levels/GameJam/Scenes/Level_2.unity
     guid: e84c937335f54d04493f8c686ee0f56f
   - enabled: 1
-    path: Assets/_Project/Core/Levels/GameJam/Scenes/Level_3.unity
+    path: Assets/_Project/Core/Scene/Levels/GameJam/Scenes/Level_3.unity
     guid: 53dceeafef421214bbe2713d814371f1
   - enabled: 1
-    path: Assets/_Project/Core/Levels/GameJam/Scenes/Level_4.unity
+    path: Assets/_Project/Core/Scene/Levels/GameJam/Scenes/Level_4.unity
     guid: fb50f4c87faa12d49b19e8d00c88ad7a
   - enabled: 1
-    path: Assets/_Project/Core/Levels/GameJam/Scenes/Level_5.unity
+    path: Assets/_Project/Core/Scene/Levels/GameJam/Scenes/Level_5.unity
     guid: 3691200feed7a5c4384d98581408a775
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

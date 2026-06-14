@@ -1,9 +1,10 @@
 using UnityEngine;
 using DG.Tweening;
 
-[RequireComponent(typeof(RectTransform))]
 public class ObjectBobbing : MonoBehaviour
 {
+    [SerializeField] RectTransform rectTransform;
+
     [Header("Bobbing")]
     [Tooltip("Will use minimum value if false")]
     [SerializeField] bool shouldRandomizeBobbing;
@@ -20,7 +21,6 @@ public class ObjectBobbing : MonoBehaviour
     [SerializeField] bool shouldHaveStartDelay;
     [SerializeField] Ease easeType = Ease.InOutSine;
 
-    RectTransform rectTransform;
 
     void GetDependencies()
     {

@@ -2,16 +2,12 @@ using UnityEngine;
 
 public class CoreSystems : MonoBehaviour
 {
-    [SerializeField] SceneLoaderBrain sceneLoader;
-    [SerializeField] GameBrain gameBrain;
-    [SerializeField] MusicPlayer musicPlayer;
+    [field: SerializeField] public SceneLoaderBrain SceneLoader { get; private set; }
+    [field: SerializeField] public GameStateSetterBrain GameStateSetter { get; private set; }
+    [field: SerializeField] public MusicPlayer MusicPlayer { get; private set; }
 
     static CoreSystems instance;
     public static CoreSystems Instance => instance;
-
-    public SceneLoaderBrain SceneLoader => sceneLoader;
-    public GameBrain GameBrain => gameBrain;
-    public MusicPlayer MusicPlayer => musicPlayer;
 
     void Awake()
     {
