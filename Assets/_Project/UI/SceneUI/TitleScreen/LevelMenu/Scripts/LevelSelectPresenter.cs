@@ -1,20 +1,21 @@
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using Sirenix.OdinInspector;
 using UnityEngine.UI;
 
 public class LevelSelectPresenter : MonoBehaviour
 {
     [Header("Menu References")]
-    [SerializeField] GameObject titleScreenMenu;
-    [SerializeField] GameObject levelButtonPrefab;
-    [SerializeField] Transform levelButtonParent;
-    [SerializeField] TMP_Text levelNameText;
+    [SerializeField, Required] GameObject titleScreenMenu;
+    [SerializeField, Required] GameObject levelButtonPrefab;
+    [SerializeField, Required] Transform levelButtonParent;
+    [SerializeField, Required] TMP_Text levelNameText;
 
     [Header("Button References")]
-    [SerializeField] Button backButton;
-    [SerializeField] ButtonHighlightAnimation buttonHighlightAnimation;
-    [SerializeField] ButtonSoundPlayer buttonSoundPlayer;
+    [SerializeField, Required] Button backButton;
+    [SerializeField, Required] SelectionHighlightAnimation buttonHighlightAnimation;
+    [SerializeField, Required] ButtonSoundPlayer buttonSoundPlayer;
 
     CursorPresenter cursorController;
     SceneLoaderBrain sceneLoader;
@@ -23,6 +24,7 @@ public class LevelSelectPresenter : MonoBehaviour
     {
         cursorController = OverlaySystems.Instance.CursorPresenter;
         sceneLoader = CoreSystems.Instance.SceneLoader;
+        SetupButtons();
     }
 
     void SetupButtons()
@@ -33,10 +35,13 @@ public class LevelSelectPresenter : MonoBehaviour
 
     void InstantiateLevelButtons()
     {
-        LevelData[] levels = CoreSystems.Instance.SceneLoader.LevelDataStorage.Levels;
-        for (int i = 0; i < levels.Count(); i++)
+        LevelData[] levels = sceneLoader.LevelDataStorage.GetLevels();
+        int index = 0;
+        foreach (var level in levels)
         {
-            CreateButton(levels[i], i + 1);
+            if (level.Type != LevelType.Stage) continue;
+            index++;
+            CreateButton(level, index);
         }
     }
 
@@ -44,8 +49,8 @@ public class LevelSelectPresenter : MonoBehaviour
     {
         var buttonObject = Instantiate(levelButtonPrefab, Vector2.zero, Quaternion.identity, levelButtonParent);
         LevelButtonPresenter levelButtonPresenter = buttonObject.GetComponent<LevelButtonPresenter>();
-        levelButtonPresenter.Init(levelNameText, levelData.DisplayName, levelData.State);
-        levelButtonPresenter.BasicButtonPresenter.Init(buttonHighlightAnimation);
+        levelButtonPresenter.Init(levelNameText, levelData.DisplayName, levelData.State, index);
+        levelButtonPresenter.BasicButtonPresenter.Init(buttonHighlightAnimation, buttonSoundPlayer);
         levelButtonPresenter.button.onClick.AddListener(() => OnClickLevel(levelData.FileName));
     }
 

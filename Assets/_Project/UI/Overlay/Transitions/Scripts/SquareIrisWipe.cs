@@ -1,12 +1,13 @@
 using DG.Tweening;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class SquareIrisWipe : MonoBehaviour
 {
     [field: SerializeField] public float Duration { get; private set; } = 1.5f;
-    [SerializeField] Material irisMaterial;
-    [SerializeField] AudioSource audioSource;
-    [SerializeField] AudioClip transitionSFX;
+    [SerializeField, Required] Material irisMaterial;
+    [SerializeField, Required] AudioSource audioSource;
+    [SerializeField, Required] AudioClip transitionSFX;
 
     void Start()
     {

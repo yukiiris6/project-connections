@@ -3,6 +3,7 @@ using ProjectConnections.Magnetism.Anchored.States;
 using ProjectConnections.Magnetism.Modules;
 using ProjectConnections.Magnetism.States;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace ProjectConnections.Magnetism.Pluggable.States
 {

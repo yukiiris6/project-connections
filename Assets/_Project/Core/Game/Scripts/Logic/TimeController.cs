@@ -1,9 +1,10 @@
 using UnityEngine;
+using Sirenix.OdinInspector;
 using UnityEngine.InputSystem;
 
 public class TimeController : MonoBehaviour
 {
-    [SerializeField][Range(0, 1f)] float slowdownAmount;
+    [SerializeField, Required][Range(0, 1f)] float slowdownAmount;
 
     public void PauseTime()
     {

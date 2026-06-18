@@ -1,15 +1,16 @@
 using DG.Tweening;
 using UnityEngine;
+using Sirenix.OdinInspector;
 using UnityEngine.Rendering.Universal;
 
 namespace ProjectConnections.Electric
 {
     public class ElevatorBrain : MonoBehaviour
     {
-        [SerializeField] ElectricityProvider electricityProvider;
-        [SerializeField] ElevatorController controller;
-        [SerializeField] ElevatorPresenter presenter;
-        [SerializeField] ElevatorDockPresenter dockPresenter;
+        [SerializeField, Required] ElectricityProvider electricityProvider;
+        [SerializeField, Required] ElevatorController controller;
+        [SerializeField, Required] ElevatorPresenter presenter;
+        [SerializeField, Required] ElevatorDockPresenter dockPresenter;
 
         void OnEnable()
         {

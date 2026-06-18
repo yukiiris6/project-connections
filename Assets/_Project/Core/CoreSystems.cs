@@ -1,10 +1,11 @@
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class CoreSystems : MonoBehaviour
 {
-    [field: SerializeField] public SceneLoaderBrain SceneLoader { get; private set; }
-    [field: SerializeField] public GameStateSetterBrain GameStateSetter { get; private set; }
-    [field: SerializeField] public MusicPlayer MusicPlayer { get; private set; }
+    [field: SerializeField, Required] public SceneLoaderBrain SceneLoader { get; private set; }
+    [field: SerializeField, Required] public GameStateSetterBrain GameStateSetter { get; private set; }
+    [field: SerializeField, Required] public MusicPlayer MusicPlayer { get; private set; }
 
     static CoreSystems instance;
     public static CoreSystems Instance => instance;

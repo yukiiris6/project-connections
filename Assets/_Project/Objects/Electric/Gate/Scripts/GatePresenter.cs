@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Sirenix.OdinInspector;
 using UnityEngine.Rendering.Universal;
 
 namespace ProjectConnections.Electric
@@ -7,12 +8,12 @@ namespace ProjectConnections.Electric
     public class GatePresenter : MonoBehaviour
     {
         [Header("Sprite")]
-        [SerializeField] SpriteRenderer[] spriteRenderers;
-        [SerializeField] Sprite onSprite;
-        [SerializeField] Sprite offSprite;
+        [SerializeField, Required] SpriteRenderer[] spriteRenderers;
+        [SerializeField, Required] Sprite onSprite;
+        [SerializeField, Required] Sprite offSprite;
 
         [Header("Light")]
-        [SerializeField] ElectricObjectLight electricObjectLight;
+        [SerializeField, Required] ElectricObjectLight electricObjectLight;
 
         public void UpdateStatus(bool hasEnergy)
         {

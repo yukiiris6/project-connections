@@ -1,5 +1,5 @@
-﻿/// Credit jonbro5556 
-/// Based on original LineRender script by jack.sydorenko 
+﻿/// Credit jonbro5556
+/// Based on original LineRender script by jack.sydorenko
 /// Sourced from - http://forum.unity3d.com/threads/new-ui-and-line-drawing.253772/
 
 using System.Collections.Generic;
@@ -72,7 +72,7 @@ namespace UnityEngine.UI.Extensions
                 sizeX = 1;
                 sizeY = 1;
             }
-            // build a new set of m_points taking into account the cap sizes. 
+            // build a new set of m_points taking into account the cap sizes.
             // would be cool to support corners too, but that might be a bit tough :)
             var pointList = new List<Vector2>();
             pointList.Add(m_points[0]);

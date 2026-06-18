@@ -1,0 +1,378 @@
+fileFormatVersion: 2
+guid: 195f3949ba34d2a439b18658ddca0a16
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2095920247481259419
+    second: Yuki 10px (Outlined) Atlas_0
+  - first:
+      213: -7987237368622139545
+    second: Yuki 10px (Outlined) Atlas_1
+  - first:
+      213: 7488297448393234538
+    second: Yuki 10px (Outlined) Atlas_2
+  - first:
+      213: 2765391955997360711
+    second: Yuki 10px (Outlined) Atlas_3
+  - first:
+      213: 6582596034196891388
+    second: Yuki 10px (Outlined) Atlas_4
+  - first:
+      213: 1899924516166740897
+    second: Yuki 10px (Outlined) Atlas_5
+  - first:
+      213: -9181436702860789021
+    second: Yuki 10px (Outlined) Atlas_6
+  - first:
+      213: -8743102024952947477
+    second: Yuki 10px (Outlined) Atlas_7
+  - first:
+      213: -393511078342491793
+    second: Yuki 10px (Outlined) Atlas_8
+  - first:
+      213: 169931779962068928
+    second: Yuki 10px (Outlined) Atlas_9
+  - first:
+      213: 311540417309149268
+    second: Yuki 10px (Outlined) Atlas_10
+  - first:
+      213: -5272338619117684994
+    second: Yuki 10px (Outlined) Atlas_11
+  - first:
+      213: -6233317013685263854
+    second: Yuki 10px (Outlined) Atlas_12
+  - first:
+      213: 2175947003531449816
+    second: Yuki 10px (Outlined) Atlas_13
+  - first:
+      213: -372086221042736513
+    second: Yuki 10px (Outlined) Atlas_14
+  - first:
+      213: -8489026030547895871
+    second: Yuki 10px (Outlined) Atlas_15
+  - first:
+      213: -8688075360059301198
+    second: Yuki 10px (Outlined) Atlas_16
+  - first:
+      213: -4684318070208309968
+    second: Yuki 10px (Outlined) Atlas_17
+  - first:
+      213: -9210233611898381122
+    second: Yuki 10px (Outlined) Atlas_18
+  - first:
+      213: -5928570918419438213
+    second: Yuki 10px (Outlined) Atlas_19
+  - first:
+      213: -8378976579655967237
+    second: Yuki 10px (Outlined) Atlas_20
+  - first:
+      213: 188995746973644577
+    second: Yuki 10px (Outlined) Atlas_21
+  - first:
+      213: 389291601182421459
+    second: Yuki 10px (Outlined) Atlas_22
+  - first:
+      213: -4571708478801333802
+    second: Yuki 10px (Outlined) Atlas_23
+  - first:
+      213: -6118764027200706003
+    second: Yuki 10px (Outlined) Atlas_24
+  - first:
+      213: 5550274051691662161
+    second: Yuki 10px (Outlined) Atlas_25
+  - first:
+      213: -4234695730403944215
+    second: Yuki 10px (Outlined) Atlas_26
+  - first:
+      213: -5299232039050988570
+    second: Yuki 10px (Outlined) Atlas_27
+  - first:
+      213: 7127929013886577946
+    second: Yuki 10px (Outlined) Atlas_28
+  - first:
+      213: -4782888585001479687
+    second: Yuki 10px (Outlined) Atlas_29
+  - first:
+      213: 909699913529969931
+    second: Yuki 10px (Outlined) Atlas_30
+  - first:
+      213: -8808474123771879497
+    second: Yuki 10px (Outlined) Atlas_31
+  - first:
+      213: -7361817131204661636
+    second: Yuki 10px (Outlined) Atlas_32
+  - first:
+      213: -1435653983399779704
+    second: Yuki 10px (Outlined) Atlas_33
+  - first:
+      213: -7882169958338511065
+    second: Yuki 10px (Outlined) Atlas_34
+  - first:
+      213: 666030237007830140
+    second: Yuki 10px (Outlined) Atlas_35
+  - first:
+      213: 7349130716477634222
+    second: Yuki 10px (Outlined) Atlas_36
+  - first:
+      213: -2135234303666547617
+    second: Yuki 10px (Outlined) Atlas_37
+  - first:
+      213: 8068821323917617652
+    second: Yuki 10px (Outlined) Atlas_38
+  - first:
+      213: -4766407426366394630
+    second: Yuki 10px (Outlined) Atlas_39
+  - first:
+      213: 8696307957801156702
+    second: Yuki 10px (Outlined) Atlas_40
+  - first:
+      213: -9175786130950334905
+    second: Yuki 10px (Outlined) Atlas_41
+  - first:
+      213: -5117013362786776906
+    second: Yuki 10px (Outlined) Atlas_42
+  - first:
+      213: 4832846886622566775
+    second: Yuki 10px (Outlined) Atlas_43
+  - first:
+      213: 6322006864809403076
+    second: Yuki 10px (Outlined) Atlas_44
+  - first:
+      213: -7149373963076336028
+    second: Yuki 10px (Outlined) Atlas_45
+  - first:
+      213: 8386175791286517923
+    second: Yuki 10px (Outlined) Atlas_46
+  - first:
+      213: 1485632478187711815
+    second: Yuki 10px (Outlined) Atlas_47
+  - first:
+      213: -3555564526847618623
+    second: Yuki 10px (Outlined) Atlas_48
+  - first:
+      213: -2812595929707068668
+    second: Yuki 10px (Outlined) Atlas_49
+  - first:
+      213: 1416209437114585570
+    second: Yuki 10px (Outlined) Atlas_50
+  - first:
+      213: 5501869619590166626
+    second: Yuki 10px (Outlined) Atlas_51
+  - first:
+      213: 1300441127490033250
+    second: Yuki 10px (Outlined) Atlas_52
+  - first:
+      213: 3864509876747455780
+    second: Yuki 10px (Outlined) Atlas_53
+  - first:
+      213: 5723577993189165737
+    second: Yuki 10px (Outlined) Atlas_54
+  - first:
+      213: -2413058850929239864
+    second: Yuki 10px (Outlined) Atlas_55
+  - first:
+      213: 2873587193851082321
+    second: Yuki 10px (Outlined) Atlas_56
+  - first:
+      213: 1517609021190444878
+    second: Yuki 10px (Outlined) Atlas_57
+  - first:
+      213: 7070701961723885869
+    second: Yuki 10px (Outlined) Atlas_58
+  - first:
+      213: 6657651661809913456
+    second: Yuki 10px (Outlined) Atlas_59
+  - first:
+      213: -5757264997398021616
+    second: Yuki 10px (Outlined) Atlas_60
+  - first:
+      213: 7479250360561607067
+    second: Yuki 10px (Outlined) Atlas_61
+  - first:
+      213: -7166934917454918967
+    second: Yuki 10px (Outlined) Atlas_62
+  - first:
+      213: -201981561522369787
+    second: Yuki 10px (Outlined) Atlas_63
+  - first:
+      213: -1361309478265541314
+    second: Yuki 10px (Outlined) Atlas_64
+  - first:
+      213: -6571914113389689917
+    second: Yuki 10px (Outlined) Atlas_65
+  - first:
+      213: 8787825950545331784
+    second: Yuki 10px (Outlined) Atlas_66
+  - first:
+      213: 8299120045069018080
+    second: Yuki 10px (Outlined) Atlas_67
+  - first:
+      213: 8096230748665239669
+    second: Yuki 10px (Outlined) Atlas_68
+  - first:
+      213: -5450329651319140643
+    second: Yuki 10px (Outlined) Atlas_69
+  - first:
+      213: -3697321852742286856
+    second: Yuki 10px (Outlined) Atlas_70
+  - first:
+      213: -3383617947893188728
+    second: Yuki 10px (Outlined) Atlas_71
+  - first:
+      213: -7445897159268826489
+    second: Yuki 10px (Outlined) Atlas_72
+  - first:
+      213: -5715757123406658301
+    second: Yuki 10px (Outlined) Atlas_73
+  - first:
+      213: -4096185862044762091
+    second: Yuki 10px (Outlined) Atlas_74
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: power-plug_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd4fb8583cb465e60800000000000000
+      internalID: 7950625495300437215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      power-plug_0: 7950625495300437215
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

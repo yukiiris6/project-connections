@@ -2,41 +2,27 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Sirenix.OdinInspector;
 using UnityEngine.SceneManagement;
 
 public class LevelDataStorage : MonoBehaviour
 {
-    [SerializeField] LevelDataSO[] levelSOs;
+    [SerializeField, Required] LevelDataSO[] levelSOs;
 
     LevelData[] availableLevels;
     public LevelData currentLevel { get; private set; }
-    public LevelData[] Levels => availableLevels;
     int currentLevelIndex = 0;
 
     void Awake()
     {
-        bool isFirstLevel = true;
-        List<LevelData> newLevels = new();
-        foreach (var levelSO in levelSOs)
-        {
-            LevelData newLevel = new LevelData(levelSO);
-            if (newLevel.Type == LevelType.Stage && isFirstLevel)
-            {
-                newLevel.SetState(LevelState.Unlocked);
-                isFirstLevel = false;
-            }
-            newLevels.Add(newLevel);
-        }
-        availableLevels = newLevels.ToArray();
+        SetupLevels();
         var found = Array.Find(availableLevels, level => level.FileName == SceneManager.GetActiveScene().name);
-        if (found != null)
-        {
-            currentLevelIndex = Array.IndexOf(availableLevels, found);
-        }
-        else
-        {
-            currentLevelIndex = -1;
-        }
+        ChangeCurrentLevel(found?.FileName);
+    }
+
+    public LevelData[] GetLevels()
+    {
+        return availableLevels;
     }
 
     public string GetCurrentDisplayName()
@@ -98,5 +84,22 @@ public class LevelDataStorage : MonoBehaviour
             var nextLevel = availableLevels[currentLevelIndex + 1];
             nextLevel.SetState(LevelState.Unlocked);
         }
+    }
+
+    void SetupLevels()
+    {
+        bool isFirstLevel = true;
+        List<LevelData> newLevels = new();
+        foreach (var levelSO in levelSOs)
+        {
+            LevelData newLevel = new LevelData(levelSO);
+            if (newLevel.Type == LevelType.Stage && isFirstLevel)
+            {
+                newLevel.SetState(LevelState.Unlocked);
+                isFirstLevel = false;
+            }
+            newLevels.Add(newLevel);
+        }
+        availableLevels = newLevels.ToArray();
     }
 }

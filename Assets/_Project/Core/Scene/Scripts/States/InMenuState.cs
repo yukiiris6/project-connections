@@ -1,4 +1,5 @@
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class InMenuState : SceneState
 {
@@ -17,14 +18,13 @@ public class InMenuState : SceneState
         context.SetState(new LoadingState());
     }
 
-    public void GoToLevel(LevelContext context, string fileName)
+    public void GoToLevel(LevelContext context, string sceneName)
     {
-        context.LevelDataStorage.ChangeCurrentLevel(fileName);
+        context.LevelDataStorage.ChangeCurrentLevel(sceneName);
         LevelType nextLevelType = context.LevelDataStorage.GetCurrentLevelType();
         context.SceneLoader.LoadCurrentScene(LevelType.Menu, nextLevelType);
         context.SetState(new LoadingState());
     }
 
     public void FinishLevel(LevelContext context) { }
-
 }

@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using Sirenix.OdinInspector;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -11,15 +12,15 @@ public class LevelButtonPresenter : MonoBehaviour, IPointerEnterHandler, IPointe
     [field: SerializeField] public BasicButtonPresenter BasicButtonPresenter { get; private set; }
 
     [Header("Visuals")]
-    [SerializeField] Sprite defaultSprite;
-    [SerializeField] Sprite finishedSprite;
-    [SerializeField] Sprite lockedSprite;
-    [SerializeField] Color lockedColor;
+    [SerializeField, Required] Sprite defaultSprite;
+    [SerializeField, Required] Sprite finishedSprite;
+    [SerializeField, Required] Sprite lockedSprite;
+    [SerializeField, Required] Color lockedColor;
 
     TMP_Text levelNameText;
     string levelName;
 
-    void SetupComponent(LevelState levelState)
+    void SetupComponent(LevelState levelState, int index)
     {
         switch (levelState)
         {
@@ -35,12 +36,14 @@ public class LevelButtonPresenter : MonoBehaviour, IPointerEnterHandler, IPointe
                 button.image.sprite = defaultSprite;
                 break;
         }
+        labelText.text = index.ToString();
     }
 
-    public void Init(TMP_Text levelNameText, string levelName, LevelState levelState)
+    public void Init(TMP_Text levelNameText, string levelName, LevelState levelState, int index)
     {
+        this.levelNameText = levelNameText;
         this.levelName = levelName;
-        SetupComponent(levelState);
+        SetupComponent(levelState, index);
     }
 
     public void OnPointerEnter(PointerEventData eventData)

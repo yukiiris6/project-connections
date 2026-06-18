@@ -1,9 +1,10 @@
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class PlayerSoundPlayer : MonoBehaviour
 {
     [field: SerializeField] AudioSource audioSource;
-    [SerializeField] AudioClip jumpSFX;
+    [SerializeField, Required] AudioClip jumpSFX;
 
     public void PlayJumpSFX()
     {

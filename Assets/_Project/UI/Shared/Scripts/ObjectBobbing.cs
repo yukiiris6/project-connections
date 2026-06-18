@@ -1,25 +1,26 @@
 using UnityEngine;
+using Sirenix.OdinInspector;
 using DG.Tweening;
 
 public class ObjectBobbing : MonoBehaviour
 {
-    [SerializeField] RectTransform rectTransform;
+    [SerializeField, Required] RectTransform rectTransform;
 
     [Header("Bobbing")]
     [Tooltip("Will use minimum value if false")]
-    [SerializeField] bool shouldRandomizeBobbing;
-    [SerializeField] float bobAmountMin = 2f;
-    [SerializeField] float bobAmountMax = 6f;
+    [SerializeField, Required] bool shouldRandomizeBobbing;
+    [SerializeField, Required] float bobAmountMin = 2f;
+    [SerializeField, Required] float bobAmountMax = 6f;
 
     [Header("Duration")]
     [Tooltip("Will use minimum value if false")]
-    [SerializeField] bool shouldRandomizeDuration;
-    [SerializeField] float durationMin = 1f;
-    [SerializeField] float durationMax = 2f;
+    [SerializeField, Required] bool shouldRandomizeDuration;
+    [SerializeField, Required] float durationMin = 1f;
+    [SerializeField, Required] float durationMax = 2f;
 
     [Header("Misc")]
-    [SerializeField] bool shouldHaveStartDelay;
-    [SerializeField] Ease easeType = Ease.InOutSine;
+    [SerializeField, Required] bool shouldHaveStartDelay;
+    [SerializeField, Required] Ease easeType = Ease.InOutSine;
 
 
     void GetDependencies()

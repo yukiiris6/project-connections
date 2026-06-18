@@ -1,11 +1,12 @@
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class MagnetPresenter : MonoBehaviour
 {
-    [SerializeField] LineRenderer[] lineRenderers;
-    [SerializeField] Transform aimingTransform;
-    [SerializeField] Color magneticLineColor;
-    [SerializeField] Color nonMagneticLineColor;
+    [SerializeField, Required] LineRenderer[] lineRenderers;
+    [SerializeField, Required] Transform aimingTransform;
+    [SerializeField, Required] Color magneticLineColor;
+    [SerializeField, Required] Color nonMagneticLineColor;
 
     CursorPresenter cursorController;
 

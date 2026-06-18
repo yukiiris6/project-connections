@@ -1,10 +1,11 @@
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    [SerializeField] PlayerMovement playerMovement;
-    [SerializeField] GroundValidator groundValidator;
-    [SerializeField] string interactableTagString = "Interactable";
+    [SerializeField, Required] PlayerMovement playerMovement;
+    [SerializeField, Required] GroundValidator groundValidator;
+    [SerializeField, Required] string interactableTagString = "Interactable";
 
     IInteractable currentInteractable;
 

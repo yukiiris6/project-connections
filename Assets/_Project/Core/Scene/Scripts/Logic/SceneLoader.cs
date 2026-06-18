@@ -2,14 +2,22 @@ using System;
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
+using Sirenix.OdinInspector;
 using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    [SerializeField] LevelDataStorage levelDataStorage;
-    [SerializeField] SceneTransitionPlayer sceneTransitionPlayer;
+    [SerializeField, Required] LevelDataStorage levelDataStorage;
+    [SerializeField, Required] SceneTransitionPlayer sceneTransitionPlayer;
 
     public event Action OnLevelLoad;
+
+    CursorPresenter cursorPresenter;
+
+    void Start()
+    {
+        cursorPresenter = OverlaySystems.Instance.CursorPresenter;
+    }
 
     public void LoadCurrentScene(LevelType currentLevelType, LevelType nextLevelType)
     {
@@ -24,9 +32,11 @@ public class SceneLoader : MonoBehaviour
         string currentSceneName = SceneManager.GetActiveScene().name;
         bool isRestarting = currentSceneName == fileName;
 
+        cursorPresenter.UnallowInteractions();
         if (isFromMenu) yield return sceneTransitionPlayer.PlayFadeOut();
         else yield return sceneTransitionPlayer.PlayIrisWipe();
 
+        DOTween.KillAll();
         yield return LoadSceneSequence(fileName);
 
         if (isToMenu) yield return sceneTransitionPlayer.PlayFadeIn();
@@ -38,6 +48,8 @@ public class SceneLoader : MonoBehaviour
             string currentLevelName = levelDataStorage.GetCurrentDisplayName();
             yield return sceneTransitionPlayer.PlayLevelEnterSequence(isFromMenu, currentLevelNumber, currentLevelName);
         }
+
+        cursorPresenter.AllowInteractions();
 
         OnLevelLoad?.Invoke();
     }

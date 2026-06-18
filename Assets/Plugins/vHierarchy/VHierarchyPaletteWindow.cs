@@ -555,7 +555,7 @@ namespace VHierarchy
 
 
 
-        static void RepaintOnAlt() // Update 
+        static void RepaintOnAlt() // Update
         {
             if (curEvent.holdingAlt != wasHoldingAlt)
                 if (EditorWindow.mouseOverWindow is VHierarchyPaletteWindow paletteWindow)

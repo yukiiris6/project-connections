@@ -1,11 +1,12 @@
 using DG.Tweening;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace ProjectConnections.Electric
 {
     public class LightbulbPresenter : MonoBehaviour
     {
-        [SerializeField] GameObject spriteLight;
+        [SerializeField, Required] GameObject spriteLight;
 
         void Start()
         {

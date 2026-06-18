@@ -2,16 +2,17 @@ using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace ProjectConnections.Electric
 {
     public class GateController : MonoBehaviour
     {
-        [SerializeField] SpriteRenderer[] spriteRenderers;
-        [SerializeField] GateSoundPlayer soundPlayer;
-        [SerializeField] GameObject killingTrigger;
-        [SerializeField] float offWidth = 3f;
-        [SerializeField] float onWidth = 1f;
+        [SerializeField, Required] SpriteRenderer[] spriteRenderers;
+        [SerializeField, Required] GateSoundPlayer soundPlayer;
+        [SerializeField, Required] GameObject killingTrigger;
+        [SerializeField, Required] float offWidth = 3f;
+        [SerializeField, Required] float onWidth = 1f;
 
         readonly List<Tween> tweens = new();
 

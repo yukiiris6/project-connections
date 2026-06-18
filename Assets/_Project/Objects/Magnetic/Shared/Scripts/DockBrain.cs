@@ -1,11 +1,12 @@
 using ProjectConnections.Magnetism.Modules;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace ProjectConnections.Magnetism
 {
     public class DockBrain : MonoBehaviour, MagnetismModule
     {
-        [SerializeField] GameObject magnetizableObject;
+        [SerializeField, Required] GameObject magnetizableObject;
 
         DockedModule dockedModule;
 

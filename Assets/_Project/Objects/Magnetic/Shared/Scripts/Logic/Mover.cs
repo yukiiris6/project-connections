@@ -1,13 +1,14 @@
 using System;
 using ProjectConnections.Magnetism;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class Mover : MonoBehaviour
 {
-    [SerializeField] CollisionHandler collisionHandler;
-    [SerializeField] float pullMultiplier = 1.1f;
-    [SerializeField] float defaultStopDistance = 1f;
-    [SerializeField] float preciseStopDistance = .25f;
+    [SerializeField, Required] CollisionHandler collisionHandler;
+    [SerializeField, Required] float pullMultiplier = 1.1f;
+    [SerializeField, Required] float defaultStopDistance = 1f;
+    [SerializeField, Required] float preciseStopDistance = .25f;
 
     public event Action OnDestinationReached;
 

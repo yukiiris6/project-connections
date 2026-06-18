@@ -2,31 +2,32 @@ using System.Collections;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using Sirenix.OdinInspector;
 using UnityEngine.UI.Extensions;
 
 public class LevelEnterTransition : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] RectTransform transitionRect;
-    [SerializeField] CanvasGroup canvasGroup;
-    [SerializeField] TMP_Text levelNumberText;
-    [SerializeField] TMP_Text levelNameText;
+    [SerializeField, Required] RectTransform transitionRect;
+    [SerializeField, Required] CanvasGroup canvasGroup;
+    [SerializeField, Required] TMP_Text levelNumberText;
+    [SerializeField, Required] TMP_Text levelNameText;
 
     [Header("Animation Components")]
-    [SerializeField] RectTransform magnetRect;
-    [SerializeField] RectTransform plugRect;
-    [SerializeField] UILineRenderer leftLine;
-    [SerializeField] UILineRenderer rightLine;
-    [SerializeField] RectTransform connectionAnchor;
-    [SerializeField] AudioSource audioSource;
-    [SerializeField] AudioClip plugSFX;
-    [SerializeField] float horizontalOffset = 5.5f;
+    [SerializeField, Required] RectTransform magnetRect;
+    [SerializeField, Required] RectTransform plugRect;
+    [SerializeField, Required] UILineRenderer leftLine;
+    [SerializeField, Required] UILineRenderer rightLine;
+    [SerializeField, Required] RectTransform connectionAnchor;
+    [SerializeField, Required] AudioSource audioSource;
+    [SerializeField, Required] AudioClip plugSFX;
+    [SerializeField, Required] float horizontalOffset = 5.5f;
 
     [Header("Settings")]
-    [SerializeField] float FadeDuration = .5f;
-    [SerializeField] float PullDuration = .5f;
-    [SerializeField] float ShakeDuration = .25f;
-    [SerializeField] float ShakeStrength = 5f;
+    [SerializeField, Required] float FadeDuration = .5f;
+    [SerializeField, Required] float PullDuration = .5f;
+    [SerializeField, Required] float ShakeDuration = .25f;
+    [SerializeField, Required] float ShakeStrength = 5f;
 
     Vector2 magnetRectOriginalPos;
     Vector2 plugRectOriginalPos;

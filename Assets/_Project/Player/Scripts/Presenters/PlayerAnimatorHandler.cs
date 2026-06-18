@@ -1,12 +1,13 @@
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class PlayerAnimatorHandler : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] PlayerMovement playerMovement;
-    [SerializeField] Animator bodyAnimator;
-    [SerializeField] Animator aimingArmsAnimator;
-    [SerializeField] GameObject armsObject;
+    [SerializeField, Required] PlayerMovement playerMovement;
+    [SerializeField, Required] Animator bodyAnimator;
+    [SerializeField, Required] Animator aimingArmsAnimator;
+    [SerializeField, Required] GameObject armsObject;
 
     static readonly int yVelocityHash = Animator.StringToHash("yVelocity");
     static readonly int movementSpeedHash = Animator.StringToHash("movementSpeed");

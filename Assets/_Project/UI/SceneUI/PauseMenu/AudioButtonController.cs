@@ -1,13 +1,14 @@
 using UnityEngine;
+using Sirenix.OdinInspector;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class AudioButtonController : MonoBehaviour
 {
-    [SerializeField] AudioMixer audioMixer;
-    [SerializeField] Sprite activeButton;
-    [SerializeField] Sprite inactiveButton;
-    [SerializeField] Button button;
+    [SerializeField, Required] AudioMixer audioMixer;
+    [SerializeField, Required] Sprite activeButton;
+    [SerializeField, Required] Sprite inactiveButton;
+    [SerializeField, Required] Button button;
 
     bool isOn = true;
 

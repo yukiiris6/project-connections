@@ -1,4 +1,5 @@
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class LocomotionBrain : MonoBehaviour, LocomotionContext
 {
@@ -6,7 +7,7 @@ public class LocomotionBrain : MonoBehaviour, LocomotionContext
     [field: SerializeField] public GroundValidator GroundValidator { get; private set; }
     [field: SerializeField] public LocomotionPresenter Presenter { get; private set; }
     [field: SerializeField] public PlayerSoundPlayer SoundPlayer { get; private set; }
-    [SerializeField] PlayerController playerController;
+    [SerializeField, Required] PlayerController playerController;
 
     LocomotionState currentState = new Grounded();
 

@@ -1,14 +1,15 @@
 using DG.Tweening;
 using UnityEngine;
+using Sirenix.OdinInspector;
 using UnityEngine.Rendering.Universal;
 
 namespace ProjectConnections.Electric
 {
     public class ElevatorController : MonoBehaviour
     {
-        [SerializeField] Vector2 moveDirection = new(1f, 0f);
-        [SerializeField] float moveAmount = 4f;
-        [SerializeField] float moveSpeed = 1f;
+        [SerializeField, Required] Vector2 moveDirection = new(1f, 0f);
+        [SerializeField, Required] float moveAmount = 4f;
+        [SerializeField, Required] float moveSpeed = 1f;
 
         private Tween moveTween;
 

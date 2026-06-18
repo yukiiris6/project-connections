@@ -1,7 +1,7 @@
-﻿using TMPro;
+using TMPro;
 using UnityEngine;
 
-public class DropdownSample: MonoBehaviour
+public class DropdownSample : MonoBehaviour
 {
 	[SerializeField]
 	private TextMeshProUGUI text = null;

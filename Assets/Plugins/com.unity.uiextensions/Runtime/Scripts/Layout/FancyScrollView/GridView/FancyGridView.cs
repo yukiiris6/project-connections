@@ -1,4 +1,4 @@
-﻿/// Credit setchi (https://github.com/setchi)
+/// Credit setchi (https://github.com/setchi)
 /// Sourced from - https://github.com/setchi/FancyScrollView
 
 using System;
@@ -85,13 +85,13 @@ namespace UnityEngine.UI.Extensions
         /// <code><![CDATA[
         /// using UnityEngine;
         /// using FancyScrollView;
-        /// 
+        ///
         /// public class MyGridView : FancyGridView<ItemData, Context>
         /// {
         ///     class CellGroup : DefaultCellGroup { }
-        /// 
+        ///
         ///     [SerializeField] Cell cellPrefab = default;
-        /// 
+        ///
         ///     protected override void SetupCellTemplate() => Setup<CellGroup>(cellPrefab);
         /// }
         /// ]]></code>

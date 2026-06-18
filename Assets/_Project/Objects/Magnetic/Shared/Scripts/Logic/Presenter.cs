@@ -1,11 +1,12 @@
 using Unity.Cinemachine;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace ProjectConnections.Magnetism
 {
     public class Presenter : MonoBehaviour
     {
-        [SerializeField] CinemachineImpulseSource cinemachineImpulseSource;
+        [SerializeField, Required] CinemachineImpulseSource cinemachineImpulseSource;
 
         public void PlayShake()
         {

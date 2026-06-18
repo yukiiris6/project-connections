@@ -1,21 +1,33 @@
 using UnityEngine;
+using Sirenix.OdinInspector;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using DG.Tweening;
+using UnityEngine.EventSystems;
 
 public class CursorPresenter : MonoBehaviour
 {
     [Header("Cursor Sprites")]
-    [SerializeField] Sprite normalCursor;
-    [SerializeField] Sprite aimingCursor;
-    [SerializeField] Sprite magnetCursor;
+    [SerializeField, Required] Sprite normalCursor;
+    [SerializeField, Required] Sprite aimingCursor;
+    [SerializeField, Required] Sprite magnetCursor;
 
     [Header("References")]
-    [SerializeField] RectTransform rectTransform;
-    [SerializeField] Image cursorImageComponent;
+    [SerializeField, Required] RectTransform rectTransform;
+    [SerializeField, Required] Image cursorImageComponent;
+
+    EventSystem eventSystem;
+
+    void GetComponents()
+    {
+        if (eventSystem != null) return;
+        eventSystem = UnityEngine.EventSystems.EventSystem.current;
+    }
 
     void Start()
     {
         Cursor.visible = false;
+        GetComponents();
     }
 
     void Update()
@@ -31,21 +43,33 @@ public class CursorPresenter : MonoBehaviour
 
     public void ShowCursor()
     {
-        RestoreCursor();
+        RestoreEverything();
         cursorImageComponent.enabled = true;
-        Cursor.lockState = CursorLockMode.None;
+        AllowInteractions();
     }
 
     public void HideCursor()
     {
-        RestoreCursor();
+        RestoreEverything();
         cursorImageComponent.enabled = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        UnallowInteractions();
+    }
+
+    public void AllowInteractions()
+    {
+        GetComponents();
+        eventSystem.enabled = true;
+    }
+
+    public void UnallowInteractions()
+    {
+        GetComponents();
+        eventSystem.enabled = false;
     }
 
     public void ChangeToNormalCursor()
     {
-        RestoreCursor();
+        RestoreEverything();
         rectTransform.pivot = new(0, 1f);
         cursorImageComponent.sprite = normalCursor;
         rectTransform.rotation = Quaternion.identity;
@@ -53,7 +77,7 @@ public class CursorPresenter : MonoBehaviour
 
     public void ChangeToInteractionCursor()
     {
-        RestoreCursor();
+        RestoreEverything();
         rectTransform.pivot = new(.5f, .8f);
         cursorImageComponent.sprite = magnetCursor;
         rectTransform.rotation = Quaternion.identity;
@@ -61,23 +85,23 @@ public class CursorPresenter : MonoBehaviour
 
     public void ChangeToAimingCursor()
     {
-        RestoreCursor();
+        RestoreEverything();
         cursorImageComponent.sprite = aimingCursor;
         rectTransform.pivot = new(.5f, .5f);
     }
 
     public void ChangeToMagnetizeCursor(Vector2 direction)
     {
-        RestoreCursor();
+        RestoreEverything();
         cursorImageComponent.sprite = magnetCursor;
         rectTransform.pivot = new(.5f, .5f);
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         rectTransform.rotation = Quaternion.Euler(0f, 0f, angle - 110f);
     }
 
-    void RestoreCursor()
+    void RestoreEverything()
     {
-        StopAllCoroutines();
+        GetComponents();
         rectTransform.pivot = new(0, 1f);
         rectTransform.rotation = Quaternion.Euler(0f, 0f, 0f);
     }

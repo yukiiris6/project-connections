@@ -1,9 +1,10 @@
 using UnityEngine;
+using Sirenix.OdinInspector;
 using UnityEngine.InputSystem;
 
 public class PlayerInputMapper : MonoBehaviour
 {
-    [SerializeField] PlayerInput playerInput;
+    [SerializeField, Required] PlayerInput playerInput;
 
     public void ToggleActionMap()
     {

@@ -1,14 +1,15 @@
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class PlayerAnimationBrain : MonoBehaviour
 {
-    [SerializeField] PlayerController playerController;
-    [SerializeField] PlayerAnimatorHandler animationHandler;
-    [SerializeField] PlayerMovement playerMovement;
-    [SerializeField] PlayerOrientation playerOrientation;
-    [SerializeField] GroundValidator groundValidator;
-    [SerializeField] Jumper jumper;
-    [SerializeField] MagnetAiming magnetAiming;
+    [SerializeField, Required] PlayerController playerController;
+    [SerializeField, Required] PlayerAnimatorHandler animationHandler;
+    [SerializeField, Required] PlayerMovement playerMovement;
+    [SerializeField, Required] PlayerOrientation playerOrientation;
+    [SerializeField, Required] GroundValidator groundValidator;
+    [SerializeField, Required] Jumper jumper;
+    [SerializeField, Required] MagnetAiming magnetAiming;
 
     void OnEnable()
     {

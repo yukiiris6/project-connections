@@ -1,11 +1,12 @@
 using DG.Tweening;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class CircleIrisWipe : MonoBehaviour
 {
     [field: SerializeField] public float Duration { get; private set; } = 1.5f;
-    [SerializeField] Material irisMaterial;
-    [SerializeField] RectTransform rectTransform;
+    [SerializeField, Required] Material irisMaterial;
+    [SerializeField, Required] RectTransform rectTransform;
 
     Transform irisWipeTarget;
     Camera mainCamera;

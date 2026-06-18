@@ -1,4 +1,5 @@
 using UnityEngine;
+using Sirenix.OdinInspector;
 using UnityEngine.InputSystem;
 
 public class GameStateSetterBrain : MonoBehaviour, GameContext

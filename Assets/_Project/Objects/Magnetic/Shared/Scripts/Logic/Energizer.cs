@@ -1,13 +1,14 @@
 using UnityEngine;
+using Sirenix.OdinInspector;
 using ProjectConnections.Electric;
 
 namespace ProjectConnections.Magnetism
 {
     public class Energizer : MonoBehaviour
     {
-        [SerializeField] ElectricityProvider electricityProvider;
-        [SerializeField] CircleCollider2D connectionTriggerCollider;
-        [SerializeField] LayerMask socketLayer;
+        [SerializeField, Required] ElectricityProvider electricityProvider;
+        [SerializeField, Required] CircleCollider2D connectionTriggerCollider;
+        [SerializeField, Required] LayerMask socketLayer;
 
         public ElectricityProvider ElectricityProvider { get; private set; }
         public SocketConnector AnchoredSocketConnector { get; private set; }

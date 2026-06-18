@@ -1,14 +1,15 @@
 using System.Collections;
 using UnityEngine;
+using Sirenix.OdinInspector;
 using UnityEngine.Rendering.Universal;
 
 namespace ProjectConnections.Electric
 {
     public class DoorBrain : MonoBehaviour
     {
-        [SerializeField] ElectricityProvider electricityProvider;
-        [SerializeField] DoorSoundPlayer soundPlayer;
-        [SerializeField] DoorPresenter presenter;
+        [SerializeField, Required] ElectricityProvider electricityProvider;
+        [SerializeField, Required] DoorSoundPlayer soundPlayer;
+        [SerializeField, Required] DoorPresenter presenter;
 
         void OnEnable()
         {

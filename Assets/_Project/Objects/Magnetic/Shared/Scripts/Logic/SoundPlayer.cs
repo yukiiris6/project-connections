@@ -1,12 +1,13 @@
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace ProjectConnections.Magnetism
 {
     public class SoundPlayer : MonoBehaviour
     {
-        [SerializeField] AudioSource audioSource;
-        [SerializeField] AudioClip crashSFX;
-        [SerializeField] AudioClip connectionSFX;
+        [SerializeField, Required] AudioSource audioSource;
+        [SerializeField, Required] AudioClip crashSFX;
+        [SerializeField, Required] AudioClip connectionSFX;
 
         public void PlayCrashSFX()
         {

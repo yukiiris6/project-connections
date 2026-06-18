@@ -1,16 +1,17 @@
 using System;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class Jumper : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] Rigidbody2D myRigidBody;
+    [SerializeField, Required] Rigidbody2D myRigidBody;
 
     [Header("Config")]
-    [SerializeField] float jumpStrength = 1f;
-    [SerializeField] float minJumpTime = 1f;
-    [SerializeField] float cutGravityStrength = 5f;
-    [SerializeField] float jumpApexThreshold = .1f;
+    [SerializeField, Required] float jumpStrength = 1f;
+    [SerializeField, Required] float minJumpTime = 1f;
+    [SerializeField, Required] float cutGravityStrength = 5f;
+    [SerializeField, Required] float jumpApexThreshold = .1f;
 
     public event Action OnFall;
     public event Action<float> OnYVelocityUpdated;

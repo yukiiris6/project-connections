@@ -1,11 +1,12 @@
 using System;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace ProjectConnections.Electric
 {
     public class ElectricityProvider : MonoBehaviour
     {
-        [SerializeField] ElectricityGenerator defaultElectricityGenerator;
+        [SerializeField, Required] ElectricityGenerator defaultElectricityGenerator;
 
         ElectricityGenerator connectedGenerator;
         public event Action<bool> OnChangedState;

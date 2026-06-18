@@ -1,10 +1,11 @@
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class MagnetBrain : MonoBehaviour, MagnetContext
 {
     [field: SerializeField] public MagnetAiming MagnetAiming { get; private set; }
     [field: SerializeField] public MagnetPresenter MagnetPresenter { get; private set; }
-    [SerializeField] PlayerController playerController;
+    [SerializeField, Required] PlayerController playerController;
 
     MagnetState currentState = new Standby();
 

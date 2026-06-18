@@ -1,14 +1,15 @@
 using System.Collections;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace ProjectConnections.Electric
 {
     public class DoorSoundPlayer : MonoBehaviour
     {
-        [SerializeField] AudioSource audioSource;
-        [SerializeField] AudioClip doorEnterSFX;
-        [SerializeField] AudioClip doorOpenSFX;
-        [SerializeField] AudioClip doorCloseSFX;
+        [SerializeField, Required] AudioSource audioSource;
+        [SerializeField, Required] AudioClip doorEnterSFX;
+        [SerializeField, Required] AudioClip doorOpenSFX;
+        [SerializeField, Required] AudioClip doorCloseSFX;
 
         Coroutine activeCoroutine;
 

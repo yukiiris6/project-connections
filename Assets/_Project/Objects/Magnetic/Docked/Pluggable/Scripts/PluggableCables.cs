@@ -1,12 +1,13 @@
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace ProjectConnections.Magnetism
 {
     public class PluggableCables : MonoBehaviour
     {
-        [SerializeField] Transform cableStartPosition;
-        [SerializeField] Transform cableEndPosition;
-        [SerializeField] Color cableColor;
+        [SerializeField, Required] Transform cableStartPosition;
+        [SerializeField, Required] Transform cableEndPosition;
+        [SerializeField, Required] Color cableColor;
 
         LineRenderer lineRenderer;
 

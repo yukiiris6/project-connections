@@ -88,7 +88,7 @@ namespace UnityEngine.UI.Extensions
                 {
                     Canvas previousCanvas = menuStack.Peek().GetComponent<Canvas>();
 
-                    if(previousCanvas != null)
+                    if (previousCanvas != null)
                     {
                         topCanvas.sortingOrder = previousCanvas.sortingOrder + 1;
                     }

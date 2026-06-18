@@ -21,7 +21,7 @@ namespace VHierarchy
     [FilePath("Library/vHierarchy Cache.asset", FilePathAttribute.Location.ProjectFolder)]
     public class VHierarchyCache : ScriptableSingleton<VHierarchyCache>
     {
-        // used for finding SceneData and SceneIdMap for objects that were moved out of their original scene 
+        // used for finding SceneData and SceneIdMap for objects that were moved out of their original scene
         public SerializableDictionary<int, string> originalSceneGuids_byInstanceId = new();
 
         // used as cache for converting GlobalID to InstanceID and as a way to find GameObjectData for prefabs in playmode (when prefabs produce invalid GlobalIDs)

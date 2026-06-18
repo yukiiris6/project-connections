@@ -1,11 +1,12 @@
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace ProjectConnections.Electric
 {
     public class GateSoundPlayer : MonoBehaviour
     {
-        [SerializeField] AudioClip gateSFX;
-        [SerializeField] AudioSource audioSource;
+        [SerializeField, Required] AudioClip gateSFX;
+        [SerializeField, Required] AudioSource audioSource;
 
         public void PlayGateSFX()
         {

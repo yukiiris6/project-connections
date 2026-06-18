@@ -1,10 +1,11 @@
 using DG.Tweening;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class ObjectBouncing : MonoBehaviour
 {
-    [SerializeField] Vector3 finalRotation;
-    [SerializeField] float duration = 1f;
+    [SerializeField, Required] Vector3 finalRotation;
+    [SerializeField, Required] float duration = 1f;
 
     void Start()
     {

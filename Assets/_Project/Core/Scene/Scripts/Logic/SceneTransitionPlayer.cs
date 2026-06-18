@@ -1,6 +1,6 @@
 using System.Collections;
-using DG.Tweening;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class SceneTransitionPlayer : MonoBehaviour
 {
@@ -19,7 +19,6 @@ public class SceneTransitionPlayer : MonoBehaviour
     void SetupTransition()
     {
         GetDependencies();
-        DOTween.KillAll();
     }
 
     public IEnumerator PlayIrisWipe()
@@ -52,7 +51,6 @@ public class SceneTransitionPlayer : MonoBehaviour
 
     public IEnumerator PlayLevelEnterSequence(bool shouldPlayFullAnimation, int levelNumber, string levelName)
     {
-        DOTween.KillAll();
         levelEnterTransition.SetText(levelNumber, levelName);
 
         if (shouldPlayFullAnimation)

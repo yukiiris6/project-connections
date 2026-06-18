@@ -1,12 +1,13 @@
 using DG.Tweening;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace ProjectConnections.Electric
 {
     public class LightbulbBrain : MonoBehaviour
     {
-        [SerializeField] ElectricityProvider electricityProvider;
-        [SerializeField] LightbulbPresenter presenter;
+        [SerializeField, Required] ElectricityProvider electricityProvider;
+        [SerializeField, Required] LightbulbPresenter presenter;
 
         void OnEnable()
         {

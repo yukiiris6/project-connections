@@ -2,6 +2,7 @@ using ProjectConnections.Magnetism.Elastic.States;
 using ProjectConnections.Magnetism.States;
 using ProjectConnections.Magnetism.Modules;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace ProjectConnections.Magnetism.Docked
 {

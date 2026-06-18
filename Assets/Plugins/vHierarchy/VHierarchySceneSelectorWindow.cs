@@ -1033,7 +1033,7 @@ namespace VHierarchy
 
                         continue;
 
-                        // word-initial match costs less than a gap (1+) 
+                        // word-initial match costs less than a gap (1+)
                         // but more than a consecutive match (0)
 
                     }
@@ -1083,7 +1083,7 @@ namespace VHierarchy
                 // this search is fast but isn't tuned for real use cases
                 // quering "vis" ranks "Invisible" higher than "VInspectorState"
                 // quering "lst" ranks "SmallShadowTemp" higher than "List"
-                // also sometimes it favors matches that are further away from zeroth index 
+                // also sometimes it favors matches that are further away from zeroth index
 
             }
 

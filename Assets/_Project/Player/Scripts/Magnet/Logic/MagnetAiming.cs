@@ -7,18 +7,19 @@ using ProjectConnections.Magnetism.Docked;
 using ProjectConnections.Magnetism.Modules;
 using Unity.Cinemachine;
 using UnityEngine;
+using Sirenix.OdinInspector;
 using UnityEngine.InputSystem;
 
 public class MagnetAiming : MonoBehaviour
 {
-    [SerializeField] MagnetPresenter magnetPresenter;
-    [SerializeField] CinemachineTargetGroup targetGroup;
-    [SerializeField] Transform centerTransform;
-    [SerializeField] Transform aimingTransform;
-    [SerializeField] Transform mouseTransform;
-    [SerializeField] LayerMask playerLayer;
-    [SerializeField] float laserThickness = 1f;
-    [SerializeField] string magneticTag = "Magnetic";
+    [SerializeField, Required] MagnetPresenter magnetPresenter;
+    [SerializeField, Required] CinemachineTargetGroup targetGroup;
+    [SerializeField, Required] Transform centerTransform;
+    [SerializeField, Required] Transform aimingTransform;
+    [SerializeField, Required] Transform mouseTransform;
+    [SerializeField, Required] LayerMask playerLayer;
+    [SerializeField, Required] float laserThickness = 1f;
+    [SerializeField, Required] string magneticTag = "Magnetic";
 
     public event Action<float> OnChangeFacing;
     bool isAiming;

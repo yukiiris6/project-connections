@@ -1,9 +1,10 @@
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class PlayerOrientation : MonoBehaviour
 {
-    [SerializeField] PlayerMovement playerMovement;
-    [SerializeField] PlayerAnimatorHandler playerAnimation;
+    [SerializeField, Required] PlayerMovement playerMovement;
+    [SerializeField, Required] PlayerAnimatorHandler playerAnimation;
 
 
     public void SetFacing(float x)

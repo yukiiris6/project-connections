@@ -1,11 +1,12 @@
 using System;
 using UnityEngine;
+using Sirenix.OdinInspector;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] PlayerInteraction interaction;
-    [SerializeField] PauseMenuPresenter pauseMenuPresenter;
+    [SerializeField, Required] PlayerInteraction interaction;
+    [SerializeField, Required] PauseMenuPresenter pauseMenuPresenter;
 
     public event Action<Vector2> OnMoveInput;
     public event Action<bool> OnJumpInput;

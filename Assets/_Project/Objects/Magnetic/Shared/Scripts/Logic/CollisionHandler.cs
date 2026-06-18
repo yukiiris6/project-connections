@@ -1,11 +1,12 @@
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace ProjectConnections.Magnetism
 {
     public class CollisionHandler : MonoBehaviour
     {
-        [SerializeField] LayerMask floorLayer;
-        [SerializeField] BoxCollider2D mainCollider;
+        [SerializeField, Required] LayerMask floorLayer;
+        [SerializeField, Required] BoxCollider2D mainCollider;
 
         RaycastHit2D hit;
 

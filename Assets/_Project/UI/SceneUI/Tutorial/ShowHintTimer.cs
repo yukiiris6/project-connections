@@ -1,9 +1,10 @@
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class ShowHintTimer : MonoBehaviour
 {
-    [SerializeField] float threshold = 60f;
-    [SerializeField] CanvasGroup canvasGroup;
+    [SerializeField, Required] float threshold = 60f;
+    [SerializeField, Required] CanvasGroup canvasGroup;
 
     float timer = 0;
 

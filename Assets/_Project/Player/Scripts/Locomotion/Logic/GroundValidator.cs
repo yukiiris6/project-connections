@@ -1,12 +1,13 @@
 using System;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class GroundValidator : MonoBehaviour
 {
-    [SerializeField] BoxCollider2D feetCollider;
-    [SerializeField] LayerMask groundLayers;
-    [SerializeField] float groundCheckDistance = .05f;
-    [SerializeField] float coyoteTimeDuration = .1f;
+    [SerializeField, Required] BoxCollider2D feetCollider;
+    [SerializeField, Required] LayerMask groundLayers;
+    [SerializeField, Required] float groundCheckDistance = .05f;
+    [SerializeField, Required] float coyoteTimeDuration = .1f;
 
     public event Action OnLand;
     public event Action OnExitGround;

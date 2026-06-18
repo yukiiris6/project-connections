@@ -1,16 +1,22 @@
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
+using Sirenix.OdinInspector;
 using UnityEngine.UI;
 
 public class SplashScreen : MonoBehaviour
 {
-    [SerializeField] AudioClip jingle;
-    [SerializeField] CanvasGroup logoCanvasGroup;
-    [SerializeField] ParticleSystem snowParticles;
-    [SerializeField] Image blackImage;
-    [SerializeField] Transform splashScreenParent;
-    [SerializeField] AudioSource audioSource;
+    [Header("References")]
+    [SerializeField, Required] AudioClip jingle;
+    [SerializeField, Required] CanvasGroup logoCanvasGroup;
+    [SerializeField, Required] ParticleSystem snowParticles;
+    [SerializeField, Required] Transform splashScreenParent;
+    [SerializeField, Required] AudioSource audioSource;
+
+    [Header("Values")]
+    [SerializeField] float snowFadeTime = 1f;
+    [SerializeField] float jingleTime = 2f;
+    [SerializeField] float fadeTime = 2f;
 
     SceneLoaderBrain sceneLoader;
 
@@ -23,17 +29,25 @@ public class SplashScreen : MonoBehaviour
     IEnumerator SplashScreenRoutine()
     {
         yield return null;
-        Instantiate(snowParticles, splashScreenParent);
         OverlaySystems.Instance.CursorPresenter.HideCursor();
-        yield return new WaitForSeconds(1f);
         logoCanvasGroup.alpha = 0;
-        logoCanvasGroup.DOFade(1f, 2f).SetEase(Ease.InSine);
-        yield return new WaitForSeconds(2f);
+
+        Instantiate(snowParticles, splashScreenParent);
+        yield return new WaitForSeconds(snowFadeTime);
+
+        yield return logoCanvasGroup
+            .DOFade(1f, fadeTime)
+            .SetEase(Ease.InSine)
+            .WaitForCompletion();
+
         audioSource.PlayOneShot(jingle);
-        yield return new WaitForSeconds(2f);
-        logoCanvasGroup.DOFade(0f, 2f).SetEase(Ease.OutSine);
-        blackImage.DOFade(0f, 2f);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(jingleTime);
+
+        yield return logoCanvasGroup
+            .DOFade(0f, fadeTime)
+            .SetEase(Ease.OutSine)
+            .WaitForCompletion();
+
         sceneLoader.GoToTitleScreen();
     }
 }

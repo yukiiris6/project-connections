@@ -2,15 +2,16 @@ using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using Sirenix.OdinInspector;
 using UnityEngine.Rendering.Universal;
 
 namespace ProjectConnections.Electric
 {
     public class GateBrain : MonoBehaviour
     {
-        [SerializeField] ElectricityProvider electricityProvider;
-        [SerializeField] GateController controller;
-        [SerializeField] GatePresenter presenter;
+        [SerializeField, Required] ElectricityProvider electricityProvider;
+        [SerializeField, Required] GateController controller;
+        [SerializeField, Required] GatePresenter presenter;
 
         void OnEnable()
         {

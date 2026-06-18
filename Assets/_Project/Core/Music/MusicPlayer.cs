@@ -1,8 +1,9 @@
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class MusicPlayer : MonoBehaviour
 {
-    [SerializeField] AudioSource audioSource;
+    [SerializeField, Required] AudioSource audioSource;
 
     public void SetAudioClip(AudioClip audioClip)
     {

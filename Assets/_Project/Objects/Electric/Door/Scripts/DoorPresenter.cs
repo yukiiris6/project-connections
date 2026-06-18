@@ -1,4 +1,5 @@
 using UnityEngine;
+using Sirenix.OdinInspector;
 using UnityEngine.Rendering.Universal;
 
 namespace ProjectConnections.Electric
@@ -6,11 +7,11 @@ namespace ProjectConnections.Electric
     public class DoorPresenter : MonoBehaviour
     {
         [Header("Animation")]
-        [SerializeField] Animator doorAnimator;
-        [SerializeField] string IsOpenBool = "IsOpen";
+        [SerializeField, Required] Animator doorAnimator;
+        [SerializeField, Required] string IsOpenBool = "IsOpen";
 
         [Header("Light")]
-        [SerializeField] ElectricObjectLight electricObjectLight;
+        [SerializeField, Required] ElectricObjectLight electricObjectLight;
 
         public void UpdateState(bool hasEnergy)
         {

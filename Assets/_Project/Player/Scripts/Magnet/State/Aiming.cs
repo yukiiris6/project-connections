@@ -1,5 +1,6 @@
 using ProjectConnections.Magnetism.Modules;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class Aiming : MagnetState
 {

@@ -4,14 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using UnityEngine;
+using Sirenix.OdinInspector;
 using UnityEngine.SceneManagement;
 
 public class SceneLoaderBrain : MonoBehaviour, LevelContext
 {
-    [field: SerializeField] public LevelDataStorage LevelDataStorage { get; private set; }
-    [field: SerializeField] public SceneLoader SceneLoader { get; private set; }
-    [field: SerializeField] public SceneMusicPlayer SceneMusicPlayer { get; private set; }
-    [field: SerializeField] public GameStateSetterBrain GameStateSetter { get; private set; }
+    [field: SerializeField, Required] public LevelDataStorage LevelDataStorage { get; private set; }
+    [field: SerializeField, Required] public SceneLoader SceneLoader { get; private set; }
+    [field: SerializeField, Required] public SceneMusicPlayer SceneMusicPlayer { get; private set; }
+    [field: SerializeField, Required] public GameStateSetterBrain GameStateSetter { get; private set; }
 
     SceneState currentState;
 
@@ -40,7 +41,7 @@ public class SceneLoaderBrain : MonoBehaviour, LevelContext
 
     public void GoToCredits()
     {
-        currentState.GoToLevel(this, "Credits");
+        currentState.GoToLevel(this, "CreditsScreen");
     }
 
     public void FinishLevel()

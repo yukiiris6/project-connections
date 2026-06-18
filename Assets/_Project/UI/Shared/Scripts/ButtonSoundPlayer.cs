@@ -1,12 +1,13 @@
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class ButtonSoundPlayer : MonoBehaviour
 {
-    [SerializeField] AudioSource audioSource;
-    [SerializeField] AudioClip selectSFX;
-    [SerializeField] AudioClip pressSFX;
-    [SerializeField] AudioClip levelSelectSFX;
-    [SerializeField] AudioClip backButtonPressSFX;
+    [SerializeField, Required] AudioSource audioSource;
+    [SerializeField, Required] AudioClip selectSFX;
+    [SerializeField, Required] AudioClip pressSFX;
+    [SerializeField, Required] AudioClip levelSelectSFX;
+    [SerializeField, Required] AudioClip backButtonPressSFX;
 
     public void PlaySelectSFX()
     {

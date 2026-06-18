@@ -1,12 +1,13 @@
 using System.Linq;
 using Unity.Cinemachine;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class PlayerParentHandler : MonoBehaviour
 {
-    [SerializeField] LayerMask dynamicSolidLayer;
-    [SerializeField] BoxCollider2D feetCollider;
-    [SerializeField] Transform playerTransform;
+    [SerializeField, Required] LayerMask dynamicSolidLayer;
+    [SerializeField, Required] BoxCollider2D feetCollider;
+    [SerializeField, Required] Transform playerTransform;
 
     Transform originalParent;
 

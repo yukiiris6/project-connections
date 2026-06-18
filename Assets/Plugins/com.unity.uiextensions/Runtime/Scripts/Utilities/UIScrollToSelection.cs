@@ -2,7 +2,7 @@
 /// sourced from: http://forum.unity3d.com/threads/scripts-useful-4-6-scripts-collection.264161/page-2#post-2011648
 
 /*USAGE:
-Simply place the script on the ScrollRect that contains the selectable children you will be scrolling 
+Simply place the script on the ScrollRect that contains the selectable children you will be scrolling
 */
 
 using System;
@@ -103,13 +103,13 @@ namespace UnityEngine.UI.Extensions
 
 		private void ValidateReferences()
 		{
-            if (!targetScrollRect)
-            {
+			if (!targetScrollRect)
+			{
 				targetScrollRect = GetComponent<ScrollRect>();
-            }
+			}
 
-            if (!targetScrollRect)
-            {
+			if (!targetScrollRect)
+			{
 				Debug.LogError("[UIScrollToSelection] No ScrollRect found. Either attach this script to a ScrollRect or assign on in the 'Target Scroll Rect' property");
 				gameObject.SetActive(false);
 				return;

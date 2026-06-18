@@ -324,7 +324,7 @@ namespace VHierarchy.Libs
         #region Math
 
 
-        public static class MathUtil // MathUtils name is taken by UnityEditor.MathUtils 
+        public static class MathUtil // MathUtils name is taken by UnityEditor.MathUtils
         {
 
             public static float TriangleArea(Vector2 A, Vector2 B, Vector2 C) => Vector3.Cross(A - B, A - C).z.Abs() / 2;
@@ -1048,7 +1048,7 @@ namespace VHierarchy.Libs
         {
             if (!path.DirectoryExists()) return path;
 
-            var s = AssetDatabase.GenerateUniqueAssetPath(path); // returns empty if parent dir doesnt exist 
+            var s = AssetDatabase.GenerateUniqueAssetPath(path); // returns empty if parent dir doesnt exist
 
             return s == "" ? path : s;
 
@@ -1494,7 +1494,7 @@ namespace VHierarchy.Libs
 
 
                 // query examples:
-                // 
+                //
                 // "2022.3.5 or newer"
                 // "2022.3.5 or older"
                 // "2022.3 or older"

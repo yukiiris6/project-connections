@@ -1,9 +1,10 @@
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class LocomotionPresenter : MonoBehaviour
 {
-    [SerializeField] GameObject jumpDustPrefab;
-    [SerializeField] GameObject landDustPrefab;
+    [SerializeField, Required] GameObject jumpDustPrefab;
+    [SerializeField, Required] GameObject landDustPrefab;
 
     public void InstantiateJumpDust()
     {

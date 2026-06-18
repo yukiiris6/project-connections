@@ -1,12 +1,13 @@
 using System.Collections;
 using Unity.Cinemachine;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class PlayerHurtbox : MonoBehaviour
 {
-    [SerializeField] CinemachineImpulseSource cinemachineImpulseSource;
-    [SerializeField] Transform centerAnchor;
-    [SerializeField] ParticleSystem deathParticles;
+    [SerializeField, Required] CinemachineImpulseSource cinemachineImpulseSource;
+    [SerializeField, Required] Transform centerAnchor;
+    [SerializeField, Required] ParticleSystem deathParticles;
 
     GameStateSetterBrain gameStateSetter;
     SceneLoaderBrain sceneLoader;

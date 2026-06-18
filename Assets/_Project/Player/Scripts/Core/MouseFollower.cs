@@ -1,13 +1,14 @@
 using UnityEngine;
+using Sirenix.OdinInspector;
 using UnityEngine.InputSystem;
 
 public class MouseFollower : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] Transform playerTransform;
+    [SerializeField, Required] Transform playerTransform;
 
     [Header("Settings")]
-    [SerializeField] float maxDistance = 3.5f;
+    [SerializeField, Required] float maxDistance = 3.5f;
 
     private Camera mainCamera;
 

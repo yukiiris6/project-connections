@@ -1,14 +1,16 @@
 using DG.Tweening;
 using UnityEngine;
+using Sirenix.OdinInspector;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class BasicButtonPresenter : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField] ButtonHighlightAnimation buttonHighlightAnimation;
-    [SerializeField] Button button;
+    [SerializeField, Required] Button button;
+    [SerializeField, Optional] SelectionHighlightAnimation selectionHighlightAnimation;
+    [SerializeField, Required] ButtonSoundPlayer buttonSoundPlayer;
 
-    CursorPresenter cursorController;
+    CursorPresenter cursorPresenter;
 
     void Start()
     {
@@ -18,13 +20,14 @@ public class BasicButtonPresenter : MonoBehaviour, IPointerEnterHandler, IPointe
 
     void GetDependencies()
     {
-        if (cursorController != null) return;
-        cursorController = OverlaySystems.Instance.CursorPresenter;
+        if (cursorPresenter != null) return;
+        cursorPresenter = OverlaySystems.Instance.CursorPresenter;
     }
 
-    public void Init(ButtonHighlightAnimation buttonHighlightAnimation)
+    public void Init(SelectionHighlightAnimation selectionHighlightAnimation, ButtonSoundPlayer buttonSoundPlayer)
     {
-        this.buttonHighlightAnimation = buttonHighlightAnimation;
+        this.selectionHighlightAnimation = selectionHighlightAnimation;
+        this.buttonSoundPlayer = buttonSoundPlayer;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -32,8 +35,12 @@ public class BasicButtonPresenter : MonoBehaviour, IPointerEnterHandler, IPointe
         GetDependencies();
         if (button.interactable == true)
         {
-            cursorController.ChangeToInteractionCursor();
-            buttonHighlightAnimation.ShowHighlight();
+            cursorPresenter.ChangeToInteractionCursor();
+            buttonSoundPlayer.PlaySelectSFX();
+            if (selectionHighlightAnimation != null)
+            {
+                selectionHighlightAnimation.ShowHighlightAt(transform.position);
+            }
         }
     }
 
@@ -42,14 +49,20 @@ public class BasicButtonPresenter : MonoBehaviour, IPointerEnterHandler, IPointe
         GetDependencies();
         if (button.interactable == true)
         {
-            cursorController.ChangeToNormalCursor();
-            buttonHighlightAnimation.HideHighlight();
+            cursorPresenter.ChangeToNormalCursor();
+            if (selectionHighlightAnimation != null)
+            {
+                selectionHighlightAnimation.HideHighlight();
+            }
         }
     }
 
     void BasicButtonClick()
     {
-        cursorController.ChangeToNormalCursor();
-        cursorController.HideCursor();
+        cursorPresenter.ChangeToNormalCursor();
+        if (selectionHighlightAnimation != null)
+        {
+            selectionHighlightAnimation.HideHighlight();
+        }
     }
 }

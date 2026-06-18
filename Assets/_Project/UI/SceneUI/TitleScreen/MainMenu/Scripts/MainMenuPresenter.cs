@@ -1,38 +1,57 @@
 using UnityEngine;
+using Sirenix.OdinInspector;
 using UnityEngine.UI;
 
 public class MainMenuPresenter : MonoBehaviour
 {
     [Header("Menu References")]
-    [SerializeField] GameObject titleScreenMenu;
-    [SerializeField] GameObject levelSelectMenu;
+    [SerializeField, Required] GameObject levelSelectMenu;
 
     [Header("Button References")]
-    [SerializeField] Button startButton;
-    [SerializeField] Button creditsButton;
-    [SerializeField] Button exitButton;
-    [SerializeField] ButtonSoundPlayer buttonSoundPlayer;
+    [SerializeField, Required] Button startButton;
+    [SerializeField, Required] Button creditsButton;
+    [SerializeField, Required] Button exitButton;
+    [SerializeField, Required] ButtonSoundPlayer buttonSoundPlayer;
 
     SceneLoaderBrain sceneLoader;
+    CursorPresenter cursorPresenter;
+
+    void GetDependencies()
+    {
+        if (sceneLoader != null && cursorPresenter != null) return;
+        sceneLoader = CoreSystems.Instance.SceneLoader;
+        cursorPresenter = OverlaySystems.Instance.CursorPresenter;
+    }
 
     void Start()
     {
-        sceneLoader = CoreSystems.Instance.SceneLoader;
+        GetDependencies();
         SetupButtons();
+    }
+
+    void OnEnable()
+    {
+        GetDependencies();
+        sceneLoader.SceneLoader.OnLevelLoad += cursorPresenter.ShowCursor;
+    }
+
+    void OnDisable()
+    {
+        sceneLoader.SceneLoader.OnLevelLoad -= cursorPresenter.ShowCursor;
     }
 
     void SetupButtons()
     {
         startButton.onClick.AddListener(OnClickStart);
-        creditsButton.onClick.AddListener(OnClickStart);
-        exitButton.onClick.AddListener(OnClickStart);
+        creditsButton.onClick.AddListener(OnClickCredits);
+        exitButton.onClick.AddListener(OnClickExit);
     }
 
     void OnClickStart()
     {
         buttonSoundPlayer.PlayPressSFX();
-        titleScreenMenu.SetActive(false);
         levelSelectMenu.SetActive(true);
+        gameObject.SetActive(false);
     }
 
     void OnClickCredits()

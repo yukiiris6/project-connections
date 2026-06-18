@@ -1,17 +1,18 @@
 using System;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Reference")]
-    [SerializeField] Rigidbody2D myRigidbody;
-    [SerializeField] PlayerController playerController;
+    [SerializeField, Required] Rigidbody2D myRigidbody;
+    [SerializeField, Required] PlayerController playerController;
 
     [Header("Movement")]
     [field: SerializeField] public float MaxVelocity = 2f;
-    [SerializeField] float acceleration = 1f;
-    [SerializeField] float deceleration = 1f;
-    [SerializeField] float velocityStopOffset = .5f;
+    [SerializeField, Required] float acceleration = 1f;
+    [SerializeField, Required] float deceleration = 1f;
+    [SerializeField, Required] float velocityStopOffset = .5f;
 
     public event Action<Vector2, float> OnMovement;
 

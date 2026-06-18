@@ -1,20 +1,21 @@
 using DG.Tweening;
 using UnityEngine;
+using Sirenix.OdinInspector;
 using UnityEngine.UI;
 
 public class PauseMenuPresenter : MonoBehaviour
 {
     [Header("Menu References")]
-    [SerializeField] GameObject pauseMenu;
-    [SerializeField] GameObject dimBackgroundObject;
-    [SerializeField] AudioSource audioSource;
-    [SerializeField] AudioClip pauseSFX;
-    [SerializeField] PlayerInputMapper playerInputMapper;
+    [SerializeField, Required] GameObject pauseMenu;
+    [SerializeField, Required] GameObject dimBackgroundObject;
+    [SerializeField, Required] AudioSource audioSource;
+    [SerializeField, Required] AudioClip pauseSFX;
+    [SerializeField, Required] PlayerInputMapper playerInputMapper;
 
     [Header("Button References")]
-    [SerializeField] Button resumeButton;
-    [SerializeField] Button restartButton;
-    [SerializeField] Button toTitleButton;
+    [SerializeField, Required] Button resumeButton;
+    [SerializeField, Required] Button restartButton;
+    [SerializeField, Required] Button toTitleButton;
 
     GameStateSetterBrain gameStateSetter;
     SceneLoaderBrain sceneLoader;
