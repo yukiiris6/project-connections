@@ -1,10 +1,10 @@
-using ProjectConnections.Magnetism.Anchored.States;
-using ProjectConnections.Magnetism.Modules;
-using ProjectConnections.Magnetism.States;
+using ProjectConnections.Magnetic.Anchored.States;
+using ProjectConnections.Magnetic.Modules;
+using ProjectConnections.Magnetic.States;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-namespace ProjectConnections.Magnetism.Anchored
+namespace ProjectConnections.Magnetic.Anchored
 {
     public class AnchoredObjectBrain : MonoBehaviour, IContext, MagnetismModule, DockedModule
     {

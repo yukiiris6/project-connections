@@ -1,4 +1,4 @@
-using ProjectConnections.Magnetism.Modules;
+using ProjectConnections.Magnetic.Modules;
 using UnityEngine;
 using Sirenix.OdinInspector;
 

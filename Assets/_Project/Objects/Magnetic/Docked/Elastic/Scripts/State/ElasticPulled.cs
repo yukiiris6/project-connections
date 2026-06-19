@@ -1,9 +1,9 @@
-using ProjectConnections.Magnetism.Modules;
-using ProjectConnections.Magnetism.States;
+using ProjectConnections.Magnetic.Modules;
+using ProjectConnections.Magnetic.States;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-namespace ProjectConnections.Magnetism.Elastic.States
+namespace ProjectConnections.Magnetic.Elastic.States
 {
     public class ElasticPulled : IState
     {

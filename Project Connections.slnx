@@ -44,7 +44,7 @@
   <Project Path="Unity.Splines.Editor.csproj" />
   <Project Path="Unity.PerformanceTesting.csproj" />
   <Project Path="Unity.2D.Tilemap.Extras.Editor.csproj" />
-  <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="Core.csproj" />
   <Project Path="Unity.TextMeshPro.csproj" />
   <Project Path="UnityUIExtensions.csproj" />
   <Project Path="Unity.TextMeshPro.Editor.csproj" />
@@ -63,6 +63,8 @@
   <Project Path="VFolders.csproj" />
   <Project Path="UnityEditor.UI.csproj" />
   <Project Path="Unity.RenderPipelines.Universal.2D.Editor.Overrides.csproj" />
+  <Project Path="Player.csproj" />
+  <Project Path="Level.csproj" />
   <Project Path="Unity.2D.Sprite.Editor.csproj" />
   <Project Path="Magnetism.csproj" />
   <Project Path="Unity.Multiplayer.Center.Common.csproj" />
@@ -80,9 +82,12 @@
   <Project Path="Unity.ShaderGraph.Utilities.csproj" />
   <Project Path="Unity.VisualScripting.Shared.Editor.csproj" />
   <Project Path="Unity.2D.Aseprite.Common.csproj" />
+  <Project Path="SceneUI.csproj" />
+  <Project Path="UI.csproj" />
+  <Project Path="Shared.csproj" />
   <Project Path="Unity.CollabProxy.Editor.csproj" />
   <Project Path="Unity.RenderPipeline.Universal.ShaderLibrary.csproj" />
-  <Project Path="Shared.csproj" />
+  <Project Path="UIShared.csproj" />
   <Project Path="Unity.InputSystem.DocCodeSamples.csproj" />
   <Project Path="Sirenix.OdinInspector.Modules.UnityMathematics.csproj" />
   <Project Path="Unity.RenderPipelines.Universal.Shaders.csproj" />

@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
     public event Action<bool> OnAimInput;
     public event Action<bool> OnPauseInput;
 
-    PauseMenuPresenter pauseMenu;
     float pauseCooldown = 0.05f;
     float lastPauseTime = 0;
 
@@ -49,7 +48,7 @@ public class PlayerController : MonoBehaviour
         if (value.isPressed && lastPauseTime > pauseCooldown)
         {
             lastPauseTime = 0;
-            pauseMenu.ToggleMenu();
+            pauseMenuPresenter.ToggleMenu();
             OnPauseInput?.Invoke(value.isPressed);
         }
     }

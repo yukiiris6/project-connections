@@ -15,15 +15,16 @@ namespace ProjectConnections.Electric
 
         void OnEnable()
         {
-            electricityProvider.OnChangedState += OnProviderChanged;
+            UpdateGate(electricityProvider.HasEnergy());
+            electricityProvider.OnChangedState += UpdateGate;
         }
 
         void OnDisable()
         {
-            electricityProvider.OnChangedState -= OnProviderChanged;
+            electricityProvider.OnChangedState -= UpdateGate;
         }
 
-        public void OnProviderChanged(bool hasEnergy)
+        void UpdateGate(bool hasEnergy)
         {
             controller.UpdateWidth(hasEnergy);
             presenter.UpdateStatus(hasEnergy);

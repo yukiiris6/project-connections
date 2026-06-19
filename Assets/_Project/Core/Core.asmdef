@@ -1,0 +1,18 @@
+{
+    "name": "Core",
+    "rootNamespace": "ProjectConnections.Core",
+    "references": [
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:e10f44b767deea340b545860fac77a73",
+        "GUID:71cbb1c5e82a9b040a9360c6c9b22aac"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

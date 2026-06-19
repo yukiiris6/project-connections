@@ -1,5 +1,5 @@
 using System;
-using ProjectConnections.Magnetism;
+using ProjectConnections.Magnetic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 

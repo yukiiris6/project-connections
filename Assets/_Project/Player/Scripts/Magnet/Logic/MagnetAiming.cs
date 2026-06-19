@@ -1,10 +1,10 @@
 using System;
 using System.Collections;
 using DG.Tweening;
-using ProjectConnections.Magnetism;
-using ProjectConnections.Magnetism.Anchored;
-using ProjectConnections.Magnetism.Docked;
-using ProjectConnections.Magnetism.Modules;
+using ProjectConnections.Magnetic;
+using ProjectConnections.Magnetic.Anchored;
+using ProjectConnections.Magnetic.Docked;
+using ProjectConnections.Magnetic.Modules;
 using Unity.Cinemachine;
 using UnityEngine;
 using Sirenix.OdinInspector;

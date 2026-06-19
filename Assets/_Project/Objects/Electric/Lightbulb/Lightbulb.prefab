@@ -184,7 +184,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5409765441522257871}
-  - component: {fileID: 6515770037064420773}
   - component: {fileID: 3621166384568784571}
   m_Layer: 3
   m_Name: SpriteLight
@@ -209,58 +208,6 @@ Transform:
   - {fileID: 2536217357536663020}
   m_Father: {fileID: 8726299346224791272}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6515770037064420773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4459796246312024091}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.2D.Runtime::UnityEngine.Rendering.Universal.Light2D
-  m_ComponentVersion: 2
-  m_LightType: 2
-  m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 0.79609716, b: 0.48584908, a: 1}
-  m_Intensity: 2
-  m_LightVolumeIntensity: 5
-  m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000d96e7b82e73d69df
-  m_LightCookieSprite: {fileID: 21300000, guid: 0a646f4fbc7ab734e94e150a7f776c5d, type: 3}
-  m_DeprecatedPointLightCookieSprite: {fileID: 0}
-  m_LightOrder: 0
-  m_AlphaBlendOnOverlap: 0
-  m_OverlapOperation: 0
-  m_NormalMapDistance: 3
-  m_NormalMapQuality: 2
-  m_UseNormalMap: 0
-  m_ShadowsEnabled: 1
-  m_ShadowIntensity: 0.75
-  m_ShadowSoftness: 0.3
-  m_ShadowSoftnessFalloffIntensity: 0.5
-  m_ShadowVolumeIntensityEnabled: 0
-  m_ShadowVolumeIntensity: 0.75
-  m_LocalBounds:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 2, y: 2, z: 0}
-  m_PointLightInnerAngle: 360
-  m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 15
-  m_ShapeLightParametricSides: 5
-  m_ShapeLightParametricAngleOffset: 0
-  m_ShapeLightParametricRadius: 1
-  m_ShapeLightFalloffSize: 0.5
-  m_ShapeLightFalloffOffset: {x: 0, y: 0}
-  m_ShapePath:
-  - {x: -0.5, y: -0.5, z: 0}
-  - {x: 0.5, y: -0.5, z: 0}
-  - {x: 0.5, y: 0.5, z: 0}
-  - {x: -0.5, y: 0.5, z: 0}
 --- !u!114 &3621166384568784571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,6 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b9cf80397e0e914eac165735bca707e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LightBlinking
+  light2D: {fileID: 3587774894446774975}
   blinkingCooldownMin: 0.25
   blinkingCooldownMax: 0.35
   blinkThreshold: 0.01
@@ -321,6 +269,7 @@ GameObject:
   - component: {fileID: 8726299346224791272}
   - component: {fileID: 5893598397421813967}
   - component: {fileID: 7703303099544840052}
+  - component: {fileID: 7984372046507676631}
   m_Layer: 0
   m_Name: Lightbulb
   m_TagString: Untagged
@@ -467,5 +416,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 318c21952c9f4c549ab52a5ab613d711, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LightbulbVisuals
-  connectedSocket: {fileID: 0}
+  electricityProvider: {fileID: 0}
+  presenter: {fileID: 7984372046507676631}
+--- !u!114 &7984372046507676631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5677765130759041664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a59490091de734947a8819f8f107f811, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Electric::ProjectConnections.Electric.LightbulbPresenter
   spriteLight: {fileID: 4459796246312024091}

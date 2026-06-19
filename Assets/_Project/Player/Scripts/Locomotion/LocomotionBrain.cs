@@ -9,6 +9,7 @@ public class LocomotionBrain : MonoBehaviour, LocomotionContext
     [field: SerializeField] public PlayerSoundPlayer SoundPlayer { get; private set; }
     [SerializeField, Required] PlayerController playerController;
 
+    [ShowInInspector, ReadOnly]
     LocomotionState currentState = new Grounded();
 
     void OnEnable()

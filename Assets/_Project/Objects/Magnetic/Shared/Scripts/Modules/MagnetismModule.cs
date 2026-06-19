@@ -1,8 +1,8 @@
-using ProjectConnections.Magnetism.States;
+using ProjectConnections.Magnetic.States;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-namespace ProjectConnections.Magnetism.Modules
+namespace ProjectConnections.Magnetic.Modules
 {
     public interface MagnetismModule
     {

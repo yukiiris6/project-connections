@@ -6,28 +6,29 @@ namespace ProjectConnections.Electric
 {
     public class ElectricityProvider : MonoBehaviour
     {
-        [SerializeField, Required] ElectricityGenerator defaultElectricityGenerator;
-
+        [ShowInInspector, ReadOnly]
         ElectricityGenerator connectedGenerator;
+
         public event Action<bool> OnChangedState;
 
-        void Awake()
+        void OnDisable()
         {
-            if (defaultElectricityGenerator != null)
+            if (connectedGenerator != null)
             {
-                connectedGenerator = defaultElectricityGenerator;
-                defaultElectricityGenerator.OnStartUp += StartUpProvider;
+                connectedGenerator.OnChangedState -= UpdateState;
             }
         }
 
         public void ConnectToGenerator(ElectricityGenerator newGenerator)
         {
             connectedGenerator = newGenerator;
+            connectedGenerator.OnChangedState += UpdateState;
             OnChangedState?.Invoke(HasEnergy());
         }
 
         public void DisconnectFromGenerator()
         {
+            connectedGenerator.OnChangedState -= UpdateState;
             connectedGenerator = null;
             OnChangedState?.Invoke(HasEnergy());
         }
@@ -41,7 +42,12 @@ namespace ProjectConnections.Electric
         void StartUpProvider(bool value)
         {
             OnChangedState?.Invoke(value);
-            defaultElectricityGenerator.OnStartUp -= StartUpProvider;
+            connectedGenerator.OnStartUp -= StartUpProvider;
+        }
+
+        void UpdateState(bool isGenerating)
+        {
+            OnChangedState?.Invoke(isGenerating);
         }
     }
 }

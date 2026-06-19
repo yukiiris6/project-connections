@@ -31,7 +31,7 @@ public class PauseMenuPresenter : MonoBehaviour
 
     void SetupButtons()
     {
-        resumeButton.onClick.AddListener(OnClickRestart);
+        resumeButton.onClick.AddListener(OnClickResume);
         restartButton.onClick.AddListener(OnClickRestart);
         toTitleButton.onClick.AddListener(OnClickToTitle);
     }
@@ -43,8 +43,8 @@ public class PauseMenuPresenter : MonoBehaviour
 
     public void ToggleMenu()
     {
-        if (IsOpen()) OpenMenu();
-        else CloseMenu();
+        if (IsOpen()) CloseMenu();
+        else OpenMenu();
     }
 
     void OpenMenu()

@@ -1,11 +1,12 @@
-using ProjectConnections.Magnetism.Anchored.States;
-using ProjectConnections.Magnetism.Modules;
-using ProjectConnections.Magnetism.Pluggable.States;
-using ProjectConnections.Magnetism.States;
+using ProjectConnections.Magnetic.Anchored.States;
+using ProjectConnections.Magnetic.Modules;
+using ProjectConnections.Magnetic.Pluggable.States;
+using ProjectConnections.Magnetic.States;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using ProjectConnections.Electric;
 
-namespace ProjectConnections.Magnetism
+namespace ProjectConnections.Magnetic
 {
     public class PluggableObjectBrain : MonoBehaviour, IContext, MagnetismModule, DockedModule, EnergizerModule
     {
@@ -14,13 +15,24 @@ namespace ProjectConnections.Magnetism
         [field: SerializeField] public Rigidbody2D Rigidbody { get; private set; }
         [field: SerializeField] public Presenter Presenter { get; private set; }
         [field: SerializeField] public Energizer Energizer { get; private set; }
+        [SerializeField, Optional] SocketConnector defaultSocket;
 
         public Vector2 OriginalPosition { get; private set; }
-        IState currentState = new PluggableResting();
+        IState currentState;
 
         void Awake()
         {
             OriginalPosition = transform.position;
+            if (defaultSocket != null)
+            {
+                Energizer.SetSocketConnector(defaultSocket);
+                currentState = new PluggablePlugged();
+                currentState.Enter(this);
+            }
+            else
+            {
+                currentState = new PluggableResting();
+            }
         }
 
         public void Magnetize(Vector2 destination)

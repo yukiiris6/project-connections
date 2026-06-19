@@ -1,7 +1,7 @@
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-namespace ProjectConnections.Magnetism.States
+namespace ProjectConnections.Magnetic.States
 {
     public interface IContext
     {

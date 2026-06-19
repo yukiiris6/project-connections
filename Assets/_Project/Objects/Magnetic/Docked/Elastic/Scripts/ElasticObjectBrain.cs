@@ -1,10 +1,10 @@
-using ProjectConnections.Magnetism.Elastic.States;
-using ProjectConnections.Magnetism.States;
-using ProjectConnections.Magnetism.Modules;
+using ProjectConnections.Magnetic.Elastic.States;
+using ProjectConnections.Magnetic.States;
+using ProjectConnections.Magnetic.Modules;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-namespace ProjectConnections.Magnetism.Docked
+namespace ProjectConnections.Magnetic.Docked
 {
     public class ElasticObjectBrain : MonoBehaviour, IContext, MagnetismModule, DockedModule
     {

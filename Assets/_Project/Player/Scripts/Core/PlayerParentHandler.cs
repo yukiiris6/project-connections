@@ -16,11 +16,6 @@ public class PlayerParentHandler : MonoBehaviour
         originalParent = playerTransform.parent;
     }
 
-    void OnDisable()
-    {
-        UnparentPlayer();
-    }
-
     void OnTriggerEnter2D(Collider2D other)
     {
         bool isDinamicSolid = IsDynamicSolid(other.gameObject.layer);

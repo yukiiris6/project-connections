@@ -13,7 +13,7 @@ public class OverlaySystems : MonoBehaviour
 
     void Awake()
     {
-        if (FindObjectsByType<SceneLoaderBrain>(FindObjectsSortMode.None).Length > 1)
+        if (FindObjectsByType<OverlaySystems>(FindObjectsSortMode.None).Length > 1)
         {
             Destroy(gameObject);
             return;

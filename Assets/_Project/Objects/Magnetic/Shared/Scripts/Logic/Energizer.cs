@@ -2,7 +2,7 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 using ProjectConnections.Electric;
 
-namespace ProjectConnections.Magnetism
+namespace ProjectConnections.Magnetic
 {
     public class Energizer : MonoBehaviour
     {
@@ -45,17 +45,23 @@ namespace ProjectConnections.Magnetism
 
             if (hit.collider)
             {
-                SocketConnector socketConnector = hit.collider.gameObject.GetComponent<SocketConnector>();
+                SocketConnector socketConnector = hit.collider.GetComponent<SocketConnector>();
                 if (socketConnector != null)
                 {
-                    if (!socketConnector.IsConnected)
-                    {
-                        AnchoredSocketConnector = socketConnector;
-                        return socketConnector;
-                    }
+                    SetSocketConnector(socketConnector);
+                    return socketConnector;
                 }
             }
+
             return null;
+        }
+
+        public void SetSocketConnector(SocketConnector socketConnector)
+        {
+            if (!socketConnector.IsConnected)
+            {
+                AnchoredSocketConnector = socketConnector;
+            }
         }
     }
 }

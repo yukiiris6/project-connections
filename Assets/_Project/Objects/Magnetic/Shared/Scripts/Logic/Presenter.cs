@@ -2,7 +2,7 @@ using Unity.Cinemachine;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-namespace ProjectConnections.Magnetism
+namespace ProjectConnections.Magnetic
 {
     public class Presenter : MonoBehaviour
     {

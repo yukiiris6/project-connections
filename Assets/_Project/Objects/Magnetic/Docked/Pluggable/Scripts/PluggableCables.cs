@@ -1,7 +1,7 @@
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-namespace ProjectConnections.Magnetism
+namespace ProjectConnections.Magnetic
 {
     public class PluggableCables : MonoBehaviour
     {

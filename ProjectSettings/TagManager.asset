@@ -43,19 +43,19 @@ TagManager:
   - name: Background
     uniqueID: 163175599
     locked: 0
+  - name: Walls
+    uniqueID: 797249155
+    locked: 0
   - name: Cables
     uniqueID: 4292051821
     locked: 0
-  - name: BackgroundItems
-    uniqueID: 797249155
-    locked: 0
-  - name: Obstacles
+  - name: Hazards
     uniqueID: 4021466837
     locked: 0
   - name: BackObjects
     uniqueID: 2189127385
     locked: 0
-  - name: Walls
+  - name: Floor
     uniqueID: 3748216295
     locked: 0
   - name: FrontObjects

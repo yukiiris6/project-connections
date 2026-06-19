@@ -1,8 +1,8 @@
-using ProjectConnections.Magnetism.Modules;
+using ProjectConnections.Magnetic.Modules;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-namespace ProjectConnections.Magnetism
+namespace ProjectConnections.Magnetic
 {
     public class DockBrain : MonoBehaviour, MagnetismModule
     {

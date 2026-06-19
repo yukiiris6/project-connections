@@ -17,11 +17,11 @@ GameObject:
   - component: {fileID: 3192197772799658985}
   m_Layer: 8
   m_Name: Box
-  m_TagString: Untagged
+  m_TagString: Magnetic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5166869118126711301
 Transform:
   m_ObjectHideFlags: 0
@@ -185,6 +185,7 @@ MonoBehaviour:
   <Mover>k__BackingField: {fileID: 8830293658753179167}
   <SoundPlayer>k__BackingField: {fileID: 7689792274891953636}
   <Rigidbody>k__BackingField: {fileID: 1895042314930856823}
+  <Presenter>k__BackingField: {fileID: 0}
 --- !u!114 &8830293658753179167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,7 +200,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Magnetism::Mover
   collisionHandler: {fileID: 3192197772799658985}
   pullMultiplier: 2.5
-  destinationReachThreshold: 2
+  defaultStopDistance: 1
+  preciseStopDistance: 0.25
 --- !u!114 &3192197772799658985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,4 +361,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Magnetism::ProjectConnections.Magnetism.SoundPlayer
   audioSource: {fileID: 2654580592530793255}
-  connectionSFX: {fileID: 8300000, guid: e5ca15ea1522dd345a847b8aa12cde43, type: 3}
+  crashSFX: {fileID: 8300000, guid: e5ca15ea1522dd345a847b8aa12cde43, type: 3}
+  connectionSFX: {fileID: 0}

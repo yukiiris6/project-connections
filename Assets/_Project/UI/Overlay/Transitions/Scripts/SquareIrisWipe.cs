@@ -9,11 +9,6 @@ public class SquareIrisWipe : MonoBehaviour
     [SerializeField, Required] AudioSource audioSource;
     [SerializeField, Required] AudioClip transitionSFX;
 
-    void Start()
-    {
-        irisMaterial.SetFloat("_Radius", 1f);
-    }
-
     public void PlayIrisOpen()
     {
         float percentageTrigger = .5f * .2f;
@@ -54,8 +49,13 @@ public class SquareIrisWipe : MonoBehaviour
             });
     }
 
-    public void ResetIris()
+    public void SetIrisToClosed()
     {
-        irisMaterial.SetFloat("_Radius", 5f);
+        irisMaterial.SetFloat("_Radius", 0f);
+    }
+
+    public void SetIrisToOpen()
+    {
+        irisMaterial.SetFloat("_Radius", .5f);
     }
 }

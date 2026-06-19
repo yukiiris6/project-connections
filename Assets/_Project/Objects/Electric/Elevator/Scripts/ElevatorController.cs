@@ -7,9 +7,9 @@ namespace ProjectConnections.Electric
 {
     public class ElevatorController : MonoBehaviour
     {
+        [SerializeField, Required] Transform platformTransform;
         [SerializeField, Required] Vector2 moveDirection = new(1f, 0f);
-        [SerializeField, Required] float moveAmount = 4f;
-        [SerializeField, Required] float moveSpeed = 1f;
+        [SerializeField, Required] float moveDuration = 1f;
 
         private Tween moveTween;
 
@@ -31,9 +31,8 @@ namespace ProjectConnections.Electric
                 moveTween.Play();
                 return;
             }
-            Vector3 finalPosition = transform.position + (Vector3)(moveDirection * moveAmount);
-            float duration = moveAmount / moveSpeed;
-            moveTween = transform.DOMove(finalPosition, duration)
+            Vector3 finalPosition = platformTransform.position + (Vector3)moveDirection;
+            moveTween = platformTransform.DOMove(finalPosition, moveDuration)
                 .SetEase(Ease.InOutSine)
                 .SetLoops(-1, LoopType.Yoyo);
         }

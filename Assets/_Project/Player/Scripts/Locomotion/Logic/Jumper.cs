@@ -9,7 +9,7 @@ public class Jumper : MonoBehaviour
 
     [Header("Config")]
     [SerializeField, Required] float jumpStrength = 1f;
-    [SerializeField, Required] float minJumpTime = 1f;
+    [SerializeField, Required] float maxJumpTime = 1f;
     [SerializeField, Required] float cutGravityStrength = 5f;
     [SerializeField, Required] float jumpApexThreshold = .1f;
 
@@ -57,13 +57,13 @@ public class Jumper : MonoBehaviour
 
     void MidJumpHandler()
     {
-        if (airTimeCounter > minJumpTime) StopJump();
+        if (airTimeCounter > maxJumpTime) StopJump();
         else airTimeCounter += Time.fixedDeltaTime;
     }
 
     void PostJumpHandler()
     {
-        if (airTimeCounter <= minJumpTime) return;
+        if (airTimeCounter <= maxJumpTime) return;
         bool isFalling = myRigidBody.linearVelocityY < 0;
         bool isOnJumpsApex = Mathf.Abs(myRigidBody.linearVelocityY) < jumpApexThreshold;
         if (isFalling || isOnJumpsApex)
@@ -75,7 +75,7 @@ public class Jumper : MonoBehaviour
 
     void CutGravity()
     {
-        airTimeCounter = minJumpTime;
+        airTimeCounter = maxJumpTime;
         myRigidBody.gravityScale = originalGravity + cutGravityStrength;
     }
 

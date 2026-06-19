@@ -6,17 +6,10 @@ namespace ProjectConnections.Electric
 {
     public class ElectricityGenerator : MonoBehaviour
     {
-        [SerializeField, Required] private bool isGeneratingByDefault = true;
+        [field: SerializeField] public bool IsGenerating { get; private set; } = true;
 
         public event Action<bool> OnStartUp;
         public event Action<bool> OnChangedState;
-        public bool IsGenerating { get; private set; }
-
-        void Start()
-        {
-            IsGenerating = isGeneratingByDefault;
-            OnStartUp?.Invoke(IsGenerating);
-        }
 
         public void ToggleProvider(bool value)
         {
