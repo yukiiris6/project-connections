@@ -1,69 +1,75 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Sirenix.OdinInspector;
 using UnityEngine.UI;
+using ProjectConnections.UIShared;
+using ProjectConnections.Core;
+using ProjectConnections.UI.Overlay;
 
-public class MainMenuPresenter : MonoBehaviour
+namespace ProjectConnections.SceneUI
 {
-    [Header("Menu References")]
-    [SerializeField, Required] GameObject levelSelectMenu;
-
-    [Header("Button References")]
-    [SerializeField, Required] Button startButton;
-    [SerializeField, Required] Button creditsButton;
-    [SerializeField, Required] Button exitButton;
-    [SerializeField, Required] ButtonSoundPlayer buttonSoundPlayer;
-
-    SceneLoaderBrain sceneLoader;
-    CursorPresenter cursorPresenter;
-
-    void GetDependencies()
+    public class MainMenuPresenter : MonoBehaviour
     {
-        if (sceneLoader != null && cursorPresenter != null) return;
-        sceneLoader = CoreSystems.Instance.SceneLoader;
-        cursorPresenter = OverlaySystems.Instance.CursorPresenter;
-    }
+        [Header("Menu References")]
+        [SerializeField, Required] GameObject levelSelectMenu;
 
-    void Start()
-    {
-        GetDependencies();
-        SetupButtons();
-    }
+        [Header("Button References")]
+        [SerializeField, Required] Button startButton;
+        [SerializeField, Required] Button creditsButton;
+        [SerializeField, Required] Button exitButton;
+        [SerializeField, Required] ButtonSoundPlayer buttonSoundPlayer;
 
-    void OnEnable()
-    {
-        GetDependencies();
-        sceneLoader.SceneLoader.OnLevelLoad += cursorPresenter.ShowCursor;
-    }
+        SceneLoaderBrain sceneLoader;
+        CursorPresenter cursorPresenter;
 
-    void OnDisable()
-    {
-        sceneLoader.SceneLoader.OnLevelLoad -= cursorPresenter.ShowCursor;
-    }
+        void GetDependencies()
+        {
+            if (sceneLoader != null && cursorPresenter != null) return;
+            sceneLoader = CoreSystems.Instance.SceneLoader;
+            cursorPresenter = OverlaySystems.Instance.CursorPresenter;
+        }
 
-    void SetupButtons()
-    {
-        startButton.onClick.AddListener(OnClickStart);
-        creditsButton.onClick.AddListener(OnClickCredits);
-        exitButton.onClick.AddListener(OnClickExit);
-    }
+        void Start()
+        {
+            GetDependencies();
+            SetupButtons();
+        }
 
-    void OnClickStart()
-    {
-        buttonSoundPlayer.PlayPressSFX();
-        levelSelectMenu.SetActive(true);
-        gameObject.SetActive(false);
-    }
+        void OnEnable()
+        {
+            GetDependencies();
+            sceneLoader.SceneLoader.OnLevelLoad += cursorPresenter.ShowCursor;
+        }
 
-    void OnClickCredits()
-    {
-        buttonSoundPlayer.PlayPressSFX();
-        sceneLoader.GoToCredits();
-    }
+        void OnDisable()
+        {
+            sceneLoader.SceneLoader.OnLevelLoad -= cursorPresenter.ShowCursor;
+        }
 
-    void OnClickExit()
-    {
-        buttonSoundPlayer.PlayPressSFX();
-        Application.Quit();
-        if (Application.isEditor) print("Exiting game...");
+        void SetupButtons()
+        {
+            startButton.onClick.AddListener(OnClickStart);
+            creditsButton.onClick.AddListener(OnClickCredits);
+            exitButton.onClick.AddListener(OnClickExit);
+        }
+
+        void OnClickStart()
+        {
+            buttonSoundPlayer.PlayPressSFX();
+            levelSelectMenu.SetActive(true);
+            gameObject.SetActive(false);
+        }
+
+        void OnClickCredits()
+        {
+            buttonSoundPlayer.PlayPressSFX();
+            sceneLoader.GoToCredits();
+        }
+
+        void OnClickExit()
+        {
+            buttonSoundPlayer.PlayPressSFX();
+            Application.Quit();
+            if (Application.isEditor) print("Exiting game...");
+        }
     }
 }

@@ -1,11 +1,14 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Sirenix.OdinInspector;
 
-public interface LocomotionContext
+namespace ProjectConnections.Player
 {
-    Jumper Jumper { get; }
-    GroundValidator GroundValidator { get; }
-    PlayerSoundPlayer SoundPlayer { get; }
-    LocomotionPresenter Presenter { get; }
-    void SetState(LocomotionState newState);
+    public interface LocomotionContext
+    {
+        Jumper Jumper { get; }
+        GroundValidator GroundValidator { get; }
+        PlayerSoundPlayer SoundPlayer { get; }
+        LocomotionPresenter Presenter { get; }
+        void SetState(LocomotionState newState);
+    }
 }

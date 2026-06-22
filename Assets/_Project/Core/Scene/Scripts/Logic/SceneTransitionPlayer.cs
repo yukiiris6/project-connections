@@ -1,67 +1,71 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using ProjectConnections.UI.Overlay;
 
-public class SceneTransitionPlayer : MonoBehaviour
+namespace ProjectConnections.Core
 {
-    SquareIrisWipe squareIrisWipe;
-    BlackScreenTransition blackScreenTransition;
-    LevelEnterTransition levelEnterTransition;
-
-    void GetDependencies()
+    public class SceneTransitionPlayer : MonoBehaviour
     {
-        if (squareIrisWipe != null && blackScreenTransition != null && levelEnterTransition != null) return;
-        squareIrisWipe = OverlaySystems.Instance.SquareIrisWipe;
-        blackScreenTransition = OverlaySystems.Instance.BlackScreenTransition;
-        levelEnterTransition = OverlaySystems.Instance.LevelEnterTransition;
-    }
+        SquareIrisWipe squareIrisWipe;
+        BlackScreenTransition blackScreenTransition;
+        LevelEnterTransition levelEnterTransition;
 
-    void SetupTransition()
-    {
-        GetDependencies();
-    }
-
-    public IEnumerator PlayIrisWipe()
-    {
-        SetupTransition();
-        squareIrisWipe.PlayIrisWipe();
-        yield return new WaitForSecondsRealtime(squareIrisWipe.Duration);
-    }
-
-    public IEnumerator PlayIrisOpen()
-    {
-        SetupTransition();
-        squareIrisWipe.PlayIrisOpen();
-        yield return new WaitForSecondsRealtime(squareIrisWipe.Duration);
-    }
-
-    public IEnumerator PlayFadeOut()
-    {
-        SetupTransition();
-        blackScreenTransition.FadeOut();
-        yield return new WaitForSecondsRealtime(blackScreenTransition.FadeDuration);
-    }
-
-    public IEnumerator PlayFadeIn()
-    {
-        SetupTransition();
-        blackScreenTransition.FadeIn();
-        yield return new WaitForSecondsRealtime(blackScreenTransition.FadeDuration);
-    }
-
-    public IEnumerator PlayLevelEnterSequence(bool shouldPlayFullAnimation, int levelNumber, string levelName)
-    {
-        levelEnterTransition.SetText(levelNumber, levelName);
-
-        if (shouldPlayFullAnimation)
+        void GetDependencies()
         {
-            yield return levelEnterTransition.PlayMagnetAnimation();
-        }
-        else
-        {
-            yield return levelEnterTransition.FadeInAndOut();
+            if (squareIrisWipe != null && blackScreenTransition != null && levelEnterTransition != null) return;
+            squareIrisWipe = OverlaySystems.Instance.SquareIrisWipe;
+            blackScreenTransition = OverlaySystems.Instance.BlackScreenTransition;
+            levelEnterTransition = OverlaySystems.Instance.LevelEnterTransition;
         }
 
-        yield return new WaitForSecondsRealtime(.5f);
+        void SetupTransition()
+        {
+            GetDependencies();
+        }
+
+        public IEnumerator PlayIrisWipe()
+        {
+            SetupTransition();
+            squareIrisWipe.PlayIrisWipe();
+            yield return new WaitForSecondsRealtime(squareIrisWipe.Duration);
+        }
+
+        public IEnumerator PlayIrisOpen()
+        {
+            SetupTransition();
+            squareIrisWipe.PlayIrisOpen();
+            yield return new WaitForSecondsRealtime(squareIrisWipe.Duration);
+        }
+
+        public IEnumerator PlayFadeOut()
+        {
+            SetupTransition();
+            blackScreenTransition.FadeOut();
+            yield return new WaitForSecondsRealtime(blackScreenTransition.FadeDuration);
+        }
+
+        public IEnumerator PlayFadeIn()
+        {
+            SetupTransition();
+            blackScreenTransition.FadeIn();
+            yield return new WaitForSecondsRealtime(blackScreenTransition.FadeDuration);
+        }
+
+        public IEnumerator PlayLevelEnterSequence(bool shouldPlayFullAnimation, int levelNumber, string levelName)
+        {
+            levelEnterTransition.SetText(levelNumber, levelName);
+
+            if (shouldPlayFullAnimation)
+            {
+                yield return levelEnterTransition.PlayMagnetAnimation();
+            }
+            else
+            {
+                yield return levelEnterTransition.FadeInAndOut();
+            }
+
+            yield return new WaitForSecondsRealtime(.5f);
+        }
     }
 }

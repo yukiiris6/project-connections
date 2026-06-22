@@ -1,16 +1,19 @@
-using DG.Tweening;
+﻿using DG.Tweening;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-public class ObjectBouncing : MonoBehaviour
+namespace ProjectConnections.UIShared
 {
-    [SerializeField, Required] Vector3 finalRotation;
-    [SerializeField, Required] float duration = 1f;
-
-    void Start()
+    public class ObjectBouncing : MonoBehaviour
     {
-        transform.DORotate(finalRotation, duration).
-            SetEase(Ease.InOutSine)
-            .SetLoops(-1, LoopType.Yoyo);
+        [SerializeField, Required] Vector3 finalRotation;
+        [SerializeField, Required] float duration = 1f;
+
+        void Start()
+        {
+            transform.DORotate(finalRotation, duration).
+                SetEase(Ease.InOutSine)
+                .SetLoops(-1, LoopType.Yoyo);
+        }
     }
 }

@@ -1,10 +1,13 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Sirenix.OdinInspector;
 
-public static class LayerMaskExtensions
+namespace ProjectConnections.Shared
 {
-    public static bool Contains(LayerMask layerGroup, int layer)
+    public static class LayerMaskExtensions
     {
-        return (layerGroup.value & (1 << layer)) > 0;
+        public static bool Contains(LayerMask layerGroup, int layer)
+        {
+            return (layerGroup.value & (1 << layer)) > 0;
+        }
     }
 }

@@ -1,50 +1,54 @@
-using System.Collections;
+﻿using System.Collections;
 using Unity.Cinemachine;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using ProjectConnections.Core;
 
-public class PlayerHurtbox : MonoBehaviour
+namespace ProjectConnections.Player
 {
-    [SerializeField, Required] CinemachineImpulseSource cinemachineImpulseSource;
-    [SerializeField, Required] Transform centerAnchor;
-    [SerializeField, Required] ParticleSystem deathParticles;
-
-    GameStateSetterBrain gameStateSetter;
-    SceneLoaderBrain sceneLoader;
-    bool hasDied = false;
-
-    void Start()
+    public class PlayerHurtbox : MonoBehaviour
     {
-        gameStateSetter = CoreSystems.Instance.GameStateSetter;
-        sceneLoader = CoreSystems.Instance.SceneLoader;
-    }
+        [SerializeField, Required] CinemachineImpulseSource cinemachineImpulseSource;
+        [SerializeField, Required] Transform centerAnchor;
+        [SerializeField, Required] ParticleSystem deathParticles;
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        Die();
-    }
+        GameStateSetterBrain gameStateSetter;
+        SceneLoaderBrain sceneLoader;
+        bool hasDied = false;
 
-    void Die()
-    {
-        if (hasDied) return;
-        StartCoroutine(DieRoutine());
-        hasDied = true;
-    }
+        void Start()
+        {
+            gameStateSetter = CoreSystems.Instance.GameStateSetter;
+            sceneLoader = CoreSystems.Instance.SceneLoader;
+        }
 
-    IEnumerator DieRoutine()
-    {
-        gameStateSetter.PauseGame();
-        yield return new WaitForSecondsRealtime(.1f);
-        gameStateSetter.ResumeGame();
+        void OnTriggerEnter2D(Collider2D other)
+        {
+            Die();
+        }
 
-        PlayDeathAnimation();
-        yield return new WaitForSecondsRealtime(1f);
-        sceneLoader.RestartLevel();
-    }
+        void Die()
+        {
+            if (hasDied) return;
+            StartCoroutine(DieRoutine());
+            hasDied = true;
+        }
 
-    void PlayDeathAnimation()
-    {
-        cinemachineImpulseSource.GenerateImpulse();
-        Instantiate(deathParticles, centerAnchor.position, Quaternion.identity);
+        IEnumerator DieRoutine()
+        {
+            gameStateSetter.PauseGame();
+            yield return new WaitForSecondsRealtime(.1f);
+            gameStateSetter.ResumeGame();
+
+            PlayDeathAnimation();
+            yield return new WaitForSecondsRealtime(1f);
+            sceneLoader.RestartLevel();
+        }
+
+        void PlayDeathAnimation()
+        {
+            cinemachineImpulseSource.GenerateImpulse();
+            Instantiate(deathParticles, centerAnchor.position, Quaternion.identity);
+        }
     }
 }

@@ -1,4 +1,4 @@
-using DG.Tweening;
+﻿using DG.Tweening;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using UnityEngine.Rendering.Universal;
@@ -7,22 +7,23 @@ namespace ProjectConnections.Electric
 {
     public class ElevatorBrain : MonoBehaviour
     {
-        [SerializeField, Required] ElectricityProvider electricityProvider;
+        [SerializeField, Required] ObjectEnergizer objectEnergizer;
         [SerializeField, Required] ElevatorController controller;
         [SerializeField, Required] ElevatorPresenter presenter;
         [SerializeField, Required] ElevatorDockPresenter dockPresenter;
 
         void OnEnable()
         {
-            electricityProvider.OnChangedState += OnProviderChanged;
+            UpdateState(objectEnergizer.IsOn);
+            objectEnergizer.OnChangedState += UpdateState;
         }
 
         void OnDisable()
         {
-            electricityProvider.OnChangedState -= OnProviderChanged;
+            objectEnergizer.OnChangedState -= UpdateState;
         }
 
-        void OnProviderChanged(bool hasEnergy)
+        void UpdateState(bool hasEnergy)
         {
             controller.UpdateState(hasEnergy);
             presenter.UpdateState(hasEnergy);

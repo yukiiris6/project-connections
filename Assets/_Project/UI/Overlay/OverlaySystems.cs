@@ -1,27 +1,37 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Sirenix.OdinInspector;
 
-public class OverlaySystems : MonoBehaviour
+namespace ProjectConnections.UI.Overlay
 {
-    [field: SerializeField] public CursorPresenter CursorPresenter { get; private set; }
-    [field: SerializeField] public SquareIrisWipe SquareIrisWipe { get; private set; }
-    [field: SerializeField] public LevelEnterTransition LevelEnterTransition { get; private set; }
-    [field: SerializeField] public BlackScreenTransition BlackScreenTransition { get; private set; }
-
-    static OverlaySystems instance;
-    public static OverlaySystems Instance => instance;
-
-    void Awake()
+    public class OverlaySystems : MonoBehaviour
     {
-        if (FindObjectsByType<OverlaySystems>(FindObjectsSortMode.None).Length > 1)
+        [field: SerializeField] public CursorPresenter CursorPresenter { get; private set; }
+        [field: SerializeField] public SquareIrisWipe SquareIrisWipe { get; private set; }
+        [field: SerializeField] public LevelEnterTransition LevelEnterTransition { get; private set; }
+        [field: SerializeField] public BlackScreenTransition BlackScreenTransition { get; private set; }
+
+        static OverlaySystems instance;
+        public static OverlaySystems Instance => instance;
+
+        void Awake()
         {
-            Destroy(gameObject);
-            return;
+            if (FindObjectsByType<OverlaySystems>(FindObjectsSortMode.None).Length > 1)
+            {
+                Destroy(gameObject);
+                return;
+            }
+            else
+            {
+                instance = this;
+                DontDestroyOnLoad(this);
+            }
+
+            Init();
         }
-        else
+
+        void Init()
         {
-            instance = this;
-            DontDestroyOnLoad(this);
+            SquareIrisWipe.Init();
         }
     }
 }

@@ -1,5 +1,8 @@
-public interface GameContext
+﻿namespace ProjectConnections.Core
 {
-    TimeController TimeController { get; }
-    void SetState(GameState newState);
+    public interface GameContext
+    {
+        TimeController TimeController { get; }
+        void SetState(GameState newState);
+    }
 }

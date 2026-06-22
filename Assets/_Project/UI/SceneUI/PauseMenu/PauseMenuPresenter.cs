@@ -1,87 +1,92 @@
-using DG.Tweening;
+﻿using DG.Tweening;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using UnityEngine.UI;
+using ProjectConnections.UIShared;
+using ProjectConnections.Core;
 
-public class PauseMenuPresenter : MonoBehaviour
+namespace ProjectConnections.SceneUI
 {
-    [Header("Menu References")]
-    [SerializeField, Required] GameObject pauseMenu;
-    [SerializeField, Required] GameObject dimBackgroundObject;
-    [SerializeField, Required] AudioSource audioSource;
-    [SerializeField, Required] AudioClip pauseSFX;
-    [SerializeField, Required] PlayerInputMapper playerInputMapper;
-
-    [Header("Button References")]
-    [SerializeField, Required] Button resumeButton;
-    [SerializeField, Required] Button restartButton;
-    [SerializeField, Required] Button toTitleButton;
-
-    GameStateSetterBrain gameStateSetter;
-    SceneLoaderBrain sceneLoader;
-    MusicPlayer musicPlayer;
-
-    void Start()
+    public class PauseMenuPresenter : MonoBehaviour
     {
-        gameStateSetter = CoreSystems.Instance.GameStateSetter;
-        sceneLoader = CoreSystems.Instance.SceneLoader;
-        musicPlayer = CoreSystems.Instance.MusicPlayer;
-        SetupButtons();
-    }
+        [Header("Menu References")]
+        [SerializeField, Required] GameObject pauseMenu;
+        [SerializeField, Required] GameObject dimBackgroundObject;
+        [SerializeField, Required] AudioSource audioSource;
+        [SerializeField, Required] AudioClip pauseSFX;
+        [SerializeField, Required] PlayerInputMapper playerInputMapper;
 
-    void SetupButtons()
-    {
-        resumeButton.onClick.AddListener(OnClickResume);
-        restartButton.onClick.AddListener(OnClickRestart);
-        toTitleButton.onClick.AddListener(OnClickToTitle);
-    }
+        [Header("Button References")]
+        [SerializeField, Required] Button resumeButton;
+        [SerializeField, Required] Button restartButton;
+        [SerializeField, Required] Button toTitleButton;
 
-    bool IsOpen()
-    {
-        return pauseMenu.activeInHierarchy;
-    }
+        GameStateSetterBrain gameStateSetter;
+        SceneLoaderBrain sceneLoader;
+        MusicPlayer musicPlayer;
 
-    public void ToggleMenu()
-    {
-        if (IsOpen()) CloseMenu();
-        else OpenMenu();
-    }
+        void Start()
+        {
+            gameStateSetter = CoreSystems.Instance.GameStateSetter;
+            sceneLoader = CoreSystems.Instance.SceneLoader;
+            musicPlayer = CoreSystems.Instance.MusicPlayer;
+            SetupButtons();
+        }
 
-    void OpenMenu()
-    {
-        dimBackgroundObject.SetActive(true);
-        pauseMenu.SetActive(true);
-        audioSource.PlayOneShot(pauseSFX);
-        musicPlayer.PauseMusic();
-        gameStateSetter.PauseGame();
-        playerInputMapper.SetUIActionMap();
-    }
+        void SetupButtons()
+        {
+            resumeButton.onClick.AddListener(OnClickResume);
+            restartButton.onClick.AddListener(OnClickRestart);
+            toTitleButton.onClick.AddListener(OnClickToTitle);
+        }
 
-    void CloseMenu()
-    {
-        dimBackgroundObject.SetActive(false);
-        pauseMenu.SetActive(false);
-        musicPlayer.PlayMusic();
-        gameStateSetter.ResumeGame();
-        playerInputMapper.SetGameplayActionMap();
-    }
+        bool IsOpen()
+        {
+            return pauseMenu.activeInHierarchy;
+        }
 
-    void OnClickResume()
-    {
-        CloseMenu();
-    }
+        public void ToggleMenu()
+        {
+            if (IsOpen()) CloseMenu();
+            else OpenMenu();
+        }
 
-    void OnClickRestart()
-    {
-        dimBackgroundObject.SetActive(false);
-        pauseMenu.SetActive(false);
-        sceneLoader.RestartLevel();
-    }
+        void OpenMenu()
+        {
+            dimBackgroundObject.SetActive(true);
+            pauseMenu.SetActive(true);
+            audioSource.PlayOneShot(pauseSFX);
+            musicPlayer.PauseMusic();
+            gameStateSetter.PauseGame();
+            playerInputMapper.SetUIActionMap();
+        }
 
-    void OnClickToTitle()
-    {
-        dimBackgroundObject.SetActive(false);
-        pauseMenu.SetActive(false);
-        sceneLoader.GoToTitleScreen();
+        void CloseMenu()
+        {
+            dimBackgroundObject.SetActive(false);
+            pauseMenu.SetActive(false);
+            musicPlayer.PlayMusic();
+            gameStateSetter.ResumeGame();
+            playerInputMapper.SetGameplayActionMap();
+        }
+
+        void OnClickResume()
+        {
+            CloseMenu();
+        }
+
+        void OnClickRestart()
+        {
+            dimBackgroundObject.SetActive(false);
+            pauseMenu.SetActive(false);
+            sceneLoader.RestartLevel();
+        }
+
+        void OnClickToTitle()
+        {
+            dimBackgroundObject.SetActive(false);
+            pauseMenu.SetActive(false);
+            sceneLoader.GoToTitleScreen();
+        }
     }
 }

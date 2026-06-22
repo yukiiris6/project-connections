@@ -1,23 +1,26 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Sirenix.OdinInspector;
 using UnityEngine.InputSystem;
 
-public class TimeController : MonoBehaviour
+namespace ProjectConnections.Core
 {
-    [SerializeField, Required][Range(0, 1f)] float slowdownAmount;
-
-    public void PauseTime()
+    public class TimeController : MonoBehaviour
     {
-        Time.timeScale = 0;
-    }
+        [SerializeField, Required][Range(0, 1f)] float slowdownAmount;
 
-    public void ResetTime()
-    {
-        Time.timeScale = 1;
-    }
+        public void PauseTime()
+        {
+            Time.timeScale = 0;
+        }
 
-    public void SlowdownTime()
-    {
-        Time.timeScale = slowdownAmount;
+        public void ResetTime()
+        {
+            Time.timeScale = 1;
+        }
+
+        public void SlowdownTime()
+        {
+            Time.timeScale = slowdownAmount;
+        }
     }
 }

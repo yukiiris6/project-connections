@@ -166,6 +166,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8948277997307100982}
   - component: {fileID: 1337486295922621032}
+  - component: {fileID: 7591124147202495226}
   - component: {fileID: 3475579514059216745}
   - component: {fileID: 8223982425627474236}
   - component: {fileID: 7146085936863238367}
@@ -221,6 +222,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7591124147202495226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2168212753507418824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96701e09742ae2142a81dd1f7d5e80b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Electric::ProjectConnections.Electric.ElectricObject
 --- !u!114 &3475579514059216745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,7 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d063cccb2c5ea54c8f9ba31a484c357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Electric::ProjectConnections.Electric.ElevatorBrain
-  electricityProvider: {fileID: 0}
+  objectEnergizer: {fileID: 7591124147202495226}
   controller: {fileID: 8223982425627474236}
   presenter: {fileID: 7146085936863238367}
   dockPresenter: {fileID: 3485416085575482648}
@@ -250,7 +263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Electric::ProjectConnections.Electric.ElevatorController
   platformTransform: {fileID: 126052233538412608}
-  moveDirection: {x: 1, y: 0}
+  moveDirection: {x: 0, y: -6}
   moveDuration: 2
 --- !u!114 &7146085936863238367
 MonoBehaviour:

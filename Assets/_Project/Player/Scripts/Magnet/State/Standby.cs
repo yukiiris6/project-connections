@@ -1,14 +1,17 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Sirenix.OdinInspector;
 
-public class Standby : MagnetState
+namespace ProjectConnections.Player
 {
-    public void Aim(MagnetContext context)
+    public class Standby : MagnetState
     {
-        context.MagnetAiming.Aim();
-        GameObject targetObject = context.MagnetAiming.GetTargetObject();
-        context.SetState(new Aiming());
-    }
+        public void Aim(MagnetContext context)
+        {
+            context.MagnetAiming.Aim();
+            GameObject targetObject = context.MagnetAiming.GetTargetObject();
+            context.SetState(new Aiming());
+        }
 
-    public void Release(MagnetContext context) { }
+        public void Release(MagnetContext context) { }
+    }
 }

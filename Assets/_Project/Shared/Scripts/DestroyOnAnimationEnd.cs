@@ -1,10 +1,13 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Sirenix.OdinInspector;
 
-public class DestroyOnAnimationEnd : MonoBehaviour
+namespace ProjectConnections.Shared
 {
-    public void DestroyObject()
+    public class DestroyOnAnimationEnd : MonoBehaviour
     {
-        Destroy(gameObject.transform.parent.gameObject);
+        public void DestroyObject()
+        {
+            Destroy(gameObject.transform.parent.gameObject);
+        }
     }
 }

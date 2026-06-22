@@ -1,26 +1,29 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Sirenix.OdinInspector;
 
-public class SceneMusicPlayer : MonoBehaviour
+namespace ProjectConnections.Core
 {
-    MusicPlayer musicPlayer;
-
-    void GetDependencies()
+    public class SceneMusicPlayer : MonoBehaviour
     {
-        if (musicPlayer != null) return;
-        musicPlayer = CoreSystems.Instance.MusicPlayer;
-    }
+        MusicPlayer musicPlayer;
 
-    public void StopMusic()
-    {
-        GetDependencies();
-        musicPlayer.StopMusic();
-    }
+        void GetDependencies()
+        {
+            if (musicPlayer != null) return;
+            musicPlayer = CoreSystems.Instance.MusicPlayer;
+        }
 
-    public void SetMusicAndPlay(AudioClip audioClip)
-    {
-        GetDependencies();
-        musicPlayer.SetAudioClip(audioClip);
-        musicPlayer.PlayMusic();
+        public void StopMusic()
+        {
+            GetDependencies();
+            musicPlayer.StopMusic();
+        }
+
+        public void SetMusicAndPlay(AudioClip audioClip)
+        {
+            GetDependencies();
+            musicPlayer.SetAudioClip(audioClip);
+            musicPlayer.PlayMusic();
+        }
     }
 }

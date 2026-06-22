@@ -1,68 +1,72 @@
-using DG.Tweening;
+﻿using DG.Tweening;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using ProjectConnections.UI.Overlay;
 
-public class BasicButtonPresenter : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+namespace ProjectConnections.UIShared
 {
-    [SerializeField, Required] Button button;
-    [SerializeField, Optional] SelectionHighlightAnimation selectionHighlightAnimation;
-    [SerializeField, Required] ButtonSoundPlayer buttonSoundPlayer;
-
-    CursorPresenter cursorPresenter;
-
-    void Start()
+    public class BasicButtonPresenter : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        GetDependencies();
-        button.onClick.AddListener(BasicButtonClick);
-    }
+        [SerializeField, Required] Button button;
+        [SerializeField, Optional] SelectionHighlightAnimation selectionHighlightAnimation;
+        [SerializeField, Required] ButtonSoundPlayer buttonSoundPlayer;
 
-    void GetDependencies()
-    {
-        if (cursorPresenter != null) return;
-        cursorPresenter = OverlaySystems.Instance.CursorPresenter;
-    }
+        CursorPresenter cursorPresenter;
 
-    public void Init(SelectionHighlightAnimation selectionHighlightAnimation, ButtonSoundPlayer buttonSoundPlayer)
-    {
-        this.selectionHighlightAnimation = selectionHighlightAnimation;
-        this.buttonSoundPlayer = buttonSoundPlayer;
-    }
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        GetDependencies();
-        if (button.interactable == true)
+        void Start()
         {
-            cursorPresenter.ChangeToInteractionCursor();
-            buttonSoundPlayer.PlaySelectSFX();
-            if (selectionHighlightAnimation != null)
+            GetDependencies();
+            button.onClick.AddListener(BasicButtonClick);
+        }
+
+        void GetDependencies()
+        {
+            if (cursorPresenter != null) return;
+            cursorPresenter = OverlaySystems.Instance.CursorPresenter;
+        }
+
+        public void Init(SelectionHighlightAnimation selectionHighlightAnimation, ButtonSoundPlayer buttonSoundPlayer)
+        {
+            this.selectionHighlightAnimation = selectionHighlightAnimation;
+            this.buttonSoundPlayer = buttonSoundPlayer;
+        }
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            GetDependencies();
+            if (button.interactable == true)
             {
-                selectionHighlightAnimation.ShowHighlightAt(transform.position);
+                cursorPresenter.ChangeToInteractionCursor();
+                buttonSoundPlayer.PlaySelectSFX();
+                if (selectionHighlightAnimation != null)
+                {
+                    selectionHighlightAnimation.ShowHighlightAt(transform.position);
+                }
             }
         }
-    }
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        GetDependencies();
-        if (button.interactable == true)
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            GetDependencies();
+            if (button.interactable == true)
+            {
+                cursorPresenter.ChangeToNormalCursor();
+                if (selectionHighlightAnimation != null)
+                {
+                    selectionHighlightAnimation.HideHighlight();
+                }
+            }
+        }
+
+        void BasicButtonClick()
         {
             cursorPresenter.ChangeToNormalCursor();
             if (selectionHighlightAnimation != null)
             {
                 selectionHighlightAnimation.HideHighlight();
             }
-        }
-    }
-
-    void BasicButtonClick()
-    {
-        cursorPresenter.ChangeToNormalCursor();
-        if (selectionHighlightAnimation != null)
-        {
-            selectionHighlightAnimation.HideHighlight();
         }
     }
 }

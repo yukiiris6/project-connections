@@ -1,19 +1,22 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Sirenix.OdinInspector;
 
-public class PausedState : GameState
+namespace ProjectConnections.Core
 {
-    public void Pause(GameContext context) { }
-
-    public void Resume(GameContext context)
+    public class PausedState : GameState
     {
-        context.TimeController.ResetTime();
-        context.SetState(new NormalState());
-    }
+        public void Pause(GameContext context) { }
 
-    public void Slowdown(GameContext context)
-    {
-        context.TimeController.SlowdownTime();
-        context.SetState(new SlowdownState());
+        public void Resume(GameContext context)
+        {
+            context.TimeController.ResetTime();
+            context.SetState(new NormalState());
+        }
+
+        public void Slowdown(GameContext context)
+        {
+            context.TimeController.SlowdownTime();
+            context.SetState(new SlowdownState());
+        }
     }
 }

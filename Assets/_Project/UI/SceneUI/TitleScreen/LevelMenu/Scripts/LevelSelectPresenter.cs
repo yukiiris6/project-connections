@@ -1,71 +1,78 @@
-using System.Linq;
+﻿using System.Linq;
 using TMPro;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using UnityEngine.UI;
+using ProjectConnections.Level;
+using ProjectConnections.UIShared;
+using ProjectConnections.Core;
+using ProjectConnections.UI.Overlay;
 
-public class LevelSelectPresenter : MonoBehaviour
+namespace ProjectConnections.SceneUI
 {
-    [Header("Menu References")]
-    [SerializeField, Required] GameObject titleScreenMenu;
-    [SerializeField, Required] GameObject levelButtonPrefab;
-    [SerializeField, Required] Transform levelButtonParent;
-    [SerializeField, Required] TMP_Text levelNameText;
-
-    [Header("Button References")]
-    [SerializeField, Required] Button backButton;
-    [SerializeField, Required] SelectionHighlightAnimation buttonHighlightAnimation;
-    [SerializeField, Required] ButtonSoundPlayer buttonSoundPlayer;
-
-    CursorPresenter cursorController;
-    SceneLoaderBrain sceneLoader;
-
-    void Start()
+    public class LevelSelectPresenter : MonoBehaviour
     {
-        cursorController = OverlaySystems.Instance.CursorPresenter;
-        sceneLoader = CoreSystems.Instance.SceneLoader;
-        SetupButtons();
-    }
+        [Header("Menu References")]
+        [SerializeField, Required] GameObject titleScreenMenu;
+        [SerializeField, Required] GameObject levelButtonPrefab;
+        [SerializeField, Required] Transform levelButtonParent;
+        [SerializeField, Required] TMP_Text levelNameText;
 
-    void SetupButtons()
-    {
-        InstantiateLevelButtons();
-        backButton.onClick.AddListener(OnClickBack);
-    }
+        [Header("Button References")]
+        [SerializeField, Required] Button backButton;
+        [SerializeField, Required] SelectionHighlightAnimation buttonHighlightAnimation;
+        [SerializeField, Required] ButtonSoundPlayer buttonSoundPlayer;
 
-    void InstantiateLevelButtons()
-    {
-        LevelData[] levels = sceneLoader.LevelDataStorage.GetLevels();
-        int index = 0;
-        foreach (var level in levels)
+        CursorPresenter cursorController;
+        SceneLoaderBrain sceneLoader;
+
+        void Start()
         {
-            if (level.Type != LevelType.Stage) continue;
-            index++;
-            CreateButton(level, index);
+            cursorController = OverlaySystems.Instance.CursorPresenter;
+            sceneLoader = CoreSystems.Instance.SceneLoader;
+            SetupButtons();
         }
-    }
 
-    void CreateButton(LevelData levelData, int index)
-    {
-        var buttonObject = Instantiate(levelButtonPrefab, Vector2.zero, Quaternion.identity, levelButtonParent);
-        LevelButtonPresenter levelButtonPresenter = buttonObject.GetComponent<LevelButtonPresenter>();
-        levelButtonPresenter.Init(levelNameText, levelData.DisplayName, levelData.State, index);
-        levelButtonPresenter.BasicButtonPresenter.Init(buttonHighlightAnimation, buttonSoundPlayer);
-        levelButtonPresenter.button.onClick.AddListener(() => OnClickLevel(levelData.FileName));
-    }
+        void SetupButtons()
+        {
+            InstantiateLevelButtons();
+            backButton.onClick.AddListener(OnClickBack);
+        }
 
-    void OnClickLevel(string name)
-    {
-        buttonSoundPlayer.PlayLevelSelectSFX();
-        sceneLoader.GoToLevel(name);
-        gameObject.SetActive(false);
-    }
+        void InstantiateLevelButtons()
+        {
+            LevelData[] levels = sceneLoader.LevelDataStorage.GetLevels();
+            int index = 0;
+            foreach (var level in levels)
+            {
+                if (level.Type != LevelType.Stage) continue;
+                index++;
+                CreateButton(level, index);
+            }
+        }
 
-    void OnClickBack()
-    {
-        buttonSoundPlayer.PlayBackButtonPressSFX();
-        cursorController.ChangeToNormalCursor();
-        titleScreenMenu.SetActive(true);
-        gameObject.SetActive(false);
+        void CreateButton(LevelData levelData, int index)
+        {
+            var buttonObject = Instantiate(levelButtonPrefab, Vector2.zero, Quaternion.identity, levelButtonParent);
+            LevelButtonPresenter levelButtonPresenter = buttonObject.GetComponent<LevelButtonPresenter>();
+            levelButtonPresenter.Init(levelNameText, levelData.DisplayName, levelData.State, index);
+            levelButtonPresenter.BasicButtonPresenter.Init(buttonHighlightAnimation, buttonSoundPlayer);
+            levelButtonPresenter.button.onClick.AddListener(() => OnClickLevel(levelData.FileName));
+        }
+
+        void OnClickLevel(string name)
+        {
+            buttonSoundPlayer.PlayLevelSelectSFX();
+            sceneLoader.GoToLevel(name);
+            gameObject.SetActive(false);
+        }
+
+        void OnClickBack()
+        {
+            buttonSoundPlayer.PlayBackButtonPressSFX();
+            cursorController.ChangeToNormalCursor();
+            titleScreenMenu.SetActive(true);
+            gameObject.SetActive(false);
+        }
     }
 }

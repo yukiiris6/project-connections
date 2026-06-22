@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Sirenix.OdinInspector;
 
 namespace ProjectConnections.Magnetic

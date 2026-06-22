@@ -1,19 +1,22 @@
-using DG.Tweening;
+﻿using DG.Tweening;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-public class BlackScreenTransition : MonoBehaviour
+namespace ProjectConnections.UI.Overlay
 {
-    [field: SerializeField] public float FadeDuration { get; private set; } = 1f;
-    [SerializeField, Required] CanvasGroup blackImageCanvasGroup;
-
-    public void FadeIn()
+    public class BlackScreenTransition : MonoBehaviour
     {
-        blackImageCanvasGroup.DOFade(0, FadeDuration).SetUpdate(true).SetEase(Ease.InCubic);
-    }
+        [field: SerializeField] public float FadeDuration { get; private set; } = 1f;
+        [SerializeField, Required] CanvasGroup blackImageCanvasGroup;
 
-    public void FadeOut()
-    {
-        blackImageCanvasGroup.DOFade(1, FadeDuration).SetUpdate(true).SetEase(Ease.OutCubic);
+        public void FadeIn()
+        {
+            blackImageCanvasGroup.DOFade(0, FadeDuration).SetUpdate(true).SetEase(Ease.InCubic);
+        }
+
+        public void FadeOut()
+        {
+            blackImageCanvasGroup.DOFade(1, FadeDuration).SetUpdate(true).SetEase(Ease.OutCubic);
+        }
     }
 }

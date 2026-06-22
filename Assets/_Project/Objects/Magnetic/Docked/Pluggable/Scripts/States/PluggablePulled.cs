@@ -1,4 +1,4 @@
-using ProjectConnections.Electric;
+﻿using ProjectConnections.Electric;
 using ProjectConnections.Magnetic.Anchored.States;
 using ProjectConnections.Magnetic.Modules;
 using ProjectConnections.Magnetic.States;
@@ -20,6 +20,7 @@ namespace ProjectConnections.Magnetic.Pluggable.States
                 {
                     context.Mover.UsePreciseArrival(true);
                     context.Mover.MoveTo(socketConnector.ConnectionAnchor.position);
+                    context.Mover.RotateTowardsTarget();
                     context.SetState(new PluggablePlugging());
                 }
             }
@@ -32,9 +33,10 @@ namespace ProjectConnections.Magnetic.Pluggable.States
             bool isSameAsCurrentPosition = context.Mover.IsSameAsCurrentPosition(destination);
             if (!isSameAsCurrentPosition)
             {
-                context.Mover.UseCollision(true);
+                context.Mover.UseCollision(false);
                 context.Mover.UsePreciseArrival(false);
                 context.Mover.MoveTo(destination);
+                context.Mover.RotateTowardsTarget();
                 context.SetState(new PluggablePulling());
             }
         }
@@ -48,6 +50,7 @@ namespace ProjectConnections.Magnetic.Pluggable.States
             {
                 context.Mover.MoveTo(anchorModule.OriginalPosition);
             }
+            context.Mover.ResetRotation();
             context.SetState(new PluggableReturning());
         }
 

@@ -1,53 +1,58 @@
-using System.Collections;
+﻿using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using UnityEngine.UI;
+using ProjectConnections.Core;
+using ProjectConnections.UI.Overlay;
 
-public class SplashScreen : MonoBehaviour
+namespace ProjectConnections.SceneUI
 {
-    [Header("References")]
-    [SerializeField, Required] AudioClip jingle;
-    [SerializeField, Required] CanvasGroup logoCanvasGroup;
-    [SerializeField, Required] ParticleSystem snowParticles;
-    [SerializeField, Required] Transform splashScreenParent;
-    [SerializeField, Required] AudioSource audioSource;
-
-    [Header("Values")]
-    [SerializeField] float snowFadeTime = 1f;
-    [SerializeField] float jingleTime = 2f;
-    [SerializeField] float fadeTime = 2f;
-
-    SceneLoaderBrain sceneLoader;
-
-    void Start()
+    public class SplashScreen : MonoBehaviour
     {
-        sceneLoader = CoreSystems.Instance.SceneLoader;
-        StartCoroutine(SplashScreenRoutine());
-    }
+        [Header("References")]
+        [SerializeField, Required] AudioClip jingle;
+        [SerializeField, Required] CanvasGroup logoCanvasGroup;
+        [SerializeField, Required] ParticleSystem snowParticles;
+        [SerializeField, Required] Transform splashScreenParent;
+        [SerializeField, Required] AudioSource audioSource;
 
-    IEnumerator SplashScreenRoutine()
-    {
-        yield return null;
-        OverlaySystems.Instance.CursorPresenter.HideCursor();
-        logoCanvasGroup.alpha = 0;
+        [Header("Values")]
+        [SerializeField] float snowFadeTime = 1f;
+        [SerializeField] float jingleTime = 2f;
+        [SerializeField] float fadeTime = 2f;
 
-        Instantiate(snowParticles, splashScreenParent);
-        yield return new WaitForSeconds(snowFadeTime);
+        SceneLoaderBrain sceneLoader;
 
-        yield return logoCanvasGroup
-            .DOFade(1f, fadeTime)
-            .SetEase(Ease.InSine)
-            .WaitForCompletion();
+        void Start()
+        {
+            sceneLoader = CoreSystems.Instance.SceneLoader;
+            StartCoroutine(SplashScreenRoutine());
+        }
 
-        audioSource.PlayOneShot(jingle);
-        yield return new WaitForSeconds(jingleTime);
+        IEnumerator SplashScreenRoutine()
+        {
+            yield return null;
+            OverlaySystems.Instance.CursorPresenter.HideCursor();
+            logoCanvasGroup.alpha = 0;
 
-        yield return logoCanvasGroup
-            .DOFade(0f, fadeTime)
-            .SetEase(Ease.OutSine)
-            .WaitForCompletion();
+            Instantiate(snowParticles, splashScreenParent);
+            yield return new WaitForSeconds(snowFadeTime);
 
-        sceneLoader.GoToTitleScreen();
+            yield return logoCanvasGroup
+                .DOFade(1f, fadeTime)
+                .SetEase(Ease.InSine)
+                .WaitForCompletion();
+
+            audioSource.PlayOneShot(jingle);
+            yield return new WaitForSeconds(jingleTime);
+
+            yield return logoCanvasGroup
+                .DOFade(0f, fadeTime)
+                .SetEase(Ease.OutSine)
+                .WaitForCompletion();
+
+            sceneLoader.GoToTitleScreen();
+        }
     }
 }

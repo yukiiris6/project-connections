@@ -1,22 +1,25 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Sirenix.OdinInspector;
 
-public class MusicPlayer : MonoBehaviour
+namespace ProjectConnections.Core
 {
-    [SerializeField, Required] AudioSource audioSource;
-
-    public void SetAudioClip(AudioClip audioClip)
+    public class MusicPlayer : MonoBehaviour
     {
-        audioSource.clip = audioClip;
+        [SerializeField, Required] AudioSource audioSource;
+
+        public void SetAudioClip(AudioClip audioClip)
+        {
+            audioSource.clip = audioClip;
+        }
+
+        public void PlayMusic()
+        {
+            if (audioSource.isPlaying) return;
+            audioSource.Play();
+        }
+
+        public void StopMusic() => audioSource.Stop();
+
+        public void PauseMusic() => audioSource.Pause();
     }
-
-    public void PlayMusic()
-    {
-        if (audioSource.isPlaying) return;
-        audioSource.Play();
-    }
-
-    public void StopMusic() => audioSource.Stop();
-
-    public void PauseMusic() => audioSource.Pause();
 }

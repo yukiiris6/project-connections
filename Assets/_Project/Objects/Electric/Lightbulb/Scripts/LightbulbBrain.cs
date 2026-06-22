@@ -1,4 +1,4 @@
-using DG.Tweening;
+﻿using DG.Tweening;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
@@ -6,20 +6,21 @@ namespace ProjectConnections.Electric
 {
     public class LightbulbBrain : MonoBehaviour
     {
-        [SerializeField, Required] ElectricityProvider electricityProvider;
+        [SerializeField, Required] ObjectEnergizer objectEnergizer;
         [SerializeField, Required] LightbulbPresenter presenter;
 
         void OnEnable()
         {
-            electricityProvider.OnChangedState += OnProviderChanged;
+            UpdateState(objectEnergizer.IsOn);
+            objectEnergizer.OnChangedState += UpdateState;
         }
 
         void OnDisable()
         {
-            electricityProvider.OnChangedState -= OnProviderChanged;
+            objectEnergizer.OnChangedState -= UpdateState;
         }
 
-        void OnProviderChanged(bool hasEnergy)
+        void UpdateState(bool hasEnergy)
         {
             presenter.UpdateState(hasEnergy);
         }

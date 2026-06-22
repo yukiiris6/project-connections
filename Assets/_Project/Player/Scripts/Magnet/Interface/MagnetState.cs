@@ -1,5 +1,8 @@
-public interface MagnetState
+﻿namespace ProjectConnections.Player
 {
-    void Aim(MagnetContext context);
-    void Release(MagnetContext context);
+    public interface MagnetState
+    {
+        void Aim(MagnetContext context);
+        void Release(MagnetContext context);
+    }
 }

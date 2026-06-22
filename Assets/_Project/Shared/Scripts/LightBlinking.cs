@@ -1,40 +1,43 @@
-using DG.Tweening;
+﻿using DG.Tweening;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using UnityEngine.Rendering.Universal;
 
-public class LightBlinking : MonoBehaviour
+namespace ProjectConnections.Shared
 {
-    [SerializeField, Required] Light2D light2D;
-    [SerializeField, Required] float blinkingCooldownMin = .25f;
-    [SerializeField, Required] float blinkingCooldownMax = .35f;
-    [SerializeField, Required] float blinkThreshold = .01f;
-    [SerializeField, Required] float lowerIntensity = .5f;
-    [SerializeField, Required] float maxIntensity = 1f;
-
-    float blinkingTimer = 0f;
-    float appliedCooldown = .25f;
-
-    void Update()
+    public class LightBlinking : MonoBehaviour
     {
-        Blink();
-    }
+        [SerializeField, Required] Light2D light2D;
+        [SerializeField, Required] float blinkingCooldownMin = .25f;
+        [SerializeField, Required] float blinkingCooldownMax = .35f;
+        [SerializeField, Required] float blinkThreshold = .01f;
+        [SerializeField, Required] float lowerIntensity = .5f;
+        [SerializeField, Required] float maxIntensity = 1f;
 
-    void Blink()
-    {
-        float result = Random.Range(0, 1f);
+        float blinkingTimer = 0f;
+        float appliedCooldown = .25f;
 
-        if (result < blinkThreshold && blinkingTimer >= appliedCooldown)
+        void Update()
         {
-            light2D.intensity = lowerIntensity;
-            blinkingTimer = 0;
-            appliedCooldown = Random.Range(blinkingCooldownMin, blinkingCooldownMax);
-        }
-        else if (blinkingTimer >= appliedCooldown)
-        {
-            light2D.intensity = maxIntensity;
+            Blink();
         }
 
-        blinkingTimer += Time.deltaTime;
+        void Blink()
+        {
+            float result = Random.Range(0, 1f);
+
+            if (result < blinkThreshold && blinkingTimer >= appliedCooldown)
+            {
+                light2D.intensity = lowerIntensity;
+                blinkingTimer = 0;
+                appliedCooldown = Random.Range(blinkingCooldownMin, blinkingCooldownMax);
+            }
+            else if (blinkingTimer >= appliedCooldown)
+            {
+                light2D.intensity = maxIntensity;
+            }
+
+            blinkingTimer += Time.deltaTime;
+        }
     }
 }

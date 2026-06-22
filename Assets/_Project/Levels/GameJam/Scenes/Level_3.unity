@@ -301,6 +301,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3296526187602679373, guid: 629d417e64acac84a8f0b18c8d24f326, type: 3}
+      propertyPath: connectedObjects.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296526187602679373, guid: 629d417e64acac84a8f0b18c8d24f326, type: 3}
+      propertyPath: 'connectedObjects.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1534983594}
+    - target: {fileID: 3296526187602679373, guid: 629d417e64acac84a8f0b18c8d24f326, type: 3}
+      propertyPath: 'connectedObjects.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1134023535}
     - target: {fileID: 4322777378523426446, guid: 629d417e64acac84a8f0b18c8d24f326, type: 3}
       propertyPath: <IsGenerating>k__BackingField
       value: 1
@@ -374,17 +386,17 @@ Transform:
   - {fileID: 1524615273}
   m_Father: {fileID: 1723221868}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &337471691 stripped
+--- !u!114 &337887544 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3553464999985284951, guid: f7175d0422cb33746acfe748311eb545, type: 3}
-  m_PrefabInstance: {fileID: 1875626169}
+  m_CorrespondingSourceObject: {fileID: 7941116372103005928, guid: 9e7aab00df826114280ff3f76f109c16, type: 3}
+  m_PrefabInstance: {fileID: 5355098405340158414}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b279442900b55a41a10ba9ed6932330, type: 3}
+  m_Script: {fileID: 11500000, guid: 96701e09742ae2142a81dd1f7d5e80b5, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Electric::ProjectConnections.Electric.ElectricityProvider
+  m_EditorClassIdentifier: Electric::ProjectConnections.Electric.ElectricObject
 --- !u!1 &404421608
 GameObject:
   m_ObjectHideFlags: 0
@@ -613,7 +625,7 @@ PrefabInstance:
     - target: {fileID: 1348717721218810203, guid: 0089f93f170bc1e41aff70dabd8cc0f9, type: 3}
       propertyPath: electricityProvider
       value: 
-      objectReference: {fileID: 337471691}
+      objectReference: {fileID: 0}
     - target: {fileID: 2024923133114433236, guid: 0089f93f170bc1e41aff70dabd8cc0f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.46
@@ -5578,7 +5590,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4584091252025998311, guid: e6dc5c36b3107964998662347c6ce91e, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.9998596
+      value: 0.999442
       objectReference: {fileID: 0}
     - target: {fileID: 5494071543903194358, guid: e6dc5c36b3107964998662347c6ce91e, type: 3}
       propertyPath: Target.TrackingTarget
@@ -5746,7 +5758,6 @@ Transform:
   - {fileID: 1134023532}
   - {fileID: 1792845471}
   - {fileID: 106313516}
-  - {fileID: 1875626170}
   - {fileID: 2107612492}
   - {fileID: 1139587764}
   - {fileID: 142784698}
@@ -5993,7 +6004,7 @@ PrefabInstance:
     - target: {fileID: 7703303099544840052, guid: 829f33f629e17764b8dceb8119d0581f, type: 3}
       propertyPath: electricityProvider
       value: 
-      objectReference: {fileID: 337471691}
+      objectReference: {fileID: 0}
     - target: {fileID: 8726299346224791272, guid: 829f33f629e17764b8dceb8119d0581f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 23.5
@@ -6044,6 +6055,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8726299346224791272, guid: 829f33f629e17764b8dceb8119d0581f, type: 3}
   m_PrefabInstance: {fileID: 1134023531}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1134023535 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5236878333193008397, guid: 829f33f629e17764b8dceb8119d0581f, type: 3}
+  m_PrefabInstance: {fileID: 1134023531}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96701e09742ae2142a81dd1f7d5e80b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Electric::ProjectConnections.Electric.ElectricObject
 --- !u!1001 &1135997644
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6180,6 +6202,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3296526187602679373, guid: 629d417e64acac84a8f0b18c8d24f326, type: 3}
+      propertyPath: connectedObjects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296526187602679373, guid: 629d417e64acac84a8f0b18c8d24f326, type: 3}
+      propertyPath: 'connectedObjects.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1676947859}
+    - target: {fileID: 3296526187602679373, guid: 629d417e64acac84a8f0b18c8d24f326, type: 3}
+      propertyPath: 'connectedObjects.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1672435173}
+    - target: {fileID: 3296526187602679373, guid: 629d417e64acac84a8f0b18c8d24f326, type: 3}
+      propertyPath: 'connectedObjects.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1988797280}
     - target: {fileID: 4322777378523426446, guid: 629d417e64acac84a8f0b18c8d24f326, type: 3}
       propertyPath: <IsGenerating>k__BackingField
       value: 1
@@ -6473,6 +6511,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2024923133114433236, guid: 0089f93f170bc1e41aff70dabd8cc0f9, type: 3}
   m_PrefabInstance: {fileID: 484045546}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1534983594 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1743761627906394617, guid: 0089f93f170bc1e41aff70dabd8cc0f9, type: 3}
+  m_PrefabInstance: {fileID: 484045546}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96701e09742ae2142a81dd1f7d5e80b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Electric::ProjectConnections.Electric.ElectricObject
 --- !u!4 &1547954857 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8948277997307100982, guid: 818ba725a585d144f8bc7a3fbe64c8bf, type: 3}
@@ -6576,6 +6625,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6908361261712006699, guid: 9e7aab00df826114280ff3f76f109c16, type: 3}
   m_PrefabInstance: {fileID: 1672435167}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1672435173 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7941116372103005928, guid: 9e7aab00df826114280ff3f76f109c16, type: 3}
+  m_PrefabInstance: {fileID: 1672435167}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96701e09742ae2142a81dd1f7d5e80b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Electric::ProjectConnections.Electric.ElectricObject
 --- !u!1001 &1676947853
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6674,6 +6734,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6908361261712006699, guid: 9e7aab00df826114280ff3f76f109c16, type: 3}
   m_PrefabInstance: {fileID: 1676947853}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1676947859 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7941116372103005928, guid: 9e7aab00df826114280ff3f76f109c16, type: 3}
+  m_PrefabInstance: {fileID: 1676947853}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96701e09742ae2142a81dd1f7d5e80b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Electric::ProjectConnections.Electric.ElectricObject
 --- !u!1001 &1684357782
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7047,84 +7118,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8013865688173058999, guid: f7175d0422cb33746acfe748311eb545, type: 3}
   m_PrefabInstance: {fileID: 1792845470}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1875626169
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 710032629}
-    m_Modifications:
-    - target: {fileID: 2357766709650388528, guid: f7175d0422cb33746acfe748311eb545, type: 3}
-      propertyPath: m_Name
-      value: PlugContainer3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2357766709650388528, guid: f7175d0422cb33746acfe748311eb545, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3785516930262641918, guid: f7175d0422cb33746acfe748311eb545, type: 3}
-      propertyPath: pullMultiplier
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3785516930262641918, guid: f7175d0422cb33746acfe748311eb545, type: 3}
-      propertyPath: playerStopDistance
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3785516930262641918, guid: f7175d0422cb33746acfe748311eb545, type: 3}
-      propertyPath: minimumPlayerDistance
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8013865688173058999, guid: f7175d0422cb33746acfe748311eb545, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 25.46761
-      objectReference: {fileID: 0}
-    - target: {fileID: 8013865688173058999, guid: f7175d0422cb33746acfe748311eb545, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 8013865688173058999, guid: f7175d0422cb33746acfe748311eb545, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8013865688173058999, guid: f7175d0422cb33746acfe748311eb545, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8013865688173058999, guid: f7175d0422cb33746acfe748311eb545, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8013865688173058999, guid: f7175d0422cb33746acfe748311eb545, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8013865688173058999, guid: f7175d0422cb33746acfe748311eb545, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8013865688173058999, guid: f7175d0422cb33746acfe748311eb545, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8013865688173058999, guid: f7175d0422cb33746acfe748311eb545, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8013865688173058999, guid: f7175d0422cb33746acfe748311eb545, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f7175d0422cb33746acfe748311eb545, type: 3}
---- !u!4 &1875626170 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8013865688173058999, guid: f7175d0422cb33746acfe748311eb545, type: 3}
-  m_PrefabInstance: {fileID: 1875626169}
+--- !u!114 &1832587603 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7591124147202495226, guid: 818ba725a585d144f8bc7a3fbe64c8bf, type: 3}
+  m_PrefabInstance: {fileID: 427908539}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96701e09742ae2142a81dd1f7d5e80b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Electric::ProjectConnections.Electric.ElectricObject
 --- !u!1001 &1919936489
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15820,6 +15824,17 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1988797280 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7591124147202495226, guid: 818ba725a585d144f8bc7a3fbe64c8bf, type: 3}
+  m_PrefabInstance: {fileID: 2066234556}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96701e09742ae2142a81dd1f7d5e80b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Electric::ProjectConnections.Electric.ElectricObject
 --- !u!1 &2055648849
 GameObject:
   m_ObjectHideFlags: 0
@@ -16279,6 +16294,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3296526187602679373, guid: 629d417e64acac84a8f0b18c8d24f326, type: 3}
+      propertyPath: connectedObjects.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296526187602679373, guid: 629d417e64acac84a8f0b18c8d24f326, type: 3}
+      propertyPath: 'connectedObjects.Array.data[0]'
+      value: 
+      objectReference: {fileID: 337887544}
+    - target: {fileID: 3296526187602679373, guid: 629d417e64acac84a8f0b18c8d24f326, type: 3}
+      propertyPath: 'connectedObjects.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1832587603}
     - target: {fileID: 4322777378523426446, guid: 629d417e64acac84a8f0b18c8d24f326, type: 3}
       propertyPath: <IsGenerating>k__BackingField
       value: 1

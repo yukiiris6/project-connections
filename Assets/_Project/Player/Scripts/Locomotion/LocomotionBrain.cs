@@ -1,47 +1,50 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Sirenix.OdinInspector;
 
-public class LocomotionBrain : MonoBehaviour, LocomotionContext
+namespace ProjectConnections.Player
 {
-    [field: SerializeField] public Jumper Jumper { get; private set; }
-    [field: SerializeField] public GroundValidator GroundValidator { get; private set; }
-    [field: SerializeField] public LocomotionPresenter Presenter { get; private set; }
-    [field: SerializeField] public PlayerSoundPlayer SoundPlayer { get; private set; }
-    [SerializeField, Required] PlayerController playerController;
-
-    [ShowInInspector, ReadOnly]
-    LocomotionState currentState = new Grounded();
-
-    void OnEnable()
+    public class LocomotionBrain : MonoBehaviour, LocomotionContext
     {
-        playerController.OnJumpInput += JumpPressed;
-    }
+        [field: SerializeField] public Jumper Jumper { get; private set; }
+        [field: SerializeField] public GroundValidator GroundValidator { get; private set; }
+        [field: SerializeField] public LocomotionPresenter Presenter { get; private set; }
+        [field: SerializeField] public PlayerSoundPlayer SoundPlayer { get; private set; }
+        [SerializeField, Required] PlayerController playerController;
 
-    void OnDisable()
-    {
-        playerController.OnJumpInput -= JumpPressed;
-    }
+        [ShowInInspector, ReadOnly]
+        LocomotionState currentState = new Grounded();
 
-    void JumpPressed(bool wasPressed)
-    {
-        if (wasPressed) Jump();
-        else Release();
-    }
+        void OnEnable()
+        {
+            playerController.OnJumpInput += JumpPressed;
+        }
 
-    void Jump()
-    {
-        currentState.Jump(this);
-    }
+        void OnDisable()
+        {
+            playerController.OnJumpInput -= JumpPressed;
+        }
 
-    void Release()
-    {
-        currentState.Release(this);
-    }
+        void JumpPressed(bool wasPressed)
+        {
+            if (wasPressed) Jump();
+            else Release();
+        }
 
-    public void SetState(LocomotionState newState)
-    {
-        currentState.Exit(this);
-        currentState = newState;
-        currentState.Enter(this);
+        void Jump()
+        {
+            currentState.Jump(this);
+        }
+
+        void Release()
+        {
+            currentState.Release(this);
+        }
+
+        public void SetState(LocomotionState newState)
+        {
+            currentState.Exit(this);
+            currentState = newState;
+            currentState.Enter(this);
+        }
     }
 }

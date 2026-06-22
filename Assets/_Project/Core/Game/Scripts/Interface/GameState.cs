@@ -1,6 +1,9 @@
-public interface GameState
+﻿namespace ProjectConnections.Core
 {
-    void Pause(GameContext context);
-    void Resume(GameContext context);
-    void Slowdown(GameContext context);
+    public interface GameState
+    {
+        void Pause(GameContext context);
+        void Resume(GameContext context);
+        void Slowdown(GameContext context);
+    }
 }

@@ -3,7 +3,8 @@
     "rootNamespace": "ProjectConnections.Magnetic",
     "references": [
         "GUID:6d7236aafc1baed4986886f395aa8a7b",
-        "GUID:4307f53044263cf4b835bd812fc161a4"
+        "GUID:4307f53044263cf4b835bd812fc161a4",
+        "GUID:830bb3e1a3e7aff4689f802308667fe2"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -3974,8 +3974,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3066437966875300580, guid: ec1adce245eae3a469c48fac9b23a43c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3066437966875300580, guid: ec1adce245eae3a469c48fac9b23a43c, type: 3}
       propertyPath: m_LocalPosition.y
       value: -3.9650097
+      objectReference: {fileID: 0}
+    - target: {fileID: 4326503933078788971, guid: ec1adce245eae3a469c48fac9b23a43c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11.5
       objectReference: {fileID: 0}
     - target: {fileID: 4326503933078788971, guid: ec1adce245eae3a469c48fac9b23a43c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9961,6 +9969,17 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &1635250795 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1743761627906394617, guid: 0089f93f170bc1e41aff70dabd8cc0f9, type: 3}
+  m_PrefabInstance: {fileID: 484045546}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96701e09742ae2142a81dd1f7d5e80b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Electric::ProjectConnections.Electric.ElectricObject
 --- !u!1 &1658415035
 GameObject:
   m_ObjectHideFlags: 0
@@ -10091,7 +10110,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4584091252025998311, guid: e6dc5c36b3107964998662347c6ce91e, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.9998596
+      value: 0.999442
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10103,6 +10122,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1740767598319831726, guid: e6dc5c36b3107964998662347c6ce91e, type: 3}
   m_PrefabInstance: {fileID: 1795219637}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1816666760 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5236878333193008397, guid: 829f33f629e17764b8dceb8119d0581f, type: 3}
+  m_PrefabInstance: {fileID: 243848076551462283}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96701e09742ae2142a81dd1f7d5e80b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Electric::ProjectConnections.Electric.ElectricObject
 --- !u!1001 &1827361741
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10625,10 +10655,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lightbulb
       objectReference: {fileID: 0}
-    - target: {fileID: 7703303099544840052, guid: 829f33f629e17764b8dceb8119d0581f, type: 3}
-      propertyPath: electricityProvider
-      value: 
-      objectReference: {fileID: 43397253}
     - target: {fileID: 8726299346224791272, guid: 829f33f629e17764b8dceb8119d0581f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.5
@@ -10726,6 +10752,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Socket
       objectReference: {fileID: 0}
+    - target: {fileID: 3296526187602679373, guid: 629d417e64acac84a8f0b18c8d24f326, type: 3}
+      propertyPath: connectedObjects.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296526187602679373, guid: 629d417e64acac84a8f0b18c8d24f326, type: 3}
+      propertyPath: 'connectedObjects.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1635250795}
+    - target: {fileID: 3296526187602679373, guid: 629d417e64acac84a8f0b18c8d24f326, type: 3}
+      propertyPath: 'connectedObjects.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1816666760}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

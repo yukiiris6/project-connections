@@ -1,43 +1,46 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Sirenix.OdinInspector;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
-public class AudioButtonController : MonoBehaviour
+namespace ProjectConnections.SceneUI
 {
-    [SerializeField, Required] AudioMixer audioMixer;
-    [SerializeField, Required] Sprite activeButton;
-    [SerializeField, Required] Sprite inactiveButton;
-    [SerializeField, Required] Button button;
-
-    bool isOn = true;
-
-    void Start()
+    public class AudioButtonController : MonoBehaviour
     {
-        float value;
-        audioMixer.GetFloat("MyVolume", out value);
-        if (value == -15) isOn = true;
-        else isOn = false;
-        button.onClick.AddListener(OnClickAudio);
-    }
+        [SerializeField, Required] AudioMixer audioMixer;
+        [SerializeField, Required] Sprite activeButton;
+        [SerializeField, Required] Sprite inactiveButton;
+        [SerializeField, Required] Button button;
 
-    void OnClickAudio()
-    {
-        isOn = !isOn;
-        ToggleButton();
-    }
+        bool isOn = true;
 
-    void ToggleButton()
-    {
-        if (isOn)
+        void Start()
         {
-            audioMixer.SetFloat("MyVolume", -15);
-            button.image.sprite = activeButton;
+            float value;
+            audioMixer.GetFloat("MyVolume", out value);
+            if (value == -15) isOn = true;
+            else isOn = false;
+            button.onClick.AddListener(OnClickAudio);
         }
-        else
+
+        void OnClickAudio()
         {
-            audioMixer.SetFloat("MyVolume", -80);
-            button.image.sprite = inactiveButton;
+            isOn = !isOn;
+            ToggleButton();
+        }
+
+        void ToggleButton()
+        {
+            if (isOn)
+            {
+                audioMixer.SetFloat("MyVolume", -15);
+                button.image.sprite = activeButton;
+            }
+            else
+            {
+                audioMixer.SetFloat("MyVolume", -80);
+                button.image.sprite = inactiveButton;
+            }
         }
     }
 }

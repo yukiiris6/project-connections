@@ -1,26 +1,28 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Sirenix.OdinInspector;
 
-public class CoreSystems : MonoBehaviour
+namespace ProjectConnections.Core
 {
-    [field: SerializeField, Required] public SceneLoaderBrain SceneLoader { get; private set; }
-    [field: SerializeField, Required] public GameStateSetterBrain GameStateSetter { get; private set; }
-    [field: SerializeField, Required] public MusicPlayer MusicPlayer { get; private set; }
-
-    static CoreSystems instance;
-    public static CoreSystems Instance => instance;
-
-    void Awake()
+    public class CoreSystems : MonoBehaviour
     {
-        if (FindObjectsByType<CoreSystems>(FindObjectsSortMode.None).Length > 1)
+        [field: SerializeField, Required] public SceneLoaderBrain SceneLoader { get; private set; }
+        [field: SerializeField, Required] public GameStateSetterBrain GameStateSetter { get; private set; }
+        [field: SerializeField, Required] public MusicPlayer MusicPlayer { get; private set; }
+        static CoreSystems instance;
+        public static CoreSystems Instance => instance;
+
+        void Awake()
         {
-            Destroy(gameObject);
-            return;
-        }
-        else
-        {
-            instance = this;
-            DontDestroyOnLoad(this);
+            if (FindObjectsByType<CoreSystems>(FindObjectsSortMode.None).Length > 1)
+            {
+                Destroy(gameObject);
+                return;
+            }
+            else
+            {
+                instance = this;
+                DontDestroyOnLoad(this);
+            }
         }
     }
 }

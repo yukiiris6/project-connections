@@ -1,29 +1,33 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Sirenix.OdinInspector;
+using ProjectConnections.Level;
 
-public class LoadingState : SceneState
+namespace ProjectConnections.Core
 {
-    LevelContext _context;
-
-    public void Enter(LevelContext context)
+    public class LoadingState : SceneState
     {
-        _context = context;
-        context.SceneLoader.OnLevelLoad += OnLoad;
-    }
+        LevelContext _context;
 
-    public void Exit(LevelContext context)
-    {
-        context.SceneLoader.OnLevelLoad -= OnLoad;
-    }
+        public void Enter(LevelContext context)
+        {
+            _context = context;
+            context.SceneLoader.OnLevelLoad += OnLoad;
+        }
 
-    public void GoToLevel(LevelContext context, string fileName) { }
-    public void FinishLevel(LevelContext context) { }
-    public void RestartLevel(LevelContext context) { }
+        public void Exit(LevelContext context)
+        {
+            context.SceneLoader.OnLevelLoad -= OnLoad;
+        }
 
-    void OnLoad()
-    {
-        bool isToMenu = _context.LevelDataStorage.GetCurrentLevelType() == LevelType.Menu;
-        if (isToMenu) _context.SetState(new InMenuState());
-        else _context.SetState(new InLevelState());
+        public void GoToLevel(LevelContext context, string fileName) { }
+        public void FinishLevel(LevelContext context) { }
+        public void RestartLevel(LevelContext context) { }
+
+        void OnLoad()
+        {
+            bool isToMenu = _context.LevelDataStorage.GetCurrentLevelType() == LevelType.Menu;
+            if (isToMenu) _context.SetState(new InMenuState());
+            else _context.SetState(new InLevelState());
+        }
     }
 }

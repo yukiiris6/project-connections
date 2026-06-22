@@ -220,7 +220,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 8, y: 1}
+  m_Size: {x: 4, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -264,7 +264,7 @@ BoxCollider2D:
     border: {x: 0.875, y: 0.125, z: 0.1875, w: 0.1875}
     pivot: {x: 0, y: 0.5}
     oldSize: {x: 2, y: 1}
-    newSize: {x: 8, y: 1}
+    newSize: {x: 4, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 2
     adaptiveTiling: 0
@@ -424,6 +424,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6908361261712006699}
+  - component: {fileID: 7941116372103005928}
   - component: {fileID: 3593041858879465006}
   - component: {fileID: 2411797103054506959}
   - component: {fileID: 4627658449873612119}
@@ -453,6 +454,18 @@ Transform:
   - {fileID: 3932822291177754147}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7941116372103005928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5150951205526045678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96701e09742ae2142a81dd1f7d5e80b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Electric::ProjectConnections.Electric.ElectricObject
 --- !u!114 &3593041858879465006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -465,7 +478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03ac5543ddf77f147a6c29c97af04d7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GateState
-  electricityProvider: {fileID: 0}
+  objectEnergizer: {fileID: 7941116372103005928}
   controller: {fileID: 4627658449873612119}
   presenter: {fileID: 2411797103054506959}
 --- !u!114 &2411797103054506959
@@ -503,7 +516,7 @@ MonoBehaviour:
   - {fileID: 104829281253148187}
   soundPlayer: {fileID: 4658368521806504365}
   killingTrigger: {fileID: 5886876801068064374}
-  offWidth: 6
+  offWidth: 4
   onWidth: 1
 --- !u!82 &3025694609311890864
 AudioSource:

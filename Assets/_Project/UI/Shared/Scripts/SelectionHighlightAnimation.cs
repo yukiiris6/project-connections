@@ -1,39 +1,42 @@
-using DG.Tweening;
+﻿using DG.Tweening;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-public class SelectionHighlightAnimation : MonoBehaviour
+namespace ProjectConnections.UIShared
 {
-    [SerializeField, Required] Transform buttonHighlightTransform;
-    [SerializeField, Required] float maxScale = 1.2f;
-    [SerializeField, Required] float scaleDuration = .5f;
-
-    Tween tween;
-
-    public void ShowHighlightAt(Vector2 position)
+    public class SelectionHighlightAnimation : MonoBehaviour
     {
-        KillTween();
-        buttonHighlightTransform.gameObject.SetActive(true);
-        buttonHighlightTransform.position = position;
-        buttonHighlightTransform.localScale = new(1f, 1f, 1f);
-        tween = buttonHighlightTransform.DOScale(maxScale, scaleDuration)
-            .SetUpdate(true)
-            .SetLoops(-1, LoopType.Yoyo)
-            .SetEase(Ease.InOutSine);
-    }
+        [SerializeField, Required] Transform buttonHighlightTransform;
+        [SerializeField, Required] float maxScale = 1.2f;
+        [SerializeField, Required] float scaleDuration = .5f;
 
-    public void HideHighlight()
-    {
-        KillTween();
-        buttonHighlightTransform.gameObject.SetActive(false);
-    }
+        Tween tween;
 
-    void KillTween()
-    {
-        if (tween != null)
+        public void ShowHighlightAt(Vector2 position)
         {
-            tween.Kill();
-            tween = null;
+            KillTween();
+            buttonHighlightTransform.gameObject.SetActive(true);
+            buttonHighlightTransform.position = position;
+            buttonHighlightTransform.localScale = new(1f, 1f, 1f);
+            tween = buttonHighlightTransform.DOScale(maxScale, scaleDuration)
+                .SetUpdate(true)
+                .SetLoops(-1, LoopType.Yoyo)
+                .SetEase(Ease.InOutSine);
+        }
+
+        public void HideHighlight()
+        {
+            KillTween();
+            buttonHighlightTransform.gameObject.SetActive(false);
+        }
+
+        void KillTween()
+        {
+            if (tween != null)
+            {
+                tween.Kill();
+                tween = null;
+            }
         }
     }
 }

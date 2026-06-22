@@ -71,8 +71,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: 0.000030517578}
-  m_SizeDelta: {x: 1820, y: 979.4258}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5524808144474027988
 CanvasRenderer:
@@ -443,10 +443,10 @@ RectTransform:
   - {fileID: 3501082196531335280}
   m_Father: {fileID: 8297267552438923622}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3742869990654985718
 GameObject:
@@ -1467,7 +1467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75bef8f74240f144e883b68f9fda3174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SquareIrisWipeController
-  <Duration>k__BackingField: 1.5
+  <Duration>k__BackingField: 1
   irisMaterial: {fileID: 2100000, guid: 3888cd00d76aeaf4d815e74de7e1b87f, type: 2}
   audioSource: {fileID: 2118852097762937960}
   transitionSFX: {fileID: 8300000, guid: eade8051af0139844ad6648a58db6e63, type: 3}

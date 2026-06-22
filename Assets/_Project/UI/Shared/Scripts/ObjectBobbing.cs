@@ -1,54 +1,57 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Sirenix.OdinInspector;
 using DG.Tweening;
 
-public class ObjectBobbing : MonoBehaviour
+namespace ProjectConnections.UIShared
 {
-    [SerializeField, Required] RectTransform rectTransform;
-
-    [Header("Bobbing")]
-    [Tooltip("Will use minimum value if false")]
-    [SerializeField, Required] bool shouldRandomizeBobbing;
-    [SerializeField, Required] float bobAmountMin = 2f;
-    [SerializeField, Required] float bobAmountMax = 6f;
-
-    [Header("Duration")]
-    [Tooltip("Will use minimum value if false")]
-    [SerializeField, Required] bool shouldRandomizeDuration;
-    [SerializeField, Required] float durationMin = 1f;
-    [SerializeField, Required] float durationMax = 2f;
-
-    [Header("Misc")]
-    [SerializeField, Required] bool shouldHaveStartDelay;
-    [SerializeField, Required] Ease easeType = Ease.InOutSine;
-
-
-    void GetDependencies()
+    public class ObjectBobbing : MonoBehaviour
     {
-        if (rectTransform != null) return;
-        rectTransform = GetComponent<RectTransform>();
-    }
+        [SerializeField, Required] RectTransform rectTransform;
 
-    void Awake() => GetDependencies();
+        [Header("Bobbing")]
+        [Tooltip("Will use minimum value if false")]
+        [SerializeField, Required] bool shouldRandomizeBobbing;
+        [SerializeField, Required] float bobAmountMin = 2f;
+        [SerializeField, Required] float bobAmountMax = 6f;
 
-    void Start()
-    {
-        GetDependencies();
+        [Header("Duration")]
+        [Tooltip("Will use minimum value if false")]
+        [SerializeField, Required] bool shouldRandomizeDuration;
+        [SerializeField, Required] float durationMin = 1f;
+        [SerializeField, Required] float durationMax = 2f;
 
-        Canvas.ForceUpdateCanvases();
+        [Header("Misc")]
+        [SerializeField, Required] bool shouldHaveStartDelay;
+        [SerializeField, Required] Ease easeType = Ease.InOutSine;
 
-        float delay = 0;
 
-        var bobAmount = bobAmountMin;
-        var duration = durationMin;
+        void GetDependencies()
+        {
+            if (rectTransform != null) return;
+            rectTransform = GetComponent<RectTransform>();
+        }
 
-        if (shouldHaveStartDelay) delay = Random.Range(0f, durationMin);
-        if (shouldRandomizeDuration) duration = Random.Range(durationMin, durationMax);
-        if (shouldRandomizeBobbing) bobAmount = Random.Range(bobAmountMin, bobAmountMax);
+        void Awake() => GetDependencies();
 
-        rectTransform.DOAnchorPosY(rectTransform.anchoredPosition.y + bobAmount, duration)
-            .SetEase(easeType)
-            .SetLoops(-1, LoopType.Yoyo)
-            .SetDelay(delay);
+        void Start()
+        {
+            GetDependencies();
+
+            Canvas.ForceUpdateCanvases();
+
+            float delay = 0;
+
+            var bobAmount = bobAmountMin;
+            var duration = durationMin;
+
+            if (shouldHaveStartDelay) delay = Random.Range(0f, durationMin);
+            if (shouldRandomizeDuration) duration = Random.Range(durationMin, durationMax);
+            if (shouldRandomizeBobbing) bobAmount = Random.Range(bobAmountMin, bobAmountMax);
+
+            rectTransform.DOAnchorPosY(rectTransform.anchoredPosition.y + bobAmount, duration)
+                .SetEase(easeType)
+                .SetLoops(-1, LoopType.Yoyo)
+                .SetDelay(delay);
+        }
     }
 }

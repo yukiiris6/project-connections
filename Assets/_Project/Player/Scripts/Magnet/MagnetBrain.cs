@@ -1,42 +1,45 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Sirenix.OdinInspector;
 
-public class MagnetBrain : MonoBehaviour, MagnetContext
+namespace ProjectConnections.Player
 {
-    [field: SerializeField] public MagnetAiming MagnetAiming { get; private set; }
-    [field: SerializeField] public MagnetPresenter MagnetPresenter { get; private set; }
-    [SerializeField, Required] PlayerController playerController;
-
-    MagnetState currentState = new Standby();
-
-    void OnEnable()
+    public class MagnetBrain : MonoBehaviour, MagnetContext
     {
-        playerController.OnAimInput += AimPressed;
-    }
+        [field: SerializeField] public MagnetAiming MagnetAiming { get; private set; }
+        [field: SerializeField] public MagnetPresenter MagnetPresenter { get; private set; }
+        [SerializeField, Required] PlayerController playerController;
 
-    void OnDisable()
-    {
-        playerController.OnAimInput -= AimPressed;
-    }
+        MagnetState currentState = new Standby();
 
-    void AimPressed(bool wasPressed)
-    {
-        if (wasPressed) Aim();
-        else Release();
-    }
+        void OnEnable()
+        {
+            playerController.OnAimInput += AimPressed;
+        }
 
-    void Aim()
-    {
-        currentState.Aim(this);
-    }
+        void OnDisable()
+        {
+            playerController.OnAimInput -= AimPressed;
+        }
 
-    void Release()
-    {
-        currentState.Release(this);
-    }
+        void AimPressed(bool wasPressed)
+        {
+            if (wasPressed) Aim();
+            else Release();
+        }
 
-    public void SetState(MagnetState newState)
-    {
-        currentState = newState;
+        public void Aim()
+        {
+            currentState.Aim(this);
+        }
+
+        public void Release()
+        {
+            currentState.Release(this);
+        }
+
+        public void SetState(MagnetState newState)
+        {
+            currentState = newState;
+        }
     }
 }

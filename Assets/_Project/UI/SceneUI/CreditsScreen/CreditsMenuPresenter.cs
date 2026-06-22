@@ -1,34 +1,39 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Sirenix.OdinInspector;
 using UnityEngine.UI;
+using ProjectConnections.UIShared;
+using ProjectConnections.Core;
 
-public class CreditsMenuPresenter : MonoBehaviour
+namespace ProjectConnections.SceneUI
 {
-    [SerializeField, Required] Button toTitleScreenButton;
-    [SerializeField, Required] ButtonSoundPlayer buttonSoundPlayer;
-
-    SceneLoaderBrain sceneLoader;
-
-    void GetDependencies()
+    public class CreditsMenuPresenter : MonoBehaviour
     {
-        if (sceneLoader != null) return;
-        sceneLoader = CoreSystems.Instance.SceneLoader;
-    }
+        [SerializeField, Required] Button toTitleScreenButton;
+        [SerializeField, Required] ButtonSoundPlayer buttonSoundPlayer;
 
-    void Start()
-    {
-        GetDependencies();
-        SetupButtons();
-    }
+        SceneLoaderBrain sceneLoader;
 
-    void SetupButtons()
-    {
-        toTitleScreenButton.onClick.AddListener(OnClickToTitleScreen);
-    }
+        void GetDependencies()
+        {
+            if (sceneLoader != null) return;
+            sceneLoader = CoreSystems.Instance.SceneLoader;
+        }
 
-    void OnClickToTitleScreen()
-    {
-        buttonSoundPlayer.PlaySelectSFX();
-        sceneLoader.GoToTitleScreen();
+        void Start()
+        {
+            GetDependencies();
+            SetupButtons();
+        }
+
+        void SetupButtons()
+        {
+            toTitleScreenButton.onClick.AddListener(OnClickToTitleScreen);
+        }
+
+        void OnClickToTitleScreen()
+        {
+            buttonSoundPlayer.PlaySelectSFX();
+            sceneLoader.GoToTitleScreen();
+        }
     }
 }

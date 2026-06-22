@@ -1,18 +1,21 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Sirenix.OdinInspector;
 
-public class LocomotionPresenter : MonoBehaviour
+namespace ProjectConnections.Player
 {
-    [SerializeField, Required] GameObject jumpDustPrefab;
-    [SerializeField, Required] GameObject landDustPrefab;
-
-    public void InstantiateJumpDust()
+    public class LocomotionPresenter : MonoBehaviour
     {
-        Instantiate(jumpDustPrefab, transform.position, Quaternion.identity);
-    }
+        [SerializeField, Required] GameObject jumpDustPrefab;
+        [SerializeField, Required] GameObject landDustPrefab;
 
-    public void InstantiateLandDust()
-    {
-        Instantiate(landDustPrefab, transform.position, Quaternion.identity);
+        public void InstantiateJumpDust()
+        {
+            Instantiate(jumpDustPrefab, transform.position, Quaternion.identity);
+        }
+
+        public void InstantiateLandDust()
+        {
+            Instantiate(landDustPrefab, transform.position, Quaternion.identity);
+        }
     }
 }

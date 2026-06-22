@@ -1,24 +1,27 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Sirenix.OdinInspector;
 using UnityEngine.InputSystem;
 
-public class PlayerInputMapper : MonoBehaviour
+namespace ProjectConnections.UIShared
 {
-    [SerializeField, Required] PlayerInput playerInput;
-
-    public void ToggleActionMap()
+    public class PlayerInputMapper : MonoBehaviour
     {
-        if (playerInput.currentActionMap.name.Equals("Gameplay")) SetUIActionMap();
-        else SetGameplayActionMap();
-    }
+        [SerializeField, Required] PlayerInput playerInput;
 
-    public void SetGameplayActionMap()
-    {
-        playerInput.SwitchCurrentActionMap("Gameplay");
-    }
+        public void ToggleActionMap()
+        {
+            if (playerInput.currentActionMap.name.Equals("Gameplay")) SetUIActionMap();
+            else SetGameplayActionMap();
+        }
 
-    public void SetUIActionMap()
-    {
-        playerInput.SwitchCurrentActionMap("UI");
+        public void SetGameplayActionMap()
+        {
+            playerInput.SwitchCurrentActionMap("Gameplay");
+        }
+
+        public void SetUIActionMap()
+        {
+            playerInput.SwitchCurrentActionMap("UI");
+        }
     }
 }

@@ -844,9 +844,11 @@ GameObject:
   - component: {fileID: 6695332655704917580}
   - component: {fileID: 6497271366122662}
   - component: {fileID: 6298073853270033227}
+  - component: {fileID: 1839041823522251793}
   - component: {fileID: 3553464999985284951}
   - component: {fileID: 5252404497750250499}
   - component: {fileID: 468029947327649419}
+  - component: {fileID: 2134260121511104680}
   m_Layer: 8
   m_Name: Plug
   m_TagString: Magnetic
@@ -1148,6 +1150,8 @@ MonoBehaviour:
   <Rigidbody>k__BackingField: {fileID: 8716981003542805373}
   <Presenter>k__BackingField: {fileID: 468029947327649419}
   <Energizer>k__BackingField: {fileID: 5252404497750250499}
+  <CarriableObject>k__BackingField: {fileID: 2134260121511104680}
+  defaultSocket: {fileID: 0}
 --- !u!114 &6497271366122662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1180,6 +1184,19 @@ MonoBehaviour:
   pullMultiplier: 1.1
   defaultStopDistance: 2
   preciseStopDistance: 0.25
+--- !u!114 &1839041823522251793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3902003610806681886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b6557d2e0bd88341ac24b8bfb040ca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Electric::ProjectConnections.Electric.ElectricityStorage
+  <HasElectricity>k__BackingField: 1
 --- !u!114 &3553464999985284951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1192,7 +1209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b279442900b55a41a10ba9ed6932330, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Electric::ProjectConnections.Electric.ElectricityProvider
-  defaultElectricityGenerator: {fileID: 0}
+  electricityStorage: {fileID: 1839041823522251793}
 --- !u!114 &5252404497750250499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1223,6 +1240,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Magnetism::ProjectConnections.Magnetism.Presenter
   cinemachineImpulseSource: {fileID: 8771224964013700846}
+--- !u!114 &2134260121511104680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3902003610806681886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59ca6e12e84dbc848b66962a71cd8197, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Shared::CarriableObject
+  <ObjectType>k__BackingField: 1
+  <ShouldCarryOnTrigger>k__BackingField: 0
+  myRigidbody: {fileID: 8716981003542805373}
 --- !u!1 &4899739921457621736
 GameObject:
   m_ObjectHideFlags: 0

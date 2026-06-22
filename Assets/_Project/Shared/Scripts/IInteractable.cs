@@ -1,7 +1,11 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Sirenix.OdinInspector;
 
-public interface IInteractable
+namespace ProjectConnections.Shared
 {
-    void Interact();
+    public interface IInteractable
+    {
+        InteractableState State { get; }
+        void Interact();
+    }
 }

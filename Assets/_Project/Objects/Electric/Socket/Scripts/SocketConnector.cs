@@ -1,23 +1,23 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Sirenix.OdinInspector;
 
 namespace ProjectConnections.Electric
 {
     public class SocketConnector : MonoBehaviour
     {
-        [field: SerializeField] public Transform ConnectionAnchor { get; private set; }
+        [field: SerializeField, Required] public Transform ConnectionAnchor { get; private set; }
+        [field: SerializeField, Required] public ElectricityReceiver ElectricityReceiver { get; private set; }
 
-        public Vector3 ConnectionRotation { get; private set; }
-        public bool IsConnected { get; private set; }
+        public Quaternion ConnectionRotation { get; private set; }
 
         void Awake()
         {
-            ConnectionRotation = ConnectionAnchor.rotation.eulerAngles;
+            ConnectionRotation = ConnectionAnchor.rotation;
         }
 
-        public void ToggleConnected(bool value)
+        public bool IsConnected()
         {
-            IsConnected = value;
+            return ElectricityReceiver.Provider != null;
         }
     }
 }

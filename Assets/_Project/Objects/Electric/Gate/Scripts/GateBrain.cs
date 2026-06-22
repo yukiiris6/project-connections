@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
@@ -9,22 +9,22 @@ namespace ProjectConnections.Electric
 {
     public class GateBrain : MonoBehaviour
     {
-        [SerializeField, Required] ElectricityProvider electricityProvider;
+        [SerializeField, Required] ObjectEnergizer objectEnergizer;
         [SerializeField, Required] GateController controller;
         [SerializeField, Required] GatePresenter presenter;
 
         void OnEnable()
         {
-            UpdateGate(electricityProvider.HasEnergy());
-            electricityProvider.OnChangedState += UpdateGate;
+            UpdateState(objectEnergizer.IsOn);
+            objectEnergizer.OnChangedState += UpdateState;
         }
 
         void OnDisable()
         {
-            electricityProvider.OnChangedState -= UpdateGate;
+            objectEnergizer.OnChangedState -= UpdateState;
         }
 
-        void UpdateGate(bool hasEnergy)
+        void UpdateState(bool hasEnergy)
         {
             controller.UpdateWidth(hasEnergy);
             presenter.UpdateStatus(hasEnergy);

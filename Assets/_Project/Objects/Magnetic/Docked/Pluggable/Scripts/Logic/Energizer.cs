@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Sirenix.OdinInspector;
 using ProjectConnections.Electric;
 
@@ -10,26 +10,29 @@ namespace ProjectConnections.Magnetic
         [SerializeField, Required] CircleCollider2D connectionTriggerCollider;
         [SerializeField, Required] LayerMask socketLayer;
 
-        public ElectricityProvider ElectricityProvider { get; private set; }
-        public SocketConnector AnchoredSocketConnector { get; private set; }
+        [ShowInInspector, ReadOnly]
+        public SocketConnector anchoredSocketConnector { get; private set; }
 
-        public void EnergizeProvider()
+        public void Energize()
         {
-            ElectricityGenerator newGenerator = AnchoredSocketConnector.GetComponent<ElectricityGenerator>();
-            electricityProvider.ConnectToGenerator(newGenerator);
-            AnchoredSocketConnector.ToggleConnected(true);
+            anchoredSocketConnector.ElectricityReceiver.SetProvider(electricityProvider);
         }
 
-        public void DeenergizeProvider()
+        public void Deenergize()
         {
-            electricityProvider.DisconnectFromGenerator();
-            AnchoredSocketConnector.ToggleConnected(false);
-            AnchoredSocketConnector = null;
+            anchoredSocketConnector.ElectricityReceiver.SetProvider(null);
+            anchoredSocketConnector = null;
         }
 
         public Vector2? GetConnectionPosition()
         {
-            if (AnchoredSocketConnector != null) return AnchoredSocketConnector.ConnectionAnchor.position;
+            if (anchoredSocketConnector != null) return anchoredSocketConnector.ConnectionAnchor.position;
+            return null;
+        }
+
+        public Quaternion? GetConnectionRotation()
+        {
+            if (anchoredSocketConnector != null) return anchoredSocketConnector.ConnectionRotation;
             return null;
         }
 
@@ -58,9 +61,9 @@ namespace ProjectConnections.Magnetic
 
         public void SetSocketConnector(SocketConnector socketConnector)
         {
-            if (!socketConnector.IsConnected)
+            if (!socketConnector.IsConnected())
             {
-                AnchoredSocketConnector = socketConnector;
+                anchoredSocketConnector = socketConnector;
             }
         }
     }

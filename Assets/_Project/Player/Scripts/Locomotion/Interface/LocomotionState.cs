@@ -1,10 +1,13 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Sirenix.OdinInspector;
 
-public interface LocomotionState
+namespace ProjectConnections.Player
 {
-    void Enter(LocomotionContext context);
-    void Exit(LocomotionContext context);
-    void Jump(LocomotionContext context);
-    void Release(LocomotionContext context);
+    public interface LocomotionState
+    {
+        void Enter(LocomotionContext context);
+        void Exit(LocomotionContext context);
+        void Jump(LocomotionContext context);
+        void Release(LocomotionContext context);
+    }
 }

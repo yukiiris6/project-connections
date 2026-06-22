@@ -1,12 +1,15 @@
-public enum LevelState
+﻿namespace ProjectConnections.Level
 {
-    Locked,
-    Unlocked,
-    Finished,
-}
+    public enum LevelState
+    {
+        Locked,
+        Unlocked,
+        Finished,
+    }
 
-public enum LevelType
-{
-    Menu,
-    Stage
+    public enum LevelType
+    {
+        Menu,
+        Stage
+    }
 }

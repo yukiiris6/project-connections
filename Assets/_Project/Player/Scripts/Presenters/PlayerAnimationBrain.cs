@@ -1,65 +1,81 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Sirenix.OdinInspector;
 
-public class PlayerAnimationBrain : MonoBehaviour
+namespace ProjectConnections.Player
 {
-    [SerializeField, Required] PlayerController playerController;
-    [SerializeField, Required] PlayerAnimatorHandler animationHandler;
-    [SerializeField, Required] PlayerMovement playerMovement;
-    [SerializeField, Required] PlayerOrientation playerOrientation;
-    [SerializeField, Required] GroundValidator groundValidator;
-    [SerializeField, Required] Jumper jumper;
-    [SerializeField, Required] MagnetAiming magnetAiming;
-
-    void OnEnable()
+    public class PlayerAnimationBrain : MonoBehaviour
     {
-        playerController.OnAimInput += UpdateAiming;
-        playerMovement.OnMovement += UpdateRunningAnimation;
-        groundValidator.OnLand += UpdateGroundedOnLand;
-        groundValidator.OnExitGround += UpdateGroundedOnExitGround;
-        jumper.OnYVelocityUpdated += UpdateJumpVelocity;
-        magnetAiming.OnChangeFacing += UpdateAimingFacing;
-    }
+        [SerializeField, Required] PlayerController playerController;
+        [SerializeField, Required] PlayerAnimatorHandler animationHandler;
+        [SerializeField, Required] PlayerMovement playerMovement;
+        [SerializeField, Required] PlayerOrientation playerOrientation;
+        [SerializeField, Required] GroundValidator groundValidator;
+        [SerializeField, Required] Jumper jumper;
+        [SerializeField, Required] MagnetAiming magnetAiming;
+        [SerializeField, Required] Carrier carrier;
 
-    void OnDisable()
-    {
-        playerMovement.OnMovement -= UpdateRunningAnimation;
-        groundValidator.OnLand -= UpdateGroundedOnLand;
-        groundValidator.OnExitGround -= UpdateGroundedOnExitGround;
-        jumper.OnYVelocityUpdated -= UpdateJumpVelocity;
-    }
+        void OnEnable()
+        {
+            playerController.OnAimInput += UpdateAiming;
+            playerMovement.OnMovement += UpdateRunningAnimation;
+            groundValidator.OnLand += UpdateGroundedOnLand;
+            groundValidator.OnExitGround += UpdateGroundedOnExitGround;
+            jumper.OnYVelocityUpdated += UpdateJumpVelocity;
+            magnetAiming.OnChangeFacing += UpdateAimingFacing;
+            carrier.OnCarryChanged += HandleCarryAnimation;
+        }
 
-    void UpdateRunningAnimation(Vector2 moveInput, float xVelocity)
-    {
-        float maxVelocity = playerMovement.MaxVelocity;
-        bool isRunning = Mathf.Abs(xVelocity) > 0;
-        animationHandler.UpdateRunning(isRunning);
-        animationHandler.UpdateMovementSpeed(xVelocity, maxVelocity);
-        playerOrientation.SetFacing(xVelocity);
-    }
+        void OnDisable()
+        {
+            playerController.OnAimInput -= UpdateAiming;
+            playerMovement.OnMovement -= UpdateRunningAnimation;
+            groundValidator.OnLand -= UpdateGroundedOnLand;
+            groundValidator.OnExitGround -= UpdateGroundedOnExitGround;
+            jumper.OnYVelocityUpdated -= UpdateJumpVelocity;
+            magnetAiming.OnChangeFacing -= UpdateAimingFacing;
+            carrier.OnCarryChanged -= HandleCarryAnimation;
+        }
 
-    void UpdateJumpVelocity(float yVelocity)
-    {
-        animationHandler.UpdateYVelocity(yVelocity);
-    }
+        void UpdateRunningAnimation(Vector2 moveInput, float xVelocity)
+        {
+            float maxVelocity = playerMovement.MaxVelocity;
+            bool isRunning = Mathf.Abs(xVelocity) > 0;
+            animationHandler.UpdateRunning(isRunning);
+            animationHandler.UpdateMovementSpeed(xVelocity, maxVelocity);
+            playerOrientation.SetFacing(xVelocity);
+        }
 
-    void UpdateGroundedOnLand()
-    {
-        animationHandler.UpdateGrounded(true);
-    }
+        void UpdateJumpVelocity(float yVelocity)
+        {
+            animationHandler.UpdateYVelocity(yVelocity);
+        }
 
-    void UpdateGroundedOnExitGround()
-    {
-        animationHandler.UpdateGrounded(false);
-    }
+        void UpdateGroundedOnLand()
+        {
+            animationHandler.UpdateGrounded(true);
+        }
 
-    void UpdateAiming(bool isAiming)
-    {
-        animationHandler.UpdateAiming(isAiming);
-    }
+        void UpdateGroundedOnExitGround()
+        {
+            animationHandler.UpdateGrounded(false);
+        }
 
-    void UpdateAimingFacing(float xDirection)
-    {
-        playerOrientation.SetFacing(xDirection);
+        void UpdateAiming(bool isAiming)
+        {
+            animationHandler.UpdateAiming(isAiming);
+        }
+
+        void UpdateAimingFacing(float xDirection)
+        {
+            playerOrientation.SetFacing(xDirection);
+        }
+
+        void HandleCarryAnimation(bool value)
+        {
+            if (value)
+            {
+                animationHandler.UpdateAiming(false);
+            }
+        }
     }
 }

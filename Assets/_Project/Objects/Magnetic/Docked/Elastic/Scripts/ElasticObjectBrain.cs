@@ -1,4 +1,4 @@
-using ProjectConnections.Magnetic.Elastic.States;
+﻿using ProjectConnections.Magnetic.Elastic.States;
 using ProjectConnections.Magnetic.States;
 using ProjectConnections.Magnetic.Modules;
 using UnityEngine;

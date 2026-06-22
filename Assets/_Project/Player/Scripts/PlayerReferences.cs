@@ -1,7 +1,10 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Sirenix.OdinInspector;
 
-public class PlayerReferences : MonoBehaviour
+namespace ProjectConnections.Player
 {
-    [field: SerializeField] PlayerAnimatorHandler playerAnimator;
+    public class PlayerReferences : MonoBehaviour
+    {
+        [field: SerializeField] PlayerAnimatorHandler playerAnimator;
+    }
 }

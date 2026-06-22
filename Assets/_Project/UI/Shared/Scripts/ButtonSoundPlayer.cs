@@ -1,31 +1,34 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Sirenix.OdinInspector;
 
-public class ButtonSoundPlayer : MonoBehaviour
+namespace ProjectConnections.UIShared
 {
-    [SerializeField, Required] AudioSource audioSource;
-    [SerializeField, Required] AudioClip selectSFX;
-    [SerializeField, Required] AudioClip pressSFX;
-    [SerializeField, Required] AudioClip levelSelectSFX;
-    [SerializeField, Required] AudioClip backButtonPressSFX;
-
-    public void PlaySelectSFX()
+    public class ButtonSoundPlayer : MonoBehaviour
     {
-        audioSource.PlayOneShot(selectSFX);
-    }
+        [SerializeField, Required] AudioSource audioSource;
+        [SerializeField, Required] AudioClip selectSFX;
+        [SerializeField, Required] AudioClip pressSFX;
+        [SerializeField, Required] AudioClip levelSelectSFX;
+        [SerializeField, Required] AudioClip backButtonPressSFX;
 
-    public void PlayPressSFX()
-    {
-        audioSource.PlayOneShot(pressSFX);
-    }
+        public void PlaySelectSFX()
+        {
+            audioSource.PlayOneShot(selectSFX);
+        }
 
-    public void PlayLevelSelectSFX()
-    {
-        audioSource.PlayOneShot(levelSelectSFX);
-    }
+        public void PlayPressSFX()
+        {
+            audioSource.PlayOneShot(pressSFX);
+        }
 
-    public void PlayBackButtonPressSFX()
-    {
-        audioSource.PlayOneShot(backButtonPressSFX);
+        public void PlayLevelSelectSFX()
+        {
+            audioSource.PlayOneShot(levelSelectSFX);
+        }
+
+        public void PlayBackButtonPressSFX()
+        {
+            audioSource.PlayOneShot(backButtonPressSFX);
+        }
     }
 }

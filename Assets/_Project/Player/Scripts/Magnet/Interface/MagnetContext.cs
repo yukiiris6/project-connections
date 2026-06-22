@@ -1,5 +1,8 @@
-public interface MagnetContext
+﻿namespace ProjectConnections.Player
 {
-    MagnetAiming MagnetAiming { get; }
-    void SetState(MagnetState newState);
+    public interface MagnetContext
+    {
+        MagnetAiming MagnetAiming { get; }
+        void SetState(MagnetState newState);
+    }
 }

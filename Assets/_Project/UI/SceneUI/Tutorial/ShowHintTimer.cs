@@ -1,21 +1,24 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Sirenix.OdinInspector;
 
-public class ShowHintTimer : MonoBehaviour
+namespace ProjectConnections.SceneUI
 {
-    [SerializeField, Required] float threshold = 60f;
-    [SerializeField, Required] CanvasGroup canvasGroup;
-
-    float timer = 0;
-
-    void Awake()
+    public class ShowHintTimer : MonoBehaviour
     {
-        canvasGroup.alpha = 0;
-    }
+        [SerializeField, Required] float threshold = 60f;
+        [SerializeField, Required] CanvasGroup canvasGroup;
 
-    void Update()
-    {
-        timer += Time.deltaTime;
-        if (timer > threshold) canvasGroup.alpha = 1;
+        float timer = 0;
+
+        void Awake()
+        {
+            canvasGroup.alpha = 0;
+        }
+
+        void Update()
+        {
+            timer += Time.deltaTime;
+            if (timer > threshold) canvasGroup.alpha = 1;
+        }
     }
 }

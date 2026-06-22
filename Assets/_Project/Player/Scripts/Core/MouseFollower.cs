@@ -1,43 +1,46 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Sirenix.OdinInspector;
 using UnityEngine.InputSystem;
 
-public class MouseFollower : MonoBehaviour
+namespace ProjectConnections.Player
 {
-    [Header("References")]
-    [SerializeField, Required] Transform playerTransform;
-
-    [Header("Settings")]
-    [SerializeField, Required] float maxDistance = 3.5f;
-
-    private Camera mainCamera;
-
-    void Awake()
+    public class MouseFollower : MonoBehaviour
     {
-        mainCamera = Camera.main;
-    }
+        [Header("References")]
+        [SerializeField, Required] Transform playerTransform;
 
-    void Update()
-    {
-        FollowMouse();
-    }
+        [Header("Settings")]
+        [SerializeField, Required] float maxDistance = 3.5f;
 
-    void FollowMouse()
-    {
-        Vector3 mouseScreenPos = Mouse.current.position.ReadValue();
-        Vector3 mouseWorldPos = mainCamera.ScreenToWorldPoint(mouseScreenPos);
-        mouseWorldPos.z = 0f;
+        private Camera mainCamera;
 
-        Vector3 direction = mouseWorldPos - playerTransform.position;
-        float currentDistance = direction.magnitude;
-
-        if (currentDistance > maxDistance)
+        void Awake()
         {
-            transform.position = playerTransform.position + direction.normalized * maxDistance;
+            mainCamera = Camera.main;
         }
-        else
+
+        void Update()
         {
-            transform.position = mouseWorldPos;
+            FollowMouse();
+        }
+
+        void FollowMouse()
+        {
+            Vector3 mouseScreenPos = Mouse.current.position.ReadValue();
+            Vector3 mouseWorldPos = mainCamera.ScreenToWorldPoint(mouseScreenPos);
+            mouseWorldPos.z = 0f;
+
+            Vector3 direction = mouseWorldPos - playerTransform.position;
+            float currentDistance = direction.magnitude;
+
+            if (currentDistance > maxDistance)
+            {
+                transform.position = playerTransform.position + direction.normalized * maxDistance;
+            }
+            else
+            {
+                transform.position = mouseWorldPos;
+            }
         }
     }
 }

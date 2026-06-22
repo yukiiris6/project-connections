@@ -1,56 +1,60 @@
-using System.Linq;
+﻿using System.Linq;
 using Unity.Cinemachine;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using ProjectConnections.Shared;
 
-public class PlayerParentHandler : MonoBehaviour
+namespace ProjectConnections.Player
 {
-    [SerializeField, Required] LayerMask dynamicSolidLayer;
-    [SerializeField, Required] BoxCollider2D feetCollider;
-    [SerializeField, Required] Transform playerTransform;
-
-    Transform originalParent;
-
-    void Awake()
+    public class PlayerParentHandler : MonoBehaviour
     {
-        originalParent = playerTransform.parent;
-    }
+        [SerializeField, Required] LayerMask dynamicSolidLayer;
+        [SerializeField, Required] BoxCollider2D feetCollider;
+        [SerializeField, Required] Transform playerTransform;
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        bool isDinamicSolid = IsDynamicSolid(other.gameObject.layer);
-        if (isDinamicSolid && playerTransform.parent != other.transform)
+        Transform originalParent;
+
+        void Awake()
         {
-            playerTransform.SetParent(other.transform);
+            originalParent = playerTransform.parent;
         }
-    }
 
-    void OnTriggerStay2D(Collider2D other)
-    {
-        bool isDinamicSolid = IsDynamicSolid(other.gameObject.layer);
-        if (isDinamicSolid && playerTransform.parent != other.transform)
+        void OnTriggerEnter2D(Collider2D other)
         {
-            playerTransform.SetParent(other.transform);
+            bool isDinamicSolid = IsDynamicSolid(other.gameObject.layer);
+            if (isDinamicSolid && playerTransform.parent != other.transform)
+            {
+                playerTransform.SetParent(other.transform);
+            }
         }
-    }
 
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (playerTransform.parent == other.transform)
+        void OnTriggerStay2D(Collider2D other)
         {
-            if (!other.gameObject.activeInHierarchy || !other.enabled) return;
-            UnparentPlayer();
+            bool isDinamicSolid = IsDynamicSolid(other.gameObject.layer);
+            if (isDinamicSolid && playerTransform.parent != other.transform)
+            {
+                playerTransform.SetParent(other.transform);
+            }
         }
-    }
 
-    bool IsDynamicSolid(int layer)
-    {
-        return LayerMaskExtensions.Contains(dynamicSolidLayer, layer);
-    }
+        void OnTriggerExit2D(Collider2D other)
+        {
+            if (playerTransform.parent == other.transform)
+            {
+                if (!other.gameObject.activeInHierarchy || !other.enabled) return;
+                UnparentPlayer();
+            }
+        }
 
-    void UnparentPlayer()
-    {
-        if (transform.parent == null) return;
-        playerTransform.SetParent(originalParent);
+        bool IsDynamicSolid(int layer)
+        {
+            return LayerMaskExtensions.Contains(dynamicSolidLayer, layer);
+        }
+
+        void UnparentPlayer()
+        {
+            if (transform.parent == null) return;
+            playerTransform.SetParent(originalParent);
+        }
     }
 }

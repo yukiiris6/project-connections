@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 9180445244558665168}
   - component: {fileID: 7016039922693120703}
   - component: {fileID: 5268259022613523877}
-  - component: {fileID: 4322777378523426446}
+  - component: {fileID: 3296526187602679373}
   m_Layer: 10
   m_Name: Socket
   m_TagString: Untagged
@@ -299,6 +299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Electric::ProjectConnections.Electric.SocketConnector
   <ConnectionAnchor>k__BackingField: {fileID: 4838018811594787005}
+  <ElectricityReceiver>k__BackingField: {fileID: 3296526187602679373}
 --- !u!114 &5268259022613523877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,7 +313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SocketActivation
   lineRenderer: {fileID: 9180445244558665168}
---- !u!114 &4322777378523426446
+--- !u!114 &3296526187602679373
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -321,10 +322,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 594296065201770388}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c730c1515709cc4f981237a26ae1bb0, type: 3}
+  m_Script: {fileID: 11500000, guid: 494e9789882fc9c458999413cc030637, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Electric::ProjectConnections.Electric.ElectricityGenerator
-  <IsGenerating>k__BackingField: 1
+  m_EditorClassIdentifier: Electric::ProjectConnections.Electric.ElectricityReceiver
+  electricObjects: []
 --- !u!1 &920238021812957640
 GameObject:
   m_ObjectHideFlags: 0

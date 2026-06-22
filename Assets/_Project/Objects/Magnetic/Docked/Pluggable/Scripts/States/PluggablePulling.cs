@@ -1,4 +1,4 @@
-using ProjectConnections.Magnetic.Modules;
+﻿using ProjectConnections.Magnetic.Modules;
 using ProjectConnections.Magnetic.States;
 using UnityEngine;
 using Sirenix.OdinInspector;
@@ -12,12 +12,20 @@ namespace ProjectConnections.Magnetic.Pluggable.States
         public void Enter(IContext context)
         {
             _context = context;
-            context.Mover.OnDestinationReached += OnArrival;
+            if (context is CarriableModule carriableModule)
+            {
+                carriableModule.CarriableObject.OnCarryChanged += HandleCarryChanged;
+                carriableModule.CarriableObject.SetCarryOnTrigger(true);
+            }
         }
 
         public void Exit(IContext context)
         {
-            context.Mover.OnDestinationReached -= OnArrival;
+            if (context is CarriableModule carriableModule)
+            {
+                carriableModule.CarriableObject.OnCarryChanged -= HandleCarryChanged;
+                carriableModule.CarriableObject.SetCarryOnTrigger(false);
+            }
         }
 
         public void Magnetize(IContext context, Vector2 destination)
@@ -45,9 +53,12 @@ namespace ProjectConnections.Magnetic.Pluggable.States
 
         public void DemagnetizeDock(IContext context) { }
 
-        void OnArrival()
+        void HandleCarryChanged(bool value)
         {
-            _context.SetState(new PluggablePulled());
+            if (value)
+            {
+                _context.SetState(new PluggableCarried());
+            }
         }
     }
 }

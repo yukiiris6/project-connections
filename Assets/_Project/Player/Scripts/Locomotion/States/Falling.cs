@@ -1,28 +1,31 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Sirenix.OdinInspector;
 
-public class Falling : LocomotionState
+namespace ProjectConnections.Player
 {
-    LocomotionContext _context;
-
-    public void Enter(LocomotionContext context)
+    public class Falling : LocomotionState
     {
-        _context = context;
-        context.GroundValidator.OnLand += OnLand;
-    }
+        LocomotionContext _context;
 
-    public void Exit(LocomotionContext context)
-    {
-        context.GroundValidator.OnLand -= OnLand;
-    }
+        public void Enter(LocomotionContext context)
+        {
+            _context = context;
+            context.GroundValidator.OnLand += OnLand;
+        }
 
-    public void Jump(LocomotionContext context) { }
+        public void Exit(LocomotionContext context)
+        {
+            context.GroundValidator.OnLand -= OnLand;
+        }
 
-    public void Release(LocomotionContext context) { }
+        public void Jump(LocomotionContext context) { }
 
-    void OnLand()
-    {
-        _context.SetState(new Grounded());
-        _context.Presenter.InstantiateLandDust();
+        public void Release(LocomotionContext context) { }
+
+        void OnLand()
+        {
+            _context.SetState(new Grounded());
+            _context.Presenter.InstantiateLandDust();
+        }
     }
 }

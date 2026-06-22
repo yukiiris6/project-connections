@@ -1,8 +1,11 @@
-public interface LevelContext
+﻿namespace ProjectConnections.Core
 {
-    LevelDataStorage LevelDataStorage { get; }
-    SceneLoader SceneLoader { get; }
-    SceneMusicPlayer SceneMusicPlayer { get; }
-    GameStateSetterBrain GameStateSetter { get; }
-    void SetState(SceneState newState);
+    public interface LevelContext
+    {
+        LevelDataStorage LevelDataStorage { get; }
+        SceneLoader SceneLoader { get; }
+        SceneMusicPlayer SceneMusicPlayer { get; }
+        GameStateSetterBrain GameStateSetter { get; }
+        void SetState(SceneState newState);
+    }
 }

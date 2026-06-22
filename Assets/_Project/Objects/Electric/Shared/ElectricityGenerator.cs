@@ -1,6 +1,7 @@
-using System;
+﻿using System;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using System.Collections.Generic;
 
 namespace ProjectConnections.Electric
 {
@@ -8,10 +9,9 @@ namespace ProjectConnections.Electric
     {
         [field: SerializeField] public bool IsGenerating { get; private set; } = true;
 
-        public event Action<bool> OnStartUp;
         public event Action<bool> OnChangedState;
 
-        public void ToggleProvider(bool value)
+        public void ToggleGeneration(bool value)
         {
             IsGenerating = value;
             OnChangedState?.Invoke(value);

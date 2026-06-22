@@ -618,6 +618,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3066437966875300580, guid: ec1adce245eae3a469c48fac9b23a43c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -12.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4326503933078788971, guid: ec1adce245eae3a469c48fac9b23a43c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -12.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4371880307037188763, guid: ec1adce245eae3a469c48fac9b23a43c, type: 3}
       propertyPath: pauseMenuPresenter
       value: 
@@ -10152,7 +10160,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4584091252025998311, guid: e6dc5c36b3107964998662347c6ce91e, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.9998596
+      value: 0.999442
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10290,11 +10298,33 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &1517587260 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7941116372103005928, guid: 9e7aab00df826114280ff3f76f109c16, type: 3}
+  m_PrefabInstance: {fileID: 5355098405340158414}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96701e09742ae2142a81dd1f7d5e80b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Electric::ProjectConnections.Electric.ElectricObject
 --- !u!4 &1534983589 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2024923133114433236, guid: 0089f93f170bc1e41aff70dabd8cc0f9, type: 3}
   m_PrefabInstance: {fileID: 484045546}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1534983594 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1743761627906394617, guid: 0089f93f170bc1e41aff70dabd8cc0f9, type: 3}
+  m_PrefabInstance: {fileID: 484045546}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96701e09742ae2142a81dd1f7d5e80b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Electric::ProjectConnections.Electric.ElectricObject
 --- !u!1 &1631047043
 GameObject:
   m_ObjectHideFlags: 0
@@ -10433,7 +10463,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8373228285868122108, guid: 9e7aab00df826114280ff3f76f109c16, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8660950663837671464, guid: 9e7aab00df826114280ff3f76f109c16, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
@@ -10449,6 +10479,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6908361261712006699, guid: 9e7aab00df826114280ff3f76f109c16, type: 3}
   m_PrefabInstance: {fileID: 1646045865}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1682585668 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7941116372103005928, guid: 9e7aab00df826114280ff3f76f109c16, type: 3}
+  m_PrefabInstance: {fileID: 1646045865}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96701e09742ae2142a81dd1f7d5e80b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Electric::ProjectConnections.Electric.ElectricObject
 --- !u!1001 &1722091990
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10643,6 +10684,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 318c21952c9f4c549ab52a5ab613d711, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LightbulbVisuals
+--- !u!114 &1792681757 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5236878333193008397, guid: 829f33f629e17764b8dceb8119d0581f, type: 3}
+  m_PrefabInstance: {fileID: 243848076551462283}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96701e09742ae2142a81dd1f7d5e80b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Electric::ProjectConnections.Electric.ElectricObject
 --- !u!1001 &1937800275
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10864,6 +10916,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8373228285868122108, guid: 9e7aab00df826114280ff3f76f109c16, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8660950663837671464, guid: 9e7aab00df826114280ff3f76f109c16, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10921,6 +10981,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Socket
       objectReference: {fileID: 0}
+    - target: {fileID: 3296526187602679373, guid: 629d417e64acac84a8f0b18c8d24f326, type: 3}
+      propertyPath: connectedObjects.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296526187602679373, guid: 629d417e64acac84a8f0b18c8d24f326, type: 3}
+      propertyPath: 'connectedObjects.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1517587260}
+    - target: {fileID: 3296526187602679373, guid: 629d417e64acac84a8f0b18c8d24f326, type: 3}
+      propertyPath: 'connectedObjects.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1682585668}
+    - target: {fileID: 3296526187602679373, guid: 629d417e64acac84a8f0b18c8d24f326, type: 3}
+      propertyPath: 'connectedObjects.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1534983594}
+    - target: {fileID: 3296526187602679373, guid: 629d417e64acac84a8f0b18c8d24f326, type: 3}
+      propertyPath: 'connectedObjects.Array.data[3]'
+      value: 
+      objectReference: {fileID: 1792681757}
     - target: {fileID: 4322777378523426446, guid: 629d417e64acac84a8f0b18c8d24f326, type: 3}
       propertyPath: <IsGenerating>k__BackingField
       value: 1

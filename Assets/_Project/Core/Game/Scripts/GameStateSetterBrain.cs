@@ -1,30 +1,29 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Sirenix.OdinInspector;
 using UnityEngine.InputSystem;
 
-public class GameStateSetterBrain : MonoBehaviour, GameContext
+namespace ProjectConnections.Core
 {
-    [field: SerializeField] public TimeController TimeController { get; private set; }
-
-    GameState currentState = new NormalState();
-
-    public void SlowdownGame()
+    public class GameStateSetterBrain : MonoBehaviour, GameContext
     {
-        currentState.Slowdown(this);
-    }
+        [field: SerializeField] public TimeController TimeController { get; private set; }
+        GameState currentState = new NormalState();
 
-    public void PauseGame()
-    {
-        currentState.Pause(this);
-    }
-
-    public void ResumeGame()
-    {
-        currentState.Resume(this);
-    }
-
-    public void SetState(GameState newState)
-    {
-        currentState = newState;
+        public void SlowdownGame()
+        {
+            currentState.Slowdown(this);
+        }
+        public void PauseGame()
+        {
+            currentState.Pause(this);
+        }
+        public void ResumeGame()
+        {
+            currentState.Resume(this);
+        }
+        public void SetState(GameState newState)
+        {
+            currentState = newState;
+        }
     }
 }

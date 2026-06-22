@@ -1,13 +1,16 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Sirenix.OdinInspector;
 
-public class PlayerSoundPlayer : MonoBehaviour
+namespace ProjectConnections.Player
 {
-    [field: SerializeField] AudioSource audioSource;
-    [SerializeField, Required] AudioClip jumpSFX;
-
-    public void PlayJumpSFX()
+    public class PlayerSoundPlayer : MonoBehaviour
     {
-        audioSource.PlayOneShot(jumpSFX);
+        [field: SerializeField] AudioSource audioSource;
+        [SerializeField, Required] AudioClip jumpSFX;
+
+        public void PlayJumpSFX()
+        {
+            audioSource.PlayOneShot(jumpSFX);
+        }
     }
 }

@@ -1,16 +1,19 @@
-using ProjectConnections.Magnetic.Modules;
+﻿using ProjectConnections.Magnetic.Modules;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-public class Aiming : MagnetState
+namespace ProjectConnections.Player
 {
-    MagnetContext _context;
-
-    public void Aim(MagnetContext context) { }
-
-    public void Release(MagnetContext context)
+    public class Aiming : MagnetState
     {
-        context.MagnetAiming.StopAiming();
-        context.SetState(new Standby());
+        MagnetContext _context;
+
+        public void Aim(MagnetContext context) { }
+
+        public void Release(MagnetContext context)
+        {
+            context.MagnetAiming.StopAiming();
+            context.SetState(new Standby());
+        }
     }
 }

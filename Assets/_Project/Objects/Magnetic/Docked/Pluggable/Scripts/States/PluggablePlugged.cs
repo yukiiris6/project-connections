@@ -1,4 +1,4 @@
-using ProjectConnections.Magnetic.Modules;
+﻿using ProjectConnections.Magnetic.Modules;
 using ProjectConnections.Magnetic.States;
 using UnityEngine;
 using Sirenix.OdinInspector;
@@ -12,13 +12,18 @@ namespace ProjectConnections.Magnetic.Pluggable.States
             if (context is EnergizerModule energizerModule)
             {
                 Vector2? connectionPosition = energizerModule.Energizer.GetConnectionPosition();
-                energizerModule.Energizer.EnergizeProvider();
+                Quaternion? connectionRotation = energizerModule.Energizer.GetConnectionRotation();
+                energizerModule.Energizer.Energize();
                 if (connectionPosition is Vector2 snapPosition)
                 {
                     context.Mover.SnapTo(snapPosition);
                     context.SoundPlayer.PlayCrashSFX();
                     context.SoundPlayer.PlayConnectionSFX();
                     context.Presenter.PlayShake();
+                    if (connectionRotation is Quaternion rotation)
+                    {
+                        context.Mover.SetRotation(rotation);
+                    }
                 }
             }
         }
@@ -27,7 +32,7 @@ namespace ProjectConnections.Magnetic.Pluggable.States
         {
             if (context is EnergizerModule energizerModule)
             {
-                energizerModule.Energizer.DeenergizeProvider();
+                energizerModule.Energizer.Deenergize();
             }
         }
 
@@ -52,6 +57,7 @@ namespace ProjectConnections.Magnetic.Pluggable.States
                 context.Mover.UseCollision(false);
                 context.Mover.UsePreciseArrival(true);
                 context.Mover.MoveTo(anchorModule.OriginalPosition);
+                context.Mover.ResetRotation();
                 context.SetState(new PluggableReturning());
             }
         }
