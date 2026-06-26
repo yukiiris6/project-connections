@@ -27,11 +27,11 @@ namespace ProjectConnections.Magnetic.Elastic.States
             context.SetState(new ElasticPulling());
         }
 
-        public void Demagnetize(IContext context) { }
-
-        void OnArrival()
+        void OnArrival(float distance)
         {
             _context.SetState(new ElasticResting());
         }
+
+        public void Demagnetize(IContext context) { }
     }
 }

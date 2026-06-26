@@ -4,9 +4,9 @@ using Sirenix.OdinInspector;
 
 namespace ProjectConnections.Magnetic.Modules
 {
-    public interface StateDockedModule
+    public interface StateAnchorModule
     {
-        void MagnetizeDock(IContext context);
-        void DemagnetizeDock(IContext context);
+        void MagnetizeAnchor(IContext context);
+        void DemagnetizeAnchor(IContext context);
     }
 }

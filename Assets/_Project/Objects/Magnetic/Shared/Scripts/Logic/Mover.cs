@@ -8,24 +8,21 @@ namespace ProjectConnections.Magnetic
     public class Mover : MonoBehaviour
     {
         [SerializeField, Required] CollisionHandler collisionHandler;
-        [SerializeField, Required] float pullMultiplier = 1.1f;
-        [SerializeField, Required] float defaultStopDistance = 1f;
-        [SerializeField, Required] float preciseStopDistance = .25f;
+        [SerializeField, Required] Rigidbody2D myRigidbody;
+        [SerializeField] float pullMultiplier = 1.1f;
+        [SerializeField] float nextPositionThreshold = .25f;
 
-        public event Action OnDestinationReached;
+        public event Action<float> OnDestinationReached;
 
+        Vector2 lastPosition;
         Vector2 targetPosition;
         Vector2 lastVelocity;
-        Quaternion originalRotation;
-        float appliedStopDistance;
-        bool shouldUseCollision;
         bool shouldMove;
 
         #region Unity Lifecycle
         void Awake()
         {
-            appliedStopDistance = defaultStopDistance;
-            originalRotation = transform.rotation;
+            lastPosition = transform.position;
         }
 
         void FixedUpdate()
@@ -39,6 +36,7 @@ namespace ProjectConnections.Magnetic
         {
             targetPosition = destination;
             shouldMove = true;
+            lastPosition = transform.position;
         }
 
         public void SnapTo(Vector2 snapPosition)
@@ -50,41 +48,19 @@ namespace ProjectConnections.Magnetic
         {
             shouldMove = false;
             lastVelocity = Vector2.zero;
+            myRigidbody.linearVelocity = Vector2.zero;
+            float distance = Vector2.Distance(lastPosition, targetPosition);
+            OnDestinationReached?.Invoke(distance);
+        }
+
+        public bool IsMoving()
+        {
+            return shouldMove;
         }
 
         public bool IsSameAsCurrentPosition(Vector2 destination)
         {
-            return Vector2.Distance(destination, transform.position) <= (defaultStopDistance + .25f);
-        }
-
-        public void UsePreciseArrival(bool shouldBePrecise)
-        {
-            appliedStopDistance = shouldBePrecise ? preciseStopDistance : defaultStopDistance;
-        }
-
-        public void UseCollision(bool shouldUse)
-        {
-            shouldUseCollision = shouldUse;
-        }
-
-        public void RotateTowardsTarget()
-        {
-            Vector2 currentPosition = transform.position;
-            Vector2 direction = targetPosition - currentPosition;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            float snappedAngle = Mathf.Round(angle / 90f) * 90f;
-            SetRotation(Quaternion.Euler(0, 0, snappedAngle));
-        }
-
-        public void ResetRotation()
-        {
-            SetRotation(originalRotation);
-        }
-
-        public void SetRotation(Quaternion newRotation)
-        {
-            ValidateChildrenRotation();
-            transform.localRotation = Quaternion.Euler(newRotation.eulerAngles - transform.parent.rotation.eulerAngles);
+            return Vector2.Distance(destination, transform.position) <= nextPositionThreshold;
         }
         #endregion
 
@@ -96,30 +72,15 @@ namespace ProjectConnections.Magnetic
             Vector2 currentPosition = transform.position;
             Vector2 direction = targetPosition - currentPosition;
             Vector2 newVelocity = GetNewVelocity(currentPosition, direction);
-            Vector2 frameVelocity = newVelocity * Time.fixedDeltaTime;
-
-            if (shouldUseCollision)
-            {
-                RaycastHit2D hit = collisionHandler.GetBoxCastInDirection(direction, frameVelocity.magnitude);
-
-                bool hasColliderInDirection = hit.collider != null;
-                if (hasColliderInDirection)
-                {
-                    float safeDistance = Mathf.Max(0f, hit.distance - 0.015f);
-                    transform.position = currentPosition + (direction.normalized * safeDistance);
-                    Stop();
-                    return;
-                }
-            }
 
             bool hasReachedDestination = ValidateReachedDestination();
             if (hasReachedDestination)
             {
                 Stop();
-                OnDestinationReached?.Invoke();
+                return;
             }
 
-            transform.Translate(frameVelocity, Space.World);
+            myRigidbody.linearVelocity = newVelocity;
             lastVelocity = newVelocity;
         }
 
@@ -129,7 +90,7 @@ namespace ProjectConnections.Magnetic
             Vector2 newVelocity = lastVelocity + (normalizedDirection * pullMultiplier);
 
             float distance = Vector2.Distance(targetPosition, currentPosition);
-            float maxSafeSpeed = (distance - appliedStopDistance) / Time.fixedDeltaTime;
+            float maxSafeSpeed = distance / Time.fixedDeltaTime;
 
             if (newVelocity.magnitude > maxSafeSpeed) return (normalizedDirection * maxSafeSpeed);
             return newVelocity;
@@ -139,22 +100,7 @@ namespace ProjectConnections.Magnetic
         {
             Vector2 currentPosition = transform.position;
             float distance = Vector2.Distance(currentPosition, targetPosition);
-            return distance < appliedStopDistance + 0.001f;
-        }
-
-        void ValidateChildrenRotation()
-        {
-            if (transform.childCount > 0)
-            {
-                foreach (Transform child in transform)
-                {
-                    if (child.CompareTag("Player"))
-                    {
-                        child.SetParent(null);
-                        child.rotation = Quaternion.identity;
-                    }
-                }
-            }
+            return distance < 0.15f;
         }
         #endregion
     }

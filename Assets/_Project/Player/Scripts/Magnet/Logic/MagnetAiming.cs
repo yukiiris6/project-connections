@@ -19,7 +19,7 @@ namespace ProjectConnections.Player
         [SerializeField, Required] Transform centerTransform;
         [SerializeField, Required] Transform aimingTransform;
         [SerializeField, Required] Transform mouseTransform;
-        [SerializeField, Required] LayerMask playerLayer;
+        [SerializeField, Required] LayerMask layersToIgnore;
         [SerializeField, Required] float laserThickness = 1f;
         [SerializeField, Required] string magneticTag = "Magnetic";
 
@@ -85,14 +85,14 @@ namespace ProjectConnections.Player
         {
             Vector2 origin = aimingTransform.position;
             Vector2 direction = aimingTransform.right;
-            int allLayersExceptPlayer = ~playerLayer.value;
+            int allLayersExceptIgnored = ~layersToIgnore.value;
 
             RaycastHit2D hit = Physics2D.CircleCast(
                 origin,
                 laserThickness,
                 direction,
                 float.MaxValue,
-                allLayersExceptPlayer
+                allLayersExceptIgnored
             );
 
             if (hit.collider && hit.collider.gameObject.CompareTag(magneticTag))

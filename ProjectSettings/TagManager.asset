@@ -19,7 +19,7 @@ TagManager:
   - Interactable
   - Socket
   - Hurtbox
-  - 
+  - RangeCollider
   - 
   - 
   - 

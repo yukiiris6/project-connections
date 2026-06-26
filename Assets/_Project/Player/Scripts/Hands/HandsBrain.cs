@@ -1,5 +1,6 @@
 using UnityEngine;
 using Sirenix.OdinInspector;
+using ProjectConnections.ObjectShared;
 
 namespace ProjectConnections.Player
 {
@@ -60,7 +61,9 @@ namespace ProjectConnections.Player
 
         public void SetState(HandsState newState)
         {
+            currentState.Exit(this);
             currentState = newState;
+            currentState.Enter(this);
         }
     }
 }

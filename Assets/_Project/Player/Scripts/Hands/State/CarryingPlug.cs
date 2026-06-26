@@ -1,11 +1,27 @@
 using ProjectConnections.Magnetic.Modules;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using ProjectConnections.ObjectShared;
 
 namespace ProjectConnections.Player
 {
     public class CarryingPlug : HandsState
     {
+        HandsContext _context;
+        CarriableObject _carryingObject;
+
+        public void Enter(HandsContext context)
+        {
+            _context = context;
+            _carryingObject = context.Carrier.GetObject();
+            _carryingObject.OnCarryChanged += HandleCarryChanged;
+        }
+
+        public void Exit(HandsContext context)
+        {
+            _carryingObject.OnCarryChanged -= HandleCarryChanged;
+        }
+
         public void Interact(HandsContext context)
         {
             var interactableState = context.InteractableFinder.GetInteractableState();
@@ -28,6 +44,11 @@ namespace ProjectConnections.Player
         {
             bool wasThrown = context.Carrier.ThrowObject();
             if (wasThrown) context.SetState(new Free());
+        }
+
+        void HandleCarryChanged(bool value)
+        {
+            if (!value) _context.SetState(new Free());
         }
     }
 }

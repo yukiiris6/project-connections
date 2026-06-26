@@ -4,10 +4,10 @@ using Sirenix.OdinInspector;
 
 namespace ProjectConnections.Magnetic.Modules
 {
-    public interface DockedModule
+    public interface AnchorModule
     {
-        Vector2 OriginalPosition { get; }
-        void MagnetizeDock();
-        void DemagnetizeDock();
+        AnchorRange AnchorRange { get; }
+        void MagnetizeAnchor();
+        void DemagnetizeAnchor();
     }
 }

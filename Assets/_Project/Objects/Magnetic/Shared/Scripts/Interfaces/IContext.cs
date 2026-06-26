@@ -6,7 +6,7 @@ namespace ProjectConnections.Magnetic.States
     public interface IContext
     {
         Mover Mover { get; }
-        SoundPlayer SoundPlayer { get; }
+        Rotator Rotator { get; }
         Rigidbody2D Rigidbody { get; }
         Presenter Presenter { get; }
         void SetState(IState newState);

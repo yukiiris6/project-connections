@@ -6,20 +6,15 @@ using Sirenix.OdinInspector;
 
 namespace ProjectConnections.Magnetic.Anchored
 {
-    public class AnchoredObjectBrain : MonoBehaviour, IContext, MagnetismModule, DockedModule
+    public class AnchoredObjectBrain : MonoBehaviour, IContext, AnchorModule
     {
         [field: SerializeField] public Mover Mover { get; private set; }
-        [field: SerializeField] public SoundPlayer SoundPlayer { get; private set; }
+        [field: SerializeField] public Rotator Rotator { get; private set; }
         [field: SerializeField] public Rigidbody2D Rigidbody { get; private set; }
         [field: SerializeField] public Presenter Presenter { get; private set; }
+        [field: SerializeField] public AnchorRange AnchorRange { get; private set; }
 
-        public Vector2 OriginalPosition { get; private set; }
         IState currentState = new AnchoredResting();
-
-        void Awake()
-        {
-            OriginalPosition = transform.position;
-        }
 
         public void Magnetize(Vector2 destination)
         {
@@ -31,19 +26,19 @@ namespace ProjectConnections.Magnetic.Anchored
             currentState.Demagnetize(this);
         }
 
-        public void MagnetizeDock()
+        public void MagnetizeAnchor()
         {
-            if (currentState is StateDockedModule stateDockedModule)
+            if (currentState is StateAnchorModule stateDockedModule)
             {
-                stateDockedModule.MagnetizeDock(this);
+                stateDockedModule.MagnetizeAnchor(this);
             }
         }
 
-        public void DemagnetizeDock()
+        public void DemagnetizeAnchor()
         {
-            if (currentState is StateDockedModule stateDockedModule)
+            if (currentState is StateAnchorModule stateDockedModule)
             {
-                stateDockedModule.DemagnetizeDock(this);
+                stateDockedModule.DemagnetizeAnchor(this);
             }
         }
 

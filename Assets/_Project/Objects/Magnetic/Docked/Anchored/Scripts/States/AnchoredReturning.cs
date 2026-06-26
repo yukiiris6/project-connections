@@ -5,7 +5,7 @@ using Sirenix.OdinInspector;
 
 namespace ProjectConnections.Magnetic.Anchored.States
 {
-    public class AnchoredReturning : IState, StateDockedModule
+    public class AnchoredReturning : IState, StateAnchorModule
     {
         IContext _context;
 
@@ -20,27 +20,26 @@ namespace ProjectConnections.Magnetic.Anchored.States
             context.Mover.OnDestinationReached -= OnArrival;
         }
 
-        public void Magnetize(IContext context, Vector2 destination) { }
-
-        public void Demagnetize(IContext context) { }
-
-        public void MagnetizeDock(IContext context)
+        public void MagnetizeAnchor(IContext context)
         {
-            if (context is DockedModule anchorModule)
+            if (context is Modules.AnchorModule anchorModule)
             {
-                context.Mover.MoveTo(anchorModule.OriginalPosition);
+                context.Mover.MoveTo(anchorModule.AnchorRange.GetOriginalPosition());
             }
         }
 
-        public void DemagnetizeDock(IContext context)
+        public void DemagnetizeAnchor(IContext context)
         {
             context.Mover.Stop();
             context.SetState(new AnchoredPulled());
         }
 
-        void OnArrival()
+        void OnArrival(float distance)
         {
             _context.SetState(new AnchoredResting());
         }
+
+        public void Magnetize(IContext context, Vector2 destination) { }
+        public void Demagnetize(IContext context) { }
     }
 }

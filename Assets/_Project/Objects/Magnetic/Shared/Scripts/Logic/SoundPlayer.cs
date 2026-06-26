@@ -11,14 +11,12 @@ namespace ProjectConnections.Magnetic
 
         public void PlayCrashSFX()
         {
-            if (crashSFX != null)
-                audioSource.PlayOneShot(crashSFX);
+            audioSource.PlayOneShot(crashSFX);
         }
 
         public void PlayConnectionSFX()
         {
-            if (connectionSFX != null)
-                audioSource.PlayOneShot(connectionSFX);
+            audioSource.PlayOneShot(connectionSFX);
         }
     }
 }

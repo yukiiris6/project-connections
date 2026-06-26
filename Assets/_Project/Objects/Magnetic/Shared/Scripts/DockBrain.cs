@@ -8,21 +8,21 @@ namespace ProjectConnections.Magnetic
     {
         [SerializeField, Required] GameObject magnetizableObject;
 
-        DockedModule dockedModule;
+        AnchorModule dockedModule;
 
         void Awake()
         {
-            dockedModule = magnetizableObject.GetComponent<DockedModule>();
+            dockedModule = magnetizableObject.GetComponent<AnchorModule>();
         }
 
         public void Magnetize(Vector2 destination)
         {
-            dockedModule.MagnetizeDock();
+            dockedModule.MagnetizeAnchor();
         }
 
         public void Demagnetize()
         {
-            dockedModule.DemagnetizeDock();
+            dockedModule.DemagnetizeAnchor();
         }
     }
 }

@@ -5,63 +5,46 @@ using Sirenix.OdinInspector;
 
 namespace ProjectConnections.Magnetic.Pluggable.States
 {
-    public class PluggablePlugged : IState, StateDockedModule
+    public class PluggablePlugged : IState, StateAnchorModule
     {
         public void Enter(IContext context)
         {
-            if (context is EnergizerModule energizerModule)
-            {
-                Vector2? connectionPosition = energizerModule.Energizer.GetConnectionPosition();
-                Quaternion? connectionRotation = energizerModule.Energizer.GetConnectionRotation();
-                energizerModule.Energizer.Energize();
-                if (connectionPosition is Vector2 snapPosition)
-                {
-                    context.Mover.SnapTo(snapPosition);
-                    context.SoundPlayer.PlayCrashSFX();
-                    context.SoundPlayer.PlayConnectionSFX();
-                    context.Presenter.PlayShake();
-                    if (connectionRotation is Quaternion rotation)
-                    {
-                        context.Mover.SetRotation(rotation);
-                    }
-                }
-            }
+            if (context is not PlugModule plugModule) return;
+            Vector2? connectionPosition = plugModule.Energizer.GetConnectionPosition();
+            Quaternion? connectionRotation = plugModule.Energizer.GetConnectionRotation();
+            if (connectionPosition != null) context.Mover.SnapTo(connectionPosition.Value);
+            if (connectionRotation != null) context.Rotator.SetRotation(connectionRotation.Value);
+            plugModule.Energizer.Energize();
+            context.Presenter.PlayConnectEffects();
         }
 
         public void Exit(IContext context)
         {
-            if (context is EnergizerModule energizerModule)
-            {
-                energizerModule.Energizer.Deenergize();
-            }
+            if (context is not PlugModule plugModule) return;
+            plugModule.Energizer.Deenergize();
         }
 
         public void Magnetize(IContext context, Vector2 destination)
         {
-            bool isSameAsCurrentPosition = context.Mover.IsSameAsCurrentPosition(destination);
-            if (!isSameAsCurrentPosition)
-            {
-                context.Mover.UseCollision(false);
-                context.Mover.UsePreciseArrival(false);
-                context.Mover.MoveTo(destination);
-                context.SetState(new PluggablePulling());
-            }
+            if (context is not AnchorModule dockedModule) return;
+
+            Vector2 targetPosition = dockedModule.AnchorRange.ConstrainTargetPosition(destination);
+            bool isSameAsCurrentPosition = context.Mover.IsSameAsCurrentPosition(targetPosition);
+            if (isSameAsCurrentPosition) return;
+
+            context.Mover.MoveTo(destination);
+            context.SetState(new PluggablePulling());
+        }
+
+        public void MagnetizeAnchor(IContext context)
+        {
+            if (context is not AnchorModule anchorModule) return;
+            context.Mover.MoveTo(anchorModule.AnchorRange.GetOriginalPosition());
+            context.Rotator.ResetRotation();
+            context.SetState(new PluggableReturning());
         }
 
         public void Demagnetize(IContext context) { }
-
-        public void MagnetizeDock(IContext context)
-        {
-            if (context is DockedModule anchorModule)
-            {
-                context.Mover.UseCollision(false);
-                context.Mover.UsePreciseArrival(true);
-                context.Mover.MoveTo(anchorModule.OriginalPosition);
-                context.Mover.ResetRotation();
-                context.SetState(new PluggableReturning());
-            }
-        }
-
-        public void DemagnetizeDock(IContext context) { }
+        public void DemagnetizeAnchor(IContext context) { }
     }
 }

@@ -1,7 +1,7 @@
 using UnityEngine;
 using Sirenix.OdinInspector;
-using ProjectConnections.Shared;
 using System;
+using ProjectConnections.ObjectShared;
 
 namespace ProjectConnections.Player
 {
@@ -9,8 +9,8 @@ namespace ProjectConnections.Player
     {
         [SerializeField, Required] Transform carryAnchor;
         [SerializeField, Required] Transform centerAnchor;
-        [SerializeField] PlayerMovement playerMovement;
-        [SerializeField] LayerMask floorLayer;
+        [SerializeField, Required] PlayerMovement playerMovement;
+        [SerializeField, Required] LayerMask floorLayer;
         [SerializeField] Vector2 BoxcastSize = new(1f, 1f);
         [SerializeField] float throwStrength = 3f;
         [SerializeField] float throwHeight = 3f;
@@ -21,14 +21,22 @@ namespace ProjectConnections.Player
         public event Action<bool> OnCarryChanged;
 
         CarriableObject carryingObject;
+        Vector2 lastXDirection = Vector2.zero;
+
+        void Update()
+        {
+            FaceForward();
+        }
 
         public void SetCarryingObject(CarriableObject newCarriableObject)
         {
             carryingObject = newCarriableObject;
             if (newCarriableObject != null)
             {
+                lastXDirection = Vector2.zero;
                 carryingObject.Carry(transform);
                 carryingObject.transform.position = carryAnchor.position;
+                carryingObject.OnCarryChanged += HandleCarryChanged;
                 OnCarryChanged?.Invoke(true);
             }
         }
@@ -37,7 +45,6 @@ namespace ProjectConnections.Player
         {
             float xDirection = playerMovement.LastFacedLeft ? -1 : 1;
             float distance = GetDistanceToWall(Vector2.up);
-
             if (distance < carryAnchor.localPosition.y) return false;
 
             carryingObject.Throw(xDirection, throwHeight, throwStrength);
@@ -49,9 +56,11 @@ namespace ProjectConnections.Player
         public void Drop()
         {
             float xDirection = playerMovement.LastFacedLeft ? -1 : 1;
+            Vector2 vectorDirection = new(xDirection, 0f);
 
-            Vector2 dropLocation = GetDropLocation(xDirection);
-            Vector2 newPlayerPosition = GetNewPlayerPosition(xDirection, dropLocation);
+            float distance = GetDistanceToWall(vectorDirection);
+            Vector2 dropLocation = GetDropLocation(xDirection, distance);
+            Vector2 newPlayerPosition = GetNewPlayerPosition(xDirection, distance);
 
             transform.position = newPlayerPosition;
             carryingObject.Drop(dropLocation);
@@ -60,11 +69,21 @@ namespace ProjectConnections.Player
             OnCarryChanged?.Invoke(false);
         }
 
-        Vector2 GetDropLocation(float xDirection)
+        public CarriableObject GetObject()
+        {
+            return carryingObject;
+        }
+
+        void HandleCarryChanged(bool value)
+        {
+            if (!value) carryingObject = null;
+            OnCarryChanged?.Invoke(false);
+        }
+
+        Vector2 GetDropLocation(float xDirection, float distance)
         {
             Vector2 direction = new(xDirection, 0f);
 
-            float distance = GetDistanceToWall(direction);
             float appliedReleaseDistance = releaseDistance;
 
             if (distance < releaseDistance)
@@ -90,17 +109,37 @@ namespace ProjectConnections.Player
             return hit ? hit.distance : float.MaxValue;
         }
 
-        Vector2 GetNewPlayerPosition(float xDirection, Vector2 dropLocation)
+        Vector2 GetNewPlayerPosition(float xDirection, float distanceToWall)
         {
-            float playerDistanceToDrop = Vector2.Distance(centerAnchor.position, dropLocation);
-
-            if (playerDistanceToDrop < nearPlayerThreshold)
+            if (distanceToWall < nearPlayerThreshold)
             {
                 float signedMinDistanceFromWall = minDistanceFromWall * xDirection;
-                return new(transform.position.x - signedMinDistanceFromWall - (xDirection * releaseDistance), transform.position.y);
+                float amountToPush = GetAmountToPush(distanceToWall);
+                float signedPushDistance = amountToPush * xDirection;
+                return new(transform.position.x - signedMinDistanceFromWall - signedPushDistance, transform.position.y);
             }
 
             return transform.position;
+        }
+
+        float GetAmountToPush(float distance)
+        {
+            float normalizedDistance = Mathf.Clamp(distance, 0, releaseDistance);
+            float wallFactor = 1f - (normalizedDistance / releaseDistance);
+            return releaseDistance * wallFactor;
+        }
+
+        void FaceForward()
+        {
+            if (carryingObject != null)
+            {
+                Vector2 newXDirection = playerMovement.LastFacedLeft ? Vector2.left : Vector2.right;
+                if (newXDirection != lastXDirection)
+                {
+                    carryingObject.transform.right = newXDirection;
+                    lastXDirection = newXDirection;
+                }
+            }
         }
     }
 }

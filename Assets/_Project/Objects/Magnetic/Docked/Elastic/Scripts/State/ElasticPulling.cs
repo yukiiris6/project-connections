@@ -28,16 +28,16 @@ namespace ProjectConnections.Magnetic.Elastic.States
         public void Demagnetize(IContext context)
         {
             context.Mover.Stop();
-            if (context is DockedModule anchorModule)
+            if (context is AnchorModule anchorModule)
             {
-                context.Mover.UsePreciseArrival(true);
-                context.Mover.MoveTo(anchorModule.OriginalPosition);
+                context.Mover.MoveTo(anchorModule.AnchorRange.GetOriginalPosition());
             }
             context.SetState(new ElasticReturning());
         }
 
-        void OnArrival()
+        void OnArrival(float distance)
         {
+            _context.Presenter.PlayStopByDistance(distance);
             _context.SetState(new ElasticPulled());
         }
     }

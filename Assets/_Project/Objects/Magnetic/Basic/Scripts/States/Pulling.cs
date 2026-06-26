@@ -30,8 +30,9 @@ namespace ProjectConnections.Magnetic.States
             context.SetState(new Resting());
         }
 
-        void OnArrival()
+        void OnArrival(float distance)
         {
+            _context.Presenter.PlayStopByDistance(distance);
             _context.SetState(new Pulled());
         }
     }

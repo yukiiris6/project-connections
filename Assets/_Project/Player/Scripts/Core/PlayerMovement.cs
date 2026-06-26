@@ -54,8 +54,12 @@ namespace ProjectConnections.Player
         void Move()
         {
             float newXVelocity = GetNewVelocity();
-            myRigidbody.linearVelocityX = Mathf.Clamp(newXVelocity, -MaxVelocity, MaxVelocity);
-            OnMovement?.Invoke(moveInput, newXVelocity);
+            float clampedVelocity = Mathf.Clamp(newXVelocity, -MaxVelocity, MaxVelocity);
+
+            Vector2 playerPosition = transform.position;
+
+            myRigidbody.linearVelocityX = clampedVelocity;
+            OnMovement?.Invoke(moveInput, clampedVelocity);
         }
 
         float GetNewVelocity()

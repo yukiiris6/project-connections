@@ -3,8 +3,9 @@ using Sirenix.OdinInspector;
 
 namespace ProjectConnections.Magnetic.Modules
 {
-    public interface EnergizerModule
+    public interface PlugModule
     {
         Energizer Energizer { get; }
+        PlugCarryRange PlugCarryRange { get; }
     }
 }

@@ -9,22 +9,20 @@ namespace ProjectConnections.Magnetic.Elastic.States
     {
         public void Enter(IContext context)
         {
-            if (context is DockedModule anchorModule)
+            if (context is AnchorModule anchorModule)
             {
-                context.Mover.SnapTo(anchorModule.OriginalPosition);
+                context.Mover.SnapTo(anchorModule.AnchorRange.GetOriginalPosition());
             }
-            context.SoundPlayer.PlayCrashSFX();
+            context.Presenter.PlayStopEffects();
         }
-
-        public void Exit(IContext context) { }
 
         public void Magnetize(IContext context, Vector2 destination)
         {
-            context.Mover.UsePreciseArrival(false);
             context.Mover.MoveTo(destination);
             context.SetState(new ElasticPulling());
         }
 
         public void Demagnetize(IContext context) { }
+        public void Exit(IContext context) { }
     }
 }

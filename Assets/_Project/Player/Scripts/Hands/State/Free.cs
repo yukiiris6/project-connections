@@ -1,11 +1,16 @@
 using ProjectConnections.Magnetic.Modules;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using ProjectConnections.ObjectShared;
 
 namespace ProjectConnections.Player
 {
     public class Free : HandsState
     {
+        public void Enter(HandsContext context) { }
+
+        public void Exit(HandsContext context) { }
+
         public void Interact(HandsContext context)
         {
             var interactableState = context.InteractableFinder.GetInteractableState();

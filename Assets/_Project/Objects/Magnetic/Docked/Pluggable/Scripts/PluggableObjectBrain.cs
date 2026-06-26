@@ -2,29 +2,36 @@
 using ProjectConnections.Magnetic.Modules;
 using ProjectConnections.Magnetic.Pluggable.States;
 using ProjectConnections.Magnetic.States;
+using ProjectConnections.ObjectShared;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using ProjectConnections.Electric;
+using ProjectConnections.Magnetic.Anchored;
 
 namespace ProjectConnections.Magnetic
 {
-    public class PluggableObjectBrain : MonoBehaviour, IContext, MagnetismModule, DockedModule, EnergizerModule, CarriableModule
+    public class PluggableObjectBrain : MonoBehaviour, IContext, MagnetismModule, AnchorModule, PlugModule
     {
+        [Header("Magnetism")]
         [field: SerializeField] public Mover Mover { get; private set; }
-        [field: SerializeField] public SoundPlayer SoundPlayer { get; private set; }
+        [field: SerializeField] public Rotator Rotator { get; private set; }
         [field: SerializeField] public Rigidbody2D Rigidbody { get; private set; }
         [field: SerializeField] public Presenter Presenter { get; private set; }
-        [field: SerializeField] public Energizer Energizer { get; private set; }
-        [field: SerializeField] public CarriableObject CarriableObject { get; private set; }
-        [SerializeField, Optional] SocketConnector defaultSocket;
 
-        public Vector2 OriginalPosition { get; private set; }
+        [Header("Anchor")]
+        [field: SerializeField] public AnchorRange AnchorRange { get; private set; }
+
+        [Header("Plug")]
+        [field: SerializeField] public Energizer Energizer { get; private set; }
+        [field: SerializeField] public PlugCarryRange PlugCarryRange { get; private set; }
+
+        [Header("Optional")]
+        [SerializeField, Optional] SocketConnector defaultSocket;
 
         IState currentState;
 
         void Start()
         {
-            OriginalPosition = transform.position;
             if (defaultSocket != null)
             {
                 Energizer.SetSocketConnector(defaultSocket);
@@ -47,20 +54,16 @@ namespace ProjectConnections.Magnetic
             currentState.Demagnetize(this);
         }
 
-        public void MagnetizeDock()
+        public void MagnetizeAnchor()
         {
-            if (currentState is StateDockedModule stateDockedModule)
-            {
-                stateDockedModule.MagnetizeDock(this);
-            }
+            if (currentState is not StateAnchorModule stateDockedModule) return;
+            stateDockedModule.MagnetizeAnchor(this);
         }
 
-        public void DemagnetizeDock()
+        public void DemagnetizeAnchor()
         {
-            if (currentState is StateDockedModule stateDockedModule)
-            {
-                stateDockedModule.DemagnetizeDock(this);
-            }
+            if (currentState is not StateAnchorModule stateDockedModule) return;
+            stateDockedModule.DemagnetizeAnchor(this);
         }
 
         void IContext.SetState(IState newState)

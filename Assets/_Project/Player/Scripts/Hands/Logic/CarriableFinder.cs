@@ -1,7 +1,7 @@
 using UnityEngine;
 using Sirenix.OdinInspector;
-using ProjectConnections.Shared;
 using System;
+using ProjectConnections.ObjectShared;
 
 namespace ProjectConnections.Player
 {
@@ -48,7 +48,7 @@ namespace ProjectConnections.Player
 
         void HandleOnTriggerChanged(bool value)
         {
-            if (value)
+            if (value && foundCarriableObject)
             {
                 OnObjectFound?.Invoke(foundCarriableObject);
                 foundCarriableObject.CarryOnTriggerChanged -= HandleOnTriggerChanged;

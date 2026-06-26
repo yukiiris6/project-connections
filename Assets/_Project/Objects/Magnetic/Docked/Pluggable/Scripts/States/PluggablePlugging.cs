@@ -5,7 +5,7 @@ using Sirenix.OdinInspector;
 
 namespace ProjectConnections.Magnetic.Pluggable.States
 {
-    public class PluggablePlugging : IState, StateDockedModule
+    public class PluggablePlugging : IState, StateAnchorModule
     {
         IContext _context;
 
@@ -20,17 +20,14 @@ namespace ProjectConnections.Magnetic.Pluggable.States
             context.Mover.OnDestinationReached -= OnArrival;
         }
 
-        public void Magnetize(IContext context, Vector2 destination) { }
-
-        public void Demagnetize(IContext context) { }
-
-        public void MagnetizeDock(IContext context) { }
-
-        public void DemagnetizeDock(IContext context) { }
-
-        void OnArrival()
+        void OnArrival(float distance)
         {
             _context.SetState(new PluggablePlugged());
         }
+
+        public void Magnetize(IContext context, Vector2 destination) { }
+        public void Demagnetize(IContext context) { }
+        public void MagnetizeAnchor(IContext context) { }
+        public void DemagnetizeAnchor(IContext context) { }
     }
 }

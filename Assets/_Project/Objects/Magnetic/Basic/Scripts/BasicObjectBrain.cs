@@ -8,7 +8,7 @@ namespace ProjectConnections.Magnetic
     public class BasicObjectBrain : MonoBehaviour, IContext, MagnetismModule
     {
         [field: SerializeField] public Mover Mover { get; private set; }
-        [field: SerializeField] public SoundPlayer SoundPlayer { get; private set; }
+        [field: SerializeField] public Rotator Rotator { get; private set; }
         [field: SerializeField] public Rigidbody2D Rigidbody { get; private set; }
         [field: SerializeField] public Presenter Presenter { get; private set; }
 

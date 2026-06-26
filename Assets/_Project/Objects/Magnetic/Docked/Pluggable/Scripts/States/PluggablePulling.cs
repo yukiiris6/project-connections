@@ -5,33 +5,23 @@ using Sirenix.OdinInspector;
 
 namespace ProjectConnections.Magnetic.Pluggable.States
 {
-    public class PluggablePulling : IState, StateDockedModule
+    public class PluggablePulling : IState, StateAnchorModule
     {
         IContext _context;
 
         public void Enter(IContext context)
         {
+            if (context is not PlugModule plugModule) return;
             _context = context;
-            if (context is CarriableModule carriableModule)
-            {
-                carriableModule.CarriableObject.OnCarryChanged += HandleCarryChanged;
-                carriableModule.CarriableObject.SetCarryOnTrigger(true);
-            }
+            plugModule.PlugCarryRange.CarriableObject.OnCarryChanged += HandleCarryChanged;
+            context.Mover.OnDestinationReached += OnArrival;
         }
 
         public void Exit(IContext context)
         {
-            if (context is CarriableModule carriableModule)
-            {
-                carriableModule.CarriableObject.OnCarryChanged -= HandleCarryChanged;
-                carriableModule.CarriableObject.SetCarryOnTrigger(false);
-            }
-        }
-
-        public void Magnetize(IContext context, Vector2 destination)
-        {
-            context.Mover.UsePreciseArrival(false);
-            context.Mover.MoveTo(destination);
+            if (context is not PlugModule plugModule) return;
+            plugModule.PlugCarryRange.CarriableObject.OnCarryChanged -= HandleCarryChanged;
+            context.Mover.OnDestinationReached -= OnArrival;
         }
 
         public void Demagnetize(IContext context)
@@ -40,25 +30,19 @@ namespace ProjectConnections.Magnetic.Pluggable.States
             context.SetState(new PluggablePulled());
         }
 
-        public void MagnetizeDock(IContext context)
+        void OnArrival(float distance)
         {
-            context.Mover.Stop();
-            context.Mover.UsePreciseArrival(true);
-            if (context is DockedModule anchorModule)
-            {
-                context.Mover.MoveTo(anchorModule.OriginalPosition);
-            }
-            context.SetState(new PluggableReturning());
+            _context.Presenter.PlayStopByDistance(distance);
+            _context.SetState(new PluggablePulled());
         }
-
-        public void DemagnetizeDock(IContext context) { }
 
         void HandleCarryChanged(bool value)
         {
-            if (value)
-            {
-                _context.SetState(new PluggableCarried());
-            }
+            if (value) _context.SetState(new PluggableCarried());
         }
+
+        public void Magnetize(IContext context, Vector2 destination) { }
+        public void MagnetizeAnchor(IContext context) { }
+        public void DemagnetizeAnchor(IContext context) { }
     }
 }

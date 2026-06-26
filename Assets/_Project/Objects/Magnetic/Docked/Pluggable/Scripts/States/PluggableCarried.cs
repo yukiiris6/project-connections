@@ -5,42 +5,32 @@ using Sirenix.OdinInspector;
 
 namespace ProjectConnections.Magnetic.Pluggable.States
 {
-    public class PluggableCarried : IState, StateDockedModule
+    public class PluggableCarried : IState, StateAnchorModule
     {
         IContext _context;
 
         public void Enter(IContext context)
         {
+            if (context is not PlugModule plugModule) return;
             _context = context;
             context.Mover.Stop();
-            context.Mover.ResetRotation();
-
-            if (context is CarriableModule carriableModule)
-            {
-                carriableModule.CarriableObject.OnCarryChanged += HandleCarryChanged;
-            }
+            plugModule.PlugCarryRange.CarriableObject.OnCarryChanged += HandleCarryChanged;
         }
 
         public void Exit(IContext context)
         {
-            _context = context;
-            if (context is CarriableModule carriableModule)
-            {
-                carriableModule.CarriableObject.OnCarryChanged -= HandleCarryChanged;
-            }
+            if (context is not PlugModule plugModule) return;
+            plugModule.PlugCarryRange.CarriableObject.OnCarryChanged -= HandleCarryChanged;
         }
-
-        public void Magnetize(IContext context, Vector2 destination) { }
-
-        public void Demagnetize(IContext context) { }
-
-        public void MagnetizeDock(IContext context) { }
-
-        public void DemagnetizeDock(IContext context) { }
 
         void HandleCarryChanged(bool value)
         {
             if (!value) _context.SetState(new PluggablePulled());
         }
+
+        public void Magnetize(IContext context, Vector2 destination) { }
+        public void Demagnetize(IContext context) { }
+        public void MagnetizeAnchor(IContext context) { }
+        public void DemagnetizeAnchor(IContext context) { }
     }
 }

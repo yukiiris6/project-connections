@@ -7,53 +7,31 @@ using Sirenix.OdinInspector;
 
 namespace ProjectConnections.Magnetic.Pluggable.States
 {
-    public class PluggablePulled : IState, StateDockedModule
+    public class PluggablePulled : IState, StateAnchorModule
     {
-        public void Enter(IContext context)
-        {
-            context.SoundPlayer.PlayCrashSFX();
-            context.Presenter.PlayShake();
-            if (context is EnergizerModule energizerModule)
-            {
-                SocketConnector socketConnector = energizerModule.Energizer.SearchFreeSocket();
-                if (socketConnector)
-                {
-                    context.Mover.UsePreciseArrival(true);
-                    context.Mover.MoveTo(socketConnector.ConnectionAnchor.position);
-                    context.Mover.RotateTowardsTarget();
-                    context.SetState(new PluggablePlugging());
-                }
-            }
-        }
-
-        public void Exit(IContext context) { }
-
         public void Magnetize(IContext context, Vector2 destination)
         {
-            bool isSameAsCurrentPosition = context.Mover.IsSameAsCurrentPosition(destination);
-            if (!isSameAsCurrentPosition)
-            {
-                context.Mover.UseCollision(false);
-                context.Mover.UsePreciseArrival(false);
-                context.Mover.MoveTo(destination);
-                context.Mover.RotateTowardsTarget();
-                context.SetState(new PluggablePulling());
-            }
+            if (context is not AnchorModule dockedModule) return;
+
+            Vector2 targetPosition = dockedModule.AnchorRange.ConstrainTargetPosition(destination);
+            bool isSameAsCurrentPosition = context.Mover.IsSameAsCurrentPosition(targetPosition);
+            if (isSameAsCurrentPosition) return;
+            context.Mover.MoveTo(targetPosition);
+            context.Rotator.RotateTowardsTarget(destination);
+            context.SetState(new PluggablePulling());
         }
 
-        public void Demagnetize(IContext context) { }
-
-        public void MagnetizeDock(IContext context)
+        public void MagnetizeAnchor(IContext context)
         {
-            context.Mover.UsePreciseArrival(true);
-            if (context is DockedModule anchorModule)
-            {
-                context.Mover.MoveTo(anchorModule.OriginalPosition);
-            }
-            context.Mover.ResetRotation();
+            if (context is not AnchorModule anchorModule) return;
+            context.Mover.MoveTo(anchorModule.AnchorRange.GetOriginalPosition());
+            context.Rotator.ResetRotation();
             context.SetState(new PluggableReturning());
         }
 
-        public void DemagnetizeDock(IContext context) { }
+        public void Enter(IContext context) { }
+        public void Exit(IContext context) { }
+        public void DemagnetizeAnchor(IContext context) { }
+        public void Demagnetize(IContext context) { }
     }
 }

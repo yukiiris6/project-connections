@@ -7,8 +7,6 @@ namespace ProjectConnections.Magnetic.States
     {
         public void Enter(IContext context)
         {
-            context.SoundPlayer.PlayCrashSFX();
-            context.Presenter.PlayShake();
             context.Rigidbody.bodyType = RigidbodyType2D.Kinematic;
         }
 
