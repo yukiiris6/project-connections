@@ -119,17 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &988911 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7689792274891953636, guid: 85712e3abbf188a449f33041823db851, type: 3}
-  m_PrefabInstance: {fileID: 2626654811247723414}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bcaf0f9c4a30344f83c831d478d0896, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Magnetism::ProjectConnections.Magnetism.SoundPlayer
 --- !u!1 &114242237
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,6 +263,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 796485928820103506}
     m_Modifications:
+    - target: {fileID: 1102440252265905329, guid: f7175d0422cb33746acfe748311eb545, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 1102440252265905329, guid: f7175d0422cb33746acfe748311eb545, type: 3}
     - target: {fileID: 2357766709650388528, guid: f7175d0422cb33746acfe748311eb545, type: 3}
       propertyPath: m_Name
       value: Plug1
@@ -335,11 +328,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8013865688173058999, guid: f7175d0422cb33746acfe748311eb545, type: 3}
   m_PrefabInstance: {fileID: 205757316}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &235194149 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 731760419575218635, guid: 85712e3abbf188a449f33041823db851, type: 3}
-  m_PrefabInstance: {fileID: 2626654811247723414}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &267509230
 PrefabInstance:
@@ -424,11 +412,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f049dc078f1082479a756786262929e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PauseMenuPresenter
---- !u!1 &938125343 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3902003610806681886, guid: f7175d0422cb33746acfe748311eb545, type: 3}
-  m_PrefabInstance: {fileID: 1007188991}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1004724804 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9049370017222198398, guid: abc2ff3dce4eddc4192081035b142cb5, type: 3}
@@ -442,26 +425,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 796485928820103506}
     m_Modifications:
-    - target: {fileID: 1217242144180719863, guid: f7175d0422cb33746acfe748311eb545, type: 3}
-      propertyPath: m_Radius
-      value: 1.5
+    - target: {fileID: 1102440252265905329, guid: f7175d0422cb33746acfe748311eb545, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 1102440252265905329, guid: f7175d0422cb33746acfe748311eb545, type: 3}
+    - target: {fileID: 1102440252265905329, guid: f7175d0422cb33746acfe748311eb545, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.size
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1102440252265905329, guid: f7175d0422cb33746acfe748311eb545, type: 3}
+      propertyPath: 'serializationData.PrefabModifications.Array.data[0]'
+      value: '"path":"constraints.[0]","value":$eref:0'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1102440252265905329, guid: f7175d0422cb33746acfe748311eb545, type: 3}
+      propertyPath: 'serializationData.PrefabModifications.Array.data[1]'
+      value: '"path":"constraints.[1]","value":$eref:1'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1102440252265905329, guid: f7175d0422cb33746acfe748311eb545, type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1102440252265905329, guid: f7175d0422cb33746acfe748311eb545, type: 3}
+      propertyPath: 'serializationData.PrefabModificationsReferencedUnityObjects.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1007189041}
+    - target: {fileID: 1102440252265905329, guid: f7175d0422cb33746acfe748311eb545, type: 3}
+      propertyPath: 'serializationData.PrefabModificationsReferencedUnityObjects.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1007189029}
     - target: {fileID: 2357766709650388528, guid: f7175d0422cb33746acfe748311eb545, type: 3}
       propertyPath: m_Name
       value: Plug2
       objectReference: {fileID: 0}
-    - target: {fileID: 6695332655704917580, guid: f7175d0422cb33746acfe748311eb545, type: 3}
-      propertyPath: <Constrainer>k__BackingField
+    - target: {fileID: 5724862889899221532, guid: f7175d0422cb33746acfe748311eb545, type: 3}
+      propertyPath: plugTransform
       value: 
-      objectReference: {fileID: 1007189041}
-    - target: {fileID: 6695332655704917580, guid: f7175d0422cb33746acfe748311eb545, type: 3}
-      propertyPath: <CarriableObject>k__BackingField
-      value: 
-      objectReference: {fileID: 1007189009}
-    - target: {fileID: 7713674074832073326, guid: f7175d0422cb33746acfe748311eb545, type: 3}
-      propertyPath: CarriableObject
-      value: 
-      objectReference: {fileID: 1007189009}
+      objectReference: {fileID: 1007189040}
     - target: {fileID: 8013865688173058999, guid: f7175d0422cb33746acfe748311eb545, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.500004
@@ -502,14 +501,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8192716071668306310, guid: f7175d0422cb33746acfe748311eb545, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3902003610806681886, guid: f7175d0422cb33746acfe748311eb545, type: 3}
-      insertIndex: 10
-      addedObject: {fileID: 1007189041}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7175d0422cb33746acfe748311eb545, type: 3}
 --- !u!4 &1007188992 stripped
 Transform:
@@ -521,36 +516,39 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3553464999985284951, guid: f7175d0422cb33746acfe748311eb545, type: 3}
   m_PrefabInstance: {fileID: 1007188991}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 938125343}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b279442900b55a41a10ba9ed6932330, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Electric::ProjectConnections.Electric.ElectricityProvider
---- !u!114 &1007189009 stripped
+--- !u!114 &1007189029 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2134260121511104680, guid: f7175d0422cb33746acfe748311eb545, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3723194221217931425, guid: f7175d0422cb33746acfe748311eb545, type: 3}
   m_PrefabInstance: {fileID: 1007188991}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 938125343}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59ca6e12e84dbc848b66962a71cd8197, type: 3}
+  m_Script: {fileID: 11500000, guid: b983eecacb6b74b45888b8bb2fc3a037, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Shared::CarriableObject
---- !u!114 &1007189041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_EditorClassIdentifier: Magnetism::ProjectConnections.Magnetic.AnchorRange
+--- !u!4 &1007189040 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7368341273168496261, guid: f7175d0422cb33746acfe748311eb545, type: 3}
+  m_PrefabInstance: {fileID: 1007188991}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 938125343}
+--- !u!114 &1007189041 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8336619609795364708, guid: f7175d0422cb33746acfe748311eb545, type: 3}
+  m_PrefabInstance: {fileID: 1007188991}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b31c0860cf4b77439399989914cdf9e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Magnetism::ProjectConnections.Magnetic.Constrainer
-  stopDistance: 1.5
+  m_EditorClassIdentifier: Magnetism::ProjectConnections.Magnetic.ArrivalConstrainer
 --- !u!1001 &1023310218
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -725,6 +723,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 796485928820103506}
     m_Modifications:
+    - target: {fileID: 1102440252265905329, guid: f7175d0422cb33746acfe748311eb545, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 1102440252265905329, guid: f7175d0422cb33746acfe748311eb545, type: 3}
     - target: {fileID: 2357766709650388528, guid: f7175d0422cb33746acfe748311eb545, type: 3}
       propertyPath: m_Name
       value: Plug3
@@ -927,161 +929,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5166869118126711301, guid: 85712e3abbf188a449f33041823db851, type: 3}
   m_PrefabInstance: {fileID: 2626654811247723414}
   m_PrefabAsset: {fileID: 0}
---- !u!61 &1829152663 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 2371041180708187909, guid: 85712e3abbf188a449f33041823db851, type: 3}
-  m_PrefabInstance: {fileID: 2626654811247723414}
-  m_PrefabAsset: {fileID: 0}
---- !u!50 &1829152664 stripped
-Rigidbody2D:
-  m_CorrespondingSourceObject: {fileID: 1895042314930856823, guid: 85712e3abbf188a449f33041823db851, type: 3}
-  m_PrefabInstance: {fileID: 2626654811247723414}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1829152666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 235194149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b565ec0c951f0e3449ab196b0967a9ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Magnetism::ProjectConnections.Magnetic.Presenter
-  cinemachineImpulseSource: {fileID: 1829152669}
-  soundPlayer: {fileID: 988911}
-  minDistanceToCrash: 1
---- !u!114 &1829152667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 235194149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6da528ef30e64dc48a0197a0f6c3cbbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Magnetism::ProjectConnections.Magnetic.Rotator
---- !u!114 &1829152668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 235194149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59ca6e12e84dbc848b66962a71cd8197, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: ObjectShared::ProjectConnections.ObjectShared.CarriableObject
-  <ObjectType>k__BackingField: 1
-  <ShouldCarryOnTrigger>k__BackingField: 0
-  myRigidbody: {fileID: 1829152664}
-  myCollider: {fileID: 1829152663}
---- !u!114 &1829152669
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 235194149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineImpulseSource
-  ImpulseDefinition:
-    ImpulseChannel: 1
-    ImpulseShape: 2
-    CustomImpulseShape:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    ImpulseDuration: 0.2
-    ImpulseType: 0
-    DissipationRate: 0.25
-    RawSignal: {fileID: 0}
-    AmplitudeGain: 1
-    FrequencyGain: 1
-    RepeatMode: 0
-    Randomize: 1
-    TimeEnvelope:
-      AttackShape:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      DecayShape:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      AttackTime: 0
-      SustainTime: 0.2
-      DecayTime: 0.7
-      ScaleWithImpact: 1
-      HoldForever: 0
-    ImpactRadius: 100
-    DirectionMode: 0
-    DissipationMode: 2
-    DissipationDistance: 100
-    PropagationSpeed: 343
-  DefaultVelocity: {x: 0, y: -1, z: 0}
---- !u!58 &1829152670
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 235194149}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 1.5
---- !u!114 &1829152671
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 235194149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b31c0860cf4b77439399989914cdf9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Magnetism::ProjectConnections.Magnetic.Constrainer
-  stopDistance: 1.5
 --- !u!1 &1923545143
 GameObject:
   m_ObjectHideFlags: 0
@@ -1407,7 +1254,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1968011317102013676, guid: ec1adce245eae3a469c48fac9b23a43c, type: 3}
       propertyPath: releaseDistance
-      value: 1
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 1968011317102013676, guid: ec1adce245eae3a469c48fac9b23a43c, type: 3}
       propertyPath: nearPlayerThreshold
@@ -6536,30 +6383,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Box
       objectReference: {fileID: 0}
-    - target: {fileID: 731760419575218635, guid: 85712e3abbf188a449f33041823db851, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1895042314930856823, guid: 85712e3abbf188a449f33041823db851, type: 3}
-      propertyPath: m_GravityScale
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4974843213190455366, guid: 85712e3abbf188a449f33041823db851, type: 3}
-      propertyPath: <Rotator>k__BackingField
-      value: 
-      objectReference: {fileID: 1829152667}
-    - target: {fileID: 4974843213190455366, guid: 85712e3abbf188a449f33041823db851, type: 3}
-      propertyPath: <Presenter>k__BackingField
-      value: 
-      objectReference: {fileID: 1829152666}
-    - target: {fileID: 4974843213190455366, guid: 85712e3abbf188a449f33041823db851, type: 3}
-      propertyPath: <Constrainer>k__BackingField
-      value: 
-      objectReference: {fileID: 1829152671}
-    - target: {fileID: 4974843213190455366, guid: 85712e3abbf188a449f33041823db851, type: 3}
-      propertyPath: <CarriableObject>k__BackingField
-      value: 
-      objectReference: {fileID: 1829152668}
     - target: {fileID: 5166869118126711301, guid: 85712e3abbf188a449f33041823db851, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4
@@ -6600,36 +6423,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7689792274891953636, guid: 85712e3abbf188a449f33041823db851, type: 3}
-      propertyPath: connectionSFX
-      value: 
-      objectReference: {fileID: 8300000, guid: eb31da6d0087dcc43b1c5ee309cdab9f, type: 3}
-    - target: {fileID: 8830293658753179167, guid: 85712e3abbf188a449f33041823db851, type: 3}
+    - target: {fileID: 9032279900810260644, guid: 85712e3abbf188a449f33041823db851, type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 8830293658753179167, guid: 85712e3abbf188a449f33041823db851, type: 3}
+      objectReference: {fileID: 9032279900810260644, guid: 85712e3abbf188a449f33041823db851, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 731760419575218635, guid: 85712e3abbf188a449f33041823db851, type: 3}
-      insertIndex: 4
-      addedObject: {fileID: 1829152670}
-    - targetCorrespondingSourceObject: {fileID: 731760419575218635, guid: 85712e3abbf188a449f33041823db851, type: 3}
-      insertIndex: 5
-      addedObject: {fileID: 1829152669}
-    - targetCorrespondingSourceObject: {fileID: 731760419575218635, guid: 85712e3abbf188a449f33041823db851, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1829152666}
-    - targetCorrespondingSourceObject: {fileID: 731760419575218635, guid: 85712e3abbf188a449f33041823db851, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1829152668}
-    - targetCorrespondingSourceObject: {fileID: 731760419575218635, guid: 85712e3abbf188a449f33041823db851, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1829152667}
-    - targetCorrespondingSourceObject: {fileID: 731760419575218635, guid: 85712e3abbf188a449f33041823db851, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1829152671}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85712e3abbf188a449f33041823db851, type: 3}
 --- !u!4 &2634818477527480765
 Transform:

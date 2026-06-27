@@ -66,13 +66,13 @@
   <Project Path="Player.csproj" />
   <Project Path="Level.csproj" />
   <Project Path="Unity.2D.Sprite.Editor.csproj" />
-  <Project Path="Magnetism.csproj" />
   <Project Path="Unity.Multiplayer.Center.Common.csproj" />
   <Project Path="DOTween.Modules.csproj" />
   <Project Path="Unity.InputSystem.ForUI.csproj" />
   <Project Path="ObjectShared.csproj" />
   <Project Path="Unity.Collections.CodeGen.csproj" />
   <Project Path="Unity.2D.Tilemap.Extras.csproj" />
+  <Project Path="Magnetism.csproj" />
   <Project Path="Unity.2D.Animation.Runtime.csproj" />
   <Project Path="Unity.Mathematics.Editor.csproj" />
   <Project Path="Unity.VisualScripting.SettingsProvider.Editor.csproj" />

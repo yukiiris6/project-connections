@@ -23,10 +23,17 @@ namespace ProjectConnections.ObjectShared
             originalBodyType = myRigidbody.bodyType;
         }
 
+        void Update()
+        {
+            if (IsBeingCarried)
+            {
+                myRigidbody.bodyType = RigidbodyType2D.Kinematic;
+            }
+        }
+
         public void Carry(Transform carrier)
         {
             myCollider.enabled = false;
-            myRigidbody.bodyType = RigidbodyType2D.Kinematic;
             transform.parent = carrier;
             IsBeingCarried = true;
             OnCarryChanged?.Invoke(true);
@@ -34,7 +41,8 @@ namespace ProjectConnections.ObjectShared
 
         public void Throw(float xDirection, float height, float strength)
         {
-            if (!CanThrow()) return;
+            bool canThrow = CanThrow();
+            if (!canThrow) return;
             RestoreObject();
             Vector2 throwDirection = new(xDirection * strength, height);
             myRigidbody.AddRelativeForce(throwDirection, ForceMode2D.Impulse);

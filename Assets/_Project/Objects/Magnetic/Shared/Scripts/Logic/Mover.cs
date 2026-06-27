@@ -13,9 +13,9 @@ namespace ProjectConnections.Magnetic
 
         public event Action OnDestinationReached;
 
-        float distanceTravelled;
         Vector2 targetPosition;
         Vector2 lastVelocity;
+        float distanceTravelled;
         bool shouldMove;
 
         #region Unity Lifecycle
@@ -59,9 +59,9 @@ namespace ProjectConnections.Magnetic
             return distanceTravelled;
         }
 
-        public Vector2 GetLastVelocity()
+        public Vector2 GetTargetPosition()
         {
-            return lastVelocity;
+            return targetPosition;
         }
         #endregion
 

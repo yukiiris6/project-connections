@@ -2,9 +2,6 @@
 using System.Collections;
 using DG.Tweening;
 using ProjectConnections.Magnetic;
-using ProjectConnections.Magnetic.Anchored;
-using ProjectConnections.Magnetic.Docked;
-using ProjectConnections.Magnetic.Modules;
 using Unity.Cinemachine;
 using UnityEngine;
 using Sirenix.OdinInspector;
@@ -28,7 +25,7 @@ namespace ProjectConnections.Player
 
         Camera mainCamera;
         GameObject targetObject;
-        MagnetismModule targetMagnetismModule;
+        Magnetism targetMagneticObject;
         int targetGroupMouseIndex = 0;
 
         void Start()
@@ -62,7 +59,7 @@ namespace ProjectConnections.Player
         {
             if (!isAiming) return;
 
-            if (targetMagnetismModule == null)
+            if (targetMagneticObject == null)
             {
                 FaceMouse();
                 targetObject = GetTarget();
@@ -106,21 +103,21 @@ namespace ProjectConnections.Player
         void SetMagnetismModule()
         {
             if (targetObject == null) return;
-            MagnetismModule magnetismModule = targetObject.GetComponent<MagnetismModule>();
-            if (magnetismModule != null) targetMagnetismModule = magnetismModule;
+            Magnetism magneticObject = targetObject.GetComponent<Magnetism>();
+            if (magneticObject != null) targetMagneticObject = magneticObject;
         }
 
         void MagnetizeObject()
         {
-            if (targetMagnetismModule == null) return;
-            targetMagnetismModule.Magnetize(centerTransform.position);
+            if (targetMagneticObject == null) return;
+            targetMagneticObject.Magnetize(centerTransform.position);
         }
 
         void DemagnetizeObject()
         {
-            if (targetMagnetismModule == null) return;
-            targetMagnetismModule.Demagnetize();
-            targetMagnetismModule = null;
+            if (targetMagneticObject == null) return;
+            targetMagneticObject.Demagnetize();
+            targetMagneticObject = null;
         }
 
         void FaceMouse()

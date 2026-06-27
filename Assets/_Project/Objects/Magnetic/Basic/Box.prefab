@@ -12,16 +12,23 @@ GameObject:
   - component: {fileID: 4976862507489343972}
   - component: {fileID: 1895042314930856823}
   - component: {fileID: 2371041180708187909}
-  - component: {fileID: 4974843213190455366}
+  - component: {fileID: 8855779191103339629}
+  - component: {fileID: 2166852441756634113}
+  - component: {fileID: 9032279900810260644}
   - component: {fileID: 8830293658753179167}
   - component: {fileID: 3192197772799658985}
+  - component: {fileID: 8685524167760892578}
+  - component: {fileID: 5101587512222897597}
+  - component: {fileID: 1248683498960426956}
+  - component: {fileID: 7877480654486175297}
+  - component: {fileID: 1726024027140728688}
   m_Layer: 8
   m_Name: Box
   m_TagString: Magnetic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5166869118126711301
 Transform:
   m_ObjectHideFlags: 0
@@ -112,7 +119,7 @@ Rigidbody2D:
   m_Mass: 5
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 2
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -170,7 +177,43 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &4974843213190455366
+--- !u!58 &8855779191103339629
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731760419575218635}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 1.5
+--- !u!114 &2166852441756634113
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -179,13 +222,91 @@ MonoBehaviour:
   m_GameObject: {fileID: 731760419575218635}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ce7976336903f14bad98caddce2dce6, type: 3}
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Magnetism::ProjectConnections.Magnetism.MagneticObjectController
-  <Mover>k__BackingField: {fileID: 8830293658753179167}
-  <SoundPlayer>k__BackingField: {fileID: 7689792274891953636}
-  <Rigidbody>k__BackingField: {fileID: 1895042314930856823}
-  <Presenter>k__BackingField: {fileID: 0}
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineImpulseSource
+  ImpulseDefinition:
+    ImpulseChannel: 1
+    ImpulseShape: 3
+    CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    ImpulseDuration: 0.1
+    ImpulseType: 0
+    DissipationRate: 0.25
+    RawSignal: {fileID: 0}
+    AmplitudeGain: 1
+    FrequencyGain: 1
+    RepeatMode: 0
+    Randomize: 1
+    TimeEnvelope:
+      AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      AttackTime: 0
+      SustainTime: 0.2
+      DecayTime: 0.7
+      ScaleWithImpact: 1
+      HoldForever: 0
+    ImpactRadius: 100
+    DirectionMode: 0
+    DissipationMode: 2
+    DissipationDistance: 100
+    PropagationSpeed: 343
+  DefaultVelocity: {x: 0, y: 0.05, z: 0}
+--- !u!114 &9032279900810260644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731760419575218635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11707dd855f1b94468c7d756fa10b853, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Magnetism::ProjectConnections.Magnetic.BasicMagnetism
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 1248683498960426956}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: constraints
+      Entry: 7
+      Data: 0|ProjectConnections.Magnetic.Constrainer[], Magnetism
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  mover: {fileID: 8830293658753179167}
+  rotator: {fileID: 5101587512222897597}
+  presenter: {fileID: 8685524167760892578}
+  myRigidbody: {fileID: 1895042314930856823}
 --- !u!114 &8830293658753179167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,9 +320,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Magnetism::Mover
   collisionHandler: {fileID: 3192197772799658985}
-  pullMultiplier: 2.5
-  defaultStopDistance: 1
-  preciseStopDistance: 0.25
+  pullMultiplier: 1.1
+  nextPositionThreshold: 0.25
 --- !u!114 &3192197772799658985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,6 +338,77 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   mainCollider: {fileID: 2371041180708187909}
+  sizeReduction: 0.25
+--- !u!114 &8685524167760892578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731760419575218635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b565ec0c951f0e3449ab196b0967a9ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Magnetism::ProjectConnections.Magnetic.Presenter
+  cinemachineImpulseSource: {fileID: 2166852441756634113}
+  soundPlayer: {fileID: 7689792274891953636}
+  minDistanceToCrash: 1
+--- !u!114 &5101587512222897597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731760419575218635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da528ef30e64dc48a0197a0f6c3cbbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Magnetism::ProjectConnections.Magnetic.Rotator
+--- !u!114 &1248683498960426956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731760419575218635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b31c0860cf4b77439399989914cdf9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Magnetism::ProjectConnections.Magnetic.Constrainer
+  arrivalDistance: 1.5
+--- !u!114 &7877480654486175297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731760419575218635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59ca6e12e84dbc848b66962a71cd8197, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: ObjectShared::ProjectConnections.ObjectShared.CarriableObject
+  <ObjectType>k__BackingField: 1
+  <ShouldCarryOnTrigger>k__BackingField: 0
+  myRigidbody: {fileID: 1895042314930856823}
+  myCollider: {fileID: 2371041180708187909}
+--- !u!114 &1726024027140728688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731760419575218635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ee1a311766d1f94db8c5501a17b9343, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Magnetism::ProjectConnections.Magnetic.CarriableValidator
+  carriableObject: {fileID: 7877480654486175297}
+  mover: {fileID: 8830293658753179167}
 --- !u!1 &4189236973447505769
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,4 +553,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Magnetism::ProjectConnections.Magnetism.SoundPlayer
   audioSource: {fileID: 2654580592530793255}
   crashSFX: {fileID: 8300000, guid: e5ca15ea1522dd345a847b8aa12cde43, type: 3}
-  connectionSFX: {fileID: 0}
+  connectionSFX: {fileID: 8300000, guid: eb31da6d0087dcc43b1c5ee309cdab9f, type: 3}

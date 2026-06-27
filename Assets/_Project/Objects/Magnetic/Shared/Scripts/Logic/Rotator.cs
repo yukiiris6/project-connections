@@ -11,10 +11,10 @@ namespace ProjectConnections.Magnetic
             originalRotation = transform.rotation;
         }
 
-        public void RotateTowardsTarget(Vector2 targetPosition)
+        public void RotateTo(Vector2 destination)
         {
             Vector2 currentPosition = transform.position;
-            Vector2 direction = targetPosition - currentPosition;
+            Vector2 direction = destination - currentPosition;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             float snappedAngle = Mathf.Round(angle / 90f) * 90f;
             SetRotation(Quaternion.Euler(0, 0, snappedAngle));
