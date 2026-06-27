@@ -11,17 +11,27 @@ namespace ProjectConnections.Magnetic.Pluggable.States
 
         public void Enter(IContext context)
         {
-            if (context is not PlugModule plugModule) return;
+            if (context is not CarriableModule carriableModule) return;
             _context = context;
-            plugModule.PlugCarryRange.CarriableObject.OnCarryChanged += HandleCarryChanged;
+            carriableModule.CarriableObject.OnCarryChanged += HandleCarryChanged;
             context.Mover.OnDestinationReached += OnArrival;
         }
 
         public void Exit(IContext context)
         {
-            if (context is not PlugModule plugModule) return;
-            plugModule.PlugCarryRange.CarriableObject.OnCarryChanged -= HandleCarryChanged;
+            if (context is not CarriableModule carriableModule) return;
+            carriableModule.CarriableObject.OnCarryChanged -= HandleCarryChanged;
             context.Mover.OnDestinationReached -= OnArrival;
+        }
+
+        public void Magnetize(IContext context, Vector2 destination)
+        {
+            if (context is not AnchorModule dockedModule) return;
+            Vector2 constrainedDestination = context.Constrainer.ConstrainStopDistance(destination);
+            constrainedDestination = dockedModule.AnchorRange.ConstrainMaxDistance(constrainedDestination);
+            context.Mover.MoveTo(constrainedDestination);
+            context.Rotator.RotateTowardsTarget(destination);
+            context.SetState(new PluggablePulling());
         }
 
         public void Demagnetize(IContext context)
@@ -30,9 +40,8 @@ namespace ProjectConnections.Magnetic.Pluggable.States
             context.SetState(new PluggablePulled());
         }
 
-        void OnArrival(float distance)
+        void OnArrival()
         {
-            _context.Presenter.PlayStopByDistance(distance);
             _context.SetState(new PluggablePulled());
         }
 
@@ -41,7 +50,6 @@ namespace ProjectConnections.Magnetic.Pluggable.States
             if (value) _context.SetState(new PluggableCarried());
         }
 
-        public void Magnetize(IContext context, Vector2 destination) { }
         public void MagnetizeAnchor(IContext context) { }
         public void DemagnetizeAnchor(IContext context) { }
     }

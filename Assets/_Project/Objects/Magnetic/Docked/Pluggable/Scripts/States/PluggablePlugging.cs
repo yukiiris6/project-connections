@@ -20,7 +20,7 @@ namespace ProjectConnections.Magnetic.Pluggable.States
             context.Mover.OnDestinationReached -= OnArrival;
         }
 
-        void OnArrival(float distance)
+        void OnArrival()
         {
             _context.SetState(new PluggablePlugged());
         }

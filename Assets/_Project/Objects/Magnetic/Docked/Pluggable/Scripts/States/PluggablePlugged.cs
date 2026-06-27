@@ -28,11 +28,12 @@ namespace ProjectConnections.Magnetic.Pluggable.States
         {
             if (context is not AnchorModule dockedModule) return;
 
-            Vector2 targetPosition = dockedModule.AnchorRange.ConstrainTargetPosition(destination);
-            bool isSameAsCurrentPosition = context.Mover.IsSameAsCurrentPosition(targetPosition);
+            Vector2 constrainedDestination = context.Constrainer.ConstrainStopDistance(destination);
+            constrainedDestination = dockedModule.AnchorRange.ConstrainMaxDistance(constrainedDestination);
+            bool isSameAsCurrentPosition = context.Mover.IsSameAsCurrentPosition(constrainedDestination);
             if (isSameAsCurrentPosition) return;
 
-            context.Mover.MoveTo(destination);
+            context.Mover.MoveTo(constrainedDestination);
             context.SetState(new PluggablePulling());
         }
 

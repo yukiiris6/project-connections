@@ -18,7 +18,7 @@ namespace ProjectConnections.Player
             {
                 if (foundCarriableObject != null)
                 {
-                    foundCarriableObject.CarryOnTriggerChanged -= HandleOnTriggerChanged;
+                    foundCarriableObject.OnCarryChanged -= HandleOnCarryChanged;
                 }
 
                 if (carriableObject.ShouldCarryOnTrigger)
@@ -28,7 +28,7 @@ namespace ProjectConnections.Player
                 else
                 {
                     foundCarriableObject = carriableObject;
-                    carriableObject.CarryOnTriggerChanged += HandleOnTriggerChanged;
+                    carriableObject.OnCarryChanged += HandleOnCarryChanged;
                 }
             }
         }
@@ -40,18 +40,18 @@ namespace ProjectConnections.Player
             {
                 if (foundCarriableObject != null && foundCarriableObject == carriableObject)
                 {
-                    foundCarriableObject.CarryOnTriggerChanged -= HandleOnTriggerChanged;
+                    foundCarriableObject.OnCarryChanged -= HandleOnCarryChanged;
                     foundCarriableObject = null;
                 }
             }
         }
 
-        void HandleOnTriggerChanged(bool value)
+        void HandleOnCarryChanged(bool value)
         {
-            if (value && foundCarriableObject)
+            if (!value && foundCarriableObject != null)
             {
                 OnObjectFound?.Invoke(foundCarriableObject);
-                foundCarriableObject.CarryOnTriggerChanged -= HandleOnTriggerChanged;
+                foundCarriableObject.OnCarryChanged -= HandleOnCarryChanged;
                 foundCarriableObject = null;
             }
         }

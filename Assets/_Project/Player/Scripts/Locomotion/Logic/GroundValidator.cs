@@ -8,6 +8,7 @@ namespace ProjectConnections.Player
     {
         [SerializeField, Required] BoxCollider2D feetCollider;
         [SerializeField, Required] LayerMask groundLayers;
+        [SerializeField] Rigidbody2D myRigidbody;
         [SerializeField, Required] float groundCheckDistance = .05f;
         [SerializeField, Required] float coyoteTimeDuration = .1f;
 
@@ -24,35 +25,40 @@ namespace ProjectConnections.Player
 
         void GroundCheck()
         {
-            Vector3 checkSize = new(feetCollider.bounds.size.x, feetCollider.bounds.size.y);
             RaycastHit2D hit = Physics2D.BoxCast(
                 feetCollider.bounds.center,
-                checkSize,
+                feetCollider.bounds.size,
                 0f,
                 Vector2.down,
                 groundCheckDistance,
                 groundLayers
             );
 
-            if (hit.collider == null)
+            bool isAboveFloor = hit.collider != null && hit.normal.y > 0.7f;
+            if (isAboveFloor && IsGrounded == false && myRigidbody.linearVelocityY <= 0)
             {
-                if (coyoteTimeCounter > coyoteTimeDuration)
-                {
-                    IsGrounded = false;
-                    OnExitGround?.Invoke();
-                    return;
-                }
-                else
-                {
-                    coyoteTimeCounter += Time.fixedDeltaTime;
-                }
+                Land();
+                return;
             }
-            else if (IsGrounded == false)
+
+            coyoteTimeCounter += Time.fixedDeltaTime;
+            if (!isAboveFloor && coyoteTimeCounter > coyoteTimeDuration && IsGrounded == true)
             {
-                IsGrounded = true;
-                coyoteTimeCounter = 0;
-                OnLand?.Invoke();
+                ExitGround();
             }
+        }
+
+        void Land()
+        {
+            IsGrounded = true;
+            coyoteTimeCounter = 0;
+            OnLand?.Invoke();
+        }
+
+        void ExitGround()
+        {
+            IsGrounded = false;
+            OnExitGround?.Invoke();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Sirenix.OdinInspector;
+using ProjectConnections.Magnetic.Modules;
 
 namespace ProjectConnections.Magnetic.States
 {
@@ -7,14 +8,17 @@ namespace ProjectConnections.Magnetic.States
     {
         public void Enter(IContext context)
         {
+            if (context is not CarriableModule carriableModule) return;
             context.Rigidbody.bodyType = RigidbodyType2D.Dynamic;
+            carriableModule.CarriableObject.SetCarryOnTrigger(false);
         }
 
         public void Exit(IContext context) { }
 
         public void Magnetize(IContext context, Vector2 destination)
         {
-            context.Mover.MoveTo(destination);
+            Vector2 constrainedDestination = context.Constrainer.ConstrainStopDistance(destination);
+            context.Mover.MoveTo(constrainedDestination);
             context.SetState(new Pulling());
         }
 

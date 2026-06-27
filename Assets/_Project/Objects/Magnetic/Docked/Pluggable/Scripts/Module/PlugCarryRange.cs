@@ -8,17 +8,24 @@ namespace ProjectConnections.Magnetic
 {
     public class PlugCarryRange : MonoBehaviour
     {
-        [field: SerializeField, Required] public CarriableObject CarriableObject { get; private set; }
+        [SerializeField, Required] CarriableObject CarriableObject;
+        [SerializeField, Required] AnchorRange anchorRange;
         [SerializeField, Required] Mover mover;
-        [SerializeField] float grabMaxDistance = .75f;
-        [SerializeField] float carryMaxDistance = .5f;
+        [SerializeField] float grabThreshold = 2f;
+        [SerializeField] float carryThreshold = 1f;
+        [SerializeField] float minDistance;
 
         Vector2 originalPosition;
         bool isReturning;
+        float grabMaxDistance;
+        float carryMaxDistance;
 
         void Awake()
         {
             originalPosition = transform.position;
+            float maxDistance = anchorRange.GetMaxDistance();
+            grabMaxDistance = Mathf.Max(maxDistance - grabThreshold, minDistance);
+            carryMaxDistance = Mathf.Max(maxDistance - carryThreshold, minDistance);
         }
 
         void Update()

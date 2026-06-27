@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Sirenix.OdinInspector;
+using ProjectConnections.Magnetic.Modules;
 
 namespace ProjectConnections.Magnetic.States
 {
@@ -9,19 +10,25 @@ namespace ProjectConnections.Magnetic.States
 
         public void Enter(IContext context)
         {
+            if (context is not CarriableModule carriableModule) return;
             _context = context;
             context.Mover.OnDestinationReached += OnArrival;
             context.Rigidbody.bodyType = RigidbodyType2D.Kinematic;
+            carriableModule.CarriableObject.OnCarryChanged += HandleCarryChanged;
+            carriableModule.CarriableObject.SetCarryOnTrigger(true);
         }
 
         public void Exit(IContext context)
         {
+            if (context is not CarriableModule carriableModule) return;
             context.Mover.OnDestinationReached -= OnArrival;
+            carriableModule.CarriableObject.OnCarryChanged += HandleCarryChanged;
         }
 
         public void Magnetize(IContext context, Vector2 destination)
         {
-            context.Mover.MoveTo(destination);
+            Vector2 constrainedDestination = context.Constrainer.ConstrainStopDistance(destination);
+            context.Mover.MoveTo(constrainedDestination);
         }
 
         public void Demagnetize(IContext context)
@@ -30,10 +37,16 @@ namespace ProjectConnections.Magnetic.States
             context.SetState(new Resting());
         }
 
-        void OnArrival(float distance)
+        void OnArrival()
         {
+            float distance = _context.Mover.GetDistanceTravelled();
             _context.Presenter.PlayStopByDistance(distance);
-            _context.SetState(new Pulled());
+            _context.SetState(new Resting());
+        }
+
+        void HandleCarryChanged(bool value)
+        {
+            if (value) _context.SetState(new Carried());
         }
     }
 }

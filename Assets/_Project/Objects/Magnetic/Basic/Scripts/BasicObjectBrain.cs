@@ -2,15 +2,18 @@
 using ProjectConnections.Magnetic.States;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using ProjectConnections.ObjectShared;
 
 namespace ProjectConnections.Magnetic
 {
-    public class BasicObjectBrain : MonoBehaviour, IContext, MagnetismModule
+    public class BasicObjectBrain : MonoBehaviour, IContext, MagnetismModule, CarriableModule
     {
-        [field: SerializeField] public Mover Mover { get; private set; }
-        [field: SerializeField] public Rotator Rotator { get; private set; }
-        [field: SerializeField] public Rigidbody2D Rigidbody { get; private set; }
-        [field: SerializeField] public Presenter Presenter { get; private set; }
+        [field: SerializeField, Required] public Mover Mover { get; private set; }
+        [field: SerializeField, Required] public Rotator Rotator { get; private set; }
+        [field: SerializeField, Required] public Constrainer Constrainer { get; private set; }
+        [field: SerializeField, Required] public Rigidbody2D Rigidbody { get; private set; }
+        [field: SerializeField, Required] public Presenter Presenter { get; private set; }
+        [field: SerializeField, Required] public CarriableObject CarriableObject { get; private set; }
 
         IState currentState = new Resting();
 

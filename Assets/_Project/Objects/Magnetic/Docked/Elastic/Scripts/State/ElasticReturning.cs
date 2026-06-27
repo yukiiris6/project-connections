@@ -27,7 +27,7 @@ namespace ProjectConnections.Magnetic.Elastic.States
             context.SetState(new ElasticPulling());
         }
 
-        void OnArrival(float distance)
+        void OnArrival()
         {
             _context.SetState(new ElasticResting());
         }

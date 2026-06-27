@@ -35,8 +35,9 @@ namespace ProjectConnections.Magnetic.Elastic.States
             context.SetState(new ElasticReturning());
         }
 
-        void OnArrival(float distance)
+        void OnArrival()
         {
+            float distance = _context.Mover.GetDistanceTravelled();
             _context.Presenter.PlayStopByDistance(distance);
             _context.SetState(new ElasticPulled());
         }

@@ -16,8 +16,10 @@ namespace ProjectConnections.Player
         static readonly int isFacingLeftHash = Animator.StringToHash("IsFacingLeft");
         static readonly int isRunningHash = Animator.StringToHash("IsRunning");
         static readonly int isGroundedHash = Animator.StringToHash("IsGrounded");
-        static readonly int isAimingHash = Animator.StringToHash("IsAiming");
         static readonly int hasFinishedHash = Animator.StringToHash("HasFinished");
+
+        static readonly int isAimingHash = Animator.StringToHash("IsAiming");
+        static readonly int isCarryingHash = Animator.StringToHash("IsCarrying");
 
         public void UpdateFinished(bool hasFinished)
         {
@@ -54,7 +56,16 @@ namespace ProjectConnections.Player
         public void UpdateAiming(bool showAimingArms)
         {
             aimingArmsAnimator.SetBool(isAimingHash, showAimingArms);
-            armsObject.SetActive(!showAimingArms);
+        }
+
+        public void UpdateCarrying(bool showCarryingArms)
+        {
+            aimingArmsAnimator.SetBool(isCarryingHash, showCarryingArms);
+        }
+
+        public void ToggleArms(bool showArms)
+        {
+            armsObject.SetActive(showArms);
         }
     }
 }

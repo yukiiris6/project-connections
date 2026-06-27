@@ -30,8 +30,9 @@ namespace ProjectConnections.Magnetic.Pluggable.States
             context.SetState(new PluggablePulled());
         }
 
-        void OnArrival(float distance)
+        void OnArrival()
         {
+            float distance = _context.Mover.GetDistanceTravelled();
             _context.Presenter.PlayStopByDistance(distance);
             _context.SetState(new PluggableResting());
         }

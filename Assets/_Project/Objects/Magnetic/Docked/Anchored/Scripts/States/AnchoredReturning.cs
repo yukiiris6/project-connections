@@ -34,8 +34,9 @@ namespace ProjectConnections.Magnetic.Anchored.States
             context.SetState(new AnchoredPulled());
         }
 
-        void OnArrival(float distance)
+        void OnArrival()
         {
+            float distance = _context.Mover.GetDistanceTravelled();
             _context.SetState(new AnchoredResting());
         }
 

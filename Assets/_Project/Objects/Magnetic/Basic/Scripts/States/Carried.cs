@@ -1,11 +1,10 @@
-using ProjectConnections.Magnetic.Modules;
-using ProjectConnections.Magnetic.States;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using ProjectConnections.Magnetic.Modules;
 
-namespace ProjectConnections.Magnetic.Pluggable.States
+namespace ProjectConnections.Magnetic.States
 {
-    public class PluggableCarried : IState, StateAnchorModule
+    public class Carried : IState
     {
         IContext _context;
 
@@ -25,12 +24,11 @@ namespace ProjectConnections.Magnetic.Pluggable.States
 
         void HandleCarryChanged(bool value)
         {
-            if (!value) _context.SetState(new PluggablePulled());
+            if (!value) _context.SetState(new Resting());
         }
 
         public void Magnetize(IContext context, Vector2 destination) { }
+
         public void Demagnetize(IContext context) { }
-        public void MagnetizeAnchor(IContext context) { }
-        public void DemagnetizeAnchor(IContext context) { }
     }
 }

@@ -8,11 +8,12 @@ namespace ProjectConnections.Magnetic.Anchored
 {
     public class AnchoredObjectBrain : MonoBehaviour, IContext, AnchorModule
     {
-        [field: SerializeField] public Mover Mover { get; private set; }
-        [field: SerializeField] public Rotator Rotator { get; private set; }
-        [field: SerializeField] public Rigidbody2D Rigidbody { get; private set; }
-        [field: SerializeField] public Presenter Presenter { get; private set; }
-        [field: SerializeField] public AnchorRange AnchorRange { get; private set; }
+        [field: SerializeField, Required] public Mover Mover { get; private set; }
+        [field: SerializeField, Required] public Rotator Rotator { get; private set; }
+        [field: SerializeField, Required] public Constrainer Constrainer { get; private set; }
+        [field: SerializeField, Required] public Rigidbody2D Rigidbody { get; private set; }
+        [field: SerializeField, Required] public Presenter Presenter { get; private set; }
+        [field: SerializeField, Required] public AnchorRange AnchorRange { get; private set; }
 
         IState currentState = new AnchoredResting();
 

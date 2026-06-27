@@ -23,11 +23,6 @@ namespace ProjectConnections.Player
         CarriableObject carryingObject;
         Vector2 lastXDirection = Vector2.zero;
 
-        void Update()
-        {
-            FaceForward();
-        }
-
         public void SetCarryingObject(CarriableObject newCarriableObject)
         {
             carryingObject = newCarriableObject;
@@ -47,6 +42,7 @@ namespace ProjectConnections.Player
             float distance = GetDistanceToWall(Vector2.up);
             if (distance < carryAnchor.localPosition.y) return false;
 
+            if (!carryingObject.CanThrow()) return false;
             carryingObject.Throw(xDirection, throwHeight, throwStrength);
             carryingObject = null;
             OnCarryChanged?.Invoke(false);

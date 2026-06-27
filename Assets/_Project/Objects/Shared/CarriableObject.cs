@@ -60,9 +60,9 @@ namespace ProjectConnections.ObjectShared
             OnCarryChanged?.Invoke(false);
         }
 
-        bool CanThrow()
+        public bool CanThrow()
         {
-            return myRigidbody.bodyType == RigidbodyType2D.Dynamic;
+            return originalBodyType == RigidbodyType2D.Dynamic;
         }
 
         void RestoreObject()

@@ -7,6 +7,7 @@ namespace ProjectConnections.Magnetic.States
     {
         Mover Mover { get; }
         Rotator Rotator { get; }
+        Constrainer Constrainer { get; }
         Rigidbody2D Rigidbody { get; }
         Presenter Presenter { get; }
         void SetState(IState newState);

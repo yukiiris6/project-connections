@@ -62,7 +62,9 @@ namespace ProjectConnections.Player
 
         void UpdateAiming(bool isAiming)
         {
+            animationHandler.UpdateCarrying(false);
             animationHandler.UpdateAiming(isAiming);
+            animationHandler.ToggleArms(!isAiming);
         }
 
         void UpdateAimingFacing(float xDirection)
@@ -70,12 +72,11 @@ namespace ProjectConnections.Player
             playerOrientation.SetFacing(xDirection);
         }
 
-        void HandleCarryAnimation(bool value)
+        void HandleCarryAnimation(bool isCarrying)
         {
-            if (value)
-            {
-                animationHandler.UpdateAiming(false);
-            }
+            animationHandler.UpdateAiming(false);
+            animationHandler.UpdateCarrying(isCarrying);
+            animationHandler.ToggleArms(!isCarrying);
         }
     }
 }

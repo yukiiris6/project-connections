@@ -43,8 +43,9 @@ namespace ProjectConnections.Magnetic.Anchored.States
 
         public void DemagnetizeAnchor(IContext context) { }
 
-        void OnArrival(float distance)
+        void OnArrival()
         {
+            float distance = _context.Mover.GetDistanceTravelled();
             _context.Presenter.PlayStopByDistance(distance);
             _context.SetState(new AnchoredPulled());
         }

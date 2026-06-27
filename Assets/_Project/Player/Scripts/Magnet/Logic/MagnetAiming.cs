@@ -55,6 +55,7 @@ namespace ProjectConnections.Player
             targetObject = null;
             DemagnetizeObject();
             magnetPresenter.ResetVisuals();
+            ResetFacing();
         }
 
         void ExecuteAiming()
@@ -128,6 +129,11 @@ namespace ProjectConnections.Player
             Vector2 mouseDirection = mouseWorldPosition - (Vector2)aimingTransform.position;
             aimingTransform.right = mouseDirection;
             OnChangeFacing?.Invoke(mouseDirection.x);
+        }
+
+        void ResetFacing()
+        {
+            aimingTransform.right = Vector2.right;
         }
 
         void FaceMagneticObject()

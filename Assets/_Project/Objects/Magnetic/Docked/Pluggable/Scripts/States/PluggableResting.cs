@@ -12,14 +12,14 @@ namespace ProjectConnections.Magnetic.Pluggable.States
             if (context is not AnchorModule anchorModule) return;
             context.Mover.SnapTo(anchorModule.AnchorRange.GetOriginalPosition());
             context.Rotator.ResetRotation();
-            context.Presenter.PlayStopEffects();
         }
 
         public void Magnetize(IContext context, Vector2 destination)
         {
             if (context is not AnchorModule dockedModule) return;
-            Vector2 targetPosition = dockedModule.AnchorRange.ConstrainTargetPosition(destination);
-            context.Mover.MoveTo(targetPosition);
+            Vector2 constrainedDestination = context.Constrainer.ConstrainStopDistance(destination);
+            constrainedDestination = dockedModule.AnchorRange.ConstrainMaxDistance(constrainedDestination);
+            context.Mover.MoveTo(constrainedDestination);
             context.Rotator.RotateTowardsTarget(destination);
             context.SetState(new PluggablePulling());
         }

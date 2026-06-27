@@ -87,7 +87,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2855589808973003678}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 5817708162733467830}
   - component: {fileID: 1245500354109172470}
   - component: {fileID: 3131063153174369113}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: SFX_Source
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +265,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6321836721187476199}
   - component: {fileID: 7383995216948814025}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: SpotLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -441,7 +441,7 @@ GameObject:
   - component: {fileID: 8013865688173058999}
   - component: {fileID: 8097755849918220369}
   - component: {fileID: 5927364857209633057}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: PlugContainer
   m_TagString: Magnetic
   m_Icon: {fileID: 0}
@@ -602,7 +602,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6853036668315013274}
   - component: {fileID: 944531395922643893}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: KillingTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -681,7 +681,7 @@ GameObject:
   - component: {fileID: 8723851598982071025}
   - component: {fileID: 4459549972447943978}
   - component: {fileID: 1204306954061177416}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: Container
   m_TagString: Magnetic
   m_Icon: {fileID: 0}
@@ -740,7 +740,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.006918192, y: 0}
+  m_Offset: {x: 0.03854716, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -750,7 +750,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.5434003, y: 1}
+  m_Size: {x: 0.4524696, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &1204306954061177416
 MonoBehaviour:
@@ -805,7 +805,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6457004970665504336}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: FrontAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -844,11 +844,14 @@ GameObject:
   - component: {fileID: 6695332655704917580}
   - component: {fileID: 6497271366122662}
   - component: {fileID: 6298073853270033227}
+  - component: {fileID: 5672087130536908211}
   - component: {fileID: 1839041823522251793}
   - component: {fileID: 3553464999985284951}
   - component: {fileID: 5252404497750250499}
   - component: {fileID: 468029947327649419}
+  - component: {fileID: 7713674074832073326}
   - component: {fileID: 2134260121511104680}
+  - component: {fileID: 3723194221217931425}
   m_Layer: 8
   m_Name: Plug
   m_TagString: Magnetic
@@ -884,10 +887,10 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: acaef42a54682d246ae011442849cc5a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -955,7 +958,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 3
+  m_Radius: 2
 --- !u!50 &8716981003542805373
 Rigidbody2D:
   serializedVersion: 5
@@ -968,11 +971,11 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 100
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_GravityScale: 0
+  m_Material: {fileID: 6200000, guid: acaef42a54682d246ae011442849cc5a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -981,8 +984,8 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!82 &1987932895526865271
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1146,11 +1149,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Magnetism::ProjectConnections.Magnetism.PluggableObjectBrain
   <Mover>k__BackingField: {fileID: 6298073853270033227}
-  <SoundPlayer>k__BackingField: {fileID: 3131063153174369113}
+  <Rotator>k__BackingField: {fileID: 5672087130536908211}
   <Rigidbody>k__BackingField: {fileID: 8716981003542805373}
   <Presenter>k__BackingField: {fileID: 468029947327649419}
+  <AnchorRange>k__BackingField: {fileID: 3723194221217931425}
   <Energizer>k__BackingField: {fileID: 5252404497750250499}
-  <CarriableObject>k__BackingField: {fileID: 2134260121511104680}
+  <PlugCarryRange>k__BackingField: {fileID: 7713674074832073326}
   defaultSocket: {fileID: 0}
 --- !u!114 &6497271366122662
 MonoBehaviour:
@@ -1181,9 +1185,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Magnetism::Mover
   collisionHandler: {fileID: 6497271366122662}
+  myRigidbody: {fileID: 8716981003542805373}
   pullMultiplier: 1.1
-  defaultStopDistance: 2
-  preciseStopDistance: 0.25
+  nextPositionThreshold: 0.25
+--- !u!114 &5672087130536908211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3902003610806681886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da528ef30e64dc48a0197a0f6c3cbbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Magnetism::ProjectConnections.Magnetic.Rotator
 --- !u!114 &1839041823522251793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1240,6 +1256,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Magnetism::ProjectConnections.Magnetism.Presenter
   cinemachineImpulseSource: {fileID: 8771224964013700846}
+  soundPlayer: {fileID: 3131063153174369113}
+  minDistanceToCrash: 1
+--- !u!114 &7713674074832073326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3902003610806681886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fd6c0b0e8599f44d87e3228381b1df8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Magnetism::ProjectConnections.Magnetic.AnchoredCarriableHandler
+  <CarriableObject>k__BackingField: {fileID: 2134260121511104680}
+  anchorRange: {fileID: 3723194221217931425}
+  mover: {fileID: 6298073853270033227}
+  grabThreshold: 2
+  carryThreshold: 1
+  minDistance: 0
 --- !u!114 &2134260121511104680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1255,6 +1291,21 @@ MonoBehaviour:
   <ObjectType>k__BackingField: 1
   <ShouldCarryOnTrigger>k__BackingField: 0
   myRigidbody: {fileID: 8716981003542805373}
+  myCollider: {fileID: 4672102034454474656}
+--- !u!114 &3723194221217931425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3902003610806681886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b983eecacb6b74b45888b8bb2fc3a037, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Magnetism::ProjectConnections.Magnetic.AnchorRange
+  maxDistance: 10
+  stopDistance: 1.5
 --- !u!1 &4899739921457621736
 GameObject:
   m_ObjectHideFlags: 0
@@ -1382,7 +1433,7 @@ GameObject:
   m_Component:
   - component: {fileID: 412403802435202928}
   - component: {fileID: 3080991398015512745}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}

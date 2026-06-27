@@ -10,20 +10,25 @@ using ProjectConnections.Magnetic.Anchored;
 
 namespace ProjectConnections.Magnetic
 {
-    public class PluggableObjectBrain : MonoBehaviour, IContext, MagnetismModule, AnchorModule, PlugModule
+    public class PluggableObjectBrain : MonoBehaviour, IContext, MagnetismModule, AnchorModule, CarriableModule, PlugModule
     {
         [Header("Magnetism")]
-        [field: SerializeField] public Mover Mover { get; private set; }
-        [field: SerializeField] public Rotator Rotator { get; private set; }
-        [field: SerializeField] public Rigidbody2D Rigidbody { get; private set; }
-        [field: SerializeField] public Presenter Presenter { get; private set; }
+        [field: SerializeField, Required] public Mover Mover { get; private set; }
+        [field: SerializeField, Required] public Rotator Rotator { get; private set; }
+        [field: SerializeField, Required] public Constrainer Constrainer { get; private set; }
+        [field: SerializeField, Required] public Rigidbody2D Rigidbody { get; private set; }
+        [field: SerializeField, Required] public Presenter Presenter { get; private set; }
 
         [Header("Anchor")]
-        [field: SerializeField] public AnchorRange AnchorRange { get; private set; }
+        [field: SerializeField, Required] public AnchorRange AnchorRange { get; private set; }
+
+        [Header("Carriable")]
+        [field: SerializeField, Required] public CarriableObject CarriableObject { get; private set; }
 
         [Header("Plug")]
-        [field: SerializeField] public Energizer Energizer { get; private set; }
-        [field: SerializeField] public PlugCarryRange PlugCarryRange { get; private set; }
+        [field: SerializeField, Required] public Energizer Energizer { get; private set; }
+        [field: SerializeField, Required] public PlugCarryRange PlugCarryRange { get; private set; }
+
 
         [Header("Optional")]
         [SerializeField, Optional] SocketConnector defaultSocket;

@@ -8,23 +8,17 @@ namespace ProjectConnections.Magnetic
     public class Mover : MonoBehaviour
     {
         [SerializeField, Required] CollisionHandler collisionHandler;
-        [SerializeField, Required] Rigidbody2D myRigidbody;
         [SerializeField] float pullMultiplier = 1.1f;
         [SerializeField] float nextPositionThreshold = .25f;
 
-        public event Action<float> OnDestinationReached;
+        public event Action OnDestinationReached;
 
-        Vector2 lastPosition;
+        float distanceTravelled;
         Vector2 targetPosition;
         Vector2 lastVelocity;
         bool shouldMove;
 
         #region Unity Lifecycle
-        void Awake()
-        {
-            lastPosition = transform.position;
-        }
-
         void FixedUpdate()
         {
             ExecuteMovement();
@@ -36,7 +30,7 @@ namespace ProjectConnections.Magnetic
         {
             targetPosition = destination;
             shouldMove = true;
-            lastPosition = transform.position;
+            if (lastVelocity == Vector2.zero) distanceTravelled = 0;
         }
 
         public void SnapTo(Vector2 snapPosition)
@@ -48,9 +42,6 @@ namespace ProjectConnections.Magnetic
         {
             shouldMove = false;
             lastVelocity = Vector2.zero;
-            myRigidbody.linearVelocity = Vector2.zero;
-            float distance = Vector2.Distance(lastPosition, targetPosition);
-            OnDestinationReached?.Invoke(distance);
         }
 
         public bool IsMoving()
@@ -62,6 +53,16 @@ namespace ProjectConnections.Magnetic
         {
             return Vector2.Distance(destination, transform.position) <= nextPositionThreshold;
         }
+
+        public float GetDistanceTravelled()
+        {
+            return distanceTravelled;
+        }
+
+        public Vector2 GetLastVelocity()
+        {
+            return lastVelocity;
+        }
         #endregion
 
         #region Logic
@@ -72,16 +73,19 @@ namespace ProjectConnections.Magnetic
             Vector2 currentPosition = transform.position;
             Vector2 direction = targetPosition - currentPosition;
             Vector2 newVelocity = GetNewVelocity(currentPosition, direction);
+            Vector2 frameVelocity = newVelocity * Time.fixedDeltaTime;
 
             bool hasReachedDestination = ValidateReachedDestination();
             if (hasReachedDestination)
             {
                 Stop();
+                OnDestinationReached?.Invoke();
                 return;
             }
 
-            myRigidbody.linearVelocity = newVelocity;
+            transform.Translate(frameVelocity, Space.World);
             lastVelocity = newVelocity;
+            distanceTravelled += frameVelocity.magnitude;
         }
 
         Vector2 GetNewVelocity(Vector2 currentPosition, Vector2 direction)

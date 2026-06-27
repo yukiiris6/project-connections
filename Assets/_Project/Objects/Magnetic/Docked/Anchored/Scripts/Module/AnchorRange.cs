@@ -9,7 +9,6 @@ namespace ProjectConnections.Magnetic
     public class AnchorRange : MonoBehaviour
     {
         [SerializeField, Required] float maxDistance = 1f;
-        [SerializeField, Required] float stopDistance = 1f;
 
         Vector2 originalPosition;
 
@@ -18,23 +17,27 @@ namespace ProjectConnections.Magnetic
             originalPosition = transform.position;
         }
 
-        public Vector2 ConstrainTargetPosition(Vector2 targetPosition)
+        public Vector2 ConstrainMaxDistance(Vector2 targetPosition)
         {
             Vector2 direction = (targetPosition - originalPosition).normalized;
-            Vector2 constrainedTargetPosition = targetPosition - (direction * stopDistance);
 
-            float distanceToTravel = Vector2.Distance(originalPosition, constrainedTargetPosition);
+            float distanceToTravel = Vector2.Distance(originalPosition, targetPosition);
             if (distanceToTravel >= maxDistance)
             {
-                constrainedTargetPosition = originalPosition + (direction * maxDistance);
+                targetPosition = originalPosition + (direction * maxDistance);
             }
 
-            return constrainedTargetPosition;
+            return targetPosition;
         }
 
         public Vector2 GetOriginalPosition()
         {
             return originalPosition;
+        }
+
+        public float GetMaxDistance()
+        {
+            return maxDistance;
         }
     }
 }
