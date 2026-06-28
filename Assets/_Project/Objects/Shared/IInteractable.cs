@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using Sirenix.OdinInspector;
 
-namespace ProjectConnections.Shared
+namespace ProjectConnections.ObjectShared
 {
     public interface IInteractable
     {
-        InteractableState State { get; }
+        ObjectType? RequiredObjectType { get; }
         void Interact();
     }
 }

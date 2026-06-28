@@ -41,17 +41,17 @@ namespace ProjectConnections.Player
 
         public void Aim()
         {
-            targetGroup.Targets[targetGroupMouseIndex].Weight = 0.5f;
             isAiming = true;
+            targetGroup.Targets[targetGroupMouseIndex].Weight = 0.5f;
         }
 
         public void StopAiming()
         {
-            targetGroup.Targets[targetGroupMouseIndex].Weight = 0f;
             isAiming = false;
             targetObject = null;
-            DemagnetizeObject();
+            targetGroup.Targets[targetGroupMouseIndex].Weight = 0f;
             magnetPresenter.ResetVisuals();
+            DemagnetizeObject();
             ResetFacing();
         }
 

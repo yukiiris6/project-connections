@@ -25,24 +25,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Aim",
-                    "type": "Value",
-                    "id": "6c2ab1b8-8984-453a-af3d-a3c78ae1679a",
-                    "expectedControlType": "Digital",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "CancelMagnetism",
-                    "type": "Value",
-                    "id": "69adfba3-d6e0-40e7-bf94-0bd4081b9015",
-                    "expectedControlType": "Digital",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "Interact",
                     "type": "Button",
                     "id": "fd36b6f4-21e8-4ca7-987b-40a6710245ac",
@@ -52,13 +34,22 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Throw",
+                    "name": "Use",
                     "type": "Button",
                     "id": "ec2a5332-cec1-41e3-ab46-8b1c7d6b01a6",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Magnetize",
+                    "type": "Value",
+                    "id": "6c2ab1b8-8984-453a-af3d-a3c78ae1679a",
+                    "expectedControlType": "Digital",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Pause",
@@ -188,18 +179,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Aim",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "75ead8ba-1620-4627-9c3c-f67d48f893e1",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "CancelMagnetism",
+                    "action": "Magnetize",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -243,7 +223,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Throw",
+                    "action": "Use",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

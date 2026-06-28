@@ -7,45 +7,45 @@ namespace ProjectConnections.Player
 {
     public class Carrier : MonoBehaviour
     {
+        [Header("References")]
         [SerializeField, Required] Transform carryAnchor;
         [SerializeField, Required] Transform centerAnchor;
         [SerializeField, Required] PlayerMovement playerMovement;
         [SerializeField, Required] LayerMask floorLayer;
-        [SerializeField] Vector2 BoxcastSize = new(1f, 1f);
-        [SerializeField] float throwStrength = 3f;
-        [SerializeField] float throwHeight = 3f;
+
+        [Header("Values")]
+        [SerializeField] Vector2 boxcastSize = new(1f, 1f);
+        [SerializeField] Vector2 throwDirection = new(1f, 1f);
         [SerializeField] float releaseDistance = 2f;
         [SerializeField] float nearPlayerThreshold = .5f;
         [SerializeField] float minDistanceFromWall = .25f;
 
         public event Action<bool> OnCarryChanged;
-
         CarriableObject carryingObject;
-        Vector2 lastXDirection = Vector2.zero;
 
         public void SetCarryingObject(CarriableObject newCarriableObject)
         {
+            if (newCarriableObject == null) return;
             carryingObject = newCarriableObject;
-            if (newCarriableObject != null)
-            {
-                lastXDirection = Vector2.zero;
-                carryingObject.Carry(transform);
-                carryingObject.transform.position = carryAnchor.position;
-                carryingObject.OnCarryChanged += HandleCarryChanged;
-                OnCarryChanged?.Invoke(true);
-            }
+            carryingObject.Carry(transform);
+            carryingObject.transform.position = carryAnchor.position;
+            carryingObject.OnCarryChanged += HandleCarryChanged;
+            OnCarryChanged?.Invoke(true);
         }
 
         public bool ThrowObject()
         {
+            if (!carryingObject.CanThrow()) return false;
+
             float xDirection = playerMovement.LastFacedLeft ? -1 : 1;
             float distance = GetDistanceToWall(Vector2.up);
             if (distance < carryAnchor.localPosition.y) return false;
 
-            if (!carryingObject.CanThrow()) return false;
-            carryingObject.Throw(xDirection, throwHeight, throwStrength);
+            Vector2 finalThrowDirection = new(throwDirection.x * xDirection, throwDirection.y);
+            carryingObject.Throw(finalThrowDirection);
             carryingObject = null;
             OnCarryChanged?.Invoke(false);
+
             return true;
         }
 
@@ -73,7 +73,7 @@ namespace ProjectConnections.Player
         void HandleCarryChanged(bool value)
         {
             if (!value) carryingObject = null;
-            OnCarryChanged?.Invoke(false);
+            OnCarryChanged?.Invoke(value);
         }
 
         Vector2 GetDropLocation(float xDirection, float distance)
@@ -95,7 +95,7 @@ namespace ProjectConnections.Player
         {
             RaycastHit2D hit = Physics2D.BoxCast(
                 centerAnchor.position,
-                BoxcastSize,
+                boxcastSize,
                 0f,
                 direction,
                 float.MaxValue,
@@ -127,15 +127,9 @@ namespace ProjectConnections.Player
 
         void FaceForward()
         {
-            if (carryingObject != null)
-            {
-                Vector2 newXDirection = playerMovement.LastFacedLeft ? Vector2.left : Vector2.right;
-                if (newXDirection != lastXDirection)
-                {
-                    carryingObject.transform.right = newXDirection;
-                    lastXDirection = newXDirection;
-                }
-            }
+            if (carryingObject == null) return;
+            Vector2 newXDirection = playerMovement.LastFacedLeft ? Vector2.left : Vector2.right;
+            carryingObject.transform.right = newXDirection;
         }
     }
 }

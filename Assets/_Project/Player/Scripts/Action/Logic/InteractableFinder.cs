@@ -1,6 +1,7 @@
 using UnityEngine;
 using Sirenix.OdinInspector;
 using ProjectConnections.Shared;
+using ProjectConnections.ObjectShared;
 
 namespace ProjectConnections.Player
 {
@@ -22,9 +23,9 @@ namespace ProjectConnections.Player
             }
         }
 
-        public InteractableState? GetInteractableState()
+        public ObjectType? GetRequiredObjectType()
         {
-            return currentInteractable?.State;
+            return currentInteractable?.RequiredObjectType;
         }
 
         void OnTriggerEnter2D(Collider2D other)

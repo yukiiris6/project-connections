@@ -9,14 +9,14 @@ namespace ProjectConnections.Player
     public class PlayerController : MonoBehaviour
     {
         [SerializeField, Required] PauseMenuPresenter pauseMenuPresenter;
-        [SerializeField] HandsBrain handsBrain;
+        [SerializeField] ActionBrain handsBrain;
 
         public event Action<Vector2> OnMoveInput;
         public event Action<bool> OnJumpInput;
         public event Action<bool> OnInteractInput;
-        public event Action<bool> OnAimInput;
+        public event Action<bool> OnMagnetizeInput;
         public event Action<bool> OnPauseInput;
-        public event Action<bool> OnThrowInput;
+        public event Action<bool> OnUseInput;
 
         float pauseCooldown = 0.05f;
         float lastPauseTime = 0;
@@ -36,10 +36,9 @@ namespace ProjectConnections.Player
             OnJumpInput?.Invoke(value.isPressed);
         }
 
-        void OnAim(InputValue value)
+        void OnMagnetize(InputValue value)
         {
-            if (handsBrain.GetState() is not Free) return;
-            OnAimInput?.Invoke(value.isPressed);
+            OnMagnetizeInput?.Invoke(value.isPressed);
         }
 
         void OnInteract(InputValue value)
@@ -47,9 +46,9 @@ namespace ProjectConnections.Player
             OnInteractInput?.Invoke(value.isPressed);
         }
 
-        void OnThrow(InputValue value)
+        void OnUse(InputValue value)
         {
-            OnThrowInput?.Invoke(value.isPressed);
+            OnUseInput?.Invoke(value.isPressed);
         }
 
         void OnPause(InputValue value)
