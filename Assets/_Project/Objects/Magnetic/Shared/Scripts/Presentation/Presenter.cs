@@ -7,7 +7,7 @@ namespace ProjectConnections.Magnetic
     public class Presenter : MonoBehaviour
     {
         [SerializeField, Required] CinemachineImpulseSource cinemachineImpulseSource;
-        [SerializeField, Required] SoundPlayer soundPlayer;
+        [SerializeField, Required] ObjectSoundPlayer soundPlayer;
         [SerializeField, Required] float minDistanceToCrash = 1f;
 
         public void PlayStopByDistance(float distanceTravelled)

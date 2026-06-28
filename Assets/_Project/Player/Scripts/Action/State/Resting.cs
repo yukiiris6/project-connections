@@ -43,17 +43,9 @@ namespace ProjectConnections.Player
         #region Handlers
         public void HandleObjectFound(CarriableObject carriableObject)
         {
-            switch (carriableObject.ObjectType)
-            {
-                case ObjectType.Block:
-                    break;
-                case ObjectType.Plug:
-                    _context.Carrier.SetCarryingObject(carriableObject);
-                    _context.SetState(new Carrying());
-                    break;
-                default:
-                    break;
-            }
+            _context.MagnetAiming.StopAiming();
+            _context.Carrier.SetCarryingObject(carriableObject);
+            _context.SetState(new Carrying());
         }
         #endregion
     }

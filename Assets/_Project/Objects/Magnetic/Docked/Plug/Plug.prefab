@@ -255,6 +255,8 @@ MonoBehaviour:
   audioSource: {fileID: 1245500354109172470}
   crashSFX: {fileID: 8300000, guid: e5ca15ea1522dd345a847b8aa12cde43, type: 3}
   connectionSFX: {fileID: 8300000, guid: eb31da6d0087dcc43b1c5ee309cdab9f, type: 3}
+  dropSFX: {fileID: 0}
+  throwSFX: {fileID: 0}
 --- !u!1 &1771047674870329401
 GameObject:
   m_ObjectHideFlags: 0
@@ -767,6 +769,7 @@ MonoBehaviour:
   mover: {fileID: 6298073853270033227}
   rotator: {fileID: 5672087130536908211}
   presenter: {fileID: 468029947327649419}
+  plugTransform: {fileID: 0}
 --- !u!1 &3119121115168568660
 GameObject:
   m_ObjectHideFlags: 0
@@ -839,7 +842,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7368341273168496261}
   - component: {fileID: 4672102034454474656}
-  - component: {fileID: 1217242144180719863}
   - component: {fileID: 8716981003542805373}
   - component: {fileID: 8771224964013700846}
   - component: {fileID: 1102440252265905329}
@@ -925,42 +927,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.3759818, y: 0.87370396}
   m_EdgeRadius: 0
---- !u!58 &1217242144180719863
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3902003610806681886}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 8
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 2
 --- !u!50 &8716981003542805373
 Rigidbody2D:
   serializedVersion: 5
@@ -1183,10 +1149,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59ca6e12e84dbc848b66962a71cd8197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Shared::CarriableObject
-  <ObjectType>k__BackingField: 1
-  <ShouldCarryOnTrigger>k__BackingField: 0
+  objectType: 0
   myRigidbody: {fileID: 8716981003542805373}
   myCollider: {fileID: 4672102034454474656}
+  objectSoundPlayer: {fileID: 0}
+  myTriggerVolume: {fileID: 0}
 --- !u!114 &7713674074832073326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1244,7 +1211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Magnetism::ProjectConnections.Magnetism.Energizer
   electricityProvider: {fileID: 3553464999985284951}
-  connectionTriggerCollider: {fileID: 1217242144180719863}
+  connectionTriggerCollider: {fileID: 0}
   socketLayer:
     serializedVersion: 2
     m_Bits: 1024

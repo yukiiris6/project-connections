@@ -13,47 +13,39 @@ namespace ProjectConnections.Player
 
         void OnTriggerEnter2D(Collider2D other)
         {
-            var carriableObject = other.gameObject.GetComponent<CarriableObject>();
-            if (carriableObject != null)
-            {
-                if (foundCarriableObject != null)
-                {
-                    foundCarriableObject.OnCarryChanged -= HandleOnCarryChanged;
-                }
+            if (!other.CompareTag("Carriable")) return;
 
-                if (carriableObject.ShouldCarryOnTrigger)
-                {
-                    OnObjectFound?.Invoke(carriableObject);
-                }
-                else
-                {
-                    foundCarriableObject = carriableObject;
-                    carriableObject.OnCarryChanged += HandleOnCarryChanged;
-                }
-            }
+            var carriableTrigger = other.gameObject.GetComponent<CarriableTrigger>();
+            if (carriableTrigger == null) return;
+
+            var carriableObject = carriableTrigger.GetCarriableObject();
+            foundCarriableObject = carriableObject;
+            OnObjectFound?.Invoke(carriableObject);
         }
 
         void OnTriggerExit2D(Collider2D other)
         {
-            var carriableObject = other.gameObject.GetComponent<CarriableObject>();
-            if (carriableObject != null)
-            {
-                if (foundCarriableObject != null && foundCarriableObject == carriableObject)
-                {
-                    foundCarriableObject.OnCarryChanged -= HandleOnCarryChanged;
-                    foundCarriableObject = null;
-                }
-            }
+            if (!other.CompareTag("Carriable")) return;
+
+            var carriableTrigger = other.gameObject.GetComponent<CarriableTrigger>();
+            if (carriableTrigger == null) return;
+            if (foundCarriableObject == null) return;
+
+            var carriableObject = carriableTrigger.GetCarriableObject();
+            if (foundCarriableObject != carriableObject) return;
+
+            foundCarriableObject.OnCarryChanged -= HandleOnCarryChanged;
+            foundCarriableObject = null;
         }
+
 
         void HandleOnCarryChanged(bool value)
         {
-            if (!value && foundCarriableObject != null)
-            {
-                OnObjectFound?.Invoke(foundCarriableObject);
-                foundCarriableObject.OnCarryChanged -= HandleOnCarryChanged;
-                foundCarriableObject = null;
-            }
+            if (value) return;
+            if (foundCarriableObject == null) return;
+            OnObjectFound?.Invoke(foundCarriableObject);
+            foundCarriableObject.OnCarryChanged -= HandleOnCarryChanged;
+            foundCarriableObject = null;
         }
     }
 }

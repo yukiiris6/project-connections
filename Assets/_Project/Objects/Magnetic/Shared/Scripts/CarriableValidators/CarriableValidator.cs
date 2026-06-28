@@ -21,7 +21,7 @@ namespace ProjectConnections.Magnetic
 
         void ValidateCarryOnTrigger()
         {
-            carriableObject.SetCarryOnTrigger(mover.IsMoving());
+            carriableObject.ToggleTrigger(mover.IsMoving());
         }
 
         void HandleCarry(bool isCarrying)

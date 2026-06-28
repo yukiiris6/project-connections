@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Magnetic
   - Interactable
+  - Carriable
   layers:
   - Default
   - TransparentFX
@@ -16,11 +17,11 @@ TagManager:
   - Floor
   - Hazard
   - DynamicSolid
-  - Interactable
-  - Socket
   - Hurtbox
-  - RangeCollider
-  - Plug
+  - Socket
+  - 
+  - 
+  - 
   - 
   - 
   - 

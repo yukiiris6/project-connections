@@ -39,16 +39,16 @@ namespace ProjectConnections.Magnetic
 
             if (!mover.IsMoving() || isReturning)
             {
-                if (CarriableObject.ShouldCarryOnTrigger) CarriableObject.SetCarryOnTrigger(false);
+                if (CarriableObject.TriggerIsActive) CarriableObject.ToggleTrigger(false);
                 return;
             }
 
             Vector2 currentPosition = transform.position;
             float distanceTravelled = Vector2.Distance(currentPosition, originalPosition);
 
-            bool shouldCarryOnTrigger = false;
-            if (distanceTravelled < grabMaxDistance) shouldCarryOnTrigger = true;
-            CarriableObject.SetCarryOnTrigger(shouldCarryOnTrigger);
+            bool shouldEnableTrigger = false;
+            if (distanceTravelled < grabMaxDistance) shouldEnableTrigger = true;
+            CarriableObject.ToggleTrigger(shouldEnableTrigger);
         }
 
         void ValidateCarriableDistance()

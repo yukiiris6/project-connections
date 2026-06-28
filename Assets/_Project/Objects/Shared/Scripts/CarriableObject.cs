@@ -1,4 +1,5 @@
 using System;
+using ProjectConnections.Magnetic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -9,13 +10,14 @@ namespace ProjectConnections.ObjectShared
         [SerializeField, Required] ObjectType objectType;
         [SerializeField, Required] Rigidbody2D myRigidbody;
         [SerializeField, Required] Collider2D myCollider;
-        [SerializeField, Required] bool shouldCarryOnTrigger;
+        [SerializeField, Required] ObjectSoundPlayer objectSoundPlayer;
+        [SerializeField, Required] Collider2D myTriggerVolume;
 
         public event Action<bool> OnCarryChanged;
-        public event Action<bool> CarryOnTriggerChanged;
-        public bool ShouldCarryOnTrigger => shouldCarryOnTrigger;
-        public bool IsBeingCarried { get; private set; }
+        public event Action<bool> CarryTriggerChanged;
         public ObjectType ObjectType => objectType;
+        public bool IsBeingCarried { get; private set; }
+        public bool TriggerIsActive => myTriggerVolume.enabled;
 
         Transform originalParent;
         RigidbodyType2D originalBodyType;
@@ -45,6 +47,7 @@ namespace ProjectConnections.ObjectShared
             if (!CanThrow()) return;
             RestoreObject();
             myRigidbody.AddRelativeForce(throwDirection, ForceMode2D.Impulse);
+            objectSoundPlayer.PlayThrowSFX();
             OnCarryChanged?.Invoke(false);
         }
 
@@ -52,19 +55,21 @@ namespace ProjectConnections.ObjectShared
         {
             RestoreObject();
             transform.position = dropPosition;
+            objectSoundPlayer.PlayDropSFX();
             OnCarryChanged?.Invoke(false);
         }
 
         public void LetGo()
         {
             RestoreObject();
+            objectSoundPlayer.PlayDropSFX();
             OnCarryChanged?.Invoke(false);
         }
 
-        public void SetCarryOnTrigger(bool value)
+        public void ToggleTrigger(bool enable)
         {
-            shouldCarryOnTrigger = value;
-            CarryOnTriggerChanged?.Invoke(value);
+            myTriggerVolume.enabled = enable;
+            CarryTriggerChanged?.Invoke(enable);
         }
 
         public bool CanThrow()
