@@ -38,8 +38,9 @@ namespace ProjectConnections.ObjectShared
             myCollider.enabled = false;
             IsBeingCarried = true;
             transform.parent = carrier;
-            OnCarryChanged?.Invoke(true);
+            myRigidbody.linearVelocity = Vector2.zero;
             myRigidbody.bodyType = RigidbodyType2D.Kinematic;
+            OnCarryChanged?.Invoke(true);
         }
 
         public void Throw(Vector2 throwDirection)

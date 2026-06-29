@@ -51,7 +51,7 @@ namespace ProjectConnections.Player
             return LayerMaskExtensions.Contains(dynamicSolidLayer, layer);
         }
 
-        void UnparentPlayer()
+        public void UnparentPlayer()
         {
             if (transform.parent == null) return;
             playerTransform.SetParent(originalParent);

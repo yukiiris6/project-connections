@@ -2,30 +2,25 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 using ProjectConnections.Shared;
 using ProjectConnections.ObjectShared;
+using ProjectConnections.SceneUI;
+using System.Collections.Generic;
+using System;
 
 namespace ProjectConnections.Player
 {
     public class InteractableFinder : MonoBehaviour
     {
         [SerializeField, Required] PlayerMovement playerMovement;
-        [SerializeField, Required] GroundValidator groundValidator;
         [SerializeField, Required] string interactableTagString = "Interactable";
 
-        IInteractable currentInteractable;
+        public event Action<List<IInteractable>> OnInteractablesChanged;
 
-        public void Interact()
-        {
-            if (!groundValidator.IsGrounded) return;
-            if (currentInteractable != null)
-            {
-                currentInteractable.Interact();
-                playerMovement.Stop();
-            }
-        }
+        [ShowInInspector, ReadOnly]
+        List<IInteractable> interactablesFound = new();
 
-        public ObjectType? GetRequiredObjectType()
+        public List<IInteractable> GetInteractables()
         {
-            return currentInteractable?.RequiredObjectType;
+            return interactablesFound;
         }
 
         void OnTriggerEnter2D(Collider2D other)
@@ -33,7 +28,11 @@ namespace ProjectConnections.Player
             if (other.CompareTag(interactableTagString))
             {
                 var interactable = other.GetComponent<IInteractable>();
-                if (interactable != null) currentInteractable = interactable;
+                if (interactable != null)
+                {
+                    interactablesFound.Add(interactable);
+                    OnInteractablesChanged?.Invoke(interactablesFound);
+                }
             }
         }
 
@@ -41,7 +40,12 @@ namespace ProjectConnections.Player
         {
             if (other.CompareTag(interactableTagString))
             {
-                currentInteractable = null;
+                var interactable = other.GetComponent<IInteractable>();
+                if (interactable != null)
+                {
+                    interactablesFound.Remove(interactable);
+                    OnInteractablesChanged?.Invoke(interactablesFound);
+                }
             }
         }
     }

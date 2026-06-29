@@ -13,6 +13,7 @@ namespace ProjectConnections.Player
         [field: SerializeField, Required] public InteractableFinder InteractableFinder { get; private set; }
         [field: SerializeField, Required] public MagnetAiming MagnetAiming { get; private set; }
         [field: SerializeField, Required] public ActionAnimation ActionAnimation { get; private set; }
+        [field: SerializeField, Required] public InteractableController InteractableController { get; private set; }
 
         ActionState currentState = new Resting();
 

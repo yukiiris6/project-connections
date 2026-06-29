@@ -2,6 +2,7 @@ using ProjectConnections.Magnetic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using ProjectConnections.ObjectShared;
+using System.Collections.Generic;
 
 namespace ProjectConnections.Player
 {
@@ -15,13 +16,19 @@ namespace ProjectConnections.Player
         {
             _context = context;
             _carryingObject = context.Carrier.GetObject();
+
             _carryingObject.OnCarryChanged += HandleCarryChanged;
+            context.InteractableFinder.OnInteractablesChanged += UpdateSelectedInteractable;
+
+            var interactables = context.InteractableFinder.GetInteractables();
+            UpdateSelectedInteractable(interactables);
             context.ActionAnimation.UpdateCarryingAnimation(true);
         }
 
         public void Exit(ActionContext context)
         {
             _carryingObject.OnCarryChanged -= HandleCarryChanged;
+            context.InteractableFinder.OnInteractablesChanged -= UpdateSelectedInteractable;
             context.ActionAnimation.UpdateCarryingAnimation(false);
         }
         #endregion
@@ -36,18 +43,15 @@ namespace ProjectConnections.Player
 
         public void Interact(ActionContext context)
         {
-            var requiredObjectType = context.InteractableFinder.GetRequiredObjectType();
-
-            if (requiredObjectType != null)
+            if (!context.InteractableController.IsValid)
             {
-                if (requiredObjectType == _carryingObject.ObjectType)
-                {
-                    context.InteractableFinder.Interact();
-                    return;
-                }
+                context.Carrier.Drop();
+                context.SetState(new Resting());
+                return;
             }
 
-            context.Carrier.Drop();
+            var interactable = context.InteractableController.SelectedInteractable;
+            interactable.Interact(_carryingObject.gameObject);
             context.SetState(new Resting());
         }
 
@@ -59,6 +63,19 @@ namespace ProjectConnections.Player
         {
             if (value) return;
             _context.SetState(new Resting());
+        }
+
+        public void UpdateSelectedInteractable(List<IInteractable> interactables)
+        {
+            IInteractable selectedInteractable = null;
+
+            foreach (var interactable in interactables)
+            {
+                if (interactable.RequiredObjectType != _carryingObject.ObjectType) continue;
+                selectedInteractable = interactable;
+            }
+
+            _context.InteractableController.SetInteractable(selectedInteractable);
         }
         #endregion
     }

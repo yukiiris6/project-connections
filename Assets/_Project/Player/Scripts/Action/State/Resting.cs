@@ -2,6 +2,7 @@ using ProjectConnections.Magnetic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using ProjectConnections.ObjectShared;
+using System.Collections.Generic;
 
 namespace ProjectConnections.Player
 {
@@ -14,11 +15,15 @@ namespace ProjectConnections.Player
         {
             _context = context;
             context.CarriableFinder.OnObjectFound += HandleObjectFound;
+            context.InteractableFinder.OnInteractablesChanged += UpdateSelectedInteractable;
+            var interactables = context.InteractableFinder.GetInteractables();
+            UpdateSelectedInteractable(interactables);
         }
 
         public void Exit(ActionContext context)
         {
             context.CarriableFinder.OnObjectFound -= HandleObjectFound;
+            context.InteractableFinder.OnInteractablesChanged -= UpdateSelectedInteractable;
         }
         #endregion
 
@@ -27,9 +32,10 @@ namespace ProjectConnections.Player
 
         public void Interact(ActionContext context)
         {
-            var requiredObjectType = context.InteractableFinder.GetRequiredObjectType();
-            if (requiredObjectType != null) return;
-            context.InteractableFinder.Interact();
+            if (!context.InteractableController.IsValid) return;
+
+            var interactable = context.InteractableController.SelectedInteractable;
+            interactable.Interact(context.Carrier.gameObject);
         }
 
         public void Magnetize(ActionContext context, bool isPressed)
@@ -46,6 +52,19 @@ namespace ProjectConnections.Player
             _context.MagnetAiming.StopAiming();
             _context.Carrier.SetCarryingObject(carriableObject);
             _context.SetState(new Carrying());
+        }
+
+        public void UpdateSelectedInteractable(List<IInteractable> interactables)
+        {
+            IInteractable selectedInteractable = null;
+
+            foreach (var interactable in interactables)
+            {
+                if (interactable.RequiredObjectType != ObjectType.Player) continue;
+                selectedInteractable = interactable;
+            }
+
+            _context.InteractableController.SetInteractable(selectedInteractable);
         }
         #endregion
     }

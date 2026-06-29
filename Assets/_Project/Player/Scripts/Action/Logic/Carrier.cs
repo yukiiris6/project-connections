@@ -12,6 +12,7 @@ namespace ProjectConnections.Player
         [SerializeField, Required] Transform centerAnchor;
         [SerializeField, Required] PlayerMovement playerMovement;
         [SerializeField, Required] LayerMask floorLayer;
+        [SerializeField, Required] PlayerParentHandler parentHandler;
 
         [Header("Values")]
         [SerializeField] Vector2 boxcastSize = new(1f, 1f);
@@ -26,6 +27,7 @@ namespace ProjectConnections.Player
         public void SetCarryingObject(CarriableObject newCarriableObject)
         {
             if (newCarriableObject == null) return;
+            parentHandler.UnparentPlayer();
             carryingObject = newCarriableObject;
             carryingObject.Carry(transform);
             carryingObject.transform.position = carryAnchor.position;
