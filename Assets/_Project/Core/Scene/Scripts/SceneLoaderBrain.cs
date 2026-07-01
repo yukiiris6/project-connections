@@ -16,6 +16,7 @@ namespace ProjectConnections.Core
         [field: SerializeField, Required] public SceneLoader SceneLoader { get; private set; }
         [field: SerializeField, Required] public SceneMusicPlayer SceneMusicPlayer { get; private set; }
         [field: SerializeField, Required] public GameStateSetterBrain GameStateSetter { get; private set; }
+        [field: SerializeField, Required] public float LoadDelayTime { get; } = 1f;
 
         SceneState currentState;
 

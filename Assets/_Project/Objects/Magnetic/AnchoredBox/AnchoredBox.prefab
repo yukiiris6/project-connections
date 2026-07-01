@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2646251213033586971}
   - component: {fileID: 1830718510055167338}
   - component: {fileID: 7295446130607226047}
-  - component: {fileID: 990920151088105783}
   m_Layer: 0
   m_Name: Dock
   m_TagString: Untagged
@@ -139,19 +138,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &990920151088105783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4818035668233706100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c90a6ea5c39b914eaebaad310fe8cf2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Magnetism::ProjectConnections.Magnetism.DockBrain
-  magnetizableObject: {fileID: 6712821646291495289}
 --- !u!1 &5830479646588816614
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,6 +186,8 @@ MonoBehaviour:
   audioSource: {fileID: 215559756727585821}
   crashSFX: {fileID: 8300000, guid: e5ca15ea1522dd345a847b8aa12cde43, type: 3}
   connectionSFX: {fileID: 0}
+  dropSFX: {fileID: 0}
+  throwSFX: {fileID: 0}
 --- !u!82 &215559756727585821
 AudioSource:
   m_ObjectHideFlags: 0
@@ -344,7 +332,6 @@ GameObject:
   - component: {fileID: 3951601784765047435}
   - component: {fileID: 8213437828560175670}
   - component: {fileID: 4433130449625691558}
-  - component: {fileID: 5966247464042902120}
   m_Layer: 8
   m_Name: Box
   m_TagString: Untagged
@@ -516,6 +503,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   mainCollider: {fileID: 4816086057267937592}
+  sizeReduction: 0.25
 --- !u!114 &4433130449625691558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -530,21 +518,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Magnetism::Mover
   collisionHandler: {fileID: 8213437828560175670}
   pullMultiplier: 1
-  defaultStopDistance: 2
-  preciseStopDistance: 0.25
---- !u!114 &5966247464042902120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6712821646291495289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6451f032f6cdbf642b49350aa1f324d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Magnetism::ProjectConnections.Magnetism.Anchored.AnchoredObjectBrain
-  <Mover>k__BackingField: {fileID: 4433130449625691558}
-  <SoundPlayer>k__BackingField: {fileID: 5484592047934881649}
-  <Rigidbody>k__BackingField: {fileID: 3951601784765047435}
-  <Presenter>k__BackingField: {fileID: 0}
+  nextPositionThreshold: 0.25

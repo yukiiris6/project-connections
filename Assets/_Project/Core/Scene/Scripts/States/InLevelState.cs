@@ -17,15 +17,15 @@ namespace ProjectConnections.Core
 
         public void RestartLevel(LevelContext context)
         {
-            context.SceneLoader.LoadCurrentScene(LevelType.Stage, LevelType.Stage);
+            context.SceneLoader.LoadCurrentScene(LevelType.Stage, LevelType.Stage, 0);
             context.SetState(new LoadingState());
         }
 
-        public void GoToLevel(LevelContext context, string fileName)
+        public void GoToLevel(LevelContext context, string sceneName)
         {
-            context.LevelDataStorage.ChangeCurrentLevel(fileName);
+            context.LevelDataStorage.ChangeCurrentLevel(sceneName);
             LevelType nextLevelType = context.LevelDataStorage.GetCurrentLevelType();
-            context.SceneLoader.LoadCurrentScene(LevelType.Stage, nextLevelType);
+            context.SceneLoader.LoadCurrentScene(LevelType.Stage, nextLevelType, 0);
             context.SetState(new LoadingState());
         }
 
@@ -34,7 +34,7 @@ namespace ProjectConnections.Core
             context.LevelDataStorage.FinishCurrentLevel();
             context.LevelDataStorage.ChangeToNextLevel();
             LevelType nextLevelType = context.LevelDataStorage.GetCurrentLevelType();
-            context.SceneLoader.LoadCurrentScene(LevelType.Stage, nextLevelType);
+            context.SceneLoader.LoadCurrentScene(LevelType.Stage, nextLevelType, context.LoadDelayTime);
             context.SetState(new LoadingState());
         }
     }

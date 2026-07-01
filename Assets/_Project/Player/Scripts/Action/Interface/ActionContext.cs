@@ -1,6 +1,5 @@
 using UnityEngine;
 using Sirenix.OdinInspector;
-using ProjectConnections.SceneUI;
 
 namespace ProjectConnections.Player
 {

@@ -11,10 +11,25 @@ namespace ProjectConnections.Magnetic
         [SerializeField, Required] Transform plugTransform;
 
         Vector2 originalPosition;
+        bool isSubscribed;
 
         void Awake()
         {
             originalPosition = plugTransform.position;
+        }
+
+        void Subscribe()
+        {
+            if (isSubscribed) return;
+            mover.OnDestinationReached += HandleArrival;
+            isSubscribed = true;
+        }
+
+        void Unsubscribe()
+        {
+            if (!isSubscribed) return;
+            mover.OnDestinationReached -= HandleArrival;
+            isSubscribed = false;
         }
 
         void HandleArrival()
@@ -27,13 +42,13 @@ namespace ProjectConnections.Magnetic
         {
             mover.MoveTo(originalPosition);
             rotator.ResetRotation();
-            mover.OnDestinationReached += HandleArrival;
+            Subscribe();
         }
 
         public void Demagnetize()
         {
             mover.Stop();
-            mover.OnDestinationReached -= HandleArrival;
+            Unsubscribe();
         }
     }
 }

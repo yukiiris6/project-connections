@@ -2,7 +2,6 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 using ProjectConnections.Shared;
 using ProjectConnections.ObjectShared;
-using ProjectConnections.SceneUI;
 using System.Collections.Generic;
 using System;
 

@@ -23,5 +23,12 @@ namespace ProjectConnections.UIShared
         {
             playerInput.SwitchCurrentActionMap("UI");
         }
+
+        public void ToggleGameplayState(bool shouldEnable)
+        {
+            var gameplayActionMap = playerInput.actions.FindActionMap("Gameplay");
+            if (shouldEnable) gameplayActionMap.Enable();
+            else gameplayActionMap.Disable();
+        }
     }
 }

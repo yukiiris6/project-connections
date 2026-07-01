@@ -17,7 +17,7 @@ namespace ProjectConnections.Core
 
         public void RestartLevel(LevelContext context)
         {
-            context.SceneLoader.LoadCurrentScene(LevelType.Menu, LevelType.Menu);
+            context.SceneLoader.LoadCurrentScene(LevelType.Menu, LevelType.Menu, 0);
             context.SetState(new LoadingState());
         }
 
@@ -25,7 +25,7 @@ namespace ProjectConnections.Core
         {
             context.LevelDataStorage.ChangeCurrentLevel(sceneName);
             LevelType nextLevelType = context.LevelDataStorage.GetCurrentLevelType();
-            context.SceneLoader.LoadCurrentScene(LevelType.Menu, nextLevelType);
+            context.SceneLoader.LoadCurrentScene(LevelType.Menu, nextLevelType, 0);
             context.SetState(new LoadingState());
         }
 

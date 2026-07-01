@@ -1,0 +1,324 @@
+fileFormatVersion: 2
+guid: ac416a40a19169741bb18b5cb587c9af
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 373405799035897718
+    second: Yuki 8px Atlas_0
+  - first:
+      213: -3329883124712958128
+    second: Yuki 8px Atlas_1
+  - first:
+      213: -9064427387085259431
+    second: Yuki 8px Atlas_2
+  - first:
+      213: 7643139676883733787
+    second: Yuki 8px Atlas_3
+  - first:
+      213: -3112098089452055668
+    second: Yuki 8px Atlas_4
+  - first:
+      213: -2233030226894422314
+    second: Yuki 8px Atlas_5
+  - first:
+      213: 7520103214213497463
+    second: Yuki 8px Atlas_6
+  - first:
+      213: 8800272646615429168
+    second: Yuki 8px Atlas_7
+  - first:
+      213: -1004425898717577575
+    second: Yuki 8px Atlas_8
+  - first:
+      213: -5497396347319402760
+    second: Yuki 8px Atlas_9
+  - first:
+      213: 7867808854116993337
+    second: Yuki 8px Atlas_10
+  - first:
+      213: 80226533400034101
+    second: Yuki 8px Atlas_11
+  - first:
+      213: 5986757857868376979
+    second: Yuki 8px Atlas_12
+  - first:
+      213: 6944196897528723591
+    second: Yuki 8px Atlas_13
+  - first:
+      213: 8048173197389959492
+    second: Yuki 8px Atlas_14
+  - first:
+      213: -2272538014379939574
+    second: Yuki 8px Atlas_15
+  - first:
+      213: 592315412786500761
+    second: Yuki 8px Atlas_16
+  - first:
+      213: -8693633408876019771
+    second: Yuki 8px Atlas_17
+  - first:
+      213: -1758807634700180130
+    second: Yuki 8px Atlas_18
+  - first:
+      213: -2226480230227603034
+    second: Yuki 8px Atlas_19
+  - first:
+      213: 4651292071452848622
+    second: Yuki 8px Atlas_20
+  - first:
+      213: 1275582873769978192
+    second: Yuki 8px Atlas_21
+  - first:
+      213: 4275058550153577380
+    second: Yuki 8px Atlas_22
+  - first:
+      213: -7108402243532919870
+    second: Yuki 8px Atlas_23
+  - first:
+      213: -1657184984069099669
+    second: Yuki 8px Atlas_24
+  - first:
+      213: 5967084155444115006
+    second: Yuki 8px Atlas_25
+  - first:
+      213: 3489620493621719818
+    second: Yuki 8px Atlas_26
+  - first:
+      213: -6965877192435268859
+    second: Yuki 8px Atlas_27
+  - first:
+      213: 4135448649639586232
+    second: Yuki 8px Atlas_28
+  - first:
+      213: 1378892797222001015
+    second: Yuki 8px Atlas_29
+  - first:
+      213: -1294662973702228049
+    second: Yuki 8px Atlas_30
+  - first:
+      213: 7782663951797572235
+    second: Yuki 8px Atlas_31
+  - first:
+      213: -7860802534956999449
+    second: Yuki 8px Atlas_32
+  - first:
+      213: 8029360126162297840
+    second: Yuki 8px Atlas_33
+  - first:
+      213: 5300466182297943422
+    second: Yuki 8px Atlas_34
+  - first:
+      213: 3250949648319001403
+    second: Yuki 8px Atlas_35
+  - first:
+      213: -5958749062885575433
+    second: Yuki 8px Atlas_36
+  - first:
+      213: 4419483632733019805
+    second: Yuki 8px Atlas_37
+  - first:
+      213: -5581818389375868481
+    second: Yuki 8px Atlas_38
+  - first:
+      213: 7134719938568075693
+    second: Yuki 8px Atlas_39
+  - first:
+      213: -8289750241586021826
+    second: Yuki 8px Atlas_40
+  - first:
+      213: 736204104875325108
+    second: Yuki 8px Atlas_41
+  - first:
+      213: -3894746997231643392
+    second: Yuki 8px Atlas_42
+  - first:
+      213: -2764129849340816577
+    second: Yuki 8px Atlas_43
+  - first:
+      213: -8670234395631600946
+    second: Yuki 8px Atlas_44
+  - first:
+      213: -5419367459830050121
+    second: Yuki 8px Atlas_45
+  - first:
+      213: 3141205379135571942
+    second: Yuki 8px Atlas_46
+  - first:
+      213: -8170772149387044241
+    second: Yuki 8px Atlas_47
+  - first:
+      213: -6523191922460348894
+    second: Yuki 8px Atlas_48
+  - first:
+      213: 5121292519513773926
+    second: Yuki 8px Atlas_49
+  - first:
+      213: -7095612770237944943
+    second: Yuki 8px Atlas_50
+  - first:
+      213: 8445151399665683859
+    second: Yuki 8px Atlas_51
+  - first:
+      213: -1869019626511929099
+    second: Yuki 8px Atlas_52
+  - first:
+      213: -8642525143443904465
+    second: Yuki 8px Atlas_53
+  - first:
+      213: -3711681738780903976
+    second: Yuki 8px Atlas_54
+  - first:
+      213: 6828486228063167597
+    second: Yuki 8px Atlas_55
+  - first:
+      213: 8855717765059604257
+    second: Yuki 8px Atlas_56
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: power-plug_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd4fb8583cb465e60800000000000000
+      internalID: 7950625495300437215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      power-plug_0: 7950625495300437215
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

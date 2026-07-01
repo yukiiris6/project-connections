@@ -35,8 +35,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4438420250351414786}
+  - {fileID: 4371803975236787399}
   - {fileID: 4105482069090342455}
-  - {fileID: 8642151905637711998}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1743761627906394617
@@ -484,6 +484,104 @@ MonoBehaviour:
   doorEnterSFX: {fileID: 8300000, guid: 5f4533bd66300e74fa4d6c93cc25bb1e, type: 3}
   doorOpenSFX: {fileID: 8300000, guid: 5f4533bd66300e74fa4d6c93cc25bb1e, type: 3}
   doorCloseSFX: {fileID: 8300000, guid: e71b96f9a7d783f43a4ae18ce1680e07, type: 3}
+--- !u!1 &6611991688873762695
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4371803975236787399}
+  - component: {fileID: 3762486015782237182}
+  - component: {fileID: 3025866710663724897}
+  m_Layer: 10
+  m_Name: InteractionTrigger
+  m_TagString: Interactable
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4371803975236787399
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6611991688873762695}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2024923133114433236}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &3762486015782237182
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6611991688873762695}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 1}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 2}
+  m_EdgeRadius: 0
+--- !u!114 &3025866710663724897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6611991688873762695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 696214abff01f264e8040cf7ce2c5385, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Electric::ProjectConnections.Electric.DoorInteractable
+  <RequiredObjectType>k__BackingField: 0
+  <IsInteractable>k__BackingField: 0
+  <ShouldBeGrounded>k__BackingField: 1
+  <InteractionLabel>k__BackingField: Interact
+  electricObject: {fileID: 1743761627906394617}
+  soundPlayer: {fileID: 6772470547018940338}
+  playerRefs: {fileID: 0}
 --- !u!1 &7106171858841224367
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,12 +608,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7106171858841224367}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2024923133114433236}
+  m_Father: {fileID: 4438420250351414786}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3278705194286701219
 MonoBehaviour:
@@ -614,5 +712,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1021086351618242521}
+  - {fileID: 8642151905637711998}
   m_Father: {fileID: 2024923133114433236}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

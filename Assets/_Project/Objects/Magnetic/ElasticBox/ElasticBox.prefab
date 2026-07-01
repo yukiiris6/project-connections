@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4716959673473377306}
   - component: {fileID: 2655595457460030087}
   - component: {fileID: 6053408905425317949}
-  - component: {fileID: 3506849089877606346}
   m_Layer: 0
   m_Name: Dock
   m_TagString: Untagged
@@ -139,19 +138,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &3506849089877606346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1242154531030003692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c90a6ea5c39b914eaebaad310fe8cf2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Magnetism::ProjectConnections.Magnetism.DockBrain
-  magnetizableObject: {fileID: 5573495343578413802}
 --- !u!1 &4190720697930959092
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,6 +186,8 @@ MonoBehaviour:
   audioSource: {fileID: 8104618329142402702}
   crashSFX: {fileID: 8300000, guid: e5ca15ea1522dd345a847b8aa12cde43, type: 3}
   connectionSFX: {fileID: 0}
+  dropSFX: {fileID: 0}
+  throwSFX: {fileID: 0}
 --- !u!82 &8104618329142402702
 AudioSource:
   m_ObjectHideFlags: 0
@@ -311,7 +299,6 @@ GameObject:
   - component: {fileID: 3370334406798693280}
   - component: {fileID: 7670294164750692361}
   - component: {fileID: 7266714452569870115}
-  - component: {fileID: 5028838617320133020}
   - component: {fileID: 6582111917754699145}
   - component: {fileID: 2171635361919747984}
   m_Layer: 8
@@ -485,6 +472,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   mainCollider: {fileID: 6115783767398384973}
+  sizeReduction: 0.25
 --- !u!114 &7266714452569870115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -499,24 +487,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Magnetism::Mover
   collisionHandler: {fileID: 7670294164750692361}
   pullMultiplier: 1
-  defaultStopDistance: 2
-  preciseStopDistance: 0.25
---- !u!114 &5028838617320133020
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5573495343578413802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb07e16c5bf9b1f488f294850dd6fb49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Magnetism::ProjectConnections.Magnetism.Docked.ElasticObjectBrain
-  <Mover>k__BackingField: {fileID: 7266714452569870115}
-  <SoundPlayer>k__BackingField: {fileID: 2262312643995695277}
-  <Rigidbody>k__BackingField: {fileID: 3370334406798693280}
-  <Presenter>k__BackingField: {fileID: 6582111917754699145}
+  nextPositionThreshold: 0.25
 --- !u!114 &6582111917754699145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -530,6 +501,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Magnetism::ProjectConnections.Magnetism.Presenter
   cinemachineImpulseSource: {fileID: 2171635361919747984}
+  soundPlayer: {fileID: 0}
+  minDistanceToCrash: 1
 --- !u!114 &2171635361919747984
 MonoBehaviour:
   m_ObjectHideFlags: 0

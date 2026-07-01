@@ -3,6 +3,7 @@
     "rootNamespace": "ProjectConnections.SceneUI",
     "references": [
         "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:59b8f24f48f89e84f9339538453aa44d",
         "GUID:4da26e4371d8bb342b369a9fb1ede4a1",
         "GUID:71cbb1c5e82a9b040a9360c6c9b22aac",
         "GUID:739032dd479afee4f8a5757d7d48653c",

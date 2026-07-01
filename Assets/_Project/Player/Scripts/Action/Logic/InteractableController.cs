@@ -1,6 +1,5 @@
 using System;
 using ProjectConnections.ObjectShared;
-using ProjectConnections.SceneUI;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -9,10 +8,11 @@ namespace ProjectConnections.Player
     public class InteractableController : MonoBehaviour
     {
         [SerializeField, Required] GroundValidator groundValidator;
-        [SerializeField, Required] InteractionGUIPresenter interactionGUI;
 
         public IInteractable SelectedInteractable { get; private set; }
         public bool IsValid { get; private set; }
+
+        public event Action<bool, string> OnUICalled;
 
         void OnEnable()
         {
@@ -61,8 +61,7 @@ namespace ProjectConnections.Player
         void UpdateInteractableInfo(bool isValid)
         {
             IsValid = isValid;
-            interactionGUI.ToggleGUI(isValid);
-            if (isValid) interactionGUI.SetLabel(SelectedInteractable.InteractionLabel);
+            OnUICalled?.Invoke(isValid, SelectedInteractable?.InteractionLabel);
         }
     }
 }

@@ -4,6 +4,7 @@ using Sirenix.OdinInspector;
 using UnityEngine.UI;
 using ProjectConnections.UIShared;
 using ProjectConnections.Core;
+using ProjectConnections.Player;
 
 namespace ProjectConnections.SceneUI
 {
@@ -14,6 +15,7 @@ namespace ProjectConnections.SceneUI
         [SerializeField, Required] GameObject dimBackgroundObject;
         [SerializeField, Required] AudioSource audioSource;
         [SerializeField, Required] AudioClip pauseSFX;
+        [SerializeField, Required] PlayerController playerController;
         [SerializeField, Required] PlayerInputMapper playerInputMapper;
 
         [Header("Button References")]
@@ -25,6 +27,13 @@ namespace ProjectConnections.SceneUI
         SceneLoaderBrain sceneLoader;
         MusicPlayer musicPlayer;
 
+        void SetupButtons()
+        {
+            resumeButton.onClick.AddListener(OnClickResume);
+            restartButton.onClick.AddListener(OnClickRestart);
+            toTitleButton.onClick.AddListener(OnClickToTitle);
+        }
+
         void Start()
         {
             gameStateSetter = CoreSystems.Instance.GameStateSetter;
@@ -33,21 +42,19 @@ namespace ProjectConnections.SceneUI
             SetupButtons();
         }
 
-        void SetupButtons()
+        void OnEnable()
         {
-            resumeButton.onClick.AddListener(OnClickResume);
-            restartButton.onClick.AddListener(OnClickRestart);
-            toTitleButton.onClick.AddListener(OnClickToTitle);
+            playerController.OnPauseInput += ToggleMenu;
         }
 
-        bool IsOpen()
+        void OnDisable()
         {
-            return pauseMenu.activeInHierarchy;
+            playerController.OnPauseInput -= ToggleMenu;
         }
 
-        public void ToggleMenu()
+        public void ToggleMenu(bool isPressed)
         {
-            if (IsOpen()) CloseMenu();
+            if (pauseMenu.activeInHierarchy) CloseMenu();
             else OpenMenu();
         }
 

@@ -10,8 +10,10 @@ namespace ProjectConnections.Magnetic
         [SerializeField, Required] Presenter presenter;
         [SerializeField, Required] Rigidbody2D myRigidbody;
         [SerializeField, Required] Constrainer[] constraints;
+        [SerializeField, Required] bool shouldRotate;
 
         RigidbodyType2D originalBodyType;
+        bool isPulling;
 
         void Awake()
         {
@@ -38,6 +40,7 @@ namespace ProjectConnections.Magnetic
         {
             Vector2 finalDestination = destination;
             myRigidbody.bodyType = RigidbodyType2D.Kinematic;
+            myRigidbody.linearVelocity = Vector2.zero;
 
             foreach (var constraint in constraints)
             {
@@ -45,10 +48,12 @@ namespace ProjectConnections.Magnetic
             }
 
             mover.MoveTo(finalDestination);
+            UpdatePullingVisuals(destination);
         }
 
         public void Demagnetize()
         {
+            isPulling = false;
             myRigidbody.bodyType = originalBodyType;
             mover.Stop();
             PlayPresenterCrash();
@@ -58,6 +63,14 @@ namespace ProjectConnections.Magnetic
         {
             float distanceTravelled = mover.GetDistanceTravelled();
             presenter.PlayStopByDistance(distanceTravelled);
+        }
+
+        void UpdatePullingVisuals(Vector2 destination)
+        {
+            if (!shouldRotate) return;
+            if (isPulling) return;
+            isPulling = true;
+            rotator.RotateTo(destination);
         }
     }
 }

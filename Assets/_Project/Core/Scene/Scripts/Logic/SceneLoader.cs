@@ -15,7 +15,6 @@ namespace ProjectConnections.Core
         [SerializeField, Required] SceneTransitionPlayer sceneTransitionPlayer;
 
         public event Action OnLevelLoad;
-
         CursorPresenter cursorPresenter;
 
         void Start()
@@ -23,15 +22,17 @@ namespace ProjectConnections.Core
             cursorPresenter = OverlaySystems.Instance.CursorPresenter;
         }
 
-        public void LoadCurrentScene(LevelType currentLevelType, LevelType nextLevelType)
+        public void LoadCurrentScene(LevelType currentLevelType, LevelType nextLevelType, float delayTime)
         {
             bool isFromMenu = currentLevelType == LevelType.Menu;
             bool isToMenu = nextLevelType == LevelType.Menu;
-            StartCoroutine(SceneTransitionSequence(isFromMenu, isToMenu));
+            StartCoroutine(SceneTransitionSequence(isFromMenu, isToMenu, delayTime));
         }
 
-        IEnumerator SceneTransitionSequence(bool isFromMenu, bool isToMenu)
+        IEnumerator SceneTransitionSequence(bool isFromMenu, bool isToMenu, float delayTime)
         {
+            yield return new WaitForSeconds(delayTime);
+
             string fileName = levelDataStorage.GetCurrentSceneName();
             string currentSceneName = SceneManager.GetActiveScene().name;
             bool isRestarting = currentSceneName == fileName;

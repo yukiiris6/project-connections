@@ -57,5 +57,10 @@ namespace ProjectConnections.Player
         {
             playerOrientation.SetFacing(xDirection);
         }
+
+        public void UpdateFinishAnimation()
+        {
+            animationHandler.UpdateFinished(true);
+        }
     }
 }

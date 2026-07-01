@@ -72,15 +72,15 @@ namespace ProjectConnections.Core
 
         public void ChangeToNextLevel()
         {
-            if (currentLevelIndex < availableLevels.Count() - 1)
-            {
-                var nextLevel = availableLevels[currentLevelIndex + 1];
-                ChangeCurrentLevel(nextLevel.FileName);
-            }
+            if (currentLevelIndex == -1 || currentLevelIndex > availableLevels.Count() - 1) return;
+            var nextLevel = availableLevels[currentLevelIndex + 1];
+            ChangeCurrentLevel(nextLevel.FileName);
         }
 
         public void FinishCurrentLevel()
         {
+            if (currentLevelIndex == -1) return;
+
             availableLevels[currentLevelIndex].SetState(LevelState.Finished);
             if (currentLevelIndex < availableLevels.Count() - 1)
             {
