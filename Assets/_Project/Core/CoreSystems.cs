@@ -5,7 +5,7 @@ namespace ProjectConnections.Core
 {
     public class CoreSystems : MonoBehaviour
     {
-        [field: SerializeField, Required] public SceneLoaderBrain SceneLoader { get; private set; }
+        [field: SerializeField, Required] public SceneLoaderBrain SceneLoaderBrain { get; private set; }
         [field: SerializeField, Required] public GameStateSetterBrain GameStateSetter { get; private set; }
         [field: SerializeField, Required] public MusicPlayer MusicPlayer { get; private set; }
         static CoreSystems instance;

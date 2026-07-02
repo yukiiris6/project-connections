@@ -1,12 +1,37 @@
 ﻿using UnityEngine;
 using Sirenix.OdinInspector;
 using UnityEngine.InputSystem;
+using ProjectConnections.Core;
 
 namespace ProjectConnections.UIShared
 {
     public class PlayerInputMapper : MonoBehaviour
     {
         [SerializeField, Required] PlayerInput playerInput;
+
+        SceneLoader sceneLoader;
+
+        void GetDependencies()
+        {
+            if (sceneLoader != null) return;
+            sceneLoader = CoreSystems.Instance.SceneLoaderBrain.SceneLoader;
+        }
+
+        void OnEnable()
+        {
+            GetDependencies();
+            sceneLoader.OnLevelLoad += HandleLevelLoad;
+        }
+
+        void OnDisable()
+        {
+            sceneLoader.OnLevelLoad -= HandleLevelLoad;
+        }
+
+        void HandleLevelLoad()
+        {
+            ToggleInput(true);
+        }
 
         public void ToggleActionMap()
         {
@@ -24,11 +49,9 @@ namespace ProjectConnections.UIShared
             playerInput.SwitchCurrentActionMap("UI");
         }
 
-        public void ToggleGameplayState(bool shouldEnable)
+        public void ToggleInput(bool shouldEnable)
         {
-            var gameplayActionMap = playerInput.actions.FindActionMap("Gameplay");
-            if (shouldEnable) gameplayActionMap.Enable();
-            else gameplayActionMap.Disable();
+            playerInput.enabled = shouldEnable;
         }
     }
 }

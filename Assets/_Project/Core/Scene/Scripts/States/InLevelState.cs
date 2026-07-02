@@ -6,22 +6,22 @@ namespace ProjectConnections.Core
 {
     public class InLevelState : SceneState
     {
-        public void Enter(LevelContext context)
+        public void Enter(SceneContext context)
         {
             AudioClip currentLevelMusic = context.LevelDataStorage.GetCurrentLevelMusic();
-            context.SceneMusicPlayer.SetMusicAndPlay(currentLevelMusic);
-            context.GameStateSetter.ResumeGame();
+            context.MusicPlayer.SetAudioClip(currentLevelMusic);
+            context.MusicPlayer.PlayMusic();
         }
 
-        public void Exit(LevelContext context) { }
+        public void Exit(SceneContext context) { }
 
-        public void RestartLevel(LevelContext context)
+        public void RestartLevel(SceneContext context)
         {
             context.SceneLoader.LoadCurrentScene(LevelType.Stage, LevelType.Stage, 0);
             context.SetState(new LoadingState());
         }
 
-        public void GoToLevel(LevelContext context, string sceneName)
+        public void GoToLevel(SceneContext context, string sceneName)
         {
             context.LevelDataStorage.ChangeCurrentLevel(sceneName);
             LevelType nextLevelType = context.LevelDataStorage.GetCurrentLevelType();
@@ -29,7 +29,7 @@ namespace ProjectConnections.Core
             context.SetState(new LoadingState());
         }
 
-        public void FinishLevel(LevelContext context)
+        public void FinishLevel(SceneContext context)
         {
             context.LevelDataStorage.FinishCurrentLevel();
             context.LevelDataStorage.ChangeToNextLevel();

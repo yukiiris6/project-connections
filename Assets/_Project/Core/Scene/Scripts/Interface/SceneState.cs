@@ -2,10 +2,10 @@
 {
     public interface SceneState
     {
-        void Enter(LevelContext context);
-        void Exit(LevelContext context);
-        void RestartLevel(LevelContext context);
-        void GoToLevel(LevelContext context, string fileName);
-        void FinishLevel(LevelContext context);
+        void Enter(SceneContext context);
+        void Exit(SceneContext context);
+        void RestartLevel(SceneContext context);
+        void GoToLevel(SceneContext context, string fileName);
+        void FinishLevel(SceneContext context);
     }
 }

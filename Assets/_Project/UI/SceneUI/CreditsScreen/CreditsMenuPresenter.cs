@@ -16,7 +16,7 @@ namespace ProjectConnections.SceneUI
         void GetDependencies()
         {
             if (sceneLoader != null) return;
-            sceneLoader = CoreSystems.Instance.SceneLoader;
+            sceneLoader = CoreSystems.Instance.SceneLoaderBrain;
         }
 
         void Start()

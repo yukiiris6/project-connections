@@ -42,12 +42,11 @@ namespace ProjectConnections.Electric
         public void Interact(GameObject gameObject)
         {
             IsInteractable = false;
-            playerRefs.InputMapper.ToggleGameplayState(false);
             playerRefs.AnimationBrain.UpdateFinishAnimation();
             playerRefs.Movement.Stop();
             playerRefs.transform.position = transform.position;
             soundPlayer.PlayEnteringSFX();
-            CoreSystems.Instance.SceneLoader.FinishLevel();
+            CoreSystems.Instance.SceneLoaderBrain.FinishLevel();
             OnInteractableChanged?.Invoke();
         }
     }

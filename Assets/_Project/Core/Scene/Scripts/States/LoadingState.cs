@@ -6,22 +6,22 @@ namespace ProjectConnections.Core
 {
     public class LoadingState : SceneState
     {
-        LevelContext _context;
+        SceneContext _context;
 
-        public void Enter(LevelContext context)
+        public void Enter(SceneContext context)
         {
             _context = context;
             context.SceneLoader.OnLevelLoad += OnLoad;
         }
 
-        public void Exit(LevelContext context)
+        public void Exit(SceneContext context)
         {
             context.SceneLoader.OnLevelLoad -= OnLoad;
         }
 
-        public void GoToLevel(LevelContext context, string fileName) { }
-        public void FinishLevel(LevelContext context) { }
-        public void RestartLevel(LevelContext context) { }
+        public void GoToLevel(SceneContext context, string fileName) { }
+        public void FinishLevel(SceneContext context) { }
+        public void RestartLevel(SceneContext context) { }
 
         void OnLoad()
         {

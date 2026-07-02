@@ -479,6 +479,11 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-53dceeafef421214bbe2713d814371f1-8432845167788834956-450501348
         - globalObjectIdString: GlobalObjectId_V1-2-53dceeafef421214bbe2713d814371f1-3119119763804018676-154913548
         - globalObjectIdString: GlobalObjectId_V1-2-53dceeafef421214bbe2713d814371f1-8627100953684474489-1829363132
+        - globalObjectIdString: GlobalObjectId_V1-2-53dceeafef421214bbe2713d814371f1-8517607-0
+        - globalObjectIdString: GlobalObjectId_V1-2-53dceeafef421214bbe2713d814371f1-8627100953684474489-757721654
+        - globalObjectIdString: GlobalObjectId_V1-2-53dceeafef421214bbe2713d814371f1-8432845167788834956-1135997644
+        - globalObjectIdString: GlobalObjectId_V1-2-53dceeafef421214bbe2713d814371f1-3119119763804018676-1919936489
+        - globalObjectIdString: GlobalObjectId_V1-2-53dceeafef421214bbe2713d814371f1-792180799-0
         values:
         - colorIndex: 1
           iconNameOrGuid: AvatarMask On Icon
@@ -533,6 +538,26 @@ MonoBehaviour:
           isIconRecursive: 0
           isColorRecursive: 0
         - colorIndex: 5
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 1
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 1
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 1
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 1
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 1
           iconNameOrGuid: 
           isIconRecursive: 0
           isColorRecursive: 0
@@ -689,6 +714,11 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-fb50f4c87faa12d49b19e8d00c88ad7a-8432845167788834956-1135997644
         - globalObjectIdString: GlobalObjectId_V1-2-fb50f4c87faa12d49b19e8d00c88ad7a-3119119763804018676-1919936489
         - globalObjectIdString: GlobalObjectId_V1-2-fb50f4c87faa12d49b19e8d00c88ad7a-8627100953684474489-757721654
+        - globalObjectIdString: GlobalObjectId_V1-2-fb50f4c87faa12d49b19e8d00c88ad7a-780808302-0
+        - globalObjectIdString: GlobalObjectId_V1-2-fb50f4c87faa12d49b19e8d00c88ad7a-8432845167788834956-450501348
+        - globalObjectIdString: GlobalObjectId_V1-2-fb50f4c87faa12d49b19e8d00c88ad7a-3119119763804018676-154913548
+        - globalObjectIdString: GlobalObjectId_V1-2-fb50f4c87faa12d49b19e8d00c88ad7a-8627100953684474489-1829363132
+        - globalObjectIdString: GlobalObjectId_V1-2-fb50f4c87faa12d49b19e8d00c88ad7a-733023097-0
         values:
         - colorIndex: 1
           iconNameOrGuid: AvatarMask On Icon
@@ -747,6 +777,26 @@ MonoBehaviour:
           isIconRecursive: 0
           isColorRecursive: 0
         - colorIndex: 5
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 1
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 1
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 1
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 1
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 1
           iconNameOrGuid: 
           isIconRecursive: 0
           isColorRecursive: 0
@@ -1075,6 +1125,7 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-fd16ada69c256a243b1123f22a0a914f-1923545143-0
         - globalObjectIdString: GlobalObjectId_V1-2-fd16ada69c256a243b1123f22a0a914f-1374030683-0
         - globalObjectIdString: GlobalObjectId_V1-2-fd16ada69c256a243b1123f22a0a914f-1305827831-0
+        - globalObjectIdString: GlobalObjectId_V1-2-fd16ada69c256a243b1123f22a0a914f-3424994531398491537-1917215870727819033
         values:
         - colorIndex: 1
           iconNameOrGuid: AvatarMask On Icon
@@ -1298,6 +1349,10 @@ MonoBehaviour:
           isColorRecursive: 0
         - colorIndex: 0
           iconNameOrGuid: SphereCollider Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: CreateAddNew
           isIconRecursive: 0
           isColorRecursive: 0
     - goDatas_byGlobalId:

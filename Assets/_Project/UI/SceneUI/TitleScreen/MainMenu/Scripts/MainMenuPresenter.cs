@@ -24,7 +24,7 @@ namespace ProjectConnections.SceneUI
         void GetDependencies()
         {
             if (sceneLoader != null && cursorPresenter != null) return;
-            sceneLoader = CoreSystems.Instance.SceneLoader;
+            sceneLoader = CoreSystems.Instance.SceneLoaderBrain;
             cursorPresenter = OverlaySystems.Instance.CursorPresenter;
         }
 

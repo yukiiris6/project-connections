@@ -159,6 +159,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6908361261712006699, guid: 9e7aab00df826114280ff3f76f109c16, type: 3}
   m_PrefabInstance: {fileID: 5355098405340158414}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &290051185 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5019382020671489159, guid: ecc38c3ccc8ad534faba47922d2224d4, type: 3}
+  m_PrefabInstance: {fileID: 783913062}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 803245bbdebbca54abae20d6ec4722b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelManager
 --- !u!1 &318259056
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,6 +423,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3025866710663724897, guid: 0089f93f170bc1e41aff70dabd8cc0f9, type: 3}
+      propertyPath: playerRefs
+      value: 
+      objectReference: {fileID: 1658954048}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -622,9 +637,17 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -12.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3066437966875300580, guid: ec1adce245eae3a469c48fac9b23a43c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.9650097
+      objectReference: {fileID: 0}
     - target: {fileID: 4326503933078788971, guid: ec1adce245eae3a469c48fac9b23a43c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4326503933078788971, guid: ec1adce245eae3a469c48fac9b23a43c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.9650097
       objectReference: {fileID: 0}
     - target: {fileID: 4371880307037188763, guid: ec1adce245eae3a469c48fac9b23a43c, type: 3}
       propertyPath: pauseMenuPresenter
@@ -690,6 +713,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52c78cffb14c1884fba9ab37b355a594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInputMapper
+--- !u!114 &543973365 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4371880307037188763, guid: ec1adce245eae3a469c48fac9b23a43c, type: 3}
+  m_PrefabInstance: {fileID: 543973344}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 460d254258d740643a920317b61d6963, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
 --- !u!1 &632653063
 GameObject:
   m_ObjectHideFlags: 0
@@ -1463,6 +1497,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Core_Systems
       objectReference: {fileID: 0}
+    - target: {fileID: 7376437209449003591, guid: ecc38c3ccc8ad534faba47922d2224d4, type: 3}
+      propertyPath: <SceneLoaderBrain>k__BackingField
+      value: 
+      objectReference: {fileID: 290051185}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10156,11 +10194,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4584091252025998311, guid: e6dc5c36b3107964998662347c6ce91e, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
-      value: 1
+      value: 0.9998442
       objectReference: {fileID: 0}
     - target: {fileID: 4584091252025998311, guid: e6dc5c36b3107964998662347c6ce91e, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.999442
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10399,15 +10437,15 @@ PrefabInstance:
       objectReference: {fileID: 8246453266378698223}
     - target: {fileID: 3793503097709806231, guid: 9e7aab00df826114280ff3f76f109c16, type: 3}
       propertyPath: m_Size.x
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4627658449873612119, guid: 9e7aab00df826114280ff3f76f109c16, type: 3}
       propertyPath: onWidth
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4627658449873612119, guid: 9e7aab00df826114280ff3f76f109c16, type: 3}
       propertyPath: offWidth
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5150951205526045678, guid: 9e7aab00df826114280ff3f76f109c16, type: 3}
       propertyPath: m_Name
@@ -10474,6 +10512,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e7aab00df826114280ff3f76f109c16, type: 3}
+--- !u!114 &1658954048 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8049196244162201693, guid: ec1adce245eae3a469c48fac9b23a43c, type: 3}
+  m_PrefabInstance: {fileID: 543973344}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86f1acfc2373fde44b93e779171c2c94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player
 --- !u!4 &1682585663 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6908361261712006699, guid: 9e7aab00df826114280ff3f76f109c16, type: 3}
@@ -10590,6 +10639,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 811232972485554722, guid: daf0d57e7c645ff4eb2b8c72bea250cd, type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 543973365}
     - target: {fileID: 811232972485554722, guid: daf0d57e7c645ff4eb2b8c72bea250cd, type: 3}
       propertyPath: playerInputMapper
       value: 
@@ -10862,15 +10915,15 @@ PrefabInstance:
       objectReference: {fileID: 8246453266378698223}
     - target: {fileID: 3793503097709806231, guid: 9e7aab00df826114280ff3f76f109c16, type: 3}
       propertyPath: m_Size.x
-      value: 8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4627658449873612119, guid: 9e7aab00df826114280ff3f76f109c16, type: 3}
       propertyPath: onWidth
-      value: 8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4627658449873612119, guid: 9e7aab00df826114280ff3f76f109c16, type: 3}
       propertyPath: offWidth
-      value: 1
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5150951205526045678, guid: 9e7aab00df826114280ff3f76f109c16, type: 3}
       propertyPath: m_Name
@@ -10922,7 +10975,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8660950663837671464, guid: 9e7aab00df826114280ff3f76f109c16, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
-      value: 8
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11017,6 +11070,10 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 7016039922693120703, guid: 629d417e64acac84a8f0b18c8d24f326, type: 3}
+      propertyPath: connectedPlug
+      value: 
+      objectReference: {fileID: 8246453266378698238}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11126,6 +11183,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b279442900b55a41a10ba9ed6932330, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Electric::ProjectConnections.Electric.ElectricityProvider
+--- !u!4 &8246453266378698238 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7368341273168496261, guid: f7175d0422cb33746acfe748311eb545, type: 3}
+  m_PrefabInstance: {fileID: 8246453266378698222}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

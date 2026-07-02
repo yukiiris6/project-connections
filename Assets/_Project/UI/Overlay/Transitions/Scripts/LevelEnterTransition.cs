@@ -26,10 +26,11 @@ namespace ProjectConnections.UI.Overlay
         [SerializeField, Required] float horizontalOffset = 5.5f;
 
         [Header("Settings")]
-        [SerializeField, Required] float FadeDuration = .5f;
-        [SerializeField, Required] float PullDuration = .5f;
-        [SerializeField, Required] float ShakeDuration = .25f;
-        [SerializeField, Required] float ShakeStrength = 5f;
+        [SerializeField, Required] float fadeDuration = .5f;
+        [SerializeField, Required] float pullDuration = .5f;
+        [SerializeField, Required] float shakeDuration = .25f;
+        [SerializeField, Required] float shakeStrength = 5f;
+        [SerializeField, Required] float middleDuration = 1f;
 
         Vector2 magnetRectOriginalPos;
         Vector2 plugRectOriginalPos;
@@ -48,11 +49,15 @@ namespace ProjectConnections.UI.Overlay
 
         public IEnumerator FadeInAndOut()
         {
+            HideMagnetComponents();
+
             FadeIn();
-            yield return new WaitForSeconds(FadeDuration);
+            yield return new WaitForSeconds(fadeDuration);
+
+            yield return new WaitForSeconds(middleDuration);
 
             FadeOut();
-            yield return new WaitForSeconds(FadeDuration);
+            yield return new WaitForSeconds(fadeDuration);
         }
 
         public IEnumerator PlayMagnetAnimation()
@@ -60,39 +65,39 @@ namespace ProjectConnections.UI.Overlay
             SetupMagnetComponents();
 
             FadeIn();
-            yield return new WaitForSeconds(FadeDuration);
+            yield return new WaitForSeconds(fadeDuration);
 
             StartMagnetAnimation();
-            float magnetAnimationDuration = (ShakeDuration * 2) + PullDuration;
+            float magnetAnimationDuration = (shakeDuration * 2) + pullDuration;
             yield return new WaitForSeconds(magnetAnimationDuration);
 
             FadeOut();
-            yield return new WaitForSeconds(FadeDuration);
+            yield return new WaitForSeconds(fadeDuration);
         }
 
         void FadeIn()
         {
-            canvasGroup.DOFade(1, FadeDuration).SetUpdate(true).SetEase(Ease.InCubic);
+            canvasGroup.DOFade(1, fadeDuration).SetUpdate(true).SetEase(Ease.InCubic);
         }
 
         void FadeOut()
         {
-            canvasGroup.DOFade(0, FadeDuration).SetUpdate(true).SetEase(Ease.OutCubic);
+            canvasGroup.DOFade(0, fadeDuration).SetUpdate(true).SetEase(Ease.OutCubic);
         }
 
         void StartMagnetAnimation()
         {
-            plugRect.DOShakePosition(ShakeDuration, ShakeStrength)
+            plugRect.DOShakePosition(shakeDuration, shakeStrength)
                 .SetEase(Ease.Linear)
                 .SetUpdate(true)
                 .OnComplete(() =>
-                    plugRect.DOMove(connectionAnchor.position, PullDuration)
+                    plugRect.DOMove(connectionAnchor.position, pullDuration)
                         .SetEase(Ease.InCubic)
                         .SetUpdate(true)
                         .OnUpdate(() => SetupLaser())
                         .OnComplete(() =>
                         {
-                            transitionRect.DOShakePosition(ShakeDuration, ShakeStrength);
+                            transitionRect.DOShakePosition(shakeDuration, shakeStrength);
                             audioSource.PlayOneShot(plugSFX);
                         })
                 );

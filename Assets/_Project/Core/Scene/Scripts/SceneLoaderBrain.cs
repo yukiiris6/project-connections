@@ -10,21 +10,17 @@ using ProjectConnections.Level;
 
 namespace ProjectConnections.Core
 {
-    public class SceneLoaderBrain : MonoBehaviour, LevelContext
+    public class SceneLoaderBrain : MonoBehaviour, SceneContext
     {
         [field: SerializeField, Required] public LevelDataStorage LevelDataStorage { get; private set; }
         [field: SerializeField, Required] public SceneLoader SceneLoader { get; private set; }
-        [field: SerializeField, Required] public SceneMusicPlayer SceneMusicPlayer { get; private set; }
-        [field: SerializeField, Required] public GameStateSetterBrain GameStateSetter { get; private set; }
+        [field: SerializeField, Required] public MusicPlayer MusicPlayer { get; private set; }
         [field: SerializeField, Required] public float LoadDelayTime { get; } = 1f;
 
-        SceneState currentState;
+        SceneState currentState = new LoadingState();
 
-        void Start()
+        void Awake()
         {
-            bool isInMenu = LevelDataStorage.GetCurrentLevelType() == LevelType.Menu;
-            if (isInMenu) currentState = new InMenuState();
-            else currentState = new InLevelState();
             currentState.Enter(this);
         }
 

@@ -992,7 +992,7 @@ Transform:
   m_GameObject: {fileID: 5615472895000837065}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.5, y: -1.9650097, z: 0}
+  m_LocalPosition: {x: -11.5, y: -3.9650097, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1075,7 +1075,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &8473509289273650786
 MonoBehaviour:
@@ -1084,7 +1084,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5615472895000837065}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
@@ -1359,7 +1359,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86f1acfc2373fde44b93e779171c2c94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  playerAnimationBrain: {fileID: 0}
+  AnimationBrain: {fileID: 285690636834042731}
+  InputMapper: {fileID: 2048041444811096532}
+  Movement: {fileID: 2338196746396649503}
 --- !u!114 &2048041444811096532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1828,7 +1830,7 @@ Transform:
   m_GameObject: {fileID: 7332566643945763112}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.5, y: -1.9650097, z: 0}
+  m_LocalPosition: {x: -11.5, y: -3.9650097, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

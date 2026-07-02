@@ -26,7 +26,7 @@ namespace ProjectConnections.SceneUI
 
         void Start()
         {
-            sceneLoader = CoreSystems.Instance.SceneLoader;
+            sceneLoader = CoreSystems.Instance.SceneLoaderBrain;
             StartCoroutine(SplashScreenRoutine());
         }
 

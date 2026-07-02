@@ -29,7 +29,7 @@ namespace ProjectConnections.SceneUI
         void Start()
         {
             cursorController = OverlaySystems.Instance.CursorPresenter;
-            sceneLoader = CoreSystems.Instance.SceneLoader;
+            sceneLoader = CoreSystems.Instance.SceneLoaderBrain;
             SetupButtons();
         }
 

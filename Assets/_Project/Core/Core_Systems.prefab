@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 744101a59b45d5747943a4fa1465a60a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GlobalSystems
-  <SceneLoader>k__BackingField: {fileID: 5019382020671489159}
+  <SceneLoaderBrain>k__BackingField: {fileID: 5019382020671489159}
   <GameStateSetter>k__BackingField: {fileID: 6135856418612162121}
   <MusicPlayer>k__BackingField: {fileID: 239769527630184325}
 --- !u!1 &6385632219563639073
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 2366088256172927509}
   - component: {fileID: 4983252563088405680}
   m_Layer: 0
-  m_Name: LevelLoader
+  m_Name: SceneLoader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -160,7 +160,6 @@ MonoBehaviour:
   <LevelDataStorage>k__BackingField: {fileID: 7742194849389113773}
   <SceneLoader>k__BackingField: {fileID: 4551997742392231265}
   <SceneMusicPlayer>k__BackingField: {fileID: 2366088256172927509}
-  <GameStateSetter>k__BackingField: {fileID: 6135856418612162121}
 --- !u!114 &7742194849389113773
 MonoBehaviour:
   m_ObjectHideFlags: 0

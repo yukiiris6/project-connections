@@ -20,6 +20,7 @@ namespace ProjectConnections.Core
         void Start()
         {
             cursorPresenter = OverlaySystems.Instance.CursorPresenter;
+            StartCoroutine(Startup());
         }
 
         public void LoadCurrentScene(LevelType currentLevelType, LevelType nextLevelType, float delayTime)
@@ -27,6 +28,12 @@ namespace ProjectConnections.Core
             bool isFromMenu = currentLevelType == LevelType.Menu;
             bool isToMenu = nextLevelType == LevelType.Menu;
             StartCoroutine(SceneTransitionSequence(isFromMenu, isToMenu, delayTime));
+        }
+
+        IEnumerator Startup()
+        {
+            yield return new WaitForSeconds(.1f);
+            OnLevelLoad?.Invoke();
         }
 
         IEnumerator SceneTransitionSequence(bool isFromMenu, bool isToMenu, float delayTime)
@@ -44,15 +51,15 @@ namespace ProjectConnections.Core
             DOTween.KillAll();
             yield return LoadSceneSequence(fileName);
 
-            if (isToMenu) yield return sceneTransitionPlayer.PlayFadeIn();
-            else yield return sceneTransitionPlayer.PlayIrisOpen();
-
             if (!isToMenu && !isRestarting)
             {
                 int currentLevelNumber = levelDataStorage.GetCurrentLevelNumber();
                 string currentLevelName = levelDataStorage.GetCurrentDisplayName();
                 yield return sceneTransitionPlayer.PlayLevelEnterSequence(isFromMenu, currentLevelNumber, currentLevelName);
             }
+
+            if (isToMenu) yield return sceneTransitionPlayer.PlayFadeIn();
+            else yield return sceneTransitionPlayer.PlayIrisOpen();
 
             cursorPresenter.AllowInteractions();
 

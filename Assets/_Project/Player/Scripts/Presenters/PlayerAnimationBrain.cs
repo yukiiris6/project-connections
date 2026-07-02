@@ -61,6 +61,7 @@ namespace ProjectConnections.Player
         public void UpdateFinishAnimation()
         {
             animationHandler.UpdateFinished(true);
+            animationHandler.ToggleArms(false);
         }
     }
 }

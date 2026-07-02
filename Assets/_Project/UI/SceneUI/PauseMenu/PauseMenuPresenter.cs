@@ -37,7 +37,7 @@ namespace ProjectConnections.SceneUI
         void Start()
         {
             gameStateSetter = CoreSystems.Instance.GameStateSetter;
-            sceneLoader = CoreSystems.Instance.SceneLoader;
+            sceneLoader = CoreSystems.Instance.SceneLoaderBrain;
             musicPlayer = CoreSystems.Instance.MusicPlayer;
             SetupButtons();
         }
